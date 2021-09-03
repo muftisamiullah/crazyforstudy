@@ -1,7 +1,13 @@
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:8080/tutor/v1/';
-// const apiUrl = 'https://cfs-admin-panel.herokuapp.com/tutor/v1/';
+// const apiUrl = 'http://localhost:3000/tutor/v1/';
+let apiUrl='';
+if(process.env.NODE_ENV === 'production'){
+    apiUrl = `${process.env.REACT_APP_LIVE_URL}/tutor/v1/`;
+}else{
+    apiUrl = `${process.env.REACT_APP_LOCAL_URL}/tutor/v1/`;
+}
+
 
 const config = {
     baseURL: apiUrl,

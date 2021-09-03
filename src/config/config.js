@@ -1,7 +1,14 @@
 import axios from 'axios';
 
 // const apiUrl = `http://127.0.0.1:8080/web/v1/`;
-const apiUrl = `${process.env.REACT_APP_basePath}/web/v1/`;
+// const apiUrl = `${process.env.REACT_APP_basePath}/web/v1/`;
+
+let apiUrl='';
+if(process.env.NODE_ENV === 'production'){
+    apiUrl = `${process.env.REACT_APP_LIVE_URL}/web/v1/`;
+}else{
+    apiUrl = `${process.env.REACT_APP_LOCAL_URL}/web/v1/`;
+}
 
 const config = {
     baseURL: apiUrl,
