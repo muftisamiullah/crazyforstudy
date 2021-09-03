@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Aspira';
+    src: url('Aspira-Bold.woff2') format('woff2'),
+        url('Aspira-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aspira';
+    src: url('Aspira-Demi.woff2') format('woff2'),
+        url('Aspira-Demi.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aspira';
+    src: url('Aspira-MediumIt.woff2') format('woff2'),
+        url('Aspira-MediumIt.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aspira';
+    src: url('Aspira-DemiIt.woff2') format('woff2'),
+        url('Aspira-DemiIt.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aspira';
+    src: url('Aspira-Medium.woff2') format('woff2'),
+        url('Aspira-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aspira';
+    src: url('Aspira-Regular.woff2') format('woff2'),
+        url('Aspira-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
