@@ -23,7 +23,7 @@ export default function SideBar({...props}){
                                         </div>
                                     </div>
                                     <div className="detail">
-                                        <h4> {props.data && props.data.fullname} <span>Student</span></h4>
+                                        <h4> {props.data && props.data.Name} <span>Student</span></h4>
                                     </div>
                                 </div>
                             </li>

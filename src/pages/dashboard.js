@@ -13,7 +13,7 @@ export default function  Dashboard() {
     const session = state.isLoggedIn;
     
     const isRead = false;
-    const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email : state.email}),{ staleTime : Infinity, enabled : !!session })
+    const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{staleTime:Infinity, enabled: !!session})
     const { data: notifications, isLoading:notificationsIsLoading, error:notificationsError } = useQuery([`notifications-${isRead}`], () => getNotifications({user_Id : state._id, type: 'QA'}, isRead),{ staleTime : Infinity, enabled : !!session })
             
     return (
