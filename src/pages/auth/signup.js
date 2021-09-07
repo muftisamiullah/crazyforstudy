@@ -67,14 +67,13 @@ export default function  SignUp() {
     }
     
     const responseGoogle = async (response) => {
-		console.log(response);
+		console.log("in google signup")
 		let user = {};
-		user.fullname = response.profileObj.name;
+		user.Name = response.profileObj.name;
 		user.img = response.profileObj.imageUrl;
 		user.social_id = response.profileObj.googleId;
-		user.email = response.profileObj.email;
+		user.Email = response.profileObj.email;
 		const res = await saveGoogleUser(user);
-		console.log(res);
 		if(res && res.status == 200) {
             console.log("user created")
 			let access_token = res.data.accessToken
@@ -83,15 +82,15 @@ export default function  SignUp() {
 			let isLoggedIn = true;
 			localStorage.setItem('access_token', access_token)
 			localStorage.setItem('refresh_token', refresh_token)
-			localStorage.setItem('fullname', user.fullname);
-			localStorage.setItem('email', user.email);
+			localStorage.setItem('fullname', user.Name);
+			localStorage.setItem('email', user.Email);
 			localStorage.setItem('img', user.img);
 			localStorage.setItem('social_id', user.social_id);
 			localStorage.setItem('Subscribe', res.data.student.Subscribe);
 			localStorage.setItem('_id', res.data.student._id);
 
-			let email = user.email
-			let fullname = user.fullname
+			let email = user.Email
+			let fullname = user.Name
 			let Subscribe = res.data.student.Subscribe
 			let img = user.img
 			let role = res.data.student.role
@@ -115,8 +114,8 @@ export default function  SignUp() {
 			}
 		}else{
             let access_token = res.data.accessToken
-			let fullname = res.data.student.fullname
-			let email = res.data.student.email
+			let fullname = res.data.student.Name
+			let email = res.data.student.Email
 			let role = res.data.student.role
 			let created_at = res.data.student.created_at
 			let _id = res.data.student._id
@@ -222,7 +221,6 @@ export default function  SignUp() {
                     clientId={process.env.REACT_APP_GOOGLE_ID} //CLIENTID NOT CREATED YET
                     buttonText="GOOGLE"
                     onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
                 />
                 </ul> 
                 </div>

@@ -179,6 +179,7 @@ export default function SignIn({ csrfToken, providers }) {
 	}
 
 	const responseGoogle = async (response) => {
+		console.log("in google signin")
 		let user = {};
 		user.Name = response?.profileObj?.name;
 		user.img = response?.profileObj?.imageUrl;
@@ -194,14 +195,14 @@ export default function SignIn({ csrfToken, providers }) {
 			localStorage.setItem('access_token', access_token)
 			localStorage.setItem('refresh_token', refresh_token)
 			localStorage.setItem('fullname', user.Name);
-			localStorage.setItem('email', user.email);
+			localStorage.setItem('email', user.Email);
 			localStorage.setItem('img', user.img);
 			localStorage.setItem('social_id', user.social_id);
 			localStorage.setItem('Subscribe', res.data.student.Subscribe);
 			localStorage.setItem('_id', res.data.student._id);
 
-			let email = user.email
-			let fullname = user.fullname
+			let email = user.Email
+			let fullname = user.Name
 			let Subscribe = res.data.student.Subscribe
 			let img = user.img
 			let role = res.data.student.role
@@ -336,7 +337,6 @@ return (
 										clientId={process.env.REACT_APP_GOOGLE_ID} //CLIENTID NOT CREATED YET
 										buttonText="GOOGLE"
 										onSuccess={responseGoogle}
-										onFailure={responseGoogle}
 									/>
 									{/* u can remove providers && it was causing an error thats the reason ist present */}
 									{/* {Object.values(providers).map(provider => (
