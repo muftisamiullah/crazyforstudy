@@ -27,7 +27,7 @@ export default function WritingHelp(){
         <PopularHelpServices/>
         <StudyHelp/>
         <Follow/>
-        <Footer/>
+        <Footer/>   
         </>
     )
 }

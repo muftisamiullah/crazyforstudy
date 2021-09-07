@@ -25,6 +25,7 @@ import AskQuestion from '../pages/user/ask-a-question'
 import MyQuestion from '../pages/user/my-question'
 import Notifications from '../pages/user/notifications'
 import MyOrderDetails from '../pages/user/my-order-details/[my_order_details]'
+import Cancelation from '../pages/user/cancelation'
 
 import Faq from '../pages/faqs/index'
 import FaqId from '../pages/faqs/[id]'
@@ -141,6 +142,10 @@ export const privateRoutes = [
     {
         path: '/user/notifications',
         component: Notifications
+    },
+    {
+        path: '/user/cancelation',
+        component: Cancelation
     },
     {
         path: '/user/my-order-details/:my_order_details',

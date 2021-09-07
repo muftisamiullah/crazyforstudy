@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 export default function SubjectsWeCover(){
 
@@ -19,9 +20,9 @@ export default function SubjectsWeCover(){
                                     <p>Crazy For Study team of experts consists of professors, researchers and finance experts with a prolonged experience in the academic field. </p> 
                                     <div className="btn1">
                                         <ul>
-                                            <li>  <a href="#">Assignment Help</a></li>
-                                            <li>  <a href="#">Textbook Solution</a></li>
-                                            <li>  <a href="#">Q & A Solution</a></li>
+                                            <li>  <Link to="/writing-help/online-assignment-help">Assignment Help</Link></li>
+                                            <li>  <Link to="/textbook-solutions-manuals">Textbook Solution</Link></li>
+                                            <li>  <Link to="/q-and-a">Q & A Solution</Link></li>
                                         </ul>
                                     </div>
                                 </div>

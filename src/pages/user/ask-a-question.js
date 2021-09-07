@@ -231,12 +231,12 @@ export default function AskQuestion(){
                                        }}
                                        onReady={ editor => {
                                           // console.log('Editor is ready to use!', editor);
-                                          editor.editing.view.change(writer => {
-                                             writer.setStyle(
-                                             "height",
-                                             "300px",
-                                             editor.editing.view.document.getRoot()
-                                             );
+                                          editor?.editing.view.change(writer => {
+                                                writer.setStyle(
+                                                "height",
+                                                "300px",
+                                                editor.editing.view.document.getRoot()
+                                                );
                                           });          
                                        }}
                                        onChange={( event, editor ) => {

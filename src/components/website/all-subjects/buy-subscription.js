@@ -5,6 +5,7 @@ import {AuthContext} from '../../../context/AuthContext';
 export default function BuySubscription(){
     const [ location, setLocation ] = useState('/');
     const { state } = useContext(AuthContext);
+    const session = state.isLoggedIn;
 
     useEffect(()=>{
         if(state.Subscribe != "true"){
@@ -17,6 +18,7 @@ export default function BuySubscription(){
     },[])
 
     return(
+        state.Subscribe == "true" ? 
         <section className="section bg_color_assignment pt-3 pb-3">
             <div className="container">
                 <div className="row">
@@ -36,5 +38,6 @@ export default function BuySubscription(){
                 </div>
             </div>
         </section>
+        : ""
     )
 }

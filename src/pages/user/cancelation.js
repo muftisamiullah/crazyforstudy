@@ -1,17 +1,15 @@
 import DashboardNavbar from '../../components/website/dashboard/dashboard-navbar'
 import SideBar from '../../components/website/dashboard/sidebar'
 import BlockHeader from '../../components/website/dashboard/block-header'
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { useSession } from 'next-auth/client'
-import AccessDenied from '../../components/access-denied'
 import {getUser} from '../../libs/profile'
+import {AuthContext} from '../../context/AuthContext';
 
 export default function Cancelation(){
-    const [ session, loading ] = useSession();
+    const { state } = useContext(AuthContext);
+    const session = state.isLoggedIn;
 
-    if (!session) { return  (<><AccessDenied/></>) }
-    
     return(
         <>
         <DashboardNavbar/>

@@ -11,12 +11,12 @@ export default function Footer() {
 						<li className="pt-3">Crazy for Study is a platform for the provision of academic help. It finctions with the help of a team of ingenious subject matter experts and academic writers who provide tectbook solutions to all.</li>
 					</ul>
 					<ul className="socail_icons">
-						<li><Link to="https://www.facebook.com/Crazy-for-Study-133559800329407"><i className="fa fa-facebook"></i></Link></li>
-						<li><Link to="https://twitter.com/CrazyForStudy1"><i className="fa fa-twitter"></i></Link></li>
-						<li><Link to="https://www.youtube.com/channel/UCKc0xrTi9VKe5_sCh5C15ig"><i className="fa fa-youtube"></i></Link></li>
-						<li><Link to="https://www.linkedin.com/company/crazyforstudy/"><i className="fa fa-linkedin"></i></Link></li>
-						<li><Link to="https://www.pinterest.com/crazyforstudy1"><i className="fa fa-pinterest"></i></Link></li>
-						<li><Link to="https://www.instagram.com/crazyforstudy_cfs"><i className="fa fa-instagram"></i></Link></li>
+						<li><a href="https://www.facebook.com/Crazy-for-Study-133559800329407" target="_blank"><i className="fa fa-facebook"></i></a></li>
+						<li><a href="https://twitter.com/CrazyForStudy1" target="_blank"><i className="fa fa-twitter"></i></a></li>
+						<li><a href="https://www.youtube.com/channel/UCKc0xrTi9VKe5_sCh5C15ig" target="_blank"><i className="fa fa-youtube"></i></a></li>
+						<li><a href="https://www.linkedin.com/company/crazyforstudy/" target="_blank"><i className="fa fa-linkedin"></i></a></li>
+						<li><a href="https://www.pinterest.com/crazyforstudy1" target="_blank"><i className="fa fa-pinterest"></i></a></li>
+						<li><a href="https://www.instagram.com/crazyforstudy_cfs" target="_blank"><i className="fa fa-instagram"></i></a></li>
 					</ul>
 					</div>
 					<div className="col-md-3 pl-5">
@@ -55,7 +55,7 @@ export default function Footer() {
 						</div>
 						<div className="col-md-4 text-center">
 						<ul>
-							<li><Link to="#"><img src="/images/ios-app-button.png" className="img-fluid" alt=""/></Link></li>
+							<li><a href="https://apps.apple.com/app/id1528935697" target="_blank"><img src="/images/ios-app-button.png" className="img-fluid" alt=""/></a></li>
 						</ul>
 						</div>
 						<div className="col-md-4 text-right">

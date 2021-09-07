@@ -1,4 +1,11 @@
+import {AuthContext} from '../../../context/AuthContext';
+import { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+
 export default function CollegeTextbooks(){
+    const { state } = useContext(AuthContext);
+    const session = state.isLoggedIn;
+
     return(
         <section className="section f2feff_color pt-4 pb-4">
             <div className="container">
@@ -10,7 +17,7 @@ export default function CollegeTextbooks(){
                         <h2>Add College Textbooks As fast  <span className="d_b">as in 30 Seconds</span></h2>
                         <p>Add your college textbooks and get their textbooks solutions manual wherever you need. All you have to do is create free account and add college textbook ISBN Easy isn't it?</p>
                         <div className="btn1">
-                            <a href="#">Add College Textbook</a>
+                            {session ? <Link to="/user/my-tbs">Add College Textbook</Link> : <Link to="/auth/signin">Add College Textbook</Link>}
                             <small className="text-black">* Add Unlimited College textbooks and get instant access</small>
                         </div>
                     </div>

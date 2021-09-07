@@ -21,8 +21,12 @@ import {Helmet} from 'react-helmet-async'
 import Subject from './subject'
 import Seo from '../../../components/common/seo'
 import {AuthContext} from '../../../context/AuthContext';
+import parse from 'html-react-parser';
+import striptags from 'striptags';
 
 export default function Book(){
+    const { state } = useContext(AuthContext);
+    const session = state.isLoggedIn;
     //changed the name of the file from [book].js to index.js and moved to textbook-solutions-manual
     //and passed variable ISBN13 to all the react useQuery instead of params.book dated 29 april 
     //previous code could be found on github under Rohit Sharmas repo.
@@ -55,6 +59,7 @@ export default function Book(){
     const [searchedItems, setSearchedItems] = useState();
     const [selectedQuestion, setselectedQuestion] = useState();
     const [selectedItem, setSelectedItem] = useState();
+    const [answer, setAnswer] = useState();
 
     //seo 
     const [seo, setSeo] = useState(false);
@@ -65,17 +70,15 @@ export default function Book(){
     const [altText, setAlttext] = useState();
     const [robots, setRobots] = useState("index, follow");
 
-    const { state } = useContext(AuthContext);
-    const session = state.isLoggedIn;
     //example call commented out as a reminder
     // const { data: books, isLoading:bookIsLoading, error:bookError } = useQuery([params.book], () => getBook({book_isbn: ISBN13}),{staleTime:Infinity})
     const { data: books, isLoading:bookIsLoading, error:bookError } = useQuery([ISBN13], () => getBook({book_isbn: ISBN13}),{staleTime:Infinity,enabled: !!ISBN13,})
     const { data: chapters, isLoading: chapterIsLoading, error:chapterError } = useQuery([`${ISBN13}-chapter`], () => getChapters({book_isbn: ISBN13}),{staleTime:Infinity,enabled: !!ISBN13,})
     const { data: sections, isLoading: sectionIsLoading, error:sectionError } = useQuery([`${ISBN13}-${chapter}`], () => getSections({book_isbn: ISBN13,chapter_no: chapter}),{staleTime:Infinity,enabled: !!ISBN13,})
     const { data: exercises, isLoading: exerciseIsLoading, error:exerciseError } = useQuery([`${ISBN13}-${chapter}-${section}`], () => getExercises({book_isbn: ISBN13,chapter_no: chapter, section_no:section}),{staleTime:Infinity,enabled: !!ISBN13,})
-    const { data: problems, isLoading: problemIsLoading, error:problemError } = useQuery([`${ISBN13}-${section}-${exercise}`], () => getProblems({book_isbn: ISBN13,chapter_no: chapter, section_no:section, exercise_no:exercise}),{staleTime:Infinity,enabled: !!ISBN13,})
+    const { data: problems, isLoading: problemIsLoading, error:problemError } = useQuery([`${ISBN13}-${section}-${exercise}`], () => getProblems({book_isbn: ISBN13,chapter_no: chapter, section_no:section, exercise_no:exercise}, state.Subscribe),{staleTime:Infinity,enabled: !!ISBN13,})
     
-    const { data: problemsDirect, isLoading: problemDirectIsLoading, error:problemDirectError } = useQuery([`${ISBN13}-${chapter}-${directProblem}`], () => getProblemsDirectly({book_isbn: ISBN13,chapter_no: chapter}),{staleTime:Infinity,enabled:directProblem})
+    const { data: problemsDirect, isLoading: problemDirectIsLoading, error:problemDirectError } = useQuery([`${ISBN13}-${chapter}-${directProblem}`], () => getProblemsDirectly({book_isbn: ISBN13,chapter_no: chapter}, state.Subscribe),{staleTime:Infinity,enabled:directProblem})
     
     // const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!ISBN13,}) //changed to below code was getting called when relatedbook was undefined
     const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!relatedBook,})
@@ -112,8 +115,9 @@ export default function Book(){
         }
     }
 
-    const clickedQues = (data, key) => {
+    const clickedQues = (data, answer, key) => {
         setselectedQuestion(data)
+        setAnswer(answer)
         setSelectedItem(key)
     }
 
@@ -195,7 +199,15 @@ export default function Book(){
 
     useEffect(() => {
         if(exercises && exercises.length>0){
-            setExercise(exercises[0].excerise)
+            if(exercises[0] && (exercises[0].excerise != "NULL" && exercises[0].excerise != "" && exercises[0].excerise != undefined)){
+                setExercise(exercises[0].excerise)
+                setDirectProblem(false);
+            }
+            if(exercises[0] && exercises[0].excerise == undefined){ //for when section_no is equal to NULL
+                setDirectProblem(true)
+            }
+        }else{
+            setDirectProblem(true)
         }
         return () => {}
     }, [exercises])
@@ -353,7 +365,7 @@ export default function Book(){
                                         <div className="Qtion_n_Stion_text Qtion_n_Stion_text_scroll">
                                             {searchedItems && searchedItems.length>0 ? searchedItems.map((item,key) => {
                                                 return(
-                                                        <div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, key)}}> <strong>Q : {item.problem_no} </strong>
+                                                        <div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, item?.answer, key)}}> <strong>Q : {item.problem_no} </strong>
                                                             <Highlighter
                                                                 highlightClassName="YourHighlightClass"
                                                                 searchWords={[search]}
@@ -373,13 +385,13 @@ export default function Book(){
                                         {problemIsLoading ? 'loading...' :
                                             problems && problems.map((item,key)=>{
                                                 return(
-                                                    <div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div>
+                                                    <div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div>
                                                 )
                                             })}
                                         {problemDirectIsLoading ? 'loading...' :
                                             problemsDirect && problemsDirect.map((item,key)=>{
                                                 return(
-                                                    <div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div>
+                                                    <div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div>
                                                 )
                                             })}
                                         </div>
@@ -456,7 +468,7 @@ export default function Book(){
                                     <div className="col-md-12 pb-4">
                                         <div className="Qtion_n_Stion_text"> 
                                             <div className="read_more_q">  
-                                            {session && state.Subscribe !== "true" ? 
+                                            {state.Subscribe !== "true" ? 
                                             <div className="read_more_text_a bg_text_img">
                                                 <div className="Get_Answer_text m-auto">
                                                     <p>This problem has been <span>solved!</span></p>
@@ -465,10 +477,17 @@ export default function Book(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            : 
-                                            <div className="read_more_text_a">
-                                                
-                                            </div>} 
+                                            :
+                                            <div className={answer != undefined ? "read_more_text_a" : "bg_text_img"}>
+                                                {answer == undefined || answer == "" ? 
+                                                    <div className="text-center">
+                                                        <h2 className="text-black font-30">Stay tuned, your answer will be ready within</h2>
+                                                        <span><img src="/images/time_hour.png" className="img-fluid" alt="time hour"/></span>
+                                                    </div> : <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>}
+                                            </div>}
+                                            {/* <div className="read_more_text_a">
+                                                <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>
+                                            </div>}  */}
                                             </div>
                                         </div>
                                     </div> 

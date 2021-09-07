@@ -23,15 +23,14 @@ export default function SubmitForm(){
         }else{
             setUrl('/auth/signin?callbackUrl='+`${process.env.REACT_APP_URL}`+'/user/my-order-details/local');
         }
-      console.log("code changed in submit form assignement")
     },[])
 
    const handleTimeSelect = (e) => {
-      setFormData({...formData, [e.target.name]:e.target.value, user_Id : state?._id ,id:params.online_assignment_help_2})
+      setFormData({...formData, [e.target.name]:e.target.value, user_Id : state?._id ,id:params.my_order_details})
    }
 
    const handleReference = (e) => {
-      setFormData({...formData, [e.target.name]:e.target.value, 'deadline_date': startDate, user_Id : state?._id,id:params.online_assignment_help_2})
+      setFormData({...formData, [e.target.name]:e.target.value, 'deadline_date': startDate, user_Id : state?._id,id:params.my_order_details})
    }
 
    const handleForm2 = async (e) => {
@@ -51,7 +50,7 @@ export default function SubmitForm(){
       if(value<20){
          setValue(value => value + 1)
          setWords(words => words + 250)
-         setFormData({...formData, 'pages': value+1,'deadline_date': startDate,user_Id : state?._id ,id:params.online_assignment_help_2,amount: ((value+1) * 10)})
+         setFormData({...formData, 'pages': value+1,'deadline_date': startDate,user_Id : state?._id ,id:params.my_order_details,amount: ((value+1) * 10)})
       }
    }
 
@@ -59,7 +58,7 @@ export default function SubmitForm(){
       if(value>1){
          setValue(value - 1)
          setWords(words - 250)
-         setFormData({...formData, 'pages': value-1,'deadline_date': startDate,user_Id : state._id ,id:params.online_assignment_help_2,amount: ((value+1) * 10) })
+         setFormData({...formData, 'pages': value-1,'deadline_date': startDate,user_Id : state._id ,id:params.my_order_details,amount: ((value+1) * 10) })
       }
    }
 

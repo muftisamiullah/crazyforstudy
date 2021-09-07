@@ -32,8 +32,8 @@ export default function  MyProfile() {
         if(user){
             setFormData({
                 ...formData,
-                ['fullname']: user.fullname,
-                ['email']: user.email,
+                ['Name']: user.Name,
+                ['email']: user.Email,
                 ['Country']: user.Country,
                 ['dob']: user.dob,
                 ['Zipcode']: user.Zipcode,
@@ -105,7 +105,7 @@ export default function  MyProfile() {
                                 </div>
                             </div>
                                 <div className="detail">
-                                    <h4>{formData &&formData.fullname}</h4>
+                                    <h4>{formData && formData.Name}</h4>
                                 </div>
                                 {/* <div className="row">
                                     <div className="col-12">
@@ -178,7 +178,7 @@ export default function  MyProfile() {
                             </div>
 
                                     <div className="detail">
-                                        <h4>{formData && formData.fullname}</h4>
+                                        <h4>{formData && formData.Name}</h4>
                                     </div>
                                 </div>
                                 </div>
@@ -279,7 +279,7 @@ export default function  MyProfile() {
                                     <div className="col-lg-6 col-md-12">
                                         <div className="form-group">
                                         <label>Name</label>
-                                            <input type="text" className="form-control" name="fullname" placeholder="first name" onChange={handleProfile} defaultValue={formData && formData.fullname}/>
+                                            <input type="text" className="form-control" name="fullname" placeholder="first name" onChange={handleProfile} defaultValue={formData && formData.Name}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-12">

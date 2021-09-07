@@ -20,7 +20,7 @@ export default function SubmitAssignment() {
 
     const getSelectedSubject = (e) => {
         const subjectId = e.target.options[e.target.selectedIndex].dataset.subjectid
-        setFormData({...formData, subject: e.target.value,subject_id: subjectId, user_Id : session?.user?._id })
+        setFormData({...formData, subject: e.target.value,subject_id: subjectId, user_Id : state?._id })
         setSubject(e.target.value)
     }
   

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function AssignmentHelp(){
     return (
         <section className="section bg_colr2 pt-4 pb-4">
@@ -12,7 +14,7 @@ export default function AssignmentHelp(){
                         <p>Get the Best Assignment Assistance by Expert Writers to meet your professors’ Expectations. Our Phd Experts are available here to complete your Assignment before the deadline complete your Assignment before the deadline
                         Our Phd Experts.</p>
                             <div className="btn1">
-                            <a href="#">Get Assignment Help</a>
+                            <Link to="writing-help/online-assignment-help">Get Assignment Help</Link>
                             </div>
                         </div>
                     </div>

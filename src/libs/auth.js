@@ -74,9 +74,7 @@ export async function changePassword(pass, id, otp){
 export async function signOut() {
     try {
         const res = await authAxios.post(apiUrl + 'student/logout')
-        if(res.status === 200){
-            return res.data;
-        }
+        return res
     }
     catch(e){
         console.log(e)

@@ -19,7 +19,6 @@ import Seo from '../../components/common/seo'
 export default function TextbookSolutionsManuals(){
     
     const location = useLocation();
-    console.log(location.pathname)
     const title = "Step-by-step Textbook Solutions Manual & Textbook Answers"
     const description = "Struggling with textbook solutions? We have all the textbook answers that you need! Get step-by-step textbook solutions manual by our experts."
     const keywords = "Textbook Solutions, Textbook Solutions Manual, Textbook Solutions Manuals, Textbook Solution Manual, Textbook Solution Manuals, Free Textbook Solutions, Textbook Answers, Textbook Solution"

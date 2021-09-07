@@ -41,10 +41,16 @@ export async function getExercises(param) {
     }
 }
 
-export async function getProblems(param) {
+export async function getProblems(param, subscription) {
     try {
-        const res = await axios.get(apiUrl + 'books/book/chapter/section/exercise/problem/'+param.book_isbn+'/'+param.chapter_no+'/'+param.section_no+'/'+param.exercise_no)
-        return res.data.problems;
+        if(subscription == "true"){
+            const res = await axios.get(apiUrl + 'books/book/chapter/section/exercise/problem/answer/'+param.book_isbn+'/'+param.chapter_no+'/'+param.section_no+'/'+param.exercise_no)
+            return res.data.problems;
+        }else{
+            const res = await axios.get(apiUrl + 'books/book/chapter/section/exercise/problem/'+param.book_isbn+'/'+param.chapter_no+'/'+param.section_no+'/'+param.exercise_no)
+            return res.data.problems;
+        }
+        
     }
     catch(e){
         
@@ -61,10 +67,17 @@ export async function getRelatedBooks(param) {
     }
 }
 
-export async function getProblemsDirectly(param) {
+export async function getProblemsDirectly(param, subscription) {
     try {
-        const res = await axios.get(apiUrl + 'books/book/only-problem/'+param.book_isbn+'/'+param.chapter_no)
-        return res.data.problems;
+        if(subscription == "true"){
+            console.log(subscription, "in true")
+            const res = await axios.get(apiUrl + 'books/book/only-problem/answer/'+param.book_isbn+'/'+param.chapter_no)
+            return res.data.problems;
+        }else{
+            console.log(subscription, "in false")
+            const res = await axios.get(apiUrl + 'books/book/only-problem/'+param.book_isbn+'/'+param.chapter_no)
+            return res.data.problems;
+        }
     }
     catch(e){
         

@@ -2,6 +2,7 @@ import parse from 'html-react-parser';
 import striptags from 'striptags';
 import { useState, useContext} from 'react';
 import {AuthContext} from '../../../../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 export default function Answer({...props}){
     const { state } = useContext(AuthContext);
@@ -61,17 +62,21 @@ export default function Answer({...props}){
                             <h3 className="mb-2 mt-3 font-14"><i className="fa fa-check-circle"></i> Expert Answer </h3>
                             <div className="read_more_q">
                                 <span className="qustion_mark">A:</span> 
-                                {session && state.Subscribe !== "true" ? <div className="read_more_text_a bg_text_img">
+                                {state.Subscribe !== "true" ? <div className="read_more_text_a bg_text_img">
                                     <div className="Get_Answer_text m-auto">
                                         <p>This problem has been <span>solved!</span></p>
                                         <div className="btn1 Get_Answer_btn">
-                                            <a href="#" className="red_text1">Click to Get Answer</a>
+                                            <Link to="/auth/signin" className="red_text1">Click to Get Answer</Link>
                                         </div>
                                     </div>
                                 </div>
                                 : 
-                                <div className="read_more_text_a">
-                                    {props?.data?.completeanswer}
+                                <div className={props?.data?.completeanswer != undefined ? "read_more_text_a" : "bg_text_img"}>
+                                    {props?.data?.completeanswer == undefined || props?.data?.completeanswer == "" ? 
+                                        <div className="text-center">
+                                            <h2 className="text-black font-30">Stay tuned, your answer will be ready within</h2>
+                                            <span><img src="/images/time_hour.png" className="img-fluid" alt="time hour"/></span>
+                                        </div> : props?.data?.completeanswer}
                                 </div>}
                             </div>
                         </div>
