@@ -13,7 +13,7 @@ export default function MyTbs(){
     const session = state.isLoggedIn;
     
     const [fields, setFields] = useState([{ value: null }])
-    const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{staleTime:Infinity, enabled: !!session})
+    const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
     const { data: textbooks, isLoading:textbooksIsLoading, error:textbooksError } = useQuery(['textbooks'], () => getMyTextBooks({user_Id:state._id}),{staleTime:Infinity, enabled: !!session})
     const [formData, setFormData] = useState();
 

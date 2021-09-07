@@ -25,7 +25,7 @@ export default function  MyProfile() {
         Contact: '',
         img:"",
     });
-    const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{staleTime:Infinity, enabled: !!session})
+    const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
     const { data: countries, isLoading:countriesIsLoading, error:countriesError } = useQuery(['country-list'], () => getCountries(),{staleTime:Infinity})
     
     useEffect(()=>{

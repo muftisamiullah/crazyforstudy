@@ -44,7 +44,7 @@ export default function AskQuestion(){
    const [image, setImage] = useState({});
    const [isLoading, setIsLoading] = useState(false);
 
-   const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{staleTime:Infinity, enabled: !!session})
+   const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined, staleTime:Infinity, enabled: !!session})
    const { data: subjects, isLoading:subjectsIsLoading, error:subjectsError } = useQuery(['subjects'], () => getSubjects(),{staleTime:Infinity, enabled: !!session}) //only called when session would be present
    const { data: subsubjects, isLoading:subsubjectsIsLoading, error:subsubjectsError } = useQuery([subject], () => getSubSubject(subject),{staleTime:Infinity, enabled: !!subject}) //only called when subject would be present
 

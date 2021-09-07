@@ -15,7 +15,7 @@ export default function MyQuestion(){
    const session = state.isLoggedIn;
    const [ flag, setFlag ] = useState('all');
    const [display, setDisplay ] = useState('none');
-   const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{staleTime:Infinity, enabled: !!session})
+   const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
    const { data: questions, isLoading:questionsIsLoading, error:questionsError } = useQuery([`user-questions-${flag}`], () => getQuestions({user_Id: state._id, type: 'QA'}, flag),{staleTime:Infinity, enabled: !!session})
    
    const setFilter = () => {

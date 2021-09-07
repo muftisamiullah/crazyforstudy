@@ -15,7 +15,7 @@ export default function MySubs(){
     const session = state.isLoggedIn;
 
     const [display, setDisplay] = useState();
-    const { data: user, isLoading: userIsLoading, error: userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{staleTime:Infinity, enabled: !!session})
+    const { data: user, isLoading: userIsLoading, error: userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
     const { data: subscription, isLoading: textbooksIsLoading, error: textbooksError } = useQuery(['my-subscription'], () => getMySubscription({user_Id:state._id}),{staleTime:Infinity, enabled: !!session})
 
     const openCollapse = (data) => {

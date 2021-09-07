@@ -13,7 +13,7 @@ export default function MyOrders(){
    const session = state.isLoggedIn;
 
    const [display, setDisplay] = useState();
-   const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{staleTime:Infinity, enabled: !!session})
+   const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
    const { data: assignments, isLoading: assignmentsIsLoading, error: assignmentsError } = useQuery(['my-orders'], () => getAllAssignments({user_Id:state._id}),{staleTime:Infinity, enabled: !!session})
 
    const openCollapse = (data) => {
