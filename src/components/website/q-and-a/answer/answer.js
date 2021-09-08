@@ -41,17 +41,19 @@ export default function Answer({...props}){
                                     {props.data && props.data.question && props?.data?.question.includes('<p>')
                                     ?
                                     <>  
-                                        {/* <span dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question)).substr(0,120)}`}}></span><br/> */}
-                                        <p className="mb-0" style={{display: display1 === false ? "block" : "none" }} dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question))}`}}></p>
+                                        <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question))}`}}></p>
+                                        {/* code commented for read less and read more */}
+                                        {/* <p className="mb-0" style={{display: display1 === false ? "block" : "none" }} dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question))}`}}></p>
                                         <p className="mb-0" style={{display: display1 === false ? "none" : "block" }} dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question)).substr(0,120)}`}}></p>
-                                        <span className={`${display1 == false ? 'collapse' : 'expand'}`} onClick={showAll1}>{display1 === false ? "Read Less" : "Read More"}</span>
+                                        <span className={`${display1 == false ? 'collapse' : 'expand'}`} onClick={showAll1}>{display1 === false ? "Read Less" : "Read More"}</span> */}
                                     </>
                                     :
                                     <>
-                                        {/* <span dangerouslySetInnerHTML={{__html: `${parse(`${props?.data?.question}`).substr(0,120)}`}}></span><br/> */}
-                                        <p className="mb-0" style={{display: display2 === false ? "block" : "none" }} dangerouslySetInnerHTML={{__html: `${parse(`${props?.data?.question}`)}`}}></p>
+                                        <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(`${props?.data?.question}`)}`}}></p>
+                                        {/* code commented for read less and read more */}
+                                        {/* <p className="mb-0" style={{display: display2 === false ? "block" : "none" }} dangerouslySetInnerHTML={{__html: `${parse(`${props?.data?.question}`)}`}}></p>
                                         <p className="mb-0" style={{display: display2 === false ? "none" : "block" }} dangerouslySetInnerHTML={{__html: `${parse(`${props?.data?.question}`).substr(0,120)}`}}></p>
-                                        <span className={`${display2 == false ? 'collapse' : 'expand'}`} onClick={showAll2}>{display2 === false ? "Read Less" : "Read More"}</span>
+                                        <span className={`${display2 == false ? 'collapse' : 'expand'}`} onClick={showAll2}>{display2 === false ? "Read Less" : "Read More"}</span> */}
                                     </>}
                                 </div>
                             </div>

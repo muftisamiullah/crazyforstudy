@@ -18,6 +18,8 @@ export default function Subscription(){
     },[])
 
     return(
+        <>
+        {state.Subscribe != "true" ? 
         <section className="section bg_light_blu mt-4  pt-0 pb-0">
         <div className="container-fluid">
         <div className="row">
@@ -44,5 +46,7 @@ export default function Subscription(){
         </div> 
         </div>
         </section>
+        : ''}
+        </>
     )
 }

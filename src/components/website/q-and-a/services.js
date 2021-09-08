@@ -30,9 +30,11 @@ export default function Services(){
                         <li><i className="fa fa-check-circle"></i> 50 Question to ask every month </li>
                         <li><i className="fa fa-check-circle"></i> Unlimited access to Homework  Question and Answers </li>
                      </ul>
+                     {state.Subscribe != "true" ?
                      <div className="btn1">
                         <Link to={`${location}`}>Get Unlimited Access</Link>
                      </div>
+                     :''}
                   </div>
                </div>
                <div className="col-md-7 col-lg-7 services_text box_services">

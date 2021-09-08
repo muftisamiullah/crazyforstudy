@@ -1,4 +1,6 @@
 import BookImage from "../../common/book-image"
+import {MakeSlug} from '../../common/make-slug'
+import { Link } from 'react-router-dom';
 
 export default function RelatedTbs({...props}){
     return(
@@ -25,6 +27,9 @@ export default function RelatedTbs({...props}){
                                     </div>
                                     <div className="star_rating">
                                         <i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star-half-empty"></i>
+                                    </div>
+                                    <div className="view_detail_btn">
+                                        <Link to={`/textbook-solutions-manuals/isbn-${item.ISBN13}-${MakeSlug(item.DisplayTitle ? item.DisplayTitle : item.BookName)}-${MakeSlug(item.Edition)}`}>View Detail</Link>
                                     </div>
                                 </div>
                             </div>

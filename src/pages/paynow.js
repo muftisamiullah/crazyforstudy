@@ -15,7 +15,7 @@ export default function PayNow(){
     const history = useHistory();
 
     useEffect(()=>{
-        if(state.Subscribe == true){
+        if(state.Subscribe == "true"){
             history.push('/user/my-subs')
         }
     },[])

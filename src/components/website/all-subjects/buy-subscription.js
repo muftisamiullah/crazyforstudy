@@ -18,7 +18,7 @@ export default function BuySubscription(){
     },[])
 
     return(
-        state.Subscribe == "true" ? 
+        state.Subscribe != "true" ? 
         <section className="section bg_color_assignment pt-3 pb-3">
             <div className="container">
                 <div className="row">

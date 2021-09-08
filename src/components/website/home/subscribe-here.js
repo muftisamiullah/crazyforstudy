@@ -1,7 +1,14 @@
 import BuyBookSub from '../../common/buy-book-sub'
+import {AuthContext} from '../../../context/AuthContext';
+import {useContext} from 'react'
 
 export default function SubscribeHere(){
-    return (
+    const { state } = useContext(AuthContext);
+    const session = state.isLoggedIn;
+
+    console.log(state)
+    return (<>
+        {state.Subscribe != "true" ? 
         <section className="section subscribe_here_bg">
             <div className="subscribe_here_bg_img">
                 <img src="../images/subscribe_here_bg.png" className="img-fluid" alt=""/>
@@ -34,5 +41,7 @@ export default function SubscribeHere(){
                 </div>
             </div>
        </section>
+       : ''}
+       </>
     )
 }

@@ -1,4 +1,21 @@
+import { Link } from 'react-router-dom';
+import { useState, useContext, useEffect } from 'react';
+import {AuthContext} from '../../../context/AuthContext';
+
 export default function InstantAccess(){
+    const [ location, setLocation ] = useState('/');
+    const { state } = useContext(AuthContext);
+
+    useEffect(()=>{
+        if(state.Subscribe != "true"){
+            setLocation('/paynow')
+        }else if(state.Subscribe == "true"){
+            setLocation('/user/my-subs')
+        }else{
+            setLocation('/auth/signin?callbackUrl='+`${process.env.REACT_APP_URL}`+'/paynow')
+        }   
+    },[])
+
     return(
         <section className="section pb-5">
             <div className="container">
@@ -13,9 +30,11 @@ export default function InstantAccess(){
                             <li><i className="fa fa-check-circle"></i> 50 Question to ask every month </li>
                             <li><i className="fa fa-check-circle"></i> Unlimited access to textbook Solutions </li>
                         </ul>
+                        {state.Subscribe != "true" ?
                         <div className="btn1">
-                            <a href="#">Get Unlimited Access</a>
+                            <Link to={`${location}`}>Get Unlimited Access</Link>
                         </div>
+                        :''}
                     </div>
                 </div>
                 <div className="col-md-7 col-lg-7 services_text box_services">

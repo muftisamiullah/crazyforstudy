@@ -2027,3 +2027,9 @@ section.section.font_sz.text_justify.pt-5 {
     padding: 0 0px;
 }
 } 
+.quest-click{
+    color: #212529;
+}
+.quest-click:hover{
+    color: #212529;
+}

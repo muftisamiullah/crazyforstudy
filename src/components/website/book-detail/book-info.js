@@ -50,7 +50,7 @@ export default function BookInfo({...props}){
                                 <li><img src="/images/book2.jpg" className="img-fluid" alt=""/> Author: <span>{props.bookData && props.bookData.Author1},</span></li>
                                 <li><img src="/images/book3.jpg" className="img-fluid" alt=""/> ISBN: <span>{props.bookData && props.bookData.ISBN13}</span></li>
                             </ul>
-                
+                            {state.Subscribe != "true"  ? 
                             <div className="subscription-box-points">
                                 <div className="book-subscription-box">
                                     <h4>$7/month
@@ -71,6 +71,7 @@ export default function BookInfo({...props}){
                                     <Link to={`${location}`}><button type="submit" className="buybook_btn text-center">Get This Solutions</button></Link>
                                 </div>
                             </div>
+                            :''}
                         </div>
                     </div>
                 </div>

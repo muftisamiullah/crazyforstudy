@@ -365,7 +365,7 @@ export default function Book(){
                                         <div className="Qtion_n_Stion_text Qtion_n_Stion_text_scroll">
                                             {searchedItems && searchedItems.length>0 ? searchedItems.map((item,key) => {
                                                 return(
-                                                        <div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, item?.answer, key)}}> <strong>Q : {item.problem_no} </strong>
+                                                        <a href="#top" className="quest-click"><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, item?.answer, key)}}> <strong>Q : {item.problem_no} </strong>
                                                             <Highlighter
                                                                 highlightClassName="YourHighlightClass"
                                                                 searchWords={[search]}
@@ -373,7 +373,7 @@ export default function Book(){
                                                                 caseSensitive={false}
                                                                 textToHighlight={item.question}
                                                             />
-                                                        </div>
+                                                        </div></a>
                                                         // {/* <div className="bg_yellow_qa" key={key}> <strong>Q :{item.problem_no}</strong>{item.question}</div> */}
                                                 )
                                             }): <div> <strong>No Results Found</strong></div>}
@@ -385,13 +385,13 @@ export default function Book(){
                                         {problemIsLoading ? 'loading...' :
                                             problems && problems.map((item,key)=>{
                                                 return(
-                                                    <div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div>
+                                                    <a href="#top" className="quest-click"><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
                                                 )
                                             })}
                                         {problemDirectIsLoading ? 'loading...' :
                                             problemsDirect && problemsDirect.map((item,key)=>{
                                                 return(
-                                                    <div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div>
+                                                    <a href="#top"className="quest-click"><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
                                                 )
                                             })}
                                         </div>
@@ -456,7 +456,7 @@ export default function Book(){
                                     </div> 
                                 </div> */}
                         
-                                <div className="bg_qand_ans box_sdw_n pl-0 pr-0">    
+                                <div className="bg_qand_ans box_sdw_n pl-0 pr-0" id="top">    
                                     <div className="col-md-12 pb-4">
                                         <div className="Qtion_n_Stion_text">
                                             <h3 className="mb-4"><span>Question and Solution</span></h3>
@@ -473,7 +473,7 @@ export default function Book(){
                                                 <div className="Get_Answer_text m-auto">
                                                     <p>This problem has been <span>solved!</span></p>
                                                     <div className="btn1 Get_Answer_btn">
-                                                        <a href="#" className="red_text1">Click to Get Answer</a>
+                                                        <Link to="/auth/signin" className="red_text1">Click to Get Answer</Link>
                                                     </div>
                                                 </div>
                                             </div>
