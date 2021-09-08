@@ -15,6 +15,7 @@ import Contact from '../pages/contact';
 import About from '../pages/about';
 import PrivacyAndPolicy from '../pages/privacy';
 import TermsAndConditions from '../pages/terms';
+import Search from '../pages/search/[search]';
 
 import Dashboard from '../pages/dashboard'
 import MyOrders from '../pages/user/my-orders'
@@ -36,6 +37,10 @@ export const publicRoutes = [
     {
         path: '/',
         component: Home
+    },
+    {
+        path: '/search/:search',
+        component: Search
     },
     {
         path: '/q-and-a',

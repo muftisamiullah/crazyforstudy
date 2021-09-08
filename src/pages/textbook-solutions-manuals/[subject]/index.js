@@ -60,6 +60,7 @@ export default function Book(){
     const [selectedQuestion, setselectedQuestion] = useState();
     const [selectedItem, setSelectedItem] = useState();
     const [answer, setAnswer] = useState();
+    const [loc, setLoc] = useState();
 
     //seo 
     const [seo, setSeo] = useState(false);
@@ -223,6 +224,14 @@ export default function Book(){
         return () => clearTimeout(delayDebounceFn)
     },[search]);
 
+    useEffect(()=>{
+        if(state.isLoggedIn != "true"){
+            setLoc('/auth/signin?callbackUrl='+`${process.env.REACT_APP_URL}`+'/textbook-solutions-manuals/'+params.subject)
+        }else if(state.isLoggedIn == "true" && state.Subscribe != "true"){
+            setLoc('/paynow')
+        }
+    },[]);
+
     if(!ISBN13)
         return <Subject/>
 
@@ -365,7 +374,7 @@ export default function Book(){
                                         <div className="Qtion_n_Stion_text Qtion_n_Stion_text_scroll">
                                             {searchedItems && searchedItems.length>0 ? searchedItems.map((item,key) => {
                                                 return(
-                                                        <a href="#top" className="quest-click"><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, item?.answer, key)}}> <strong>Q : {item.problem_no} </strong>
+                                                        <a href="#top" className="quest-click" key={key}><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, item?.answer, key)}}> <strong>Q : {item.problem_no} </strong>
                                                             <Highlighter
                                                                 highlightClassName="YourHighlightClass"
                                                                 searchWords={[search]}
@@ -385,13 +394,13 @@ export default function Book(){
                                         {problemIsLoading ? 'loading...' :
                                             problems && problems.map((item,key)=>{
                                                 return(
-                                                    <a href="#top" className="quest-click"><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
+                                                    <a href="#top" className="quest-click" key={key}><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
                                                 )
                                             })}
                                         {problemDirectIsLoading ? 'loading...' :
                                             problemsDirect && problemsDirect.map((item,key)=>{
                                                 return(
-                                                    <a href="#top"className="quest-click"><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
+                                                    <a href="#top"className="quest-click" key={key}><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
                                                 )
                                             })}
                                         </div>
@@ -473,7 +482,7 @@ export default function Book(){
                                                 <div className="Get_Answer_text m-auto">
                                                     <p>This problem has been <span>solved!</span></p>
                                                     <div className="btn1 Get_Answer_btn">
-                                                        <Link to="/auth/signin" className="red_text1">Click to Get Answer</Link>
+                                                        <Link to={`${loc}`} className="red_text1">Click to Get Answer</Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -499,7 +508,7 @@ export default function Book(){
             </section>
 
             <Subscription/>
-            <Description/>
+            <Description description={books && books[0] && books[0]?.Description}/>
             <Details/>
             <Reviews reviews={books && books[0] && books[0].reviews}/>
             <RelatedTbs data={similarBooks ? similarBooks : relatedBooks} heading={books[0].similarHeading && books[0].similarHeading}/>

@@ -72,7 +72,6 @@ export default function SignIn({ csrfToken, providers }) {
 				setError("Email or password not matched");
 				setLoader(false);
 			}else{
-				console.log(response)
 				let access_token = response.accessToken
                 let refresh_token = response.refreshToken
                 let fullname = response.student.Name
@@ -222,7 +221,7 @@ export default function SignIn({ csrfToken, providers }) {
 			}
 			if(isLoggedIn){
 				dispatch({type: 'LOGIN', payload: payloadData});
-				window.location.href = '/dashboard'
+				window.location.href = redirectUrl
 			}
 		}else{
             let access_token = res.data.accessToken
@@ -258,7 +257,7 @@ export default function SignIn({ csrfToken, providers }) {
                 }
 			if(isLoggedIn){
 				dispatch({type: 'LOGIN', payload: payloadData});
-				window.location.href = '/dashboard'
+				window.location.href = redirectUrl
 			}
 		}
 	}

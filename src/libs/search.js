@@ -50,3 +50,15 @@ export async function searchDataIndividualQ(params) {
     catch(e){
     }
 }
+
+export async function searchDataIndividualQandA(params) {
+    try {
+        const searchT = params.search ? params.search : params.searchText;
+
+        const res = await axios.get(apiUrl + 'books/search-question-qanda/'+searchT+'/'+params.limit+'/'+params.pageno)
+        return res.data;
+        // return {'data1':res[0].data,'data2':res[1].data};
+    }
+    catch(e){
+    }
+}

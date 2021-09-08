@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { apiUrl } from '../config/config'
+import { apiUrl, authAxios } from '../config/config'
 
 export async function getBook(param) {
     try {
@@ -88,6 +88,16 @@ export async function searchQuestions(isbn, search) {
     try {
         const res = await axios.get(apiUrl + 'books/book/search-question/'+isbn+'/'+search)
         return res.data;
+    }
+    catch(e){
+        
+    }
+}
+
+export async function saveReview(isbn, data) {
+    try {
+        const res = await authAxios.post(apiUrl + 'reviews/'+isbn, data)
+        return res;
     }
     catch(e){
         

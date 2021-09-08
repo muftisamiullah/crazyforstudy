@@ -1,15 +1,17 @@
 import parse from 'html-react-parser';
 import striptags from 'striptags';
-import { useState, useContext} from 'react';
+import { useState, useContext, useEffect} from 'react';
 import {AuthContext} from '../../../../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export default function Answer({...props}){
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
+    const params = useParams();
 
     const [display1, setDisplay1] = useState(true);
     const [display2, setDisplay2] = useState(true);
+    const [loc, setLoc] = useState(true);
 
     const showAll1 = () => {
         if(display1){
@@ -26,6 +28,15 @@ export default function Answer({...props}){
             setDisplay2(true)
         }
     }
+
+    useEffect(()=>{
+        if(state.isLoggedIn != "true"){
+            setLoc('/auth/signin?callbackUrl='+`${process.env.REACT_APP_URL}`+'/q-and-a/'+params.subject)
+        }else if(state.isLoggedIn == "true" && state.Subscribe != "true"){
+            setLoc('/paynow')
+        }
+    },[]);
+
     return(
         <section className="section font_sz text_justify pt-5 pb-4">
             <div className="container">
@@ -68,7 +79,7 @@ export default function Answer({...props}){
                                     <div className="Get_Answer_text m-auto">
                                         <p>This problem has been <span>solved!</span></p>
                                         <div className="btn1 Get_Answer_btn">
-                                            <Link to="/auth/signin" className="red_text1">Click to Get Answer</Link>
+                                            <Link to={`${loc}`} className="red_text1">Click to Get Answer</Link>
                                         </div>
                                     </div>
                                 </div>

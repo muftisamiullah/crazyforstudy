@@ -1,16 +1,27 @@
 import Modal from '../../common/modal'
-import {useState} from 'react'
+import {useState, useContext} from 'react'
+import {AuthContext} from '../../../context/AuthContext';
+import { useHistory, useParams } from 'react-router-dom';
 
 export default function Reviews({...props}){
     const [display, setDisplay] = useState(false);
     const [modalClass, setModalClass] = useState(false);
+    const history = useHistory();
+    const params = useParams();
+    const { state } = useContext(AuthContext);
+    const session = state.isLoggedIn;
+
     const openDialog =  () => {
-        setDisplay('block')
-        setModalClass('show')
-        if (document.body.style.overflow !== "hidden") {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "scroll";
+        if(state.isLoggedIn == "true"){
+            setDisplay('block')
+            setModalClass('show')
+            if (document.body.style.overflow !== "hidden") {
+                document.body.style.overflow = "hidden";
+            } else {
+                document.body.style.overflow = "scroll";
+            }
+        }else{
+            history.push(`/auth/signin?callbackUrl=${process.env.REACT_APP_URL}/textbook-solutions-manuals/${params.subject}`)
         }
     }
     
@@ -28,8 +39,8 @@ export default function Reviews({...props}){
                                         <p className="start_review_pr"><i className="fa fa-star"></i> <i className="fa fa-star"></i> <i className="fa fa-star"></i>  <i className="fa fa-star"></i> <i className="fa fa-star-o"></i> <span className="ml-1">4 out of 5 stars</span></p>
                                         <ul>
                                             <li>5 <i className="fa fa-star"></i> <span className="line_rating span5"></span> 0</li>
-                                            <li>4 <i className="fa fa-star"></i> <span className="line_rating span4"></span> 18</li>
-                                            <li>3 <i className="fa fa-star"></i> <span className="line_rating span3"></span> 10</li>
+                                            <li>4 <i className="fa fa-star"></i> <span className="line_rating span4"></span> 0</li>
+                                            <li>3 <i className="fa fa-star"></i> <span className="line_rating span3"></span> 0</li>
                                             <li>2 <i className="fa fa-star"></i> <span className="line_rating span2"></span> 0</li>
                                             <li>1 <i className="fa fa-star"></i> <span className="line_rating span1"></span> 0</li>
                                             <li onClick={openDialog}><a href="" onClick={(e)=>{e.preventDefault()}}><i className="fa fa-pencil"></i> WRITE YOUR REVIEW</a></li>
@@ -58,9 +69,9 @@ export default function Reviews({...props}){
                                             </div>
                                         )
                                     })}
-                                    <div className="btn1 text-right pr-4 pb-3">
+                                    {/* <div className="btn1 text-right pr-4 pb-3">
                                         <a href="#" className="text-black rev-btn">View all</a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
