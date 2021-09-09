@@ -35,7 +35,7 @@ export default function SubSubject(){
     const copyright = `Copyright ${new Date().getFullYear()} Crazyforstudy.com`
     const path = process.env.basePath + location.asPath
 
-    const { data, isLoading, error } = useQuery([params.subsubject, pageNo], () => getBooks({sub_subject_name: params.subsubject, subject_name: params.subject, pageno : pageNo}))
+    const { data, isLoading, error } = useQuery([params.subsubject,params.subject,pageNo], () => getBooks({sub_subject_name: params.subsubject, subject_name: params.subject, pageno : pageNo}))
 
     if(isLoading)
         return <div id="loading"></div>
