@@ -48,7 +48,7 @@ export default function WhyChooseOurWriting(){
 
     </h3>
                         <span className="clock_icon"><img src="/images/deliver_icon.png" className="img-fluid" alt=""/></span>
-                        <p>We undergo three different levels of quality checks to deliver 100% plagiarism free content. Editing and proofreading of the writing is done by expert professionals who use plagiarism checker tools to make sure you get entirely original papers.
+                        <p>We undergo three different levels of quality checks to deliver 100% plagiarism free content. Editing and proof-reading of the writing is done by expert professionals who use plagiarism checker tools to make sure you get entirely original papers.
 
 
 

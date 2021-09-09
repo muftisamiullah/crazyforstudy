@@ -6,7 +6,7 @@ export async function getBooks( param ) {
     try {
         let pagination = {pageno : param.pageno, limit: 12}
         // const sub_subject = GetName(param.sub_subject_name);
-        const res = await axios.post(apiUrl + `books/subject/${param.sub_subject_name}`, pagination)
+        const res = await axios.post(apiUrl + `books/subject/${param.subject_name}/${param.sub_subject_name}`, pagination)
         return res.data;
     }
     catch(e){

@@ -16,7 +16,7 @@ export default function WhatStudentsThink() {
                     </div>
 
                     {/* <div className=" testimonial"> */}
-                <OwlCarousel items={5} className="testimonial owl-theme" loop autoplay={true} nav margin={10} dots={false}>
+                <OwlCarousel items={5} className="testimonial owl-theme" loop autoplay={true} nav margin={10} dots={false} center={true} >
                     <div className="item"><span className="img_testimonial"><img src="/images/testimonial-img/img1.png" className="" alt=""/></span>
                     <div className="text-center testimonial_text">
                     <h3>JOHN MANSELL</h3>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function HelpService(){
     return(
         <section className="section Content_Covered mt-5 mb-5">
@@ -17,7 +19,7 @@ export default function HelpService(){
                         online and offline, are used to derive the required content for your homework.
                         We are trained in different arenas to provide you guidance on specific subjects. </p>
                         <div className="btn1">
-                            <a href="#" className="">Get Writing Help</a>
+                            <Link to="/writing-help/online-assignment-help" className="">Get Writing Help</Link>
                         </div>
                     </div>
                 </div>
@@ -28,7 +30,7 @@ export default function HelpService(){
                         <p>Dissertation writing involves deep-rooted research and hard work. Our team of expert academic writers in all subjects, are highly trained to help you with your dissertation and thesis papers.
                         Moreover, the services are also accomplished within a very strict deadline.</p>
                         <div className="btn1">
-                            <a href="#" className="">Get Writing Help</a>
+                            <Link to="/writing-help/online-assignment-help" className="">Get Writing Help</Link>
                         </div>
                     </div>
                 </div>
@@ -39,7 +41,7 @@ export default function HelpService(){
                         <p>Our proficient academic writers write essays on multiple domains. Students belonging to various academic backgrounds are taken care of by our team of qualified and experienced writers.
                         Specified guidelines are followed while writing plagiarism free essays.</p>
                         <div className="btn1">
-                            <a href="#" className="">Get Writing Help</a>
+                            <Link to="/writing-help/online-assignment-help" className="">Get Writing Help</Link>
                         </div>
                     </div>
                 </div>

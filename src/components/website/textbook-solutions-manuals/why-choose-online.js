@@ -34,7 +34,7 @@ export default function WhyChooseOnline(){
                         <div className="features_text">
                             <span><img src="/images/icon_1.png" className="img-fluid" alt=""/></span>
                             <h5>On-time Delivery </h5>
-                            <p>At All Assignment Services, we take our deadlines very seriously and would never compromise when it comes to delivery of online assignments in Australia on time. Our experts make sure that all orders are submitted prior to the deadline so that you can proofread your paper.
+                            <p>At All Assignment Services, we take our deadlines very seriously and would never compromise when it comes to delivery of online assignments in Australia on time. Our experts make sure that all orders are submitted prior to the deadline so that you can proof-reading your paper.
                             </p>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ export default function WhyChooseOnline(){
                         <div className="features_text">
                             <span><img src="/images/icon3.png" className="img-fluid" alt=""/></span>
                             <h5>Best-in-Class Quality Check  </h5>
-                            <p>We check assignments/writings rigorously numerous times before submitting them to you. We go through a long process of editing and proofreading to ensure that you receive the best quality and 0 plagiarism assignments. We strongly commit to your assignments in Australia.</p>
+                            <p>We check assignments/writings rigorously numerous times before submitting them to you. We go through a long process of editing and proof-reading to ensure that you receive the best quality and 0 plagiarism assignments. We strongly commit to your assignments in Australia.</p>
                         </div>
                     </div>
                     </div>

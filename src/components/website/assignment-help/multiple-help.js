@@ -94,7 +94,7 @@ export default function MultipleHelp() {
                                 <a className={`ml-0 ${numberForClassActive == 4 ? 'nav-link active' : 'nav-link'}`} id="engineering-tab" data-toggle="tab" href="#engineering" role="tab" aria-controls="engineering" aria-selected="false">Engineering online assignment help  </a>
                             </li>
                             <li className="nav-item" onClick={()=>{showSubjectData(5)}}>
-                                <a className={`ml-0 ${numberForClassActive == 5 ? 'nav-link active' : 'nav-link'}`} id="computer-tab" data-toggle="tab" href="#computer" role="tab" aria-controls="computer" aria-selected="false">Computer scienec online assignment help     </a>
+                                <a className={`ml-0 ${numberForClassActive == 5 ? 'nav-link active' : 'nav-link'}`} id="computer-tab" data-toggle="tab" href="#computer" role="tab" aria-controls="computer" aria-selected="false">Computer science online assignment help     </a>
                             </li>
                             <li className="nav-item" onClick={()=>{showSubjectData(6)}}>
                                 <a className={`ml-0 ${numberForClassActive == 6 ? 'nav-link active' : 'nav-link'}`} id="humanities-tab" data-toggle="tab" href="#humanities" role="tab" aria-controls="humanities" aria-selected="false"> Humanities assignment help      </a>

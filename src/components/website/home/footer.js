@@ -8,7 +8,7 @@ export default function Footer() {
 					<div className="col-md-3">
 					<ul>
 						<li><Link to="#"><img src="/images/logo_f.jpg" className="img-fluid" alt="logo footer"/></Link></li>
-						<li className="pt-3">Crazy for Study is a platform for the provision of academic help. It finctions with the help of a team of ingenious subject matter experts and academic writers who provide tectbook solutions to all.</li>
+						<li className="pt-3">Crazy for Study is a platform for the provision of academic help. It functions with the help of a team of ingenious subject matter experts and academic writers who provide textbook solutions to all.</li>
 					</ul>
 					<ul className="socail_icons">
 						<li><a href="https://www.facebook.com/Crazy-for-Study-133559800329407" target="_blank"><i className="fa fa-facebook"></i></a></li>
@@ -34,15 +34,15 @@ export default function Footer() {
 						<li><Link to="/privacy-and-policy"><i className="fa fa-angle-right"></i> Privacy & Policy</Link></li>
 						<li><Link to="/faqs"><i className="fa fa-angle-right"></i> FAQ</Link></li>
 						<li><Link to="/terms-and-conditions"><i className="fa fa-angle-right"></i> Term of Use</Link></li>
-						<li><Link to="#"><i className="fa fa-angle-right"></i> Tutor Login</Link></li>
+						{/* <li><Link to="#"><i className="fa fa-angle-right"></i> Tutor Login</Link></li> */}
 					</ul>
 					</div>
 					<div className="col-md-3 pl-4">
 					<h3>Contact</h3>
 					<ul>
 						<li><Link to="#"><i className="fa fa-angle-right"></i> Sitemap </Link></li>
-						<li><Link to="#"><i className="fa fa-angle-right"></i> +1 (775) 500-0051 </Link></li>
-						<li><Link to="#"><i className="fa fa-angle-right"></i> support@crazyforstudy.com</Link></li>
+						<li><a href="tel:+17755000051"><i className="fa fa-angle-right"></i> +1 (775) 500-0051 </a></li>
+						<li><a href="mailto:support@crazyforstudy.com"><i className="fa fa-angle-right"></i> support@crazyforstudy.com</a></li>
 					</ul>
 					</div>
 				</div>

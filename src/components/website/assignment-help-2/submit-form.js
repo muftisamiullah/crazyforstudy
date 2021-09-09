@@ -10,8 +10,8 @@ export default function SubmitForm(){
    const [loader, setLoader] = useState(false)
 
    const [startDate, setStartDate] = useState(new Date());
-   const [value, setValue] = useState(0);
-   const [words, setWords] = useState(0);
+   const [value, setValue] = useState(1);
+   const [words, setWords] = useState(250);
    const [formData, setFormData] = useState({});
 
    const [url, setUrl] = useState('#');

@@ -18,6 +18,8 @@ export default function SignIn({ csrfToken, providers }) {
 	const [whichSegment, setWhichSegment] = useState('signin');
 	const [otp, setOtp] = useState();
 	const [checkedState, setCheckedState] = useState(true);
+	const [openPassword, setOpenPassword] = useState('password');
+
 	const { dispatch, state } = useContext(AuthContext);
 	const [code, setCode] = useState({
 		1: "",
@@ -177,6 +179,15 @@ export default function SignIn({ csrfToken, providers }) {
 		setWhichSegment('signin')
 	}
 
+	const showPassword = () => {
+		if(openPassword == "name"){
+			setOpenPassword('password')
+		}else{
+			setOpenPassword('name')
+		}
+		
+	}
+
 	const responseGoogle = async (response) => {
 		console.log("in google signin")
 		let user = {};
@@ -290,7 +301,8 @@ return (
 								</div>
 
 								<div className="form-group col-md-12"> 
-										<input type="password" className="form-control" ref={passwordRef} placeholder="password" name="password"/> 
+										<input type={openPassword} className="form-control" ref={passwordRef} placeholder="password" name="password"/>
+										<span onClick={showPassword} className={"field-icon toggle-password2 " +(openPassword != "password" ? "fa fa-eye" : "fa fa-eye-slash")}></span>
 								</div>
 							
 								<div className="col-md-12">
@@ -298,8 +310,8 @@ return (
 										<div className="form-group col-md-6 Remember_me"> 
 											<div className="form-check">
 												<label className="form-check-label">
-													<input type="checkbox" className="form-check-input" value=""/>
-													<span>Remember me</span>
+													{/* <input type="checkbox" className="form-check-input" value=""/>
+													<span>Remember me</span> */}
 												</label>
 											</div>
 										</div>

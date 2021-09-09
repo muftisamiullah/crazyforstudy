@@ -8,6 +8,7 @@ import { useQuery } from 'react-query'
 import {getCountries,getUser,editUserProfile} from '../../libs/profile'
 // import { signIn } from 'next-auth/client'
 import {AuthContext} from '../../context/AuthContext';
+import {capitalize} from '../../components/common/make-slug';
 
 
 export default function  MyProfile() {
@@ -130,7 +131,7 @@ export default function  MyProfile() {
                             </li>
                             <li>
                                 <small className="text-muted">Location: </small>
-                                <p>{formData && formData.Country}</p>
+                                <p>{formData && capitalize(formData?.Country)}</p>
                                 <hr/>
                                 <small className="text-muted">Email address: </small>
                                 <p>{formData && formData.email}</p>
@@ -339,7 +340,7 @@ export default function  MyProfile() {
                                         </div>
                                     </div>--> */}
                                     <div className="col-md-12">
-                                        <button onClick={saveForm} className="btn btn-primary btn-round" >{loader ? "updating" : "Update Changes"}</button>
+                                        <button onClick={saveForm} className="btn btn-primary btn-round" >{loader ? "updating" : "Update"}</button>
                                     </div>
                                 </div>
                                 </div>

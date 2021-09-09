@@ -1065,12 +1065,12 @@ input.form-control, input.form-control:focus {
     font-size: 1.2vw;
     position: absolute;
     top: 50%;
-    left: 30%;
-    -webkit-transform: translate(-21%, -50%);
-    -ms-transform:translate(-21%, -50%);;
-    transform: translate(-21%, -50%);;
+    left: 50%;
+    /* -webkit-transform: translate(-21%, -50%); */
+    /* -ms-transform:translate(-21%, -50%);; */
+    transform: translate(-50%, -50%);;
     text-align: center;
-	font-weight:bold;
+	font-weight:700;
 } 
 .books_text1 a{
     color: #fff;
@@ -2032,4 +2032,34 @@ section.section.font_sz.text_justify.pt-5 {
 }
 .quest-click:hover{
     color: #212529;
+}
+.web_font1 header p a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    display: inline-block;
+    padding: 0 0 0 13px; transition: 0.3s;
+}
+
+.web_font1 header p a:hover {
+    color: #e36304;
+}
+
+.toggle-password2 {
+    position: absolute;
+    top: 13px;
+    right: 30px;
+    color: #000;
+    cursor: pointer;
+}
+button.btn.form-control.submit_btn1 {
+    background: #f8d021;
+    font-weight: 600;
+    font-size: 24px;
+    width: 90%;
+    margin: auto;
+}
+button.btn.form-control.submit_btn1:focus {
+    box-shadow: none;
+    border: none;
 }

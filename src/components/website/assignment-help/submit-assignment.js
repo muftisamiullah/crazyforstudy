@@ -42,6 +42,12 @@ export default function SubmitAssignment() {
         }
     }
 
+    const decrementCounter = () => {
+        if(counter > 1  ){
+            setCounter(counter - 1);
+        }
+    }
+
     const handleQuestion = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value })
     }
@@ -63,7 +69,6 @@ export default function SubmitAssignment() {
         }else{  
             const res = await saveAssignment(form);
             setLoader(false)
-            console.log(res)
             if(res && !res.error){
                 history.push(`/writing-help/online-assignment-help-2/${res.assign._id}`)
             }
@@ -126,33 +131,30 @@ export default function SubmitAssignment() {
                                     <div className="col-md-12 form-group">
                                         <div className="col-sm-12 p-0">
                                             <div className="dynamic-wrap">
-                                                <div className="form">
-                                                    <div className="entry input-group">
-                                                        {/* {for(let i=0; i<counter; i++){
-                                                            return(
-                                                                <input className="form-control isbncls" type="file" key={key} name="image1"  onChange={setHandleImage}/>
-                                                                )
-                                                        }} */}
-                                                        {[...Array(counter)].map((e, i) => 
-                                                            // <input className="form-control isbncls" type="file" key={i} name='file'  onChange={setHandleImage}/>
-                                                            <input className="form-control isbncls" type="file" key={i} name={`image${i}`}  onChange={setHandleImage}/>
-                                                        )}
-                                                        
+                                                <div className="form">{[...Array(counter)].map((e, i) =>
+                                                    <div className="entry input-group" key={i}>
+                                                        <input className="form-control isbncls" type="file" name={`image${i}`}  onChange={setHandleImage}/>
                                                         <span className="input-group-btn">
+                                                            {counter == i+1 ?
                                                             <button className="btn btn-add btn-add_more" type="button" onClick={incrementCounter}>
                                                                 <span className="fa fa-plus" ></span> Add more file
                                                             </button>
+                                                            : ''}
+                                                            {counter != i+1 ?
+                                                            <button className="btn btn-remove trash_iconadd" type="button" onClick={decrementCounter}>
+                                                                <span className="fa fa-minus" ></span> remove
+                                                            </button>
+                                                            : ''}
                                                         </span>
-                                                    </div><span style={{color:"red"}}>{error}</span>
+                                                    </div>)}
+                                                    <span style={{color:"red"}}>{error}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group col-md-12 submit_btn1">
-                                <button type="submit" className="btn form-control">{loader ? "Submitting" : 'Submit'}</button>
-                            </div>
+                                <button type="submit" className="btn form-control submit_btn1">{loader ? "Submitting" : 'Submit'}</button>
                         </form>
                     </div>
                 </div>
