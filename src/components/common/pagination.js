@@ -1,6 +1,13 @@
 import {useState, useEffect} from 'react';
 
 export default function  Pagination({...props}) {
+    const[pages, setPages] = useState(0);
+
+    useEffect(() => {
+        setPages(Math.ceil(props.total / 12));
+        return () => {}
+    },[])
+
     const handleClick = (e) => {
         e.preventDefault();
         if(e.target.innerText != 0){
@@ -17,28 +24,23 @@ export default function  Pagination({...props}) {
 
     const handleNext = (e) => {
         e.preventDefault();
-        if(props.pageNo < pages){
+        if(props.pageNo + 1 < pages){
             props.setPageNo(props.pageNo + 1)
         }
     }
 
-    const[pages, setPages] = useState();
-
-    useEffect(() => {
-        setPages(Math.floor(props.total / 10));
-        return () => {
-            
-        }
-    }, [])
-
+    const getPaginationGroup = () => {
+        let start = Math.floor((props.pageNo) / 5) * 5;
+        return new Array(5).fill().map((_, idx) => start + idx + 1);
+    };
     
-
     return(
         <div className="col-md-12 mt-4">
             <div className="next_prew">
                 <ul>
                     <li><a href="#" className="border-left-0 " onClick={handlePrev}>Previous</a></li>
-                    {[...Array(pages)].map((e, i) => 
+                    {/* old code */}
+                    {/* {[...Array(pages)].map((e, i) => 
                         ( i!=0 && (props.pageNo+1 == i || i<3) ) &&
                             <li key={i}>
                                 <a href="#" className={props.pageNo+1 == i ? 'active':''} onClick={handleClick}>{i}</a>
@@ -49,12 +51,14 @@ export default function  Pagination({...props}) {
                             <li key={i}>
                                 <a href="#" className={props.pageNo+1 == i ? 'active':''} onClick={handleClick}>{i}</a>
                             </li>
+                    )} */}
+
+                    {/* new updated code */}
+                    {getPaginationGroup().map((e, i) => 
+                        e<=pages ? <li key={i}>
+                            <a href="#" className={props.pageNo+1 == e ? 'active':''} onClick={handleClick}>{e}</a>
+                        </li> : ''
                     )}
-                    {/* <li><a href="#" className={props.pageNo+1 == 1 ? 'active':''} onClick={handleClick}>1</a></li>
-                    <li><a href="#" className={props.pageNo+1 == 2 ? 'active':''} onClick={handleClick}>2</a></li>
-                    <li><a href="#" className={props.pageNo+1 == 3 ? 'active':''} onClick={handleClick}>3</a></li>
-                    <li><a href="#" className={props.pageNo+1 == 4 ? 'active':''} onClick={handleClick}>4</a></li>
-                    <li><a href="#" className={props.pageNo+1 == 5 ? 'active':''} onClick={handleClick}>5</a></li> */}
                     <li><a href="#" onClick={handleNext}>Next</a></li>
                 </ul>
             </div>

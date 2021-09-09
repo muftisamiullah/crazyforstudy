@@ -11,7 +11,7 @@ import GetSolManual from '../../../components/website/all-subjects/get-sol-manua
 import {getBooks} from "../../../libs/subsubject"
 import { useParams, useLocation, useHistory } from "react-router-dom";
 // import {getNavbarData} from "../../../libs/home"
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { useQuery } from 'react-query'
 import {Helmet} from 'react-helmet-async'
 import { capitalize } from "../../../components/common/make-slug";
@@ -36,7 +36,7 @@ export default function SubSubject(){
     const path = process.env.basePath + location.asPath
 
     const { data, isLoading, error } = useQuery([params.subsubject,params.subject,pageNo], () => getBooks({sub_subject_name: params.subsubject, subject_name: params.subject, pageno : pageNo}))
-
+    
     if(isLoading)
         return <div id="loading"></div>
 
