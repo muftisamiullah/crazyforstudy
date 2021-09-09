@@ -31,7 +31,7 @@ export default function ResultsNotFound() {
             <h3> We didn’t find any result. But don’t worry, try 50 free Homework Q&A </h3>
 
             <div className="btn1">
-            <Link to="/writing-help" >Ask an Expert</Link>
+            <Link to="/user/ask-a-question">Ask an Expert</Link>
             <small className="text-black">* Ask 50 Free homework Question every month.</small>
             </div>
             </div>

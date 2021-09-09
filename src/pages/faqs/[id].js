@@ -41,7 +41,7 @@ export default function FaqId(){
                             {faqContent && faqContent.data.map((item,key)=>{
                                 return(<li key={key}>
                                     <a data-toggle="collapse" className="collapsed bdr_3" href="#faq1" onClick={()=>{openCollapse(`faq${key}`)}}>{item.question} <i className="fa fa-angle-up"></i></a>
-                                    <div id="faq1" className={"collapse sub_text1 " + (whichCollapse == 'faq'+`${key}` ? 'show' : '' )} data-parent=".faq-list">
+                                    <div className={"collapse sub_text1 " + (whichCollapse == 'faq'+`${key}` ? 'show' : '' )} data-parent=".faq-list">
                                         <p className="first-para"><strong>Answer : </strong>{item.answer}</p>
                                     </div>
                                 </li>)

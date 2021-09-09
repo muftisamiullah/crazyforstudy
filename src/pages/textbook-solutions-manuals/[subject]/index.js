@@ -482,7 +482,7 @@ export default function Book(){
                                                 <div className="Get_Answer_text m-auto">
                                                     <p>This problem has been <span>solved!</span></p>
                                                     <div className="btn1 Get_Answer_btn">
-                                                        <Link to={`${loc}`} className="red_text1">Click to Get Answer</Link>
+                                                        <Link to={`${loc}`} className="red_text1">{state.isLoggedIn != "true" ? "Login to Get Answer" : (state.Subscribe != "true") ? "Subscribe to Get Answer" : "Click to Get Answer"}</Link>
                                                     </div>
                                                 </div>
                                             </div>

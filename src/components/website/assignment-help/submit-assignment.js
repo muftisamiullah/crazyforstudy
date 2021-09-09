@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import { getSubjects, getSubSubject } from '../../../libs/subsubject'
 import { saveAssignment } from '../../../libs/assignment'
 import { MakeSlug } from '../../../components/common/make-slug'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import {AuthContext} from '../../../context/AuthContext';
 
 export default function SubmitAssignment() {
@@ -12,6 +12,7 @@ export default function SubmitAssignment() {
     const [counter, setCounter] = useState(1);
     const [formData, setFormData] = useState({});
     const [loader, setLoader] = useState(false)
+    const [error, setError] = useState('')
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
 
@@ -34,7 +35,11 @@ export default function SubmitAssignment() {
     }
 
     const incrementCounter = () => {
-        setCounter(counter + 1);
+        if(counter < 3 ){
+            setCounter(counter + 1);
+        }else{
+            setError('Max 3 files can be uploaded only')
+        }
     }
 
     const handleQuestion = (e) => {
@@ -64,6 +69,13 @@ export default function SubmitAssignment() {
             }
         }
     }
+
+    useEffect(() => {
+		let timerError = setTimeout(() => setError(''), 3000);
+		return () => {
+			clearTimeout(timerError);
+		}
+	}, [error])
 
     return(
         <section className="banner_assign_ment">
@@ -125,12 +137,13 @@ export default function SubmitAssignment() {
                                                             // <input className="form-control isbncls" type="file" key={i} name='file'  onChange={setHandleImage}/>
                                                             <input className="form-control isbncls" type="file" key={i} name={`image${i}`}  onChange={setHandleImage}/>
                                                         )}
+                                                        
                                                         <span className="input-group-btn">
                                                             <button className="btn btn-add btn-add_more" type="button" onClick={incrementCounter}>
                                                                 <span className="fa fa-plus" ></span> Add more file
                                                             </button>
                                                         </span>
-                                                    </div>
+                                                    </div><span style={{color:"red"}}>{error}</span>
                                                 </div>
                                             </div>
                                         </div>

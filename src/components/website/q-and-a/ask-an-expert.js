@@ -17,7 +17,7 @@ export default function AskExpert(){
                             <p>If we don't have answer for your question, then ask our expert If we don't have answer for your question, then ask our expert If we dont have answer for your question, then ask our expert .
                             </p>
                             <div className="btn1">
-                                <Link to="/writing-help">Ask an Expert</Link>
+                                <Link to="/user/ask-a-question">Ask an Expert</Link>
                                 <small className="text-black">*Ask extra 50 Questions direct from the expert</small>
                             </div>
                         </div>

@@ -9,6 +9,7 @@ export default function Modal({...props}){
 
     const [ratings, setRatings] = useState();
     const [error, setError] = useState();
+    const [disabled, setDisabled] = useState(true);
     const params = useParams();
 
     const nameRef = useRef();
@@ -18,6 +19,14 @@ export default function Modal({...props}){
     const regex = /\d{13}/g;
     const data = params.subject != undefined ? params.subject.match(regex) : params.subject;
     const ISBN13 = data ? data[0] : null; 
+
+    const setDis = (e) => {
+        if(e.target.value != ''){
+            setDisabled(false);
+        }else{
+            setDisabled(true)
+        }
+    }
 
     const closeDialog = () => {
         props.setModalClass('none')
@@ -79,7 +88,7 @@ export default function Modal({...props}){
                                         <div className="form-row"> 
                                             <div className="col-sm-12 col-md-6 form-group">
                                                 <label>Name </label>
-                                                <input type="text" ref={nameRef} name="name" className="form-control" placeholder="Enter Name"/>
+                                                <input type="text" ref={nameRef} name="name" className="form-control" placeholder="Enter Name" onChange={setDis}/>
                                                 <span style={{color:"red"}}>{error}</span>
                                             </div>            
                                             <div className="col-sm-12 col-md-6 form-group">
@@ -99,7 +108,7 @@ export default function Modal({...props}){
                                                 </div>  
                                                 <div className="col-sm-12 col-md-12 form-group">
                                                     <label>Write Your Feedback   </label>
-                                                    <textarea rows="3" ref={feedbackRef} name="feedback" className="form-control" placeholder="Please write your feedback here..."></textarea>
+                                                    <textarea rows="3" ref={feedbackRef} name="feedback" onChange={setDis} className="form-control" placeholder="Please write your feedback here..."></textarea>
                                                 </div>  
                                                 <div className="col-sm-12 col-md-12 form-group">
                                                     <label>Country     </label>
@@ -110,7 +119,7 @@ export default function Modal({...props}){
                                                     </select>
                                                 </div>
                                             </div>
-                                            <button type="submit" className="btn sbmt_feedbk mt-2 mb-4">Submit Your Feedback</button>
+                                            <button type="submit" disabled={disabled} className="btn sbmt_feedbk mt-2 mb-4">Submit Your Feedback</button>
                                     </form>
                                 </div>
                             </div>

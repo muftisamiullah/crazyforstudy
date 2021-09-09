@@ -13,7 +13,7 @@ export default function AskExpert(){
                         <h2>Get Answer as Fast as <span className="d_b">in 30 Minutes.</span></h2>
                         <p> Getting Tough or Difficult homework questions? Don’t worry! Get immediate access to over 50 million Q/A solutions and Ask 50 Homework questions directly from our expert professor.</p>
                             <div className="btn1">
-                                <Link to="/writing-help">Ask an Expert</Link>
+                                <Link to="/user/ask-a-question">Ask an Expert</Link>
                             </div>
                         </div>
                     </div>

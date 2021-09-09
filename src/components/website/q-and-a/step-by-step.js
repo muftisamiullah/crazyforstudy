@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function StepByStep(){
     return(
         <section className="section typical_answer mt-5 mb-5">
@@ -36,7 +38,7 @@ export default function StepByStep(){
                   </div>
                </div>
                <div className="col-md-12 btn1 text-center mt-4">
-                  <a href="#" className="pl-5 pr-5 text-black">Try Crazyforstudy</a>
+                  <Link to="/paynow" className="pl-5 pr-5 text-black">Try Crazyforstudy</Link>
                </div>
             </div>
          </div>
