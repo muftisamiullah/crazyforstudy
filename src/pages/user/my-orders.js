@@ -57,7 +57,7 @@ export default function MyOrders(){
                                                 <td className="w-25"><span>{key}</span></td>
                                                 <td className="w-25"><span className="textbook-t">{item._id}</span></td>
                                                 <td className="w-25">
-                                                   <span>{item.deadline_date.substring(0,10)}</span>
+                                                   <span>{item?.deadline_date?.substring(0,10)}</span>
                                                 </td>
                                                 <td className="w-25">
                                                    <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" onClick={()=>{openCollapse(`collapse${key}`)}}>

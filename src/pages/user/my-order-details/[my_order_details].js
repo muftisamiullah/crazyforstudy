@@ -227,7 +227,7 @@ export default function MyOrderDetails(){
                                                     </div>
                                                     <div className="col-md-6 aas_details">
                                                         <div className="contain_data">
-                                                            <p className="detail_item">{data && data.deadline_date.substring(0,10) + ', ' + data.deadline_time}</p>
+                                                            <p className="detail_item">{data && data?.deadline_date?.substring(0,10) + ', ' + data.deadline_time}</p>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 aas_details">

@@ -131,7 +131,7 @@ export default function SubmitAssignment() {
                                 </select>
                             </div>
                             <div className="form-group col-md-12">
-                                <textarea className="form-control" rows="5" required minLength="50" placeholder="Write Your Question Here.." name="question" onChange={handleQuestion}></textarea>
+                                <textarea className="form-control" required minLength="50" placeholder="Write Your Question Here.." name="question" onChange={handleQuestion}></textarea>
                             </div>
                             <div className="form-group col-md-12 fill_isbn mb-0">
                                 <div className="row">

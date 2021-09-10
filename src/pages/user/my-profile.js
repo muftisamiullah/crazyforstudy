@@ -16,6 +16,9 @@ export default function  MyProfile() {
     const session = state.isLoggedIn;
 
     const [startDate, setStartDate] = useState(new Date());
+    const [imageUrl, setImageUrl] = useState();
+    const [preview, setPreview] = useState();
+    const [defaultImage, setDefaultImage] = useState("/images/profile_av.jpg");
     const [loader, setLoader ] = useState()
     const [formData, setFormData] = useState({
         fullname: '',
@@ -76,11 +79,48 @@ export default function  MyProfile() {
     const saveForm = async (e) => {
         setLoader(true);
         setFormData({ ...formData, ['email']: state.email})
-        const res = await editUserProfile(formData);
+        let form = new FormData();
+        form.append('Name',formData.Name);
+        form.append('Country',formData.Country);
+        form.append('dob',formData.dob);
+        form.append('Zipcode',formData.Zipcode);
+        form.append('Address',formData.Address);
+        form.append('college',formData.college);
+        form.append('Contact',formData.Contact);
+        form.append('email',formData.email);
+        form.append('file', imageUrl);
+        const res = await editUserProfile(form);
         if(res){
             
         }setLoader(false)
     }
+
+    const uploadImage = () => {
+        document.getElementById('file-up2').click();
+    }
+
+    const onSelectFile = (e) => {
+        if(e.target.files[0].name.slice(-3) == "png" || e.target.files[0].name.slice(-3) == "jpg" || e.target.files[0].name.slice(-3) == "jpeg"){
+            setImageUrl(e.target.files[0])
+            setFormData({...formData, ['img']: null})
+        }        
+    }
+
+    const changeImage = (e) => {
+        // setImageUrl(e.target.src)
+    }
+
+    useEffect(() => {
+        if (!imageUrl) {
+            setPreview(undefined)
+            return
+        }
+        const objectUrl = URL.createObjectURL(imageUrl)
+        setPreview(objectUrl)
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [imageUrl])
 
     return (
         <>
@@ -98,10 +138,10 @@ export default function  MyProfile() {
                             <li>
                                 <div className="user-info m-b-20 p-b-15">
                                     <div className="image circle">
-                                <a href=""><img src={formData.img ? formData.img : "/images/profile_av.jpg"} className="profile-pic" alt="User"/></a>
+                                    <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
                                 <div className="profile_pic_change">
-                                <div className="p-image">
-                                    <i className="fa fa-camera upload-button"></i>
+                                <div className="p-image" >
+                                    <i className="fa fa-camera upload-button" ></i>
                                     <input className="file-upload" type="file" accept="image/*"/>
                                 </div>
                                 </div>
@@ -170,11 +210,11 @@ export default function  MyProfile() {
                                 <div className="profile-image">
                                 <div className="user-info">
                                     <div className="image circle">
-                                <a href=""><img src={formData.img ? formData.img : "/images/profile_av.jpg"} className="profile-pic circle" alt="User"/></a>
+                                <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
                                 <div className="profile_pic_change">
                                     <div className="p-image p-image2">
-                                        <i className="fa fa-camera upload-button"></i>
-                                        <input className="file-upload" type="file" accept="image/*"/>
+                                        <i className="fa fa-camera upload-button" onClick={uploadImage}></i>
+                                        <input className="file-upload" type="file" accept="image/*" id="file-up2" onChange={onSelectFile}/>
                                     </div>
                                 </div>
                             </div>
@@ -202,32 +242,32 @@ export default function  MyProfile() {
                                     <ul className="new_friend_list list-unstyled row">
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic1.png" className="img-thumbnail" alt="User Image"/>
+                                            <img src="/images/pic1.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic2.png" className="img-thumbnail" alt="User Image"/>
+                                            <img src="/images/pic2.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic3.png" className="img-thumbnail" alt="User Image"/>
+                                            <img src="/images/pic3.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic4.png" className="img-thumbnail" alt="User Image"/>
+                                            <img src="/images/pic4.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic5.png" className="img-thumbnail" alt="User Image"/>
+                                            <img src="/images/pic5.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic6.png" className="img-thumbnail" alt="User Image"/>
+                                            <img src="/images/pic6.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                     </ul>
