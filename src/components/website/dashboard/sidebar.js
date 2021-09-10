@@ -14,7 +14,7 @@ export default function SideBar({...props}){
                             <li className="mb-0 border-bottom-0">
                                 <div className="user-info  border-bottom-0">
                                     <div className="image circle">
-                                        <a href="#"><img src={props.data && props.data.img ? props.data.img : "/images/profile_av.jpg"} className="profile-pic" alt="User"/></a>
+                                        <Link to="/user/my-profile"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ props.data.img) : "/images/profile_av.jpg"} className="profile-pic" alt="User"/></Link>
                                         <div className="profile_pic_change">
                                             <div className="p-image">
                                                 <i className="fa fa-camera upload-button"></i>
