@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function StudentViewed(){
     return(
         <section className="section font_sz pt-5">
@@ -85,7 +87,7 @@ export default function StudentViewed(){
                         </div>
                     </div>
                     <div className="col-md-12 btn1 text-center ">
-                        <a href="#" className="pl-5 pr-5 text-black">View All</a> 
+                        <Link to="/q-and-a" className="pl-5 pr-5 text-black">View All</Link> 
                     </div>
                 </div>
             </div>

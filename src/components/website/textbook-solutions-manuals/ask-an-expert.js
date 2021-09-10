@@ -9,9 +9,9 @@ export default function AskAnExpert(){
                     <div className="Text_title2 text_tb_center pb-3">
                         <h4 className="pb-2">ASK AN EXPERT </h4>
                         <h2>Get Step-by-step Solutions As fast as in 30 Minutes</h2>
-                        <p>Struggling with textbook solutions? Geting Tough or Difficult textbook question? We have all the textbook that you nedd! Get step-by-step textbook solutions by our experts.</p>
+                        <p>Struggling with textbook solutions? Geting Tough or Difficult textbook question? We have all the textbook that you need! Get step-by-step textbook solutions by our experts.</p>
                         <div className="btn1">
-                            <Link to="/writing-help">Find Textbook Solutions</Link>
+                            <Link to="/textbook-solutions-manuals">Find Textbook Solutions</Link>
                             <small className="text-black">*Browse unlimited textbook solutions manual</small>
                         </div>
                     </div>

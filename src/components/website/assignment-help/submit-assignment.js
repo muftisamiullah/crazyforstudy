@@ -13,6 +13,7 @@ export default function SubmitAssignment() {
     const [formData, setFormData] = useState({});
     const [loader, setLoader] = useState(false)
     const [error, setError] = useState('')
+    const [disabled, setDisabled] = useState(true)
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
 
@@ -49,6 +50,11 @@ export default function SubmitAssignment() {
     }
 
     const handleQuestion = (e) => {
+        if(e.target.name == ""){
+            setDisabled(true);
+        }else{
+            setDisabled(false);
+        }
         setFormData({...formData, [e.target.name]: e.target.value })
     }
 
@@ -106,6 +112,7 @@ export default function SubmitAssignment() {
                             </div>
                             <div className="form-group col-md-12">
                                 <select type="text" className="form-control" onChange={getSelectedSubject} required>
+                                    <option>Select Subject</option>
                                     {subjects && subjects.data.map((item,key)=>{
                                         return(
                                             <option value={MakeSlug(item.subject)} key={key} data-subjectid={item._id}>{item.subject}</option>
@@ -154,7 +161,7 @@ export default function SubmitAssignment() {
                                     </div>
                                 </div>
                             </div>
-                                <button type="submit" className="btn form-control submit_btn1">{loader ? "Submitting" : 'Submit'}</button>
+                                <button type="submit" disabled={disabled} className="btn form-control submit_btn1">{loader ? "Submitting" : 'Submit'}</button>
                         </form>
                     </div>
                 </div>

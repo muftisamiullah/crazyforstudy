@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function FindTbs(){
     return (
         <section className="section bg_colr1 pt-4 pb-4">
@@ -12,7 +14,7 @@ export default function FindTbs(){
                             <h2>Get step-by-step textbook solutions by our experts.</h2>
                             <p>Struggling with textbook solutions? We have all the textbooks that you need! Access millions of detailed, step-wise textbook solutions manual for a variety of academic disciplines textbook solutions manual for a variety of academic disciplines instantly.</p>
                             <div className="btn1">
-                                <a href="#">Find Textbook Solutions</a>
+                                <Link to="/textbook-solutions-manuals">Find Textbook Solutions</Link>
                             </div>
                         </div>
                     </div>

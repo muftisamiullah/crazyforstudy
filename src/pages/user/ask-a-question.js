@@ -1,7 +1,7 @@
 import DashboardNavbar from '../../components/website/dashboard/dashboard-navbar'
 import SideBar from '../../components/website/dashboard/sidebar'
 import BlockHeader from '../../components/website/dashboard/block-header'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {useState, useEffect, useRef, useContext} from 'react'
 import {getUser} from '../../libs/profile'
 import {getSubSubject,getSubjects} from '../../libs/subsubject'
@@ -21,7 +21,7 @@ import {AuthContext} from '../../context/AuthContext';
 export default function AskQuestion(){
    const { state } = useContext(AuthContext);
    const session = state.isLoggedIn;
-
+   const history = useHistory();
    //ckeditor
 
    const editorRef = useRef()
@@ -102,6 +102,7 @@ export default function AskQuestion(){
             // console.log(variables);
             // queryClient.setQueryData(['notifications-false', { user_Id : session.user._id, type: 'QA'} ], data)
             setIsLoading(false)
+            history.push('/user/my-question')
          }});
    }
    

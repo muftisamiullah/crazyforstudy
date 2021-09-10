@@ -195,7 +195,7 @@ export default function DashboardNavbar({...props}){
                         </ul>}
                     </li>
                     <li className="float-right search_btn_top">
-                        <a href="#" className="mega-menu" data-close="true"><span className=""><i className="fa fa-search"></i></span></a>           
+                        {/* <a href="#" className="mega-menu" data-close="true"><span className=""><i className="fa fa-search"></i></span></a>            */}
                     </li> 
                 </ul>
             </nav>

@@ -86,7 +86,7 @@ export default function  Dashboard() {
                                                 <h2>Get quick access to your college
                                                 <span>Question?</span></h2>
                                                 <p>Add your Books Here</p>
-                                                <a href="#" className="btn ">Add</a>
+                                                <Link to="/user/my-tbs" className="btn">Add</Link>
                                             </div>
                                         </div>
                                     </div>

@@ -27,8 +27,11 @@ import { capitalize } from "../../../components/common/make-slug";
 
 export default function SubSubject(){
     const [pageNo, setPageNo] = useState(0);
+    const [saveParam, setSaveParam] = useState();
     const params = useParams();
     const location = useLocation();
+    const history = useHistory();
+
     const title = `Get Reliable ${capitalize(params.subsubject)} Textbook Solutions Manual`
     const description = `Get Access ${capitalize(params.subsubject)} Textbook Solutions from Crazy For Study. For ${capitalize(params.subsubject)} textbook answers, ${capitalize(params.subsubject)} Step-by-step solutions, ${capitalize(params.subsubject)} Solutions manual and Assignment Help, try Crazy For Study today!`
     const keywords = `${capitalize(params.subsubject)} textbook solutions, ${capitalize(params.subsubject)} solutions manual, ${capitalize(params.subsubject)} textbook solution manuals`
@@ -37,6 +40,13 @@ export default function SubSubject(){
 
     const { data, isLoading, error } = useQuery([params.subsubject,params.subject,pageNo], () => getBooks({sub_subject_name: params.subsubject, subject_name: params.subject, pageno : pageNo}))
     
+    useEffect(()=>{
+        if(saveParam != params.subsubject){
+            setPageNo(0)
+        }
+        setSaveParam(params.subsubject)
+    },[params.subsubject])
+
     if(isLoading)
         return <div id="loading"></div>
 

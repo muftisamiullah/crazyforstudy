@@ -18,11 +18,11 @@ export default function Privacy() {
                  <div className="col-md-12">
                     <h2>Privacy Policy</h2>
        
-      <p>The privacy policy mentioned here pertains to <a href="www.crazyforstudy.com">www.crazyforstudy.com</a>. This privacy policy is created to assist you in understanding our procedure of handling all information that you provide to us, which would further help you in taking informed decisions regarding the use of our services.</p>
+      <p>The privacy policy mentioned here pertains to <a href="https://crazyforstudy.com">www.crazyforstudy.com</a>. This privacy policy is created to assist you in understanding our procedure of handling all information that you provide to us, which would further help you in taking informed decisions regarding the use of our services.</p>
       
       <p>If you access or use our services, you automatically agree to adhere to the content of this privacy policy.</p>
       
-      <p>It is highly recommended that you use our services only after reading and understanding the content stated in this privacy policy. If you find any unresolved or conflicting privacy mentioned in this document, please contact our support team <a href="#">info@crazyforstudy.com</a>.</p>
+      <p>It is highly recommended that you use our services only after reading and understanding the content stated in this privacy policy. If you find any unresolved or conflicting privacy mentioned in this document, please contact our support team <a href="mailto:info@crazyforstudy.com">info@crazyforstudy.com</a>.</p>
       
       <h3>The Information We Collect</h3>
       
@@ -62,7 +62,7 @@ export default function Privacy() {
       
       <p>Closing your account would not mean that the content you posted on the website will get erased as well. We might also detain some of your information to prevent any fraud or future abuse</p>
       
-      <p>If you wish to close or delete your account with us, you can do so with the help of the option "delete account" in your account any time you wish. You can also contact our support team at <a href="mailto:info@crazyforstudy.com">support@crazyforstudy.com</a> for assistance in deleting your account.</p>
+      <p>If you wish to close or delete your account with us, you can do so with the help of the option "delete account" in your account any time you wish. You can also contact our support team at <a href="mailto:support@crazyforstudy.com">support@crazyforstudy.com</a> for assistance in deleting your account.</p>
       
       <h3>Security and Information Protection</h3>
        
@@ -71,14 +71,14 @@ export default function Privacy() {
       
       <p>When you enter any sensitive information (such as a credit card number) on our website, we encrypt the transmission of the information using a secure socket layer technology (SSL).</p>
       
-      <p>If you have any further questions or queries regarding our security and information protection, please contact: <a href="#">support@crazyforstudy.com</a>.</p>
+      <p>If you have any further questions or queries regarding our security and information protection, please contact: <a href="mailto:support@crazyforstudy.com">support@crazyforstudy.com</a>.</p>
       
       <h3>Changes in the Privacy Policy</h3>
        
       
       <p>Please note that Crazy For study is entitled to change/update the privacy policies at any time, as required. You are advised to check the policies from time-to-time to make sure that you are satisfied with the changes made. We might notify you if any changes are made in the privacy policy of the website.</p>
       
-      <p>In case you have queries regarding any policy, feel free to contact us at <a href="mailto:info@crazyforstudy.com">support@crazyforstudy.com</a>.We are more than happy to help!</p>
+      <p>In case you have queries regarding any policy, feel free to contact us at <a href="mailto:support@crazyforstudy.com">support@crazyforstudy.com</a>.We are more than happy to help!</p>
       
       <h3>Copyright</h3>
        
@@ -100,7 +100,7 @@ export default function Privacy() {
           <li>Display content based on your search and interest</li>
       </ul>
       
-      <p>If you find any kind of copyright issue over any content available on CrazyforStudy at any time, please notify our support team at <a href="mailto:info@crazyforstudy.com">support@crazyforstudy.com</a>.info@crazyforstudy.com for immediate actions and results. The process is simple. Write a letter or an E-mail to the DMCA. Here is a format you can follow:</p>
+      <p>If you find any kind of copyright issue over any content available on CrazyforStudy at any time, please notify our support team at <a href="mailto:support@crazyforstudy.com">support@crazyforstudy.com</a>, <a href="mailto:info@crazyforstudy.com">info@crazyforstudy.com</a> for immediate actions and results. The process is simple. Write a letter or an E-mail to the DMCA. Here is a format you can follow:</p>
       
       <p>[Course, name of the document that infringes the copyright law, name of the university]</p>
       

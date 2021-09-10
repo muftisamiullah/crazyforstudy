@@ -3,7 +3,7 @@ import SideBar from '../../components/website/dashboard/sidebar'
 import BlockHeader from '../../components/website/dashboard/block-header'
 import {useState, useContext} from 'react'  
 import { Link } from 'react-router-dom';
-import { useQuery } from 'react-query'
+import { useQuery, invalidateQueries, useQueryClient } from 'react-query'
 import {getUser} from '../../libs/profile'
 import {getMyTextBooks, addTextBooks, deleteTextBook} from '../../libs/question'
 import {AuthContext} from '../../context/AuthContext';
@@ -11,6 +11,7 @@ import {AuthContext} from '../../context/AuthContext';
 export default function MyTbs(){
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
+    const queryClient = useQueryClient()
     
     const [fields, setFields] = useState([{ value: null }])
     const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
@@ -25,6 +26,9 @@ export default function MyTbs(){
     const addTextBookData = async (e) => {
         e.preventDefault();
         const res = await addTextBooks(formData.isbn);
+        if(res.error == false){
+            queryClient.invalidateQueries('textbooks');
+        }
     }
 
     function handleChange(i, event) {
@@ -45,9 +49,11 @@ export default function MyTbs(){
         setFields(values);
     }
 
-    const deleteTextBuk =  (id) => {
-        const data =  deleteTextBook(state._id, id);
-        console.log(data);
+    const deleteTextBuk =  async (id) => {
+        const data =  await deleteTextBook(state._id, id);
+        if(data.error == false){
+            queryClient.invalidateQueries('textbooks');
+        }
     }
     
     return(
@@ -86,11 +92,11 @@ export default function MyTbs(){
                                                     return(
                                                         <tr key={key}>
                                                             <td><span className="">{key}</span></td>
-                                                            <td><span className="textbook-t">{item.book_isbn}</span></td>
+                                                            <td><span className="textbook-t">{item.isbn}</span></td>
                                                             <td>{item.book_name ? 'Available' : 'Not Available'}</td>
                                                             <td><a href="#" className="btn btn-info btn-sm btn-rounded view-reciept-btn">{item.book_name ? 'View Now' : 'Will be available in 3-4 working Days.' }</a></td>
                                                             <td>
-                                                                <span className="trash_textbooks" onClick={()=>{deleteTextBuk(item._id)}}><a href="#"><i className="fa fa-trash"></i></a></span>
+                                                                <span className="trash_textbooks" onClick={()=>{deleteTextBuk(item._id)}} style={{cursor:"pointer"}}><i className="fa fa-trash"></i></span>
                                                             </td>
                                                         </tr>
                                                     )

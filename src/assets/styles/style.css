@@ -2063,3 +2063,7 @@ button.btn.form-control.submit_btn1:focus {
     box-shadow: none;
     border: none;
 }
+button.btn.form-control.submit_btn1:hover {
+    box-shadow: 0 2px 6px rgb(0 0 0 / 30%);
+    background: #ffe470;
+}

@@ -54,7 +54,7 @@ export default function About() {
                     
                         <p>Jeff Morgan is the Co-Founder and CEO of Crazy For Study. He oversees the company's overall operations, formulates and implements company policies, sets and evaluates performance goals, promotes company culture, and manages relations with clients and partners. Before joining the company, he worked as an Executive Director in Cambridge University Press for 8 years. He received his Master's degree in Policy, Organization, and Leadership Studies from Stanford University School of Education.</p>
                         <ul>
-                        <li><Link to="" target="_blank"><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Jeff on Linkedin</Link></li>
+                        <li><Link to=""><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Jeff on Linkedin</Link></li>
                         </ul>
                     </div>
                     </div>
@@ -75,7 +75,7 @@ export default function About() {
             <h2>Co-Founder and COO</h2> 
                         <p>Peter Kennedy is the Co-Founder and COO of Crazy For Study. After completing his Master's of Science in Education Entrepreneurship from the University of Pennsylvania, he worked in various experiential positions in the Education industry. He advocated for equal education throughout his professional life. As the COO, he is responsible for overseeing all of CFS's major corporate decisions and maintaining communication between the Board of Directors and the organization. He deals with major strategic initiatives that contribute to the company's overall growth.</p>
                         <ul>
-                        <li><Link to="" target="_blank"><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Peter on Linkedin</Link></li>
+                        <li><Link to=""><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Peter on Linkedin</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -96,7 +96,7 @@ export default function About() {
             <h2>Tutor – Operations Manager</h2> 
                         <p>Joanna Donati is the Operations Manager of Crazy For Study. She is responsible for managing various activities related to the production and distribution of services at CFS. She oversees the operations process, service design, performance control, and delivery strategy. Her responsibilities include communicating with the managers of finance, accounting, marketing, and other company functional areas. She received an MBA in Production Management from the University of Georgia.</p>
                         <ul>
-                        <li><Link to="" target="_blank"><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Joanna on Linkedin</Link></li>
+                        <li><Link to=""><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Joanna on Linkedin</Link></li>
                         </ul>
                     </div>
                     </div>
@@ -117,7 +117,7 @@ export default function About() {
             <h2>Director of Content Operations</h2> 
                         <p>Lewis Levine is the Director of Content Operations of Crazy For Study. Backed by a diverse experience in the Education Industry through teaching, managing and content strategizing, Lewis is now with CFS. Here, he creates, distributes, and promotes highly relevant and valuable content to attract and engage the target audience. He earned his Master's degree in Communication and Media Studies with a specialization in Content Marketing from Texas A&M University. </p>
                         <ul>
-                        <li><Link to="" target="_blank"><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Lewis on Linkedin</Link></li>
+                        <li><Link to=""><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Lewis on Linkedin</Link></li>
                         </ul>
                     </div>
                 </div>

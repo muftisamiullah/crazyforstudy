@@ -41,7 +41,7 @@ export default function PopularTbs(){
                     }
 
                 <div className="col-md-12 btn1 text-center">
-                    <Link to="#" className="pl-5 pr-5">View All</Link>
+                    <Link to="/textbook-solutions-manuals" className="pl-5 pr-5">View All</Link>
                 </div>
 
                 </div>

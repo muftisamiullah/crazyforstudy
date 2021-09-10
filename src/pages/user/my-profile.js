@@ -9,12 +9,13 @@ import {getCountries,getUser,editUserProfile} from '../../libs/profile'
 // import { signIn } from 'next-auth/client'
 import {AuthContext} from '../../context/AuthContext';
 import {capitalize} from '../../components/common/make-slug';
-
+import DatePicker from "react-datepicker";
 
 export default function  MyProfile() {
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
 
+    const [startDate, setStartDate] = useState(new Date());
     const [loader, setLoader ] = useState()
     const [formData, setFormData] = useState({
         fullname: '',
@@ -285,8 +286,11 @@ export default function  MyProfile() {
                                     </div>
                                     <div className="col-lg-6 col-md-12">
                                         <div className="form-group">
-                                        <label>DOB</label>
-                                            <input type="text" className="form-control" name="dob" placeholder="Enter Your Date of Birth" onChange={handleProfile} defaultValue={formData && formData.dob}/>
+                                            <div className="customDatePickerWidth">
+                                                <label>DOB</label>
+                                                <input type="text" className="form-control" name="dob" placeholder="Enter Your Date of Birth" onChange={handleProfile} defaultValue={formData && formData.dob}/>
+                                                {/* <DatePicker className="form-control" required selected={startDate} format='yyyy-MM-dd' name="deadline_date" onChange={date => setStartDate(date)} /> */}
+                                            </div>
                                         </div>
                                     </div>
                                         <div className="col-lg-6 col-md-12">
