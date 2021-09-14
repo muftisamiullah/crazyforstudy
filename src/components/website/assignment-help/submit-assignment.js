@@ -78,7 +78,7 @@ export default function SubmitAssignment() {
             const res = await saveAssignment(form);
             setLoader(false)
             if(res && !res.error){
-                // history.push(`/writing-help/online-assignment-help-2/${res.assign._id}`)
+                history.push(`/writing-help/online-assignment-help-2/${res.assign._id}`)
             }
         }
     }
