@@ -1807,7 +1807,17 @@ ul.menu.list-unstyled.notification_scroll {
     .how_it_bg p{font-size:15px;}
     }
     
-    @media (max-width:991px){
+@media (max-width:991px){
+    .web_font1 .megamenu {
+        position: relative;
+        width: 100%;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        height: 250px;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
     .web_font1 .search_btn {
         position: absolute;
         top: 2px;
@@ -1923,6 +1933,22 @@ ul.menu.list-unstyled.notification_scroll {
 }
 
 @media (max-width: 767px){
+.books_text1, .books_text1 a {
+    color: #fff;
+    font-size: 23px;
+}
+.testimonial_text {
+    position: relative;
+    top: 100%;
+    width: 100%;
+    width: 288px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f6d123;
+    border-radius: 10px;
+    padding: 20px;
+    display: none;
+}
 .our_popular_bg .col-md-3 {
     width: 50%;
 }
@@ -2016,7 +2042,6 @@ section.section.font_sz.text_justify.pt-5 {
 }
 
 @media (max-width: 359px){
- 
 .our_popular_img {
     height: 150px;
 }

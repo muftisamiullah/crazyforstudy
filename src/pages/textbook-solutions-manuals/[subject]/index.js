@@ -245,6 +245,52 @@ export default function Book(){
     const path = process.env.basePath + location.pathname
     //seo ends
 
+    const breadcrumbSchema = {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": 
+        [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                    "@id": "https://www.crazyforstudy.com/",
+                    "name": "Home"
+                }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "@id": "https://www.crazyforstudy.com/textbook-solutions-manuals/",
+                "name": "Textbook Solutions Manual"
+                }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "@id": "https://www.crazyforstudy.com/textbook-solutions-manuals/business/",
+                "name": "Business"
+                }
+        },
+        {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+                "@id": "https://www.crazyforstudy.com/textbook-solutions-manuals/business/accounting/",
+                "name": "Accounting"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+                "@id": "#BookURL",
+                "name": "#BookName"
+            }
+        }]
+        }
+
     return(
         <>
             {seo && <Seo path={path} title={title} description={description} keywords={keywords} robots={robots}/>}

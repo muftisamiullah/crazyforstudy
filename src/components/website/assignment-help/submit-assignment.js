@@ -151,7 +151,7 @@ export default function SubmitAssignment() {
                                                             : ''}
                                                             {counter != i+1 ?
                                                             <button className="btn btn-remove trash_iconadd" type="button" onClick={(i)=>{decrementCounter(i)}}>
-                                                                <span className="fa fa-minus" ></span> remove
+                                                                <span className="fa fa-minus" ></span> Remove
                                                             </button>
                                                             : ''}
                                                         </span>

@@ -2,7 +2,7 @@ import Header from '../../components/website/home/header'
 import Navbar from '../../components/website/home/navbar'
 import Footer from '../../components/website/home/footer'
 import Follow from '../../components/website/home/follow'
-import BreadCrumb from '../../components/website/all-subjects/breadcrumb'
+import BreadCrumbFAQ from '../../components/website/faq/breadcrumbFAQ'
 import { getCategoryFaqs } from '../../libs/faq'
 import { useQuery } from 'react-query'
 import { Link, useParams } from 'react-router-dom';
@@ -26,7 +26,7 @@ export default function FaqId(){
         <>
         <Header/>
         <Navbar/>
-        <BreadCrumb type={"Frequently Asked Questions"} heading={params.id} subject={params.id} sub_subject={""}/>
+        <BreadCrumbFAQ type={"Frequently Asked Questions"} heading={params.id} subject={params.id} sub_subject={""}/>
         <section className="faq faq_bg_sctn">
             <div className="container">
                 <div className="row"> 

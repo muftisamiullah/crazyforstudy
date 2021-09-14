@@ -140,7 +140,7 @@ export default function  MyProfile() {
                             <li>
                                 <div className="user-info m-b-20 p-b-15">
                                     <div className="image circle">
-                                    <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
+                                    <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LIVE_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
                                     
                                 <div className="profile_pic_change">
                                 <div className="p-image" >
@@ -213,7 +213,7 @@ export default function  MyProfile() {
                                     <div className="profile-image">
                                         <div className="user-info">
                                             <div className="image circle">
-                                                <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
+                                                <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LIVE_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
                                             </div>
                                             <div className="profile_pic_change">
                                                 <div className="p-image p-image2">

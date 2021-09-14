@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom"
 
-export default function StudentViewed(){
+export default function StudentViewed({...props}){
     return(
         <section className="section font_sz pt-5">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 text-center mb-2">
                         <div className="Content_Covered_title pb-2">
-                        <h2 className="pb-2">Students who viewed Socialogy textbook solution manuals also checked out</h2>
-                        <p>Recently Answered - Top 3 Socialogy Homework Questions</p>
+                        <h2 className="pb-2">Students who viewed {props.bookname} textbook solution manuals also checked out</h2>
+                        <p>Recently Answered - Top 3 {props.bookname} Homework Questions</p>
                         </div>
                     </div>
                     <div className="col-md-12 pb-4 text_justify">

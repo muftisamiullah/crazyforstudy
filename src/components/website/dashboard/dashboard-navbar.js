@@ -145,7 +145,7 @@ export default function DashboardNavbar({...props}){
                         </div>}
                     </li>
                     <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} onMouseEnter={openDropdown}>
-                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="my_pics_img m-r-60 mt-0"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ props.data.img) : "/images/profile_av.jpg"} alt="User" className="img-fluid"/></span></a>
+                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="my_pics_img m-r-60 mt-0"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : process.env.REACT_APP_LIVE_URL_basePath + '/uploads/'+ props.data.img) : "/images/profile_av.jpg"} alt="User" className="img-fluid"/></span></a>
                         {showDropdown && <><div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>{hideDropdown()}}>
                             <Link to="/dashboard" className="dropdown-item" href="#"> Dashboard</Link>
                             <Link to="/user/my-orders" className="dropdown-item" href="#"> My Orders</Link>
@@ -182,7 +182,7 @@ export default function DashboardNavbar({...props}){
                                                             <img className="media-object" src="/images/pic2.png" alt=""/>
                                                             <div className="media-body">
                                                                 <span className="name">Ashton Cox <span className="time">30min ago</span></span>
-                                                                <span className="message">{item.title}</span>                                        
+                                                                <span className="message"><span dangerouslySetInnerHTML={{__html: item.title}}></span></span>                                    
                                                             </div>
                                                         </div>
                                                 </Link>

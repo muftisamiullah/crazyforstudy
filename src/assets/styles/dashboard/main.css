@@ -19247,6 +19247,7 @@ ul.row.location_list.list-unstyled {
     padding: 15px 20px;
 }
 .profile_status_rib1 {
+    cursor:default;
     padding: 11px;
     background-color: #fafafa;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08);
@@ -19552,7 +19553,7 @@ section small {
 	.Current_Status a.Complete{background:#f8d021 !important; width:150px; color:#000;}
 	.Current_Status a.Add_Money{background:#addb42 !important; color:#000;}
 	
-	.Your_Order_Status span.number{width:67px; height:67px; line-height:67px; color:#000; font-weight:600; font-size:14px; background:#ededed; display:inline-block; border-radius:100px;}
+	.Your_Order_Status span.number{cursor:default;width:67px; height:67px; line-height:67px; color:#000; font-weight:600; font-size:14px; background:#ededed; display:inline-block; border-radius:100px;}
 	
 .Your_Order_Status h6{font-weight:600 !important;}	
 	
@@ -20039,6 +20040,7 @@ line-height: 30px; text-align:center; border-radius:50px; }
 .profile_status_rib1 p i{font-size:18px;}
 
 .Pay_From_Wallet a {
+    cursor:pointer;
     border-width: 2px;
     font-weight: 400;
     font-size: 0.8571em;
@@ -20048,7 +20050,7 @@ line-height: 30px; text-align:center; border-radius:50px; }
     border-radius: 0.1875rem;
     padding: 6px 22px;}
 	.Pay_From_Wallet h5 {margin-bottom:5px !important;}
-	.Pay_From_Wallet h5 span{background:#addb42; padding:7px 25px; height:30px; font-weight:600; font-size:15px;}
+	.Pay_From_Wallet h5 span{cursor:pointer;background:#addb42; padding:7px 25px; height:30px; font-weight:600; font-size:15px;}
 	.Thanks_lot h2 { 
     font-size: 15px;}
 	.card_gray{background:#eceeef;}

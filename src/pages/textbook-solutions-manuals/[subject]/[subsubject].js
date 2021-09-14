@@ -14,7 +14,7 @@ import { useParams, useLocation, useHistory } from "react-router-dom";
 import {useEffect, useState} from 'react';
 import { useQuery } from 'react-query'
 import {Helmet} from 'react-helmet-async'
-import { capitalize } from "../../../components/common/make-slug";
+import { capitalize,GetName } from "../../../components/common/make-slug";
 
 // export async  function getServerSideProps(context){
 //     const data = await getBooks(context.params.subsubject);
@@ -85,9 +85,9 @@ export default function SubSubject(){
             <BreadCrumb type={"TextBook Manual"} heading={params.subsubject} subject={params.subject} sub_subject={params.subsubject}/>
             <BuySubscription/>
             <AllBooks data={data} setPageNo={setPageNo} pageNo={pageNo}/>
-            <AddBook/>
-            <StudentViewed/>
-            <GetSolManual/>
+            <AddBook bookname={capitalize(GetName(params.subsubject))}/>
+            <StudentViewed bookname={capitalize(GetName(params.subsubject))}/>
+            <GetSolManual bookname={capitalize(GetName(params.subsubject))}/>
             <Follow/>
             <Footer/>
         </>

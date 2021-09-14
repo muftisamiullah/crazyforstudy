@@ -7,6 +7,7 @@ import { useQuery, invalidateQueries, useQueryClient } from 'react-query'
 import {getUser} from '../../libs/profile'
 import {getMyTextBooks, addTextBooks, deleteTextBook} from '../../libs/question'
 import {AuthContext} from '../../context/AuthContext';
+import {MakeSlug} from '../../components/common/make-slug'
 
 export default function MyTbs(){
     const { state } = useContext(AuthContext);
@@ -91,10 +92,10 @@ export default function MyTbs(){
                                                 {textbooks && textbooks.data.map((item,key)=>{
                                                     return(
                                                         <tr key={key}>
-                                                            <td><span className="">{key}</span></td>
+                                                            <td><span className="">{key+1}</span></td>
                                                             <td><span className="textbook-t">{item.isbn}</span></td>
                                                             <td>{item.book_name ? 'Available' : 'Not Available'}</td>
-                                                            <td><a href="#" className="btn btn-info btn-sm btn-rounded view-reciept-btn">{item.book_name ? 'View Now' : 'Will be available in 3-4 working Days.' }</a></td>
+                                                            <td><Link to={`/textbook-solutions-manuals/isbn-${item.isbn}-${MakeSlug(item.book_name)}-${MakeSlug(item.edition)}`} className="btn btn-info btn-sm btn-rounded view-reciept-btn">{item.book_name ? 'View Now' : 'Will be available in 3-4 working Days.' }</Link></td>
                                                             <td>
                                                                 <span className="trash_textbooks" onClick={()=>{deleteTextBuk(item._id)}} style={{cursor:"pointer"}}><i className="fa fa-trash"></i></span>
                                                             </td>

@@ -54,7 +54,7 @@ export default function MyOrders(){
                                        <table style={{width: "100%"}}>
                                           <tbody>
                                              <tr>
-                                                <td className="w-25"><span>{key}</span></td>
+                                                <td className="w-25"><span>{key+1}</span></td>
                                                 <td className="w-25"><span className="textbook-t">{item._id}</span></td>
                                                 <td className="w-25">
                                                    <span>{item?.deadline_date?.substring(0,10)}</span>

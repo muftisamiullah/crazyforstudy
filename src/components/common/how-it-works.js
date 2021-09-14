@@ -5,7 +5,7 @@ export default function HowItWorks() {
                 <div className="row">
                     <div className="col-md-12 mb-5 text-center">
                         <div className="Content_Covered_title pb-3">
-                            <h2>How It Work</h2>
+                            <h2>How It Works</h2>
                             <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </h3>
                         </div>
                     </div>

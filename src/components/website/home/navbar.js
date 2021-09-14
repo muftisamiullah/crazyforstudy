@@ -79,7 +79,7 @@ export default function Navbar() {
                         <Link to="/q-and-a" className="nav-link">Q and A
                         </Link>
                     </li>  
-                    <li className="nav-item dropdown megamenu-li dmenu" onMouseEnter={()=>{openMenu()}}>
+                    <li className="nav-item dropdown megamenu-li dmenu" onMouseEnter={()=>{openMenu()}} >
                         <Link to="/textbook-solutions-manuals" className="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions Manual  </Link>
                         {showMenu &&
                         <div className={`dropdown-menu megamenu sm-menu border-top ${classname}`}   onMouseLeave={()=>hideMenu()}>

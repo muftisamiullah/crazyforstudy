@@ -69,7 +69,7 @@ export default function Notifications(){
                                                 return  ( 
                                                     <tr key={key}>
                                                         <td>{key}</td>
-                                                        <td>{item.title}</td>
+                                                        <td><span dangerouslySetInnerHTML={{__html: item.title}}></span></td>
                                                         <td>{item.type}</td>
                                                         <td>{item.created_at.substring(0,10)}</td>
                                                         <td id={`${item.type+key}`}><span className="badge">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'completed'}</span></td>

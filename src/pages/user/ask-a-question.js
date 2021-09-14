@@ -12,7 +12,6 @@ import {MakeSlug} from '../../components/common/make-slug'
 import MyQuestion from '../user/my-question'
 import {AuthContext} from '../../context/AuthContext';
 
-
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import ClassicEditor from 'ckeditor5-classic-with-mathtype';
 // import ClassicEditor from '../../components/common/ckeditor'
@@ -269,7 +268,7 @@ export default function AskQuestion(){
                                                       <input type='file' name="image1" className="imgInp" data-id='img1' onChange={setHandleImage}/>
                                                    </div>
                                                    <div className="upload_img_icon">
-                                                      <img id="img1" src={image && image.image1} alt="your image"/>
+                                                      <img id="img1" src={image && image.image1 ? image.image1 : '/images/upload-icon1.png'} alt="your image"/>
                                                    </div>
                                                 </div>
                                              </div>
@@ -280,7 +279,7 @@ export default function AskQuestion(){
                                                       <input type='file' name="image2" className="imgInp"  data-id='img2' onChange={setHandleImage}/>
                                                    </div>
                                                    <div className="upload_img_icon">
-                                                      <img id="img2" src={image && image.image2} alt="your image" />
+                                                      <img id="img2" src={image && image.image2 ? image.image2 : '/images/upload-icon1.png'} alt="your image" />
                                                    </div>
                                                 </div>
                                              </div>

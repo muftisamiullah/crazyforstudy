@@ -159,7 +159,7 @@ export default function  Dashboard() {
                                                         <a href="#"><img className="img-fluid" src="/images/avatar-s-10.png" alt="user"/></a>
                                                     </div>                                
                                                     <div className="comment-action">
-                                                        <h4 className="c_name">{item.title}</h4>  
+                                                        <h4 className="c_name"><span dangerouslySetInnerHTML={{__html: item.title}}></span></h4>  
                                                         <small className="">{item.created_at}</small>
                                                     </div>                                
                                                 </li>

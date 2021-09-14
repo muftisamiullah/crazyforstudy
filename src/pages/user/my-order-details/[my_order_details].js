@@ -242,7 +242,7 @@ export default function MyOrderDetails(){
                                                     </div>
                                                     <div className="col-md-6 aas_details">
                                                         <div className="contain_data">
-                                                            <p className="detail_item">	Refrence </p>
+                                                            <p className="detail_item">	Reference </p>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 aas_details">
@@ -402,7 +402,7 @@ export default function MyOrderDetails(){
                                         <li className="col-lg-2 col-md-2 col-sm-6 col-4">
                                             <a href="#">
                                                 <span className="number">${data && data.amount}</span>
-                                                <h6 className="users_name">Amount to be paid later Amount</h6>
+                                                <h6 className="users_name">Amount to be paid in Total</h6>
                                             </a>
                                         </li>
                                         <li className="col-lg-2 col-md-2 col-sm-6 col-4">

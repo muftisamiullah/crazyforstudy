@@ -1,5 +1,5 @@
 const MakeSlug = (str) => {
-    return str.trim().toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');   
+    return str?.trim().toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');   
 }
 const MakeSlug2 = (str) => {
     return str.trim().toLowerCase().replace(/ +/g,'-');     
