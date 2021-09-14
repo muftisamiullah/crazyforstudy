@@ -2108,3 +2108,11 @@ button.btn.form-control.submit_btn1:hover {
     width: 100%;
     cursor: default;
 }
+
+header p span.dccont {
+    color: #f53c20;
+    background: #fff;
+    padding: 0 6px;
+    border-radius: 33px;
+    font-size: 16px;
+}

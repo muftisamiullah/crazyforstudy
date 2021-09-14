@@ -61,7 +61,7 @@ export default function Reviews({...props}){
                                             <div className="user_icon1_bg" key={key}>
                                                 <div className="user_icon1_text text-center">
                                                     <ul>
-                                                        <li><span className="img"><img src="/images/user_icon1.png" className="img-fluid" alt=""/></span></li>
+                                                        <li><span className="img"><img src={process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ item.image} className="img-fluid" alt=""/></span></li>
                                                         <li>
                                                         {[...Array(item.rating)].map((e, i) => 
                                                             <i className="fa fa-star" key={i}></i>

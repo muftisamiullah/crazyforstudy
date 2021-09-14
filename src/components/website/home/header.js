@@ -15,7 +15,7 @@ export default function Header() {
 			<div className="container-fluid">
 				<div className="row">
 					<div className="col-md-6 text-left pl-5">
-						<p>Get Best Price Guarantee + 30% Extra Discount <i className="fa fa-bolt"></i></p>
+						<p>Get Best Price Guarantee + <span className="dccont">30%</span> Extra Discount <i className="fa fa-bolt"></i></p>
 					</div>
 					<div className="col-md-6 text-right pr-5">
 						<p>

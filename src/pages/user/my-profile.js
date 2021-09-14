@@ -47,7 +47,9 @@ export default function  MyProfile() {
                 ['Contact']: user.Contact,
                 ['img']: user.img,
             });
-        setStartDate(new Date(user?.dob))
+            if(user && user.dob != ""){
+                setStartDate(new Date(user?.dob))
+            }
         }
     },[user])
 

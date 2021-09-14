@@ -52,7 +52,7 @@ export default function Modal({...props}){
             setError("Name Cant contain Numbers")
             return;
         }
-        const res = await saveReview(ISBN13, {name:nameRef.current.value, rating:ratings,review:feedbackRef.current.value, country:countryRef.current.value})
+        const res = await saveReview(ISBN13, {name:nameRef.current.value, rating:ratings,review:feedbackRef.current.value, country:countryRef.current.value, userId:localStorage.getItem('_id')})
         if(res?.status == 201){
             closeDialog();
         }

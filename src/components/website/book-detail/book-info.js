@@ -34,12 +34,12 @@ export default function BookInfo({...props}){
                 <div className="prduct_details_text">
                     <h3>{props.bookData && props.bookData.DisplayTitle ? props.bookData.DisplayTitle : props.bookData.BookName+' '+props.bookData.Edition+' Solutions' }</h3>
                         <p>
-                            {[...Array(props.bookData.ratingAv ? props.bookData.ratingAv : 4)].map((e, i) => 
+                            {[...Array(props.bookData.ratingAv ? props.bookData.ratingAv : 0)].map((e, i) => 
                                 <i className="fa fa-star" key={i}></i>
                             )}
                         </p>
                             <ul className="rating">
-                                <li className="pl-0 border-left-0">{props.bookData && props.bookData.ratingAv ? props.bookData.ratingAv : 4 }/5 Rating</li>
+                                <li className="pl-0 border-left-0">{props.bookData && props.bookData.ratingAv ? props.bookData.ratingAv : 0 }/5 Rating</li>
                                 <li> {props.bookData && props.bookData.totalReviews} <a href="#reviews">Reviews</a></li>
                             </ul>
             
