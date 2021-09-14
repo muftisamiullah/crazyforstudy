@@ -119,7 +119,6 @@ export default function SignIn({ csrfToken, providers }) {
 	}
 
 	const agreePolicy = (e)=>{
-		console.log(e.target.checked)
 		if(e.target.checked){
 			setCheckedState(true)
 			setDisabled(false);
@@ -189,7 +188,6 @@ export default function SignIn({ csrfToken, providers }) {
 	}
 
 	const responseGoogle = async (response) => {
-		console.log("in google signin")
 		let user = {};
 		user.Name = response?.profileObj?.name;
 		user.img = response?.profileObj?.imageUrl;
@@ -197,7 +195,6 @@ export default function SignIn({ csrfToken, providers }) {
 		user.Email = response?.profileObj?.email;
 		const res = await saveGoogleUser(user);
 		if(res && res.status == 200) {
-            console.log("user created")
 			let access_token = res.data.accessToken
 			let refresh_token = res.data.refreshToken
 			
@@ -354,7 +351,6 @@ return (
 										<span key={provider.id}>
 										{provider.id === "credentials" ? <span></span> :
 											<li key={provider.name}>
-												{console.log(redirectUrl)}
 												<a href="#" className={`${provider.id}_link`} onClick={(e) => { e.preventDefault(); signIn(provider.id,{ callbackUrl : redirectUrl })}}>
 													<i className={`fa fa-${provider.id}`}></i> {provider.name}
 												</a>

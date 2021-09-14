@@ -8,7 +8,6 @@ export default function Sidebar(){
     const [classn, setClassN] = useState('');
 
     const set = () => {
-        console.log("sdasdas")
         if(display === 'block'){
             setDisplay('none')
             setClassN('')

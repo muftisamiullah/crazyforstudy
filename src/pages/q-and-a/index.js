@@ -36,7 +36,7 @@ export default function QandA() {
             <HowItWorks/>
             {/* <StudyHelp/> */}
             <WhyChooseOnline/>
-            {/* <WhatStudentsThink/> */} {console.log("temp comment owl carousal")}
+            <WhatStudentsThink/> 
             <Follow/>
             <Footer/>
         </>

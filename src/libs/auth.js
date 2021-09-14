@@ -49,7 +49,6 @@ export async function sendResetEmail(email){
         return res;
     }catch(e){
         return e
-        console.log(e)
     }
 }
 export async function verifyOtp(otp){
@@ -58,7 +57,6 @@ export async function verifyOtp(otp){
         return res;
     }catch(e){
         return e
-        console.log(e)
     }
 }
 export async function changePassword(pass, id, otp){
@@ -67,7 +65,6 @@ export async function changePassword(pass, id, otp){
         return res;
     }catch(e){
         return e
-        console.log(e)
     }
 }
 
@@ -77,6 +74,5 @@ export async function signOut() {
         return res
     }
     catch(e){
-        console.log(e)
     }
 }

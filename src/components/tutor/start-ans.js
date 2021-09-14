@@ -66,7 +66,7 @@ export default function StartAns(){
                                 <tbody>
                                     {books && books.map((item, key)=>{
                                         return(
-                                            <tr key={key}>{console.log(item)}
+                                            <tr key={key}>
                                                 <td>{item.BookName}</td>
                                                 <td>{item.ISBN13}</td>
                                                 <td><Link to={`/book-question-list/${item.ISBN13}`}><a><span className="active_ques">Start Now</span></a></Link></td>

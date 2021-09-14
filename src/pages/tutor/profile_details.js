@@ -13,7 +13,6 @@ export default function ProfileDetails(){
     //     }else{
     //         setLoggedIn(null);
     //     }
-    //     console.log(loggedIn)
     //     if(loggedIn === null){
     //         router.push('/tutor/login')
     //     }

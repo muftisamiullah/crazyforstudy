@@ -14,7 +14,6 @@ export default function Dashboard(){
         }else{
             setLoggedIn(null);
         }
-        console.log(loggedIn)
         if(loggedIn === null){
             router.push('/tutor/login')
         }

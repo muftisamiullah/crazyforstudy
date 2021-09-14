@@ -88,7 +88,6 @@ export default function Book(){
     
     const handleChapter = async (e) => {
         setChapter(e.target.value);
-        // console.log(e.target.options[e.target.selectedIndex].dataset.chapter)
         const chapterValue = e.target.options[e.target.selectedIndex].dataset.chapter
         setChapterName(e.target.options[e.target.selectedIndex].dataset.chapter)
         history.push(`/textbook-solutions-manuals/${MakeSlug(chapterValue)}-${MakeSlug(books[0].Edition)}-chapter-${e.target.value}-solutions-${ISBN13}`, undefined, { shallow: true })
@@ -103,7 +102,6 @@ export default function Book(){
     }
 
     const handleQuestion = async (e) => {
-        // console.log(e.target.options[e.target.selectedIndex].dataset.question)
         setQuestion(e.target.value)
         const questionValue = e.target.options[e.target.selectedIndex].dataset.question
         setselectedQuestion(e.target.value + ' ' + questionValue)
@@ -510,7 +508,7 @@ export default function Book(){
             <Subscription/>
             <Description description={books && books[0] && books[0]?.Description}/>
             <Details/>
-            <Reviews reviews={books && books[0] && books[0].reviews}/>
+            <Reviews reviews={books && books[0] && books[0].reviews} book={books && books[0]}/>
             <RelatedTbs data={similarBooks ? similarBooks : relatedBooks} heading={books[0].similarHeading && books[0].similarHeading}/>
             <Faq data={books && books[0] && books[0].faqs} heading={books[0].faqHeading && books[0].faqHeading}/>
             <Follow/>

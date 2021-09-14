@@ -10,7 +10,6 @@ import {useCallback, useEffect} from 'react';
 function App() {
 	const queryClient = new QueryClient();
 	const location =  useLocation();
-	// console.log(location)
 	useEffect( () => { 
 		if(location.pathname.includes('user') || location.pathname.includes('dashboard')) 
 			{

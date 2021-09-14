@@ -28,7 +28,6 @@ export default function QandASubCategory() {
     
     // was used to show child category
     // const { data: childsubjects, isLoading:childsubjectsIsLoading, error:childsubjectsError } = useQuery([params.subsubject], () => getChildSubjects(params.subsubject),{staleTime:Infinity, enabled: !!params.subsubject}) //only called when subject would be present
-    console.log(params)
     const { data: qandas, isLoading:qandasIsLoading, error:qandassubjectsError } = useQuery([params.subsubject,params.subject,pageNo], () => getQandAChildSubjects2({subject: params.subject, sub_subject: params.subsubject, pageno : pageNo}),{staleTime:Infinity, enabled: !!params.subsubject}) //only called when subject would be present
 
     return(

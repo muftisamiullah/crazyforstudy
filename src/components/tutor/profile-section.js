@@ -96,15 +96,12 @@ export default function ProfileSection(){
 
     const incrementCounter = async(e) => {
         e.preventDefault();
-        console.log(counter, stepCounter)
         switch (parseInt(stepCounter)) {
             case 1:
-                console.log("in step 1", localStorage.getItem('tutor_email'))
                 data['email'] = localStorage.getItem('tutor_email');
                 // for (var key in pageData) {
                 //     data[key] = pageData[key]
                 // }
-                console.log(data)
                 if( data['fname'] !== '' && data['lname'] !== '' 
                     && data['hno'] !== '' && data['street'] !== '' 
                     && data['city'] !== '' && data['country'] !== '' 
@@ -179,7 +176,6 @@ export default function ProfileSection(){
     const secondForm = (e) => {
         // qualification[e.target.name] = e.target.value;
         const value = e.target.value
-        console.log(e.target.name,e.target.value)
         setQualification({
             ...qualification,
             [e.target.name]: value
@@ -204,7 +200,6 @@ export default function ProfileSection(){
         formdata.append('subject',qualification.subject)
         formdata.append('years',qualification.years)
         formdata.append('file',formdata1.file)
-        console.log(formdata)
         const response = await saveEducation(formdata);
         if(response.status == 200){
             setQualification({});

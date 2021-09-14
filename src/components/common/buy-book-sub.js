@@ -15,7 +15,6 @@ export default function BuyBookSub({...props}){
             setLocation('/auth/signin?callbackUrl='+`${process.env.REACT_APP_URL}`+'/paynow')
         }   
     },[])
-    // console.log("code commented in buy-book-sub.js")
 
     return(
         <div className="btn1">

@@ -52,7 +52,6 @@ export default function  MyProfile() {
     },[user])
 
     async function SignOut () {
-        console.log("removing...")
         localStorage.removeItem('access_token_student')
         localStorage.removeItem('refresh_token_student')
         localStorage.removeItem('student_name')
@@ -140,6 +139,7 @@ export default function  MyProfile() {
                                 <div className="user-info m-b-20 p-b-15">
                                     <div className="image circle">
                                     <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
+                                    
                                 <div className="profile_pic_change">
                                 <div className="p-image" >
                                     <i className="fa fa-camera upload-button" ></i>
@@ -206,25 +206,24 @@ export default function  MyProfile() {
                 <div className="container-fluid">
                     <div className="row clearfix mt-4">
                     <div className="col-lg-4 col-md-12">
-                        <div className="card profile-header">
+                        <div className="card profile-header img-f">
                             <div className="body text-center">
-                                <div className="profile-image">
-                                <div className="user-info">
-                                    <div className="image circle">
-                                <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
-                                <div className="profile_pic_change">
-                                    <div className="p-image p-image2">
-                                        <i className="fa fa-camera upload-button" onClick={uploadImage}></i>
-                                        <input className="file-upload" type="file" accept="image/*" id="file-up2" onChange={onSelectFile}/>
+                                    <div className="profile-image">
+                                        <div className="user-info">
+                                            <div className="image circle">
+                                                <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LOCAL_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
+                                            </div>
+                                            <div className="profile_pic_change">
+                                                <div className="p-image p-image2">
+                                                    <i className="fa fa-camera upload-button" onClick={uploadImage}></i>
+                                                    <input className="file-upload" type="file" accept="image/*" id="file-up2" onChange={onSelectFile}/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="detail">
+                                            <h4>{formData && formData.Name}</h4>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                                    <div className="detail">
-                                        <h4>{formData && formData.Name}</h4>
-                                    </div>
-                                </div>
-                                </div>
                                 <div>
                                 {/* <!--<div className="row clearfix">
                                     <div className="col-lg-12 col-md-12 col-sm-12">

@@ -13,7 +13,7 @@ export default function Description({...props}){
     }
 
     return(
-        <section className="section Book_Description text_justify mt-5">{console.log(props)}
+        <section className="section Book_Description text_justify mt-5">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">

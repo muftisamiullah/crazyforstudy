@@ -31,7 +31,6 @@ export async function getUser(data) {
 }
 export async function editUserProfile(data) {
     try {
-        console.log(data);
         const res = await authAxios.post(apiUrl + 'student/edit-user-profile', data)
         if(res.status === 200){
             return res.data;

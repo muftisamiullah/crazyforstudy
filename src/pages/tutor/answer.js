@@ -53,7 +53,6 @@ export default function Answer(){
     //         return;
     //     }
     //     setLoading(true);
-    //     console.log(formData)
     //     const res = await finishAnswering(formData);
     //     if(res.error == false){
     //         setLoading(false)

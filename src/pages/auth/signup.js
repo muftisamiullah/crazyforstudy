@@ -67,7 +67,6 @@ export default function  SignUp() {
     }
     
     const responseGoogle = async (response) => {
-		console.log("in google signup")
 		let user = {};
 		user.Name = response.profileObj.name;
 		user.img = response.profileObj.imageUrl;
@@ -75,7 +74,6 @@ export default function  SignUp() {
 		user.Email = response.profileObj.email;
 		const res = await saveGoogleUser(user);
 		if(res && res.status == 200) {
-            console.log("user created")
 			let access_token = res.data.accessToken
 			let refresh_token = res.data.refreshToken
 			

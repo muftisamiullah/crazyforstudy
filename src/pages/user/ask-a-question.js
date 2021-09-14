@@ -99,7 +99,6 @@ export default function AskQuestion(){
       setIsLoading(true)
       mutation.mutate(formData, 
          { onSuccess: (data, variables, context) => {
-            // console.log(variables);
             // queryClient.setQueryData(['notifications-false', { user_Id : session.user._id, type: 'QA'} ], data)
             setIsLoading(false)
             history.push('/user/my-question')

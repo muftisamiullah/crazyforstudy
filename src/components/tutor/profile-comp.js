@@ -52,7 +52,6 @@ export default function ProfileComp({...props}){
     const saveDegree = async(e) => {
         e.preventDefault()
         let formdata = new FormData();
-        console.log(qualification)
         formdata.append('email',localStorage.getItem('tutor_email'))
         formdata.append('degree',qualification.degree)
         formdata.append('grade',qualification.grade)
@@ -60,7 +59,6 @@ export default function ProfileComp({...props}){
         formdata.append('subject',qualification.subject)
         formdata.append('years',qualification.years)
         formdata.append('file',formdata1.file)
-        console.log(qualification, formdata)
         const response = await props.saveEducation(formdata);
         if(response.status == 200){
             setQualification({});

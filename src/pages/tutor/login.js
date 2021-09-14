@@ -16,7 +16,6 @@ export default function Login(){
     //     }else{
     //         setLoggedIn(null);
     //     }
-    //     console.log(loggedIn)
 
     // },[loggedIn])
 
@@ -50,7 +49,6 @@ export default function Login(){
                 localStorage.setItem('tutor_approve', response.data.tutor.approve);
                 localStorage.setItem('tutor_id', response.data.tutor._id);
                 localStorage.setItem('mastered-subject-id', response.data.tutor.master_sub_subject_id);
-                console.log(response);
                 if(response.data.tutor.approve == 1){
                     setLoading(false);
                     Router.push('/tutor/dashboard');

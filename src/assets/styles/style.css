@@ -2067,3 +2067,44 @@ button.btn.form-control.submit_btn1:hover {
     box-shadow: 0 2px 6px rgb(0 0 0 / 30%);
     background: #ffe470;
 }
+.profile-header.img-f .user-info {
+    position: relative;
+    width: 180px;
+    margin: auto;
+}
+
+.img-f .image.circle {
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 3px 6px rgb(44 44 44 / 16%), 0 3px 6px rgb(44 44 44 / 23%);
+    margin: auto;
+}
+.profile-page .profile-header.img-f .profile-image img {
+    border-radius: 0;
+    width: 180px;
+    margin: auto;
+    border: none;
+    position: relative;
+    top: 50%;
+    box-shadow: none;
+    transform: translateY(-50%);
+}
+
+.react-datepicker-wrapper {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    width: 100%;
+}
+
+.copyright ul li a {
+    cursor: default;
+}
+.owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+    cursor: default;
+}

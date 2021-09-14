@@ -3,7 +3,6 @@ import { apiUrl } from '../config/config'
 
 export async function getNavbarData() {
     try {
-        console.log(apiUrl)
         const res = await axios.get(apiUrl + 'category/view-all')
         return res.data.data;
     }

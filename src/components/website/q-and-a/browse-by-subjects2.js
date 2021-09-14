@@ -13,16 +13,26 @@ export default function BrowseBySubjects2({...props}){
                     </div>
 					{props.data && props.data.data.length>0 ? props.data.data.map((item,key)=>{
 						return(
-							<div className="col-md-3 pbtm" key={key}>
-								<div className="our_popular_text">
-                                    <div className="our_popular_img">
-                                        <img src="../images/books/economics.jpg" className="img-fluid" alt=""/>
-                                    </div>
-                                    <div className="our_popular_title">
-                                        <Link to={'/q-and-a/'+item.subject+'/'+MakeSlug(item.sub_subject)}> {item.sub_subject}</Link>
-                                    </div>
+                            <div className="col-md-4 col-lg-3" key={key}>
+								<div className="books1 animated wow fadeIn">
+									<img src="/images/tbs-books/economics.jpg" className="img-fluid" alt=""/>
+									<div className="overlay_books bottom-overlay"> 
+										<div className="books_text1">
+                                            <Link to={'/q-and-a/'+item.subject+'/'+MakeSlug(item.sub_subject)}> {item.sub_subject}</Link>
+										</div>
+									</div>
 								</div>
 							</div>
+							// <div className="col-md-3 pbtm" key={key}>
+							// 	<div className="our_popular_text">
+                            //         <div className="our_popular_img">
+                            //             <img src="../images/books/economics.jpg" className="img-fluid" alt=""/>
+                            //         </div>
+                            //         <div className="our_popular_title">
+                            //             <Link to={'/q-and-a/'+item.subject+'/'+MakeSlug(item.sub_subject)}> {item.sub_subject}</Link>
+                            //         </div>
+							// 	</div>
+							// </div>
 						)
 					}):
                         <div className="col-lg-12 text-center">

@@ -7,7 +7,7 @@ export default function Footer() {
 				<div className="row">
 					<div className="col-md-3">
 					<ul>
-						<li><Link to="#"><img src="/images/logo_f.jpg" className="img-fluid" alt="logo footer"/></Link></li>
+						<li><Link to="/"><img src="/images/logo_f.jpg" className="img-fluid" alt="logo footer"/></Link></li>
 						<li className="pt-3">Crazy for Study is a platform for the provision of academic help. It functions with the help of a team of ingenious subject matter experts and academic writers who provide textbook solutions to all.</li>
 					</ul>
 					<ul className="socail_icons">

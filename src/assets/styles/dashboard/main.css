@@ -19602,7 +19602,9 @@ section small {
   transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
 }
 .p-image2 { 
-    top: 232px;}
+    top: 232px;
+    right: -30px;
+}
 .p-image:hover {
   transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
 }
