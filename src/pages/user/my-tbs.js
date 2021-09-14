@@ -137,10 +137,10 @@ export default function MyTbs(){
                                     <div className="col-md-12 my-subscriptions subscri_text_book">
                                         <div id="accordion" className="main-header py-4">
                                             <div className="col-md-12  bg_color_textbooks">
-                                                <p>"You have not added any textbooks, students use this section to get the quick access to the 
+                                                {textbooks?.data.length <=0 ? <p>"You have not added any textbooks, students use this section to get the quick access to the 
                                                 solution manual of their course textbooks. Add all of your coursebook for which you will be requiring the 
                                                 Textbook solution manual."	 
-                                                </p>
+                                                </p> : ''}
                                             </div>
                                             <div className="col-md-12 text-center textbooks_title">
                                                 <h2>Add my college textbooks</h2>

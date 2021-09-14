@@ -2,7 +2,7 @@ import Home from '../pages/index';
 import QandA from '../pages/q-and-a/index'
 import Subject from '../pages/q-and-a/[subject]/index'
 import SubSubject from '../pages/q-and-a/[subject]/[subsubject]/index'
-import ChieldSubject from '../pages/q-and-a/[subject]/[subsubject]/[chieldsubject]/index'
+// import ChieldSubject from '../pages/q-and-a/[subject]/[subsubject]/[chieldsubject]/index'
 import TextbookSolutionsManuals from '../pages/textbook-solutions-manuals/index'
 import Book from '../pages/textbook-solutions-manuals/[subject]/index'
 import SubSubjectBook from '../pages/textbook-solutions-manuals/[subject]/[subsubject]'
@@ -64,10 +64,11 @@ export const publicRoutes = [
         path: '/q-and-a/:subject/:subsubject',
         component: SubSubject,
     },
-    {
-        path: '/q-and-a/:subject/:subsubject/:chieldsubject',
-        component: ChieldSubject,
-    },
+    // was used to show child category
+    // {
+    //     path: '/q-and-a/:subject/:subsubject/:chieldsubject',
+    //     component: ChieldSubject,
+    // },
     {
         path: '/textbook-solutions-manuals',
         component: TextbookSolutionsManuals,

@@ -21,7 +21,7 @@ export default function  MyProfile() {
     const [defaultImage, setDefaultImage] = useState("/images/profile_av.jpg");
     const [loader, setLoader ] = useState()
     const [formData, setFormData] = useState({
-        fullname: '',
+        Name: '',
         dob:'',
         Country: '',
         Zipcode: '',
@@ -47,6 +47,7 @@ export default function  MyProfile() {
                 ['Contact']: user.Contact,
                 ['img']: user.img,
             });
+        setStartDate(new Date(user?.dob))
         }
     },[user])
 
@@ -82,7 +83,7 @@ export default function  MyProfile() {
         let form = new FormData();
         form.append('Name',formData.Name);
         form.append('Country',formData.Country);
-        form.append('dob',formData.dob);
+        form.append('dob',startDate);
         form.append('Zipcode',formData.Zipcode);
         form.append('Address',formData.Address);
         form.append('college',formData.college);
@@ -321,15 +322,15 @@ export default function  MyProfile() {
                                     <div className="col-lg-6 col-md-12">
                                         <div className="form-group">
                                         <label>Name</label>
-                                            <input type="text" className="form-control" name="fullname" placeholder="first name" onChange={handleProfile} defaultValue={formData && formData.Name}/>
+                                            <input type="text" className="form-control" name="Name" placeholder="first name" onChange={handleProfile} defaultValue={formData && formData.Name}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-12">
                                         <div className="form-group">
                                             <div className="customDatePickerWidth">
                                                 <label>DOB</label>
-                                                <input type="text" className="form-control" name="dob" placeholder="Enter Your Date of Birth" onChange={handleProfile} defaultValue={formData && formData.dob}/>
-                                                {/* <DatePicker className="form-control" required selected={startDate} format='yyyy-MM-dd' name="deadline_date" onChange={date => setStartDate(date)} /> */}
+                                                {/* <input type="text" className="form-control" name="dob" placeholder="Enter Your Date of Birth" onChange={handleProfile} defaultValue={formData && formData.dob}/> */}
+                                                <DatePicker className="form-control" required selected={startDate}  name="dob" onChange={date => setStartDate(date)} defaultValue={formData && formData.dob}/>
                                             </div>
                                         </div>
                                     </div>

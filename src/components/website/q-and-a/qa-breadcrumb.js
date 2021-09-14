@@ -11,7 +11,7 @@ export default function QABreadCrumb({...props}){
                             <h2>{capitalize(GetName(props.heading))}</h2>
                             <ul className="breadcrumb">
                                 <li><Link to={`/`}>Home</Link><span dangerouslySetInnerHTML={createMarkup('&sol;')}/></li>
-                                <li><Link to={`/q-and-a/`}>{capitalize(props.type)}</Link>{props.subject ? <span dangerouslySetInnerHTML={createMarkup('&sol;')}/>:''}</li>
+                                <li><Link to={`/q-and-a`}>{capitalize(props.type)}</Link>{props.subject ? <span dangerouslySetInnerHTML={createMarkup('&sol;')}/>:''}</li>
                                 <li><Link to={`/q-and-a/${props.subject}`}>{capitalize(props.subject)}</Link>{props.sub_subject? <span dangerouslySetInnerHTML={createMarkup('&sol;')}/>:''}</li> 
                                 <li><Link to={`/q-and-a/${props.subject}/${props.sub_subject}`}>{capitalize(GetName(props.sub_subject))}</Link>{props.sub_sub_subject? <span dangerouslySetInnerHTML={createMarkup('&sol;')}/>:''}</li>
                                 {/* <li>{capitalize(props.sub_subject)}</li> */}

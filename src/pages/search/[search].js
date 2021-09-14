@@ -22,15 +22,15 @@ export default function Search() {
     const { data:searchDataQ, isLoading:searchQIsLoading, error:searchQError } = useQuery([params.search, pageNoQ, 'question'], () => searchDataIndividualQ({searchText:params.search,pageno : pageNoQ, limit:12}),{staleTime:Infinity})
     const { data:searchDataQanA, isLoading:searchQandAIsLoading, error:searchQandAError } = useQuery([params.search, pageNoQ, 'question-qanda'], () => searchDataIndividualQandA({searchText:params.search,pageno : pageNoQ, limit:12}),{staleTime:Infinity})
     
-    if(searchQIsLoading)
-        return <div id="loading"></div>
+    // if(searchQIsLoading)
+    //     return <div id="loading"></div>
 
     return(
         <>
             <Header/>
             <Navbar/>
             <SearchTab/>
-            {searchDataB && <ResultsFound dataB={searchDataB} dataQ={searchDataQ} dataQandA={searchDataQanA} resultsFor={params.search} setPageNoQ={setPageNoQ} pageNoQ={pageNoQ} setPageNoB={setPageNoB} pageNoB={pageNoB}/>}
+            <ResultsFound dataB={searchDataB} dataQ={searchDataQ} dataQandA={searchDataQanA} resultsFor={params.search} setPageNoQ={setPageNoQ} pageNoQ={pageNoQ} setPageNoB={setPageNoB} pageNoB={pageNoB} searchBIsLoading={searchBIsLoading} searchQIsLoading={searchQIsLoading} searchQandAIsLoading={searchQandAIsLoading}/>
             {/* {!searchDataBQ && <ResultsNotFound/>} */}
             <BuySubscription/>
             <HowItWorks/>

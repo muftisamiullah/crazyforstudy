@@ -120,7 +120,7 @@ export default function  Dashboard() {
                                 <div className="header">
                                     <h3><i className="fa fa-bell"></i> Notification </h3>
                                     <ul className="header-dropdown">
-                                        <li> <a href="#" className=""> Read All </a> </li> 
+                                        <li> <Link to="/user/notifications" className=""> Read All </Link> </li> 
                                     </ul>
                                 </div>
                                 <div className="body">

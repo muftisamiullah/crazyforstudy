@@ -43,7 +43,7 @@ export default function SubmitAssignment() {
         }
     }
 
-    const decrementCounter = () => {
+    const decrementCounter = (i) => {
         if(counter > 1  ){
             setCounter(counter - 1);
         }
@@ -68,7 +68,9 @@ export default function SubmitAssignment() {
         form.append('sub_subject',formData.sub_subject)
         form.append('sub_subject_id',formData.sub_subject_id)
         form.append('user_Id',formData.user_Id)
-        form.append('file',formData.image0)
+        form.append('image0',formData.image0)
+        form.append('image1',formData.image1)
+        form.append('image2',formData.image2)
         if(formData.user_Id == undefined){
             localStorage.setItem('assignmentData1',JSON.stringify(formData))
             history.push(`/writing-help/online-assignment-help-2/local`)
@@ -76,7 +78,7 @@ export default function SubmitAssignment() {
             const res = await saveAssignment(form);
             setLoader(false)
             if(res && !res.error){
-                history.push(`/writing-help/online-assignment-help-2/${res.assign._id}`)
+                // history.push(`/writing-help/online-assignment-help-2/${res.assign._id}`)
             }
         }
     }
@@ -140,7 +142,7 @@ export default function SubmitAssignment() {
                                             <div className="dynamic-wrap">
                                                 <div className="form">{[...Array(counter)].map((e, i) =>
                                                     <div className="entry input-group" key={i}>
-                                                        <input className="form-control isbncls" type="file" name={`image${i}`}  onChange={setHandleImage}/>
+                                                        <input className="form-control isbncls" type="file" name={`image${i}`} onChange={setHandleImage}/>
                                                         <span className="input-group-btn">
                                                             {counter == i+1 ?
                                                             <button className="btn btn-add btn-add_more" type="button" onClick={incrementCounter}>
@@ -148,7 +150,7 @@ export default function SubmitAssignment() {
                                                             </button>
                                                             : ''}
                                                             {counter != i+1 ?
-                                                            <button className="btn btn-remove trash_iconadd" type="button" onClick={decrementCounter}>
+                                                            <button className="btn btn-remove trash_iconadd" type="button" onClick={(i)=>{decrementCounter(i)}}>
                                                                 <span className="fa fa-minus" ></span> remove
                                                             </button>
                                                             : ''}

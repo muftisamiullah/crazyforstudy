@@ -48,6 +48,10 @@ export default function Modal({...props}){
             setError("Name Cant be Empty")
             return;
         }
+        if(!/\D/.test(nameRef.current.value)){
+            setError("Name Cant contain Numbers")
+            return;
+        }
         const res = await saveReview(ISBN13, {name:nameRef.current.value, rating:ratings,review:feedbackRef.current.value, country:countryRef.current.value})
         if(res?.status == 201){
             closeDialog();
@@ -88,7 +92,7 @@ export default function Modal({...props}){
                                         <div className="form-row"> 
                                             <div className="col-sm-12 col-md-6 form-group">
                                                 <label>Name </label>
-                                                <input type="text" ref={nameRef} name="name" className="form-control" placeholder="Enter Name" onChange={setDis}/>
+                                                <input type="text" ref={nameRef} name="name" className="form-control" placeholder="Enter Name" onChange={setDis} required/>
                                                 <span style={{color:"red"}}>{error}</span>
                                             </div>            
                                             <div className="col-sm-12 col-md-6 form-group">

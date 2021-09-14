@@ -8,7 +8,7 @@ export default function HelpService(){
                 <div className="col-md-12 text-center mb-5">
                     <div className="Content_Covered_title pb-3">
                         <h2>Our Writing Help Services </h2>
-                        <h3>We develop online assignment writing service in Australia from scratch. writing service in Australia </h3>
+                        <h3>We develop online assignment writing service in Australia from scratch.</h3>
                     </div>
                 </div>
                 <div className="col-md-4 text-center">

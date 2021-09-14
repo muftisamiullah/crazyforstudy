@@ -20,7 +20,7 @@ export default function Privacy() {
 
 <h3>Welcome to CrazyforStudy!</h3> 
 
-<p>Please read the following Terms of Use to learn the rules, regulations, and restrictions that govern your use of our website, its products, services, and applications. If you have any questions or queries regarding these Terms or their Use, please contact our support team at <Link to="#">support@crazyforstudy.com</Link>.</p>
+<p>Please read the following Terms of Use to learn the rules, regulations, and restrictions that govern your use of our website, its products, services, and applications. If you have any questions or queries regarding these Terms or their Use, please contact our support team at <a href="mailto:support@crazyforstudy.com">support@crazyforstudy.com</a>.</p>
 
 <p>Please note that your use of our products and services are subjected to the Terms of Use mentioned in this document. If you do not agree to any of the following regulations, you may not use or access the services in any manner. Your use of the website or its services in anyway would mean that you agree to all the terms and conditions.</p>
 

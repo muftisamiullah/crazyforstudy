@@ -6,7 +6,7 @@ export default function About() {
         <div className="col-md-12 text-center mb-4">
         <div className="Content_Covered_title pb-3">
         <h2>About Online Assignment Help </h2>
-        <h3>We develop online assignment writing service in Australia from scratch. writing service in Australia </h3>
+        <h3>We develop online assignment writing service in Australia from scratch.</h3>
         </div>
         </div>
         <div className="col-md-12 text-center">

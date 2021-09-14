@@ -75,6 +75,17 @@ export async function getQandAChildSubjects(param) {
     }
 }
 
+export async function getQandAChildSubjects2(param) {
+    try {
+        let pagination = {pageno : param.pageno, limit: 10}
+        const res = await axios.post(apiUrl + `subsubject/questions/${param.subject}/${param.sub_subject}`,pagination)
+        return res.data;
+    }
+    catch(e){
+
+    }
+}
+
 export async function getQandAnswer(param) {
     try {
         const res = await axios.post(apiUrl + `subsubject/get-answer/${param}`)

@@ -11,7 +11,7 @@ export default function ResultsFound({...props}){
     const [classn, setClassN]= useState('books');
 
     return(
-        <>{console.log(props.dataQandA)}
+        <>
         <section className="section font_sz bg_colr_expert pt-2 pb-0">
             <div className="container">
                 <div className="row">
@@ -38,14 +38,13 @@ export default function ResultsFound({...props}){
                             </li>
                         </ul>
                     </div>
-
                     <div className="tab-content textbooks_bg">
                         <div id="books" className={`${classn !== 'books' ? 'container tab-pane fade' : 'container tab-pane active'}`}>
                             <div className="row">
                                 <div className="col-md-12 textbooks_title mb-2">
                                     <h3>Textbooks</h3>
                                 </div>
-                                {props && props.dataB && props.dataB.books.length>0 ? props.dataB.books.map((item,key)=>{
+                                {!props.searchBIsLoading ? (props.dataB.books.length>0 ? props.dataB.books.map((item,key)=>{
                                     return( <div className="col-md-4 textbooks_title" key={key}>
                                                 <div className="textbooks_text">
                                                     <div className="">
@@ -79,7 +78,7 @@ export default function ResultsFound({...props}){
                                                 </div>
                                             </div>
                                         )
-                                }): <div className="col-md-4">No Results Found in Books</div>}
+                                }): <div className="col-md-4">No Results Found in Books</div>) : <div>loading, please wait. ..</div>}
                             </div> 
                             {/* <div className="col-md-12 mt-4">
                                 <div className="next_prew">
@@ -94,7 +93,7 @@ export default function ResultsFound({...props}){
                                     </ul>
                                 </div>
                             </div> */}
-                            <Pagination setPageNo={props.setPageNoB} pageNo={props.pageNoB} total={props.dataB.total}/>
+                            {!props.searchBIsLoading && <Pagination setPageNo={props.setPageNoB} pageNo={props.pageNoB} total={props.dataB.total}/>}
                         </div>
 
                         <div id="study"  className={`${classn !== 'study' ? 'container tab-pane fade' : 'container tab-pane active'}`}>
@@ -104,7 +103,7 @@ export default function ResultsFound({...props}){
                                 </div>
 
                                 <OwlCarousel items={3} className="owl-carousel study_slider" loop autoplay={true} nav margin={10}>
-                                    {props && props.dataB && props.dataB.books.map((item,key)=>{
+                                    {!props.searchQIsLoading && props.dataB && props.dataB.books.map((item,key)=>{
                                         return( <div className="item textbooks_title"key={key}>
                                                     <div className="textbooks_text">
                                                         <div className="">
@@ -131,7 +130,7 @@ export default function ResultsFound({...props}){
                                     <div className="container">
                                         <div className="row">
                                             <div className="col-md-12 pb-4 pl-0 pr-0">
-                                                {props && props.dataQ && props.dataQ.questions.length>0 ? props.dataQ.questions.map((item,key)=>{
+                                                {!props.searchQIsLoading ? (props.dataQ.questions.length>0 ? props.dataQ.questions.map((item,key)=>{
                                                 return( <div className="text_q_nd_ans" key={key}>
                                                         <div className="Qtion_n_Stion_text Recent_text related_a">
                                                         {key === 0 ? <h2 className="mb-3"><span>Related Question and Answer</span> </h2> : ''}
@@ -151,9 +150,9 @@ export default function ResultsFound({...props}){
                                                         </div>
                                                         </div>
                                                     </div>)
-                                                }): <div className="col-md-4">No Results Found in Q&A</div>}
+                                                }): <div className="col-md-12">No Results Found in Q&A</div>) : <div className="col-md-12">loading, please wait. ..</div>}
                                             </div>
-                                            <Pagination setPageNo={props.setPageNoQ} pageNo={props.pageNoQ} total={props.dataQ.total}/>
+                                            {!props.searchQIsLoading && <Pagination setPageNo={props.setPageNoQ} pageNo={props.pageNoQ} total={props.dataQ.total}/>}
                                             {/* <div className="col-md-12 mt-2">
                                                 <div className="next_prew">
                                                     <ul>
@@ -179,7 +178,7 @@ export default function ResultsFound({...props}){
                                 <div className="container">
                                 <div className="row">
                                     <div className="col-md-12 pb-4 pl-0 pr-0">
-                                    {props  && props.dataQandA.questions.length>0 ? props.dataQandA.questions.map((item,key)=>{
+                                    {!props.searchQandAIsLoading ? (props.dataQandA?.questions.length>0 ? props.dataQandA?.questions.map((item,key)=>{
                                        return( <div className="text_q_nd_ans" key={key}>
                                             <div className="Qtion_n_Stion_text Recent_text related_a">
                                             {key === 0 ? <h2 className="mb-3"><span>Related Question and Answer</span> </h2> : ''}
@@ -205,7 +204,7 @@ export default function ResultsFound({...props}){
                                             </div>
                                             </div>
                                         </div>)
-                                    }): <div>No Results Found in Q&A</div>}
+                                    }): <div>No Results Found in Q&A</div>) : <div>loading, please wait. ..</div>}
                                     </div>
                                     
                                 </div>
