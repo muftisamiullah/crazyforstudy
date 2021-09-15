@@ -3,7 +3,7 @@ import BlockHeader from '../../components/website/dashboard/block-header'
 import SideBar from '../../components/website/dashboard/sidebar'
 import { Link } from 'react-router-dom';
 import {useHistory} from 'react-router-dom'
-import {useState ,useEffect,useContext} from 'react'
+import {useState ,useEffect,useContext, useRef} from 'react'
 import { useQuery } from 'react-query'
 import {getCountries,getUser,editUserProfile} from '../../libs/profile'
 // import { signIn } from 'next-auth/client'
@@ -123,12 +123,35 @@ export default function  MyProfile() {
         // free memory when ever this component is unmounted
         return () => URL.revokeObjectURL(objectUrl)
     }, [imageUrl])
+    
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            /**
+             * Alert if clicked on outside of element
+             */
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    document.querySelector("body").classList.remove("overlay-open")
+                }
+            }
+    
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
 
     return (
         <>
             <DashboardNavbar data={formData}/>
             {/* <SideBar data={formData}/> */}
-            <aside id="leftsidebar" className="sidebar">
+            <aside id="leftsidebar" ref={wrapperRef} className="sidebar">
                 <ul className="nav nav-tabs">
                     <li className="nav-item"><Link to="/dashboard" className="nav-link" data-toggle="tab" href="" target="_blank"><i className="zmdi zmdi-home"></i></Link></li>
                     <li className="nav-item"><a className="nav-link active" data-toggle="tab" href="#user">Profile</a></li>

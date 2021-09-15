@@ -84,6 +84,10 @@ export default function DashboardNavbar({...props}){
         hideMenu()
     }
 
+    const openSideMenu =()=>{
+        document.querySelector("body").classList.add("overlay-open")
+    }
+
     const markAsRead = async(id,type) => {
         const res = await readNotification(id);
         let url = "";
@@ -104,7 +108,7 @@ export default function DashboardNavbar({...props}){
                 <ul className="nav navbar-nav navbar-left nav_left1 mr-auto">
                     <li>
                         <div className="navbar-header">
-                            {/* <Link to="/dashboard"><a href="#" className="bars"></a></Link> */}
+                            <a href="#" className="bars" onClick={openSideMenu}></a>
                             <Link to="/" className="navbar-brand"><span className="m-l-60"><img src="/images/logo.png" className="img-fluid" alt="logo" width="100"/></span></Link>
                         </div>
                     </li>      

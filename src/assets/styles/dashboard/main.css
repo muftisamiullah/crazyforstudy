@@ -13248,7 +13248,8 @@ body.theme-blush  {
 }
 @media (max-width: 500px) {
     .navbar-header .navbar-brand span {
-        display: none;
+        display: block;
+        width:112px;
     }
     .block-header h2 {
         margin-bottom: 5px;
@@ -20806,7 +20807,7 @@ h4.ans_s {
     background: rgb(248 208 33);
 } 
 .user .block-header .breadcrumb a,.user .block-header .breadcrumb li,.user .breadcrumb-item+.breadcrumb-item::before{color:#000; font-weight:600;}
-.navbar.navbar_dashboard1 {width: calc(100% - 0px);}
+.navbar.navbar_dashboard1 {width: calc(100% - 0px);z-index:999;}
 .sidebar { 
     z-index:10;}
 	

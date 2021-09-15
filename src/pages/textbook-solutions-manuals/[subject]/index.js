@@ -16,7 +16,7 @@ import {getBook, getChapters, getSections, getExercises, getRelatedBooks, getPro
 import {useState, useEffect, useContext} from 'react';
 import BookInfo from '../../../components/website/book-detail/book-info'
 import Highlighter from "react-highlight-words";
-import { replaceAll, MakeSlug } from "../../../components/common/make-slug";
+import { replaceAll, MakeSlug, capitalize } from "../../../components/common/make-slug";
 import {Helmet} from 'react-helmet-async'
 import Subject from './subject'
 import Seo from '../../../components/common/seo'
@@ -43,7 +43,7 @@ export default function Book(){
 
     //commented bcz moved book inside subject so as to match the url
     // const data = params.book != undefined ? params.book.match(regex) : params.book;
-    const data = params.subject != undefined ? params.subject.match(regex) : params.subject;
+    const data = params.subject  != undefined ? params.subject.match(regex) : params.subject;
     const ISBN13 = data ? data[0] : null; 
     
     const [question, setQuestion] = useState();
@@ -144,7 +144,6 @@ export default function Book(){
     useEffect(() => {
         if(books && books.length > 0){
             books[0].similarBooks.length > 0 ? setSimilarBooks(books[0].similarBooks) : setRelatedBook(books[0].sub_subject_name)
-            
             //seo starts
             setSeo(books[0].seo)
             if(seo){
@@ -155,9 +154,12 @@ export default function Book(){
                 setAlttext(replaceAll(books[0].AltImage, mapObj));
                 //seo ends
             }
+            // else{
+            //     setTitle(books[0].BookName + ' ' + books[0].Edition + " Solutions");
+            // }
         }
         return () => {}
-    }, [books,seo])
+    }, [books, seo])
 
     useEffect(() => {
         if(chapters && chapters.length > 0){
@@ -269,31 +271,31 @@ export default function Book(){
             "@type": "ListItem",
             "position": 3,
             "item": {
-                "@id": "https://www.crazyforstudy.com/textbook-solutions-manuals/business/",
-                "name": "Business"
+                "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${books[0] && books[0]?.subject_name}/`,
+                "name": `${capitalize(books[0] && books[0]?.subject_name)}`
                 }
         },
         {
             "@type": "ListItem",
             "position": 4,
             "item": {
-                "@id": "https://www.crazyforstudy.com/textbook-solutions-manuals/business/accounting/",
-                "name": "Accounting"
+                "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${books[0] && books[0]?.subject_name}/${books[0] && books[0]?.sub_subject_name}/`,
+                "name": `${capitalize(books[0] && books[0]?.sub_subject_name)}`
             }
         },
         {
             "@type": "ListItem",
             "position": 5,
             "item": {
-                "@id": "#BookURL",
-                "name": "#BookName"
+                "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${params.subject}`,
+                "name": `${books[0].BookName}`
             }
         }]
         }
 
     return(
         <>
-            {seo && <Seo path={path} title={title} description={description} keywords={keywords} robots={robots}/>}
+            <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema}/>
             <Header/>
             <Navbar/>
             <BreadCrumb type={"TextBook Manual"} heading={books && books[0] && books[0].BookName} subject={books && books[0] && books[0].subject_name} sub_subject={books && books[0] && books[0].sub_subject_name}/>

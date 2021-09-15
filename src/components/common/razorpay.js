@@ -24,7 +24,7 @@ export default function RazorPay({...props}){
                 "subscription_id" : subs_id,
                 "name": "Subscription Plan",
                 "description": "crazy for study",
-                "image": "",
+                "image": "/images/logo_wa.jpg",
                 "handler": async function (response) {
                     // alert(response.razorpay_payment_id),
                     // alert(response.razorpay_subscription_id),

@@ -18,7 +18,7 @@ export default function Reviews() {
             </div>
             </div>
             </section>
-            <section className="section bg_belu1 text_white">
+            <section className="section bg_belu1 text_white pt-4 pb-4">
             <div className="container">
             <div className="row">
             <div className="col-md-6 text-center bg_images1">
@@ -38,7 +38,7 @@ export default function Reviews() {
             </div>
             </div>
         </section>
-        <section className="section bg_green1 text_white">
+        <section className="section bg_green1 text_white pt-4 pb-4">
 <div className="container">
 <div className="row clearfix1">
 <div className="col-md-6 text-center float-right"><span>
@@ -46,7 +46,7 @@ export default function Reviews() {
     <img src="/images/Tutor_Reviews.png" className="img-fluid" alt=""></img>
 </span></div>
 <div className="col-md-6 float-left">
- <div className="Text_title pt-5">
+ <div className="Text_title pt-5 mt-5">
  <h2>View Tutor Reviews </h2>
   <p>Just visit crazyforstudy.com and fill up the assignment submission form. Enter the assignment requirements and upload the files. </p>
  <div className="btn1">

@@ -1,12 +1,61 @@
 import { Link } from 'react-router-dom';
 import { useHistory, useLocation } from "react-router-dom";
+import { getNavbarData } from '../../../libs/home'
+import { useQuery } from 'react-query'
+import { MakeSlug } from '../../common/make-slug'
+import { useState, useRef, useEffect} from 'react';
 
 export default function SideBar({...props}){
+    
     const history = useHistory();
     const location = useLocation();
+    const [display, setDisplay] = useState('none');
+    const [display1, setDisplay1] = useState('none');
+
     
+    const openMenu = () => {
+        if(display == 'none')
+            setDisplay('block')
+        else{
+            setDisplay('none')
+        }
+    }
+
+    const openSubMenu = () => {
+        if(display1 == 'none')
+            setDisplay1('block')
+        else{
+            setDisplay1('none')
+        }
+    }
+
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            /**
+             * Alert if clicked on outside of element
+             */
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    document.querySelector("body").classList.remove("overlay-open")
+                }
+            }
+    
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
+
+    const { data, isLoading } = useQuery('menus', getNavbarData,{ staleTime:Infinity})
+
     return (
-        <aside id="leftsidebar" className="sidebar sidebar_color sidebar_left">
+        <aside id="leftsidebar" ref={wrapperRef} className="sidebar sidebar_color sidebar_left">
             <div className="tab-content">
                 <div className="tab-pane stretchRight active" id="dashboard">
                     <div className="menu">
@@ -28,23 +77,23 @@ export default function SideBar({...props}){
                                 </div>
                             </li>
                             <li className="rs_mual1">
-                                {/* <a href="#" className="menu-toggle waves-effect waves-block">
-                                <span>Solutions Manual</span> </a> */}
-                                <ul className="" style={{display: "none"}}> 
-                                    <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/bussiness.png" className="img-fluid" alt=""/> <span>Business</span> </a>
-                                        <ul className="ml-menu"style={{display: "none"}}>
-                                            <li><a href="#" className=" waves-effect waves-block">Accounting</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Economics</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Finance</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Leadership</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Management</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Marketing</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Operations Management</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
-                                        </ul>
-                                    </li>
+                                <a href="#" className="menu-toggle waves-effect waves-block" onClick={openMenu}>
+                                <span>Solutions Manual</span> </a>
+                                <ul className="" style={{display: `${display}`}}> 
+                                    {data && data.map((item,key)=>{
+                                        return(<li key={key}>
+                                            <Link to="#" className="menu-toggle waves-effect waves-block" onClick={openSubMenu}>
+                                                <img src={`/images/nav-icons/${MakeSlug(item.subject)}.png`} className="img-fluid" alt=""/>
+                                                <span>{item.subject}</span></Link>
+                                                <ul className="ml-menu"style={{display: `${display1}`}}>
+                                                    {item.sub_subject.map((it,key)=>{
+                                                        return <li key={key}><Link to={`/textbook-solutions-manuals/${MakeSlug(item.subject)+'/'+MakeSlug(it.sub_subject)}`} key={key} className="waves-effect waves-block">{it.sub_subject}</Link></li>
+                                                    })}
+                                                </ul>
+                                        </li>)
+                                    })}
 
-                                    <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/engineering.png" className="img-fluid" alt=""/> <span>Engineering  </span> </a>
+                                    {/* <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/engineering.png" className="img-fluid" alt=""/> <span>Engineering  </span> </a>
                                         <ul className="ml-menu" style={{display: "none"}}>
                                             <li><a href="#" className=" waves-effect waves-block">Bioengineering</a> </li>
                                             <li><a href="#" className=" waves-effect waves-block">Chemical Engineering</a> </li>
@@ -92,7 +141,7 @@ export default function SideBar({...props}){
                                             <li><a href="#" className=" waves-effect waves-block">Other</a> </li>
                                             <li><a href="#" className=" waves-effect waves-block">Music</a> </li> 
                                         </ul>
-                                    </li>  
+                                    </li>   */}
 
                                     <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/law.png" className="img-fluid" alt=""/> <span>Law  </span> </a>
                                         <ul className="ml-menu" style={{display: "none"}}>

@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { useLocation, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import AuthProvider from './context/AuthContext.jsx';
-import {useCallback, useEffect} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 function App() {
 	const queryClient = new QueryClient();
@@ -21,6 +21,38 @@ function App() {
 			document.querySelector("body").classList.add("web_font1")
 		}
 	});
+
+	// useEffect(() => {
+	// 	if(window.innerHeight < 1170){
+	// 		document.querySelector("body").classList.add("ls-closed")
+	// 	}else{
+	// 		document.querySelector("body").classList.remove("ls-closed")
+	// 	}
+	// });
+
+	const [width, setWidth] = useState(window.innerWidth);
+
+	function handleWindowSizeChange() {
+		setWidth(window.innerWidth);
+		if(window.innerWidth < 1170){
+			document.querySelector("body").classList.add("ls-closed")
+		}else{
+			document.querySelector("body").classList.remove("ls-closed", "overlay-open")
+		}
+	}
+
+	useEffect(() => {
+			if(width < 1170){
+				document.querySelector("body").classList.add("ls-closed")
+			}else{
+				document.querySelector("body").classList.remove("ls-closed", "overlay-open")
+			}
+			window.addEventListener('resize', handleWindowSizeChange);
+			return () => {
+				window.removeEventListener('resize', handleWindowSizeChange);
+				document.querySelector("body").classList.add("ls-closed")
+			}
+	}, []);
 
 	return (
 		<HelmetProvider>

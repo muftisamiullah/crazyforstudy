@@ -4,7 +4,7 @@ export default function Help() {
     const vidRef = useRef(null);
 
     return (
-        <section className="section bg_yellow">
+        <section className="section bg_yellow pt-4 pb-4">
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 text-center bg_images1">
@@ -14,7 +14,7 @@ export default function Help() {
                         </span>
                     </div>
                     <div className="col-md-6">
-                        <div className="Text_title">
+                        <div className="Text_title text_tb_center">
                             <h5 className="pb-2">Textbook Solutions</h5>
                             <h2> How Online Assignment Help Works </h2>
                             <ul className="include_list">
