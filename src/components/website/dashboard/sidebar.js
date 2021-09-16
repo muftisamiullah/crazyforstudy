@@ -4,13 +4,15 @@ import { getNavbarData } from '../../../libs/home'
 import { useQuery } from 'react-query'
 import { MakeSlug } from '../../common/make-slug'
 import { useState, useRef, useEffect} from 'react';
+import { imageUrl } from '../../../config/config';
 
 export default function SideBar({...props}){
     
     const history = useHistory();
     const location = useLocation();
     const [display, setDisplay] = useState('none');
-    const [display1, setDisplay1] = useState('none');
+    const [display1, setDisplay1] = useState(false);
+    const [dis, setDis] = useState(null);
 
     
     const openMenu = () => {
@@ -21,11 +23,13 @@ export default function SideBar({...props}){
         }
     }
 
-    const openSubMenu = () => {
-        if(display1 == 'none')
-            setDisplay1('block')
+    const openSubMenu = (key) => {
+        setDis(key);
+        console.log(key)
+        if(display1 == true)
+            setDisplay1(false)
         else{
-            setDisplay1('none')
+            setDisplay1(true)
         }
     }
 
@@ -63,7 +67,7 @@ export default function SideBar({...props}){
                             <li className="mb-0 border-bottom-0">
                                 <div className="user-info  border-bottom-0">
                                     <div className="image circle">
-                                        <Link to="/user/my-profile"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : process.env.REACT_APP_LIVE_URL_basePath + '/uploads/'+ props.data.img) : "/images/profile_av.jpg"} className="profile-pic" alt="User"/></Link>
+                                        <Link to="/user/my-profile"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img) : "/images/profile_av.jpg"} className="profile-pic" alt="User"/></Link>
                                         <div className="profile_pic_change">
                                             <div className="p-image">
                                                 <i className="fa fa-camera upload-button"></i>
@@ -80,12 +84,12 @@ export default function SideBar({...props}){
                                 <a href="#" className="menu-toggle waves-effect waves-block" onClick={openMenu}>
                                 <span>Solutions Manual</span> </a>
                                 <ul className="" style={{display: `${display}`}}> 
-                                    {data && data.map((item,key)=>{
+                                    {data && data.map((item, key)=>{
                                         return(<li key={key}>
-                                            <Link to="#" className="menu-toggle waves-effect waves-block" onClick={openSubMenu}>
+                                            <Link to="#" className="menu-toggle waves-effect waves-block" onClick={() => openSubMenu(key)}>
                                                 <img src={`/images/nav-icons/${MakeSlug(item.subject)}.png`} className="img-fluid" alt=""/>
                                                 <span>{item.subject}</span></Link>
-                                                <ul className="ml-menu"style={{display: `${display1}`}}>
+                                                <ul className="ml-menu" style={{display: key == dis && display1 == true ? 'block': 'none' }}>
                                                     {item.sub_subject.map((it,key)=>{
                                                         return <li key={key}><Link to={`/textbook-solutions-manuals/${MakeSlug(item.subject)+'/'+MakeSlug(it.sub_subject)}`} key={key} className="waves-effect waves-block">{it.sub_subject}</Link></li>
                                                     })}
@@ -143,7 +147,8 @@ export default function SideBar({...props}){
                                         </ul>
                                     </li>   */}
 
-                                    <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/law.png" className="img-fluid" alt=""/> <span>Law  </span> </a>
+                                    {/* <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/law.png" className="img-fluid" alt=""/> <span>Law  </span> </a></li> */}
+                                    <li>
                                         <ul className="ml-menu" style={{display: "none"}}>
                                             <ul className="list profile_left">
                                                 <li className="mb-0 border-bottom-0">

@@ -20873,7 +20873,7 @@ h4.ans_s {
 	height:80px; overflow:hidden;
     vertical-align: bottom !important;
     border:2px solid #f8d021;}
-	.sidebar .user-info .image a{padding:0px !important}
+	.sidebar .user-info .image a{padding:0px !important;cursor:default;}
 	.sidebar .user-info .image img{width:100%; border:none; border-radius: 0;
     box-shadow: none;}
 	
@@ -21629,4 +21629,106 @@ font-size: 14px; padding:0 15px; border-left:1px solid #ccc; display:inline-bloc
 	height: 380px;
 	overflow-x: auto
 }
+}
+
+@media (max-width: 767px){ 
+    .order-sub-cancel, .order-sub-view {
+        width: 141px;
+        margin-bottom: 5px;
+        border-radius: 3px;
+        border: 1px solid #335ff3;
+        background: linear-gradient(
+    45deg,#424aea,#2475fc);
+        color: #fff;
+        font-size: 13px;
+        padding: 8px 6px;
+        cursor: pointer;
+        display: block;
+        text-align: center;
+    }
+    
+    table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.space th.w-25 {
+        width: auto !important;
+        text-align: left !important;
+        padding: 0 30px 0 20px !important;
+    }
+    table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.space td.w-25 {
+        width: auto !important;
+        padding: 0 30px 0 20px !important;
+    }
+    
+    table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.space2 th {
+        width: auto !important;
+        padding: 0 20px !important;
+    }
+    
+    .ask_qus {
+        padding: 0 15px;
+    }
+    .ask_qus form {
+        padding: 5px; 
+    }
+    
+    .row.upld_img_dbd .col-md-6.pl-0 {
+        padding-left: 15px !important;
+        padding-top: 20px;
+    }
+    
+    .row.page-nav-menu-row .col-md-6.text-right, .row.page-nav-menu-row .col-md-6.text-left {
+        width: 50%;
+    padding:20px;
+    }
+    .page-nav-menu {
+        padding: 6px 10px;
+        display: inline-block;
+        font-size: 14px;}
+    .breadcrumb li.breadcrumb_cuspom {
+        line-height: 27px;
+    }
+    
+    .banner.banner-color.mt-0.comp {
+        background: #2e3192;
+        display: block;}
+    .banner.banner-color.mt-0.comp {
+        background: #2e3192;
+        display: block;}
+    
+    p.detail_item.head_ass {
+        word-wrap: break-word;
+        line-height: 20px;
+    }
+    
+    .Total_cost_of_assignment ul li:nth-child(2):before, .Total_cost_of_assignment ul li:nth-child(3):before,.Total_cost_of_assignment ul li:nth-child(3):after,.Total_cost_of_assignment ul li:nth-child(4):before, .Total_cost_of_assignment ul li:nth-child(5):before,.Total_cost_of_assignment ul li:nth-child(5):after,.Total_cost_of_assignment ul li:nth-child(6):before{display:none;}
+    .Current_Status a.Add_Money {
+        background: #addb42!important;
+        color: #000;
+        display: block;
+        width: 150px;
+        margin: auto;
+    }
+    .Current_Status a.Complete {
+        background: #f8d021!important;
+        width: 150px;
+        color: #000;
+        display: block;
+        margin: auto;
+    }
+    .cus_modal.profile_modal.hc_assignment.casestudy {
+        height: auto;
+    }
+    .Pay_From_Wallet h5 {
+        margin-bottom: 11px!important;
+    }
+    .input-group-addon i {
+        vertical-align: middle;
+        text-align: center;
+        position: relative;
+        top: 5px;
+        padding-left: 15px; 
+    }
+    .theme-blush .user .block-header h2 small {
+        font-size: 15px!important;
+        font-weight: 500!important;
+        display: block !important;
+    }
 }

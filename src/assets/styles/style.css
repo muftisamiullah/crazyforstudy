@@ -1650,7 +1650,7 @@ new writing */
     transform: translateY(-50%);
     z-index: 9;
 }
-.nav_tab_wecover li a{position:relative; margin-bottom: 21px;}
+.nav_tab_wecover li a{position:relative; margin-bottom: 21px;cursor: pointer;}
 .nav_tab_wecover li a.active:before{content: "\f0d7";
     font-family: FontAwesome;
     font-size: 55px;

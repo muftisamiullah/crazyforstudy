@@ -291,11 +291,60 @@ export default function Book(){
                 "name": `${books[0].BookName}`
             }
         }]
+    }
+
+    const reviewSchema = {
+        "@context" : "http://schema.org",
+        "@type" : "Book",
+        "name" : `${books[0].BookName + ' ' + books[0].Edition + " Solutions manual"}`,
+        "bookEdition": `${(books[0].Edition)?.split(" ", 1)}`,
+        "image" : "https://www.crazyforstudy.com/uploads/.jpg",
+        "author" : {
+            "@type" : "Person",
+            "name" : `${books[0].Author1}`
+        },
+        "inLanguage" : "English",
+        "isbn" : `${books[0].ISBN13}`,
+        "aggregateRating" : {
+            "@type" : "AggregateRating",
+            "ratingValue" : `${books[0].ratingAv}`,
+            "bestRating": `${books[0].bestRating}`,
+            "ratingCount" : `${books[0].total}`
         }
+    }
+
+    const faqSchema =  {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "#FaqQuestion",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "#FaqAnswer"
+                }
+            },{
+                "@type": "Question",
+                "name": "#FaqQuestion",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "#FaqAnswer"
+                }
+            },{
+                "@type": "Question",
+                "name": "#FaqQuestion",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "#FaqAnswer"
+                }
+            }
+        ]
+    }
 
     return(
         <>
-            <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema}/>
+            <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema} reviewSchema={reviewSchema}/>
             <Header/>
             <Navbar/>
             <BreadCrumb type={"TextBook Manual"} heading={books && books[0] && books[0].BookName} subject={books && books[0] && books[0].subject_name} sub_subject={books && books[0] && books[0].sub_subject_name}/>

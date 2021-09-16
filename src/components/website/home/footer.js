@@ -40,7 +40,7 @@ export default function Footer() {
 					<div className="col-md-3 pl-4">
 					<h3>Contact</h3>
 					<ul>
-						<li><Link to="#"><i className="fa fa-angle-right"></i> Sitemap </Link></li>
+						<li><Link to="/sitemap"><i className="fa fa-angle-right"></i> Sitemap </Link></li>
 						<li><a href="tel:+17755000051"><i className="fa fa-angle-right"></i> +1 (775) 500-0051 </a></li>
 						<li><a href="mailto:support@crazyforstudy.com"><i className="fa fa-angle-right"></i> support@crazyforstudy.com</a></li>
 					</ul>

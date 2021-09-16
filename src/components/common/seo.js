@@ -32,7 +32,8 @@ export default function Seo({...props}){
             <meta name="twitter:site" content="@CrazyForStudy1"/>
             <meta name="twitter:image" content="#SameAsBookImageURL" />
 
-            (<script type="application/ld+json">{`${JSON.stringify(props.breadcrumbSchema)}`}</script>)
+            {props.breadcrumbSchema && (<script type="application/ld+json">{`${JSON.stringify(props.breadcrumbSchema)}`}</script>)}
+            {props.reviewSchema && (<script type="application/ld+json">{`${JSON.stringify(props.reviewSchema)}`}</script>)}
         </Helmet>
     )
 }

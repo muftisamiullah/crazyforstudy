@@ -8,6 +8,7 @@ import {useParams, useHistory, useLocation} from 'react-router-dom'
 import {getNotifications, readNotification} from '../../../libs/question'
 import {Helmet} from 'react-helmet-async'
 import {AuthContext} from '../../../context/AuthContext';
+import { imageUrl } from '../../../config/config';
 
 export default function DashboardNavbar({...props}){
     const history = useHistory();
@@ -149,7 +150,7 @@ export default function DashboardNavbar({...props}){
                         </div>}
                     </li>
                     <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} onMouseEnter={openDropdown}>
-                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="my_pics_img m-r-60 mt-0"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : process.env.REACT_APP_LIVE_URL_basePath + '/uploads/'+ props.data.img) : "/images/profile_av.jpg"} alt="User" className="img-fluid"/></span></a>
+                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="my_pics_img m-r-60 mt-0"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img) : "/images/profile_av.jpg"} alt="User" className="img-fluid"/></span></a>
                         {showDropdown && <><div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>{hideDropdown()}}>
                             <Link to="/dashboard" className="dropdown-item" href="#"> Dashboard</Link>
                             <Link to="/user/my-orders" className="dropdown-item" href="#"> My Orders</Link>

@@ -24,9 +24,31 @@ export default function TextbookSolutionsManuals(){
     const keywords = "Textbook Solutions, Textbook Solutions Manual, Textbook Solutions Manuals, Textbook Solution Manual, Textbook Solution Manuals, Free Textbook Solutions, Textbook Answers, Textbook Solution"
     const path = process.env.REACT_APP_URL + location.pathname
     
+    const breadcrumbSchema = {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": 
+        [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                    "@id": "https://www.crazyforstudy.com/",
+                    "name": "Home"
+                }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "@id": "https://www.crazyforstudy.com/textbook-solutions-manuals/",
+                "name": "Textbook Solutions Manual"
+                }
+        }]
+    }
+
     return(
         <>  
-            <Seo path={path} title={title} description={description} keywords={keywords}/>
+            <Seo path={path} title={title} description={description} keywords={keywords} breadcrumbSchema={breadcrumbSchema}/>
             <Header/>
             <Navbar/>
             <QandASearch/>

@@ -3,10 +3,13 @@ import axios from 'axios';
 
 // const apiUrl = `http://127.0.0.1:8080/web/v1/`;
 let apiUrl = '';
+let imageUrl = '';
 if(process.env.NODE_ENV === 'production'){
     apiUrl = `${process.env.REACT_APP_LIVE_URL_basePath}/web/v1/`;
+    imageUrl = `${process.env.REACT_APP_LIVE_URL_basePath}/uploads/`;
 }else{
     apiUrl = `${process.env.REACT_APP_LOCAL_URL_basePath}/web/v1/`;
+    imageUrl = `${process.env.REACT_APP_LOCAL_URL_basePath}/uploads/`;
 }
 
 const config = {
@@ -27,4 +30,4 @@ authAxios.interceptors.request.use(async function(config) {
     return config;
 });
 
-export { apiUrl, axios, authAxios };
+export { apiUrl, axios, authAxios, imageUrl };

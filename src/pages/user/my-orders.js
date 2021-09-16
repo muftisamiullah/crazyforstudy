@@ -7,6 +7,7 @@ import {getUser} from '../../libs/profile'
 import {useState, useContext} from 'react'
 import {getAllAssignments} from '../../libs/assignment'
 import {AuthContext} from '../../context/AuthContext';
+import {imageUrl} from '../../config/config';
 
 export default function MyOrders(){
    const { state } = useContext(AuthContext);
@@ -36,7 +37,7 @@ export default function MyOrders(){
                </div>
                <div className="body">
                   <div className="table-responsive" id="accordion">
-                     <table className="table table-hover m-b-0 my-order-new my_subscrption_table">
+                     <table className="table table-hover m-b-0 my-order-new my_subscrption_table space2">
                         <thead>
                            <tr className="table_title order">
                               <th className="w-25">S.No</th>
@@ -74,7 +75,7 @@ export default function MyOrders(){
                                              <div className="col-md-4">
                                                 <div className="d-md-flex align-items-center">
                                                    <div className="receipt-img">
-                                                      <img className="order-book-img" src="/images/cfs-dumt-img.png" draggable="false"/>
+                                                      <img className="order-book-img" src={imageUrl + item.image0} draggable="false"/>
                                                    </div>
                                                    <div className="receipt-txt">
                                                       <h4 className="order-type-collpse">{item.subscription_id}</h4>{item.question.substring(0,100)}

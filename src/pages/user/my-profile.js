@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import {useHistory} from 'react-router-dom'
 import {useState ,useEffect,useContext, useRef} from 'react'
 import { useQuery } from 'react-query'
-import {getCountries,getUser,editUserProfile} from '../../libs/profile'
+import {getCountries, getUser, editUserProfile, updatePass} from '../../libs/profile'
 // import { signIn } from 'next-auth/client'
 import {AuthContext} from '../../context/AuthContext';
 import {capitalize} from '../../components/common/make-slug';
 import DatePicker from "react-datepicker";
+import { imageUrl as imageUrl1} from '../../config/config'
 
 export default function  MyProfile() {
     const { state } = useContext(AuthContext);
@@ -20,6 +21,13 @@ export default function  MyProfile() {
     const [preview, setPreview] = useState();
     const [defaultImage, setDefaultImage] = useState("/images/profile_av.jpg");
     const [loader, setLoader ] = useState()
+    const [loader1, setLoader1 ] = useState()
+    const [display, setDisplay ] = useState('none')
+    const [error, setError] = useState();
+    const [passData, setPassData] = useState({
+        pass: '',
+        confirmPass: '',
+    })
     const [formData, setFormData] = useState({
         Name: '',
         dob:'',
@@ -97,6 +105,14 @@ export default function  MyProfile() {
         }setLoader(false)
     }
 
+    const openChangePassword = () => {
+        if(display == 'block'){
+            setDisplay('none')
+        }else{
+            setDisplay('block')
+        }
+    }
+
     const uploadImage = () => {
         document.getElementById('file-up2').click();
     }
@@ -123,7 +139,33 @@ export default function  MyProfile() {
         // free memory when ever this component is unmounted
         return () => URL.revokeObjectURL(objectUrl)
     }, [imageUrl])
-    
+
+    const changeP = (e) => {
+        setPassData({
+            ...passData,
+            [e.target.name]: e.target.value,
+            id:localStorage.getItem('_id')
+        });
+    }
+
+    const updatePassword = async() => {
+        setLoader1(true);
+        const res = await updatePass(passData);
+        if(res.status == 200){
+            setLoader1(false)
+            setError('Password updated successfully')
+        }else{
+            setLoader1(false)
+        }
+    }
+
+    useEffect(() => {
+		let timerError = setTimeout(() => setError(''), 3000);
+		return () => {
+			clearTimeout(timerError);
+		}
+	}, [error])
+
     function useOutsideAlerter(ref) {
         useEffect(() => {
             /**
@@ -163,7 +205,7 @@ export default function  MyProfile() {
                             <li>
                                 <div className="user-info m-b-20 p-b-15">
                                     <div className="image circle">
-                                    <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LIVE_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
+                                    <img src={formData.img ? (formData.img.includes('http') ? formData.img : imageUrl1 + formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
                                     
                                 <div className="profile_pic_change">
                                 <div className="p-image" >
@@ -236,7 +278,7 @@ export default function  MyProfile() {
                                     <div className="profile-image">
                                         <div className="user-info">
                                             <div className="image circle">
-                                                <img src={formData.img ? (formData.img.includes('http') ? formData.img : process.env.REACT_APP_LIVE_URL_basePath + '/uploads/'+ formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
+                                                <img src={formData.img ? (formData.img.includes('http') ? formData.img : imageUrl1 + formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
                                             </div>
                                             <div className="profile_pic_change">
                                                 <div className="p-image p-image2">
@@ -319,23 +361,24 @@ export default function  MyProfile() {
                                 <div className="form-group">
                                     <input type="password" className="form-control" placeholder="New Password">
                                 </div> --> */}
-                                {/* <button className="btn btn-info btn-round" id="changepass"> Changes Password</button> */}
+                                <button className="btn btn-info btn-round" id="changepass" onClick={openChangePassword}> Changes Password</button>
 
-                                <div className="row clearfix" id="changepass2" style={{display:"none"}}>
+                                <div className="row clearfix" id="changepass2" style={{display:`${display}`}}>
                                     <div className="col-lg-6 col-md-12">
                                         <div className="form-group">
                                         <label>New Password</label>
-                                            <input type="text" className="form-control" placeholder="New Password"/>
+                                            <input type="password" className="form-control" name="pass" placeholder="New Password" onChange={changeP}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-12">
                                         <div className="form-group">
                                         <label>Confirm Password</label>
-                                            <input type="text" className="form-control" placeholder="Confirm Password"/>
+                                            <input type="password" className="form-control" name="confirmPass" placeholder="Confirm Password" onChange={changeP}/>
                                         </div>
                                     </div>
                                     <div className="col-md-12">
-                                        <button className="btn btn-primary btn-round" id="successProfileUpdatebtn" >Submit</button>
+                                        <button className="btn btn-primary btn-round" id="successProfileUpdatebtn" onClick={updatePassword}>{loader1 ? "Updating": "Update Password"}</button>
+                                        <span style={{color:"green"}}>{error}</span>
                                     </div>
                                     </div>
 

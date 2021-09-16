@@ -43,3 +43,15 @@ export async function editUserProfile(data) {
     }
 }
 
+export async function updatePass(data) {
+    try {
+        const res = await authAxios.post(apiUrl + 'student/update-pass', data)
+        return res;
+    }
+    catch(e){
+        if(e.response.status === 401){
+            return null;
+        }
+    }
+}
+

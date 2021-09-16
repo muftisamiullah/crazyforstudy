@@ -38,7 +38,7 @@ export default function MySubs(){
                         </div>
                         <div className="body">
                             <div className="table-responsive" id="accordion">
-                                <table className="table table-hover m-b-0 my-order-new my_subscrption_table">
+                                <table className="table table-hover m-b-0 my-order-new my_subscrption_table space2">
                                     <thead>
                                     <tr className="table_title order">
                                         <th className="w-10">S.No</th>

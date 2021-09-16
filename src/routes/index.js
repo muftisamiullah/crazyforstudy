@@ -35,6 +35,8 @@ import FaqId from '../pages/faqs/[id]'
 
 import PayNow from '../pages/paynow';
 
+import SiteMap from '../pages/sitemap';
+
 export const publicRoutes = [
     {
         path: '/',
@@ -124,6 +126,10 @@ export const publicRoutes = [
     {
         path: '/faqs/:id',
         component: FaqId
+    },
+    {
+        path: '/sitemap',
+        component: SiteMap
     },
 ]
 export const privateRoutes = [

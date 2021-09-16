@@ -2,6 +2,7 @@ import Modal from '../../common/modal'
 import {useState, useContext} from 'react'
 import {AuthContext} from '../../../context/AuthContext';
 import { useHistory, useParams } from 'react-router-dom';
+import { imageUrl } from '../../../config/config';
 
 export default function Reviews({...props}){
     const [display, setDisplay] = useState(false);
@@ -61,7 +62,7 @@ export default function Reviews({...props}){
                                             <div className="user_icon1_bg" key={key}>
                                                 <div className="user_icon1_text text-center">
                                                     <ul>
-                                                        <li><span className="img"><img src={process.env.REACT_APP_LIVE_URL_basePath + '/uploads/'+ item.image} className="img-fluid" alt=""/></span></li>
+                                                        <li><span className="img"><img src={imageUrl + item.image} className="img-fluid" alt=""/></span></li>
                                                         <li>
                                                         {[...Array(item.rating)].map((e, i) => 
                                                             <i className="fa fa-star" key={i}></i>

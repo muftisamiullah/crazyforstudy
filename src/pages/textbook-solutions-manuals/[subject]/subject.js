@@ -15,17 +15,49 @@ import About from '../../../components/website/all-subjects/about';
 import {getSubSubject} from '../../../libs/subsubject'
 import {Helmet} from 'react-helmet-async'
 import { capitalize } from "../../../components/common/make-slug";
+import Seo from '../../../components/common/seo'
 
 export default function Subject(){
     const params = useParams();
     const location = useLocation();
     const history = useHistory();
+
     const title = `Get Reliable ${capitalize(params.subject)} Textbook Solutions Manual`
     const description = `Get Access ${capitalize(params.subject)} Textbook Solutions from Crazy For Study. For ${capitalize(params.subject)} textbook answers, ${capitalize(params.subject)} Step-by-step solutions, ${capitalize(params.subject)} Solutions manual and Assignment Help, try Crazy For Study today!`
     const keywords = `${capitalize(params.subject)} textbook solutions, ${capitalize(params.subject)} solutions manual, ${capitalize(params.subject)} textbook solution manuals`
-    const copyright = `Copyright ${new Date().getFullYear()} Crazyforstudy.com`
+    // const copyright = `Copyright ${new Date().getFullYear()} Crazyforstudy.com`
     const path = process.env.basePath + location.pathname
 
+    const breadcrumbSchema = {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": 
+        [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                    "@id": "https://www.crazyforstudy.com/",
+                    "name": "Home"
+                }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "@id": "https://www.crazyforstudy.com/textbook-solutions-manuals/",
+                "name": "Textbook Solutions Manual"
+                }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${params.subject}/`,
+                "name": `${capitalize(params.subject)}`
+                }
+        }]
+    }
+    
     const { data: subSubjects, isLoading:subSubjectIsLoading, error:subSubjectError } = useQuery([params.subject], () => getSubSubject( params.subject ),{staleTime:Infinity})
     
     if(subSubjectIsLoading)
@@ -33,7 +65,7 @@ export default function Subject(){
 
     return(
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>{title}</title>
                 <meta name="description" content={description}></meta>
                 <meta name="keywords" content={keywords}></meta>
@@ -44,7 +76,6 @@ export default function Subject(){
                 <meta name="robots" content="index, follow"/>
                 <link rel="canonical" href={path}/>
                 
-                {/* og:Meta Title */}
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
                 <meta property="og:type" content="website" />
@@ -53,14 +84,15 @@ export default function Subject(){
                 <meta property="og:locale" content="en_US" />
                 <meta name="og_site_name" property="og:site_name" content="Crazyforstudy.com"/>
 
-                {/* Twitter */}
                 <meta name="twitter:widgets:csp" content="on"/>
                 <meta name="twitter:card" content="summary_large_image"/>
                 <meta name="twitter:title" content={title}/>
                 <meta name="twitter:description" content={description} />
                 <meta name="twitter:site" content="@CrazyForStudy1"/>
                 <meta name="twitter:image" content="#SameAsBookImageURL" />
-            </Helmet>
+            </Helmet> */}
+
+            <Seo path={path} title={title} description={description} keywords={keywords} breadcrumbSchema={breadcrumbSchema}/>
             <Header/>
             <Navbar/>
             <QandASearch/>
