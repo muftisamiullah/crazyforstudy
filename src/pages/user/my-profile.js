@@ -351,7 +351,9 @@ export default function  MyProfile() {
                             
                             <ul className="nav nav-tabs profile_editbtn">
                                 <li className="nav-item"><a className="nav-link active" data-toggle="tab" href="#Account">Account</a></li>
-                                <li className="nav-item"><a className="nav-link " href=""><i className="zmdi zmdi-edit"></i></a></li>
+                                <li className="nav-item">
+                                    {/* <a className="nav-link " href=""><i className="zmdi zmdi-edit"></i></a> */}
+                                    </li>
                             </ul>
                             <div className="tab-content">
                                 <div className="tab-pane body active" id="Account">

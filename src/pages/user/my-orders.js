@@ -37,7 +37,7 @@ export default function MyOrders(){
                </div>
                <div className="body">
                   <div className="table-responsive" id="accordion">
-                     <table className="table table-hover m-b-0 my-order-new my_subscrption_table space2">
+                     <table className="table table-hover m-b-0 my-order-new my_subscrption_table space">
                         <thead>
                            <tr className="table_title order">
                               <th className="w-25">S.No</th>

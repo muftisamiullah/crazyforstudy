@@ -21731,4 +21731,13 @@ font-size: 14px; padding:0 15px; border-left:1px solid #ccc; display:inline-bloc
         font-weight: 500!important;
         display: block !important;
     }
+    .payment_section2 p {
+        font-weight: 600;
+        color: #a5a6a7;
+        line-height: 19px;
+        margin-top: 20px !important;
+    }
+    .col-md-6.aas_details {
+        width: 50%;
+    }
 }

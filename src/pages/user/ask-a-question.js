@@ -42,6 +42,7 @@ export default function AskQuestion(){
    const [formData, setFormData] = useState({});
    const [image, setImage] = useState({});
    const [isLoading, setIsLoading] = useState(false);
+   const [count, setCount] = useState(0);
 
    const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined, staleTime:Infinity, enabled: !!session})
    const { data: subjects, isLoading:subjectsIsLoading, error:subjectsError } = useQuery(['subjects'], () => getSubjects(),{staleTime:Infinity, enabled: !!session}) //only called when session would be present
@@ -92,6 +93,17 @@ export default function AskQuestion(){
       setFormData({...formData, [e.target.name]: e.target.files[0] })
       setImage({...image, [e.target.name] : URL.createObjectURL(e.target.files[0])})
    }
+
+   useEffect(()=>{
+      console.log(formData)
+      if(formData.image1){
+         setCount(1);
+      }else if(formData.image2){
+         setCount(1)
+      }else if(formData.image1 && formData.image2){
+         setCount(2)
+      }
+   },[formData])
 
    const askQuestion = async () => {
       // setFormData({...formData, user_Id : session.user._id, type :'QA'})
@@ -258,7 +270,7 @@ export default function AskQuestion(){
                                              <div className="col-md-12">
                                                 <label className="mb-0">Upload Images</label>
                                                 <div className="col-md-12 p-0 image_quest">
-                                                   <span> <i className="fa fa-image"></i> 0/2 images</span>
+                                                   <span> <i className="fa fa-image"></i> {count}/2 images</span>
                                                 </div>
                                              </div>
                                              <div className="col-md-6 pr-0">

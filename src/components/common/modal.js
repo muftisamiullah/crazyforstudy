@@ -45,11 +45,11 @@ export default function Modal({...props}){
     const saveRev = async(e) => {
         e.preventDefault();
         if(nameRef.current.value == ""){
-            setError("Name Cant be Empty")
+            setError("Name Can't be Empty")
             return;
         }
         if(!/\D/.test(nameRef.current.value)){
-            setError("Name Cant contain Numbers")
+            setError("Name Can't contain Numbers")
             return;
         }
         const res = await saveReview(ISBN13, {name:nameRef.current.value, rating:ratings,review:feedbackRef.current.value, country:countryRef.current.value, userId:localStorage.getItem('_id')})

@@ -9,7 +9,7 @@ export default function HowItWorks(){
                      <h3>To get the necessary help with your assignments, just follow the easy process below.</h3>
                   </div>
                </div>
-               <div className="col-md-3 text-center Submit_Assinment2">
+               <div className="col-md-6 col-lg-3 text-center Submit_Assinment2">
                   <ul>
                      <li><span><img src="/images/edit.png" className="img-fluid"/></span></li>
                      <li>
@@ -18,7 +18,7 @@ export default function HowItWorks(){
                      <li className="number">1</li>
                   </ul>
                </div>
-               <div className="col-md-3 text-center Submit_Assinment2">
+               <div className="col-md-6 col-lg-3 text-center Submit_Assinment2">
                   <ul>
                      <li><span><img src="/images/shape1.png" className="img-fluid"/></span></li>
                      <li>
@@ -27,7 +27,7 @@ export default function HowItWorks(){
                      <li className="number">2</li>
                   </ul>
                </div>
-               <div className="col-md-3 text-center Submit_Assinment2">
+               <div className="col-md-6 col-lg-3 text-center Submit_Assinment2">
                   <ul>
                      <li><span><img src="/images/edit.png" className="img-fluid"/></span></li>
                      <li>
@@ -36,7 +36,7 @@ export default function HowItWorks(){
                      <li className="number">3</li>
                   </ul>
                </div>
-               <div className="col-md-3 text-center Submit_Assinment2">
+               <div className="col-md-6 col-lg-3 text-center Submit_Assinment2">
                   <ul>
                      <li><span><img src="/images/shape1.png" className="img-fluid"/></span></li>
                      <li>
