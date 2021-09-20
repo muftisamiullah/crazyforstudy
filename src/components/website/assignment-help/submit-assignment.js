@@ -143,19 +143,18 @@ export default function SubmitAssignment() {
                                             <div className="dynamic-wrap">
                                                 <div className="form">{[...Array(counter)].map((e, i) =>
                                                     <div className="entry input-group" key={i}>
-                                                        <input className="form-control isbncls" type="file" name={`image${i}`} onChange={setHandleImage}/>
-                                                        {/* <div class="file-input fileinput_new">
-                                                            <input type="file" name={`image${i}`} onChange={setHandleImage}/>
-                                                            <span class="button">Choose File</span>
-                                                            <span class="label" data-js-label>No file selected</span>
-                                                        </div> */}
+                                                        {/* <input className="form-control isbncls" type="file" name={`image${i}`} onChange={setHandleImage}/> */}
+                                                        <div class="custm_fill_file"> 
+                                                            <input id="file-upload" type="file" name={`image${i}`} onChange={setHandleImage}/> 
+                                                            <label for="file-upload" class="custom-file-upload">Choose File</label>
+                                                        </div>
                                                         <span className="input-group-btn">
                                                             { counter == i+1 ?
                                                             <button className="btn btn-add btn-add_more" type="button" onClick={incrementCounter}>
                                                                 <span className="fa fa-plus" ></span> Add more file
                                                             </button>
                                                             : '' }
-                                                            { counter != 1 ?
+                                                            { counter != i+1 ?
                                                             <button className="btn btn-remove trash_iconadd" type="button" onClick={(i)=>{decrementCounter(i)}}>
                                                                 <span className="fa fa-minus" ></span> Remove
                                                             </button>
