@@ -483,7 +483,7 @@ export default function MyOrderDetails(){
                                                 </a>
                                             </h5>
                                         </div>
-                                        <div className="col-lg-12 col-md-6 col-sm-12 Current_Status">
+                                        <div className="col-lg-12 col-md-12 col-sm-12 Current_Status">
                                             <div className="body">
                                                 <div className="text-center Earn_Referral mt-4 Complete_Profile">
                                                     <h4 className="m-t-2 Credits_Earned">Proceed by clicking</h4>
@@ -491,7 +491,8 @@ export default function MyOrderDetails(){
                                                     or
                                                     <a href="#" className="btn mt-4 mb-4  ml-auto Add_Money"><img src="/images/razorpay.png" className="img-fluid" alt="razorpay"/>  </a>
                                                     <br/>
-                                                    <a href="#" className="btn  ml-auto Complete pay mt-2">Pay From Wallet </a><br/>
+                                                    {/* <a href="#" className="btn  ml-auto Complete pay mt-2">Pay From Wallet </a> */}
+                                                    <br/>
                                                     <p className="mt-5">Lorem ilupsm please make the payment so that we could quickly create an amazing Case Study create an amazing Case Study for you
                                                     </p>
                                                     <p className="Jullia_Write">Jullia Write 12 Aug 2020 05:46AM</p>

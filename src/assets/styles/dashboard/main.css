@@ -21741,3 +21741,135 @@ font-size: 14px; padding:0 15px; border-left:1px solid #ccc; display:inline-bloc
         width: 50%;
     }
 }
+
+
+.owl-carousel.owl-carousel.owl-theme.slider1.slider_bg.owl-loaded.owl-drag .owl-nav {
+    margin-top: 10px;
+    display: none;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+} 
+
+.owl-carousel.owl-carousel.owl-theme.slider1.slider_bg.owl-loaded.owl-drag .owl-dots {
+    text-align: center;
+    display: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.Pay_From_Wallet h5 span {
+    cursor: pointer;
+    background: #addb42;
+    padding: 7px 12px;
+    height: 30px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+@media (max-width: 991px){
+.half-circle {   
+    display: none;
+}
+.how_it_bg2 .half-circle, .how_it_bg4 .half-circle {
+    border: 7px solid #f7d43a;}
+.how_it_bg {
+    width: 50%;
+    padding: 20px 30px;
+    float: left;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 0px;
+    height: 225px;
+    border: 1px solid #ccc;
+}
+.prduct_details_img li.buy_with_amazon i {
+    
+    width: 32px;}
+.prduct_details_img li.buy_with_amazon { 
+    font-size: 12px;
+}
+
+.Book_Details_text ul {
+    width: 50%; 
+}
+.Book_Details_text {
+    padding: 20px 22px;}
+.Reviews_bg .col-md-4 {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 280px;
+}
+
+.list_banner1 li span {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50px;
+    padding: 10px;
+    margin: 0 auto !important;
+    margin-right: 10px;
+}
+
+.writing_help_banner ul li { 
+    
+    text-align: center;
+}
+.writing_icons_steps {
+    background: none;
+    margin-top: 20px;
+}
+ul.list_banner1 {
+    display: inline-block;
+}
+section.section.Content_Covered.mt-5.pb-5 .col-md-6.col-lg-3.text-center {
+    margin-bottom: 30px;
+}
+.Submit_Assinment2 {
+    margin-bottom: 30px;
+}
+.banner.banner-color.mt-0.comp { 
+    display: block;}
+.web_font1 footer ul li a i {
+    padding-right: 7px;}
+footer .col-md-3.pl-4 {
+    padding-left: 1px !important;
+    padding-top: 0;
+}
+.web_font1 footer .socail_icons li {
+    display: inline-block;
+    padding: 5px;
+}
+.upld_img_dbd .upload-image span.pkr_img2 {
+    left: auto;
+    right: 0;
+}
+.row.upld_img_dbd .col-md-6.pr-0 {
+    width: 50%;
+}
+.row.upld_img_dbd .col-md-6.pl-0 {
+    width: 50%;
+padding-top: 0 !important;
+}
+.upld_img_dbd .upload-image span.pkr_img2 {
+    left: 65px;
+    right: auto;
+}
+.row.page-nav-menu-row .col-md-6.text-right {
+    padding: 0;
+}
+row.page-nav-menu-row .col-md-6.text-left {
+    padding: 0 !important;
+}
+.payment_section2 p {
+    font-weight: 600;
+    color: #a5a6a7;
+    line-height: 27px;
+}
+}
+@media (max-width: 767px){
+.how_it_bg { 
+height:auto !important; border: 1px solid #ccc;
+margin-bottom: 10px; }
+section.section.typical_answer.mt-5.mb-5.pb-5 {
+    margin-bottom: 0px !important;
+}
+}

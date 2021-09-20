@@ -86,7 +86,13 @@ export default function DashboardNavbar({...props}){
     }
 
     const openSideMenu =()=>{
-        document.querySelector("body").classList.add("overlay-open")
+        if(document.body.classList.contains('overlay-open')){
+            document.querySelector("body").classList.remove("overlay-open")
+        }
+        if(!document.body.classList.contains('overlay-open')){
+            document.querySelector("body").classList.add("overlay-open")
+        }
+        // document.querySelector("body").classList.add("overlay-open")
     }
 
     const markAsRead = async(id,type) => {

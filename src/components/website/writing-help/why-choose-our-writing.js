@@ -11,7 +11,7 @@ export default function WhyChooseOurWriting(){
                 </div>
                 </div>
                 <div className="row">
-                <div className="col-md-3 text-center">
+                <div className="col-md-6 col-lg-3 text-center">
                     <div className="bg_why_choose choose_bg_color1 writing-help-11">
                         <h3>24/7 SUPPORT
     </h3>
@@ -21,7 +21,7 @@ export default function WhyChooseOurWriting(){
     </p>
                     </div>
                 </div>
-                <div className="col-md-3 text-center">
+                <div className="col-md-6 col-lg-3 text-center">
                     <div className="bg_why_choose choose_bg_color2 writing-help-12">
                         <h3>RESPECTING DEADLINES
     </h3>
@@ -31,7 +31,7 @@ export default function WhyChooseOurWriting(){
     </p>
                     </div>
                 </div>
-                <div className="col-md-3 text-center">
+                <div className="col-md-6 col-lg-3 text-center">
                     <div className="bg_why_choose choose_bg_color3 writing-help-13">
                         <h3>BEST PRICE GUARANTEE
     </h3>
@@ -42,7 +42,7 @@ export default function WhyChooseOurWriting(){
                     </div>
                 </div>
                 
-                    <div className="col-md-3 text-center">
+                    <div className="col-md-6 col-lg-3 text-center">
                     <div className="bg_why_choose choose_bg_color4 writing-help-14">
                         <h3>PLAGIARISM-FREE CONTENT
 

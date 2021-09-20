@@ -5,13 +5,13 @@ export default function HelpService(){
         <section className="section Content_Covered mt-5 mb-5">
             <div className="container">
                 <div className="row">
-                <div className="col-md-6 col-lg-6 text-center mb-5">
+                <div className="col-md-12 col-lg-12 text-center mb-5">
                     <div className="Content_Covered_title pb-3">
                         <h2>Our Writing Help Services </h2>
                         <h3>We develop online assignment writing service in Australia from scratch.</h3>
                     </div>
                 </div>
-                <div className="col-md-6 col-lg-6 text-center">
+                <div className="col-md-6 col-lg-3 text-center">
                     <div className="features_text  writing-help-2">
                         <span><img src="/images/icon1.png" className="img-fluid" alt=""/></span>
                         <h3>Homework Help Services </h3>
@@ -23,7 +23,7 @@ export default function HelpService(){
                         </div>
                     </div>
                 </div>
-                <div className="col-md-6 col-lg-6 text-center">
+                <div className="col-md-6 col-lg-3 text-center">
                     <div className="features_text writing-help-2">
                         <span><img src="/images/icon1.png" className="img-fluid" alt=""/></span>
                         <h3>Dissertation Homework Help Services</h3>
@@ -34,7 +34,7 @@ export default function HelpService(){
                         </div>
                     </div>
                 </div>
-                <div className="col-md-6 col-lg-6 text-center">
+                <div className="col-md-6 col-lg-3 text-center">
                     <div className="features_text writing-help-2">
                         <span><img src="/images/icon1.png" className="img-fluid" alt=""/></span>
                         <h3>Essay Writing Homework Help Services </h3>
