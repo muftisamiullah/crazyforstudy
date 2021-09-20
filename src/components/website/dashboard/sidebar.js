@@ -43,7 +43,6 @@ export default function SideBar({...props}){
                     document.querySelector("body").classList.remove("overlay-open")
                 }
             }
-    
             // Bind the event listener
             document.addEventListener("mousedown", handleClickOutside);
             return () => {
