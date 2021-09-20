@@ -59,6 +59,7 @@ export default function SubmitAssignment() {
     }
 
     const handleAssignment = async(e) => {
+        // setError('')
         e.preventDefault()
         setLoader(true)
         let form = new FormData();
@@ -114,7 +115,7 @@ export default function SubmitAssignment() {
                             </div>
                             <div className="form-group col-md-12">
                                 <select type="text" className="form-control" onChange={getSelectedSubject} required>
-                                    <option>Select Subject</option>
+                                    <option value="999">Select Subject</option>
                                     {subjects && subjects.data.map((item,key)=>{
                                         return(
                                             <option value={MakeSlug(item.subject)} key={key} data-subjectid={item._id}>{item.subject}</option>
@@ -143,17 +144,22 @@ export default function SubmitAssignment() {
                                                 <div className="form">{[...Array(counter)].map((e, i) =>
                                                     <div className="entry input-group" key={i}>
                                                         <input className="form-control isbncls" type="file" name={`image${i}`} onChange={setHandleImage}/>
+                                                        {/* <div class="file-input fileinput_new">
+                                                            <input type="file" name={`image${i}`} onChange={setHandleImage}/>
+                                                            <span class="button">Choose File</span>
+                                                            <span class="label" data-js-label>No file selected</span>
+                                                        </div> */}
                                                         <span className="input-group-btn">
-                                                            {counter == i+1 ?
+                                                            { counter == i+1 ?
                                                             <button className="btn btn-add btn-add_more" type="button" onClick={incrementCounter}>
                                                                 <span className="fa fa-plus" ></span> Add more file
                                                             </button>
-                                                            : ''}
-                                                            {counter != i+1 ?
+                                                            : '' }
+                                                            { counter != 1 ?
                                                             <button className="btn btn-remove trash_iconadd" type="button" onClick={(i)=>{decrementCounter(i)}}>
                                                                 <span className="fa fa-minus" ></span> Remove
                                                             </button>
-                                                            : ''}
+                                                            : '' } 
                                                         </span>
                                                     </div>)}
                                                     <span style={{color:"red"}}>{error}</span>

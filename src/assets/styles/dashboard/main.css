@@ -4713,6 +4713,17 @@ body.theme-blush  {
     color: #fff;
 }
 @media screen and (max-width: 991px) {
+    .Pay_From_Wallet a {
+        padding: 6px 9px !important;
+    }
+    .Pay_From_Wallet h5 span {
+        padding: 7px 6px !important;
+        font-size: 14px  !important;
+    }
+    p.detail_item.head_ass {
+        word-wrap: break-word;
+        line-height: 20px !important;
+    }
     .sidebar-collapse .navbar-collapse {
         position: fixed;
         display: block;
@@ -21764,6 +21775,14 @@ font-size: 14px; padding:0 15px; border-left:1px solid #ccc; display:inline-bloc
     font-size: 15px;
 }
 
+@media (max-width: 1170px){
+    .ls-closed .bars:after {
+        z-index: -1 !important;
+    }
+    .sidebar .menu .list .menu-toggle:after, .sidebar .menu .list .menu-toggle:before {
+        right: 30px !important;
+    }
+}
 @media (max-width: 991px){
 .half-circle {   
     display: none;
@@ -21788,7 +21807,7 @@ font-size: 14px; padding:0 15px; border-left:1px solid #ccc; display:inline-bloc
 }
 
 .Book_Details_text ul {
-    width: 50%; 
+    width: 100%; 
 }
 .Book_Details_text {
     padding: 20px 22px;}
@@ -21873,3 +21892,4 @@ section.section.typical_answer.mt-5.mb-5.pb-5 {
     margin-bottom: 0px !important;
 }
 }
+

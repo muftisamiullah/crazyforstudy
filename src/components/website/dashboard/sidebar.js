@@ -12,6 +12,7 @@ export default function SideBar({...props}){
     const location = useLocation();
     const [display, setDisplay] = useState('none');
     const [display1, setDisplay1] = useState(false);
+    const [display2, setDisplay2] = useState(false);
     const [dis, setDis] = useState(null);
 
     
@@ -20,6 +21,14 @@ export default function SideBar({...props}){
             setDisplay('block')
         else{
             setDisplay('none')
+        }
+    }
+
+    const openMenu2 = () => {
+        if(display2 == 'none')
+            setDisplay2('block')
+        else{
+            setDisplay2('none')
         }
     }
 
@@ -43,6 +52,7 @@ export default function SideBar({...props}){
                     document.querySelector("body").classList.remove("overlay-open")
                 }
             }
+    
             // Bind the event listener
             document.addEventListener("mousedown", handleClickOutside);
             return () => {
@@ -80,9 +90,23 @@ export default function SideBar({...props}){
                                 </div>
                             </li>
                             <li className="rs_mual1">
+                                <Link to="/q-and-a" className="menu-toggle waves-effect waves-block"><span>Q and A</span>
+                                </Link>
+                            </li> 
+                            <li className="rs_mual1">
                                 <a href="#" className="menu-toggle waves-effect waves-block" onClick={openMenu}>
                                 <span>Solutions Manual</span> </a>
+                               
+
+
                                 <ul className="" style={{display: `${display}`}}> 
+                                <ul className="ml-menu" style={{display:"block"}}>
+                                <li>
+                                    <Link to="/textbook-solutions-manuals" className="menu-toggle waves-effect waves-block">
+                                    <img src="" className="img-fluid" alt=""/>
+                                    <span>Solution manuals</span></Link>
+                                </li>
+                                    </ul>
                                     {data && data.map((item, key)=>{
                                         return(<li key={key}>
                                             <Link to="#" className="menu-toggle waves-effect waves-block" onClick={() => openSubMenu(key)}>
@@ -95,156 +119,121 @@ export default function SideBar({...props}){
                                                 </ul>
                                         </li>)
                                     })}
-
-                                    {/* <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/engineering.png" className="img-fluid" alt=""/> <span>Engineering  </span> </a>
-                                        <ul className="ml-menu" style={{display: "none"}}>
-                                            <li><a href="#" className=" waves-effect waves-block">Bioengineering</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Chemical Engineering</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Civil Engineering</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Computer Engineering</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Computer Science</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Electrical Engineering</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Mechanical Engineering</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/maths.png" className="img-fluid" alt=""/> <span>Maths    </span> </a>
-                                        <ul className="ml-menu" style={{display: "none"}}>
-                                            <li><a href="#" className=" waves-effect waves-block">Advanced Math</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Algebra</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Calculus</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Geometry</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Probability</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Statistics</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Trigonometry</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/science.png" className="img-fluid" alt=""/> <span>Science     </span> </a>
-                                        <ul className="ml-menu" style={{display: "none"}}>
-                                            <li><a href="#" className=" waves-effect waves-block">Advanced Physics</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Biochemistry</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Biology</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Chemistry</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Earth Science</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Health & Nutrition</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Nursing</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Physics</a> </li> 
-                                            <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/social-science.png" className="img-fluid" alt=""/> <span>Social Science  </span> </a>
-                                        <ul className="ml-menu" style={{display: "none"}}>
-                                            <li><a href="#" className=" waves-effect waves-block">Anthropology</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Psychology</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Sociology</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Other</a> </li>
-                                            <li><a href="#" className=" waves-effect waves-block">Music</a> </li> 
-                                        </ul>
-                                    </li>   */}
-
-                                    {/* <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/law.png" className="img-fluid" alt=""/> <span>Law  </span> </a></li> */}
-                                    <li>
-                                        <ul className="ml-menu" style={{display: "none"}}>
-                                            <ul className="list profile_left">
-                                                <li className="mb-0 border-bottom-0">
-                                                    <div className="user-info  border-bottom-0">
-                                                        <div className="image circle">
-                                                            <a href="#"><img src="/images/my-pics.jpg" className="profile-pic" alt="User"/></a>
-                                                            <div className="profile_pic_change">
-                                                                <div className="p-image">
-                                                                    <i className="fa fa-camera upload-button"></i>
-                                                                    <input className="file-upload" type="file" accept="image/*"/>
+                                </ul>
+                            </li> 
+                            
+                            <li className="rs_mual1">
+                                <a href="#" className="menu-toggle waves-effect waves-block" onClick={openMenu2}>
+                                <span>Writing Help</span></a>
+                                    <ul className="ml-menu" style={{display: `${display2}`}}> 
+                                        <li>
+                                            <Link to="/writing-help" className="menu-toggle waves-effect waves-block">
+                                            <img src="" className="img-fluid" alt=""/>
+                                            <span>Writing Help</span></Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/writing-help/online-assignment-help" className="menu-toggle waves-effect waves-block">
+                                            <img src="" className="img-fluid" alt=""/>
+                                            <span>Assignment Help</span></Link>
+                                        </li>
+                                        <li>
+                                            <ul className="ml-menu" style={{display: "none"}}>
+                                                <ul className="list profile_left">
+                                                    <li className="mb-0 border-bottom-0">
+                                                        <div className="user-info  border-bottom-0">
+                                                            <div className="image circle">
+                                                                <a href="#"><img src="/images/my-pics.jpg" className="profile-pic" alt="User"/></a>
+                                                                <div className="profile_pic_change">
+                                                                    <div className="p-image">
+                                                                        <i className="fa fa-camera upload-button"></i>
+                                                                        <input className="file-upload" type="file" accept="image/*"/>
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                            <div className="detail">
+                                                                <h4> Ashton Cox <span>Student</span></h4>
+                                                            </div>
                                                         </div>
-                                                        <div className="detail">
-                                                            <h4> Ashton Cox <span>Student</span></h4>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                
-                                                <li className="rs_mual1"><a href="#" className="menu-toggle waves-effect waves-block"><span>Solutions Manual</span> </a>
-                                                    <ul className="" style={{display: "none"}}> 
-                                                        <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/bussiness.png" className="img-fluid" alt=""/> <span>Business</span> </a>
-                                                            <ul className="ml-menu" style={{display: "none"}}>
-                                                                <li><a href="#" className=" waves-effect waves-block">Accounting</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Economics</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Finance</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Leadership</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Management</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Marketing</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Operations Management</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/engineering.png" className="img-fluid" alt=""/> <span>Engineering  </span> </a>
-                                                            <ul className="ml-menu" style={{display: "none"}}>
-                                                                <li><a href="#" className=" waves-effect waves-block">Bioengineering</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Chemical Engineering</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Civil Engineering</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Computer Engineering</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Computer Science</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Electrical Engineering</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Mechanical Engineering</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/maths.png" className="img-fluid" alt=""/> <span>Maths    </span> </a>
-                                                            <ul className="ml-menu" style={{display: "none"}}>
-                                                                <li><a href="#" className=" waves-effect waves-block">Advanced Math</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Algebra</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Calculus</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Geometry</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Probability</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Statistics</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Trigonometry</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/science.png" className="img-fluid" alt=""/> <span>Science     </span> </a>
-                                                            <ul className="ml-menu" style={{display: "none"}}>
-                                                                <li><a href="#" className=" waves-effect waves-block">Advanced Physics</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Biochemistry</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Biology</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Chemistry</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Earth Science</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Health & Nutrition</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Nursing</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Physics</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
-                                                            </ul>
-                                                        </li>  
-                                                        <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/social-science.png" className="img-fluid" alt=""/> <span>Social Science  </span> </a>
-                                                            <ul className="ml-menu" style={{display: "none"}}>
-                                                                <li><a href="#" className=" waves-effect waves-block">Anthropology</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Psychology</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Sociology</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Other</a> </li>
-                                                                <li><a href="#" className=" waves-effect waves-block">Music</a> </li> 
-                                                            </ul>
-                                                        </li>   
-                                                        <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/law.png" className="img-fluid" alt=""/> <span>Law  </span> </a>
-                                                            <ul className="ml-menu" style={{display: "none"}}>
-                                                                <li><a href="#" className=" waves-effect waves-block">Criminal Law</a> </li> 
-                                                                <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
+                                                    </li>
+                                                    
+                                                    <li className="rs_mual1"><a href="#" className="menu-toggle waves-effect waves-block"><span>Solutions Manual</span> </a>
+                                                        <ul className="" style={{display: "none"}}> 
+                                                            <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/bussiness.png" className="img-fluid" alt=""/> <span>Business</span> </a>
+                                                                <ul className="ml-menu" style={{display: "none"}}>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Accounting</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Economics</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Finance</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Leadership</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Management</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Marketing</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Operations Management</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/engineering.png" className="img-fluid" alt=""/> <span>Engineering  </span> </a>
+                                                                <ul className="ml-menu" style={{display: "none"}}>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Bioengineering</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Chemical Engineering</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Civil Engineering</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Computer Engineering</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Computer Science</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Electrical Engineering</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Mechanical Engineering</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/maths.png" className="img-fluid" alt=""/> <span>Maths    </span> </a>
+                                                                <ul className="ml-menu" style={{display: "none"}}>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Advanced Math</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Algebra</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Calculus</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Geometry</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Probability</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Statistics</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Trigonometry</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/science.png" className="img-fluid" alt=""/> <span>Science     </span> </a>
+                                                                <ul className="ml-menu" style={{display: "none"}}>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Advanced Physics</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Biochemistry</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Biology</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Chemistry</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Earth Science</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Health & Nutrition</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Nursing</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Physics</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
+                                                                </ul>
+                                                            </li>  
+                                                            <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/social-science.png" className="img-fluid" alt=""/> <span>Social Science  </span> </a>
+                                                                <ul className="ml-menu" style={{display: "none"}}>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Anthropology</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Psychology</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Sociology</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Other</a> </li>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Music</a> </li> 
+                                                                </ul>
+                                                            </li>   
+                                                            <li><a href="#" className="menu-toggle waves-effect waves-block"><img src="/images/nav-icons/law.png" className="img-fluid" alt=""/> <span>Law  </span> </a>
+                                                                <ul className="ml-menu" style={{display: "none"}}>
+                                                                    <li><a href="#" className=" waves-effect waves-block">Criminal Law</a> </li> 
+                                                                    <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
 
-                                                <li className="active open"><a href="myaccount.php"><i className="fa fa-home"></i><span>Dashboard</span></a></li>
-                                                <li><a href="my-order.php"><i className="fas fa-paste"></i><span>My Order</span> </a></li>
-                                                <li><a href="profile.php"><i className="fa fa-user-circle"></i><span>My Profile</span> </a></li>
-                                                <li><a href="my-textbook.php"><i className="fas fa-map"></i><span>My Textbook</span> </a></li>
-                                                <li><a href="my-subscription.php"><i className="fas fa-id-card"></i><span>My Subscription</span> </a></li>
-                                                <li><a href="#"><i className="fas fa-question-circle"></i><span>Ask a Question</span> </a></li>
-                                                <li><a href="my_question.php"><i className="fas fa-comments"></i><span>My Question</span> </a></li>
-                                                <li><a href="#"><i className="fas fa-question"></i><span>FAQ</span> </a></li>
-                                            </ul>
+                                                    <li className="active open"><a href="myaccount.php"><i className="fa fa-home"></i><span>Dashboard</span></a></li>
+                                                    <li><a href="my-order.php"><i className="fas fa-paste"></i><span>My Order</span> </a></li>
+                                                    <li><a href="profile.php"><i className="fa fa-user-circle"></i><span>My Profile</span> </a></li>
+                                                    <li><a href="my-textbook.php"><i className="fas fa-map"></i><span>My Textbook</span> </a></li>
+                                                    <li><a href="my-subscription.php"><i className="fas fa-id-card"></i><span>My Subscription</span> </a></li>
+                                                    <li><a href="#"><i className="fas fa-question-circle"></i><span>Ask a Question</span> </a></li>
+                                                    <li><a href="my_question.php"><i className="fas fa-comments"></i><span>My Question</span> </a></li>
+                                                    <li><a href="#"><i className="fas fa-question"></i><span>FAQ</span> </a></li>
+                                                </ul>
                                             <li><a href="#" className=" waves-effect waves-block">Criminal Law</a> </li> 
                                             <li><a href="#" className=" waves-effect waves-block">Other</a> </li> 
                                         </ul>

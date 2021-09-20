@@ -414,7 +414,7 @@ export default function MyOrderDetails(){
                                         </ul>
                                     </div>
                                     <div className="col-md-3">
-                                        <div className="col-lg-12 col-md-6 col-sm-12 Current_Status">
+                                        <div className="col-lg-12 col-md-12 col-sm-12 Current_Status">
                                             <div className="text-center Earn_Referral Complete_Profile Pay_From_Wallet">
                                                 <h5 className=" ml-auto Add_Money pay mt-2 mb-0"><span>Pay From Wallet </span></h5>
                                                 <a href="#" className="btn  ml-auto  pay Add_Money">

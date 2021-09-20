@@ -55,7 +55,7 @@ export default function BookInfo({...props}){
                                     <span>Subscription</span></h4>
                                 </div>
                                 <div className="book-subscription-box">
-                                    <img src="/images/subscribe-arrow.png" className="img-fluid" alt=""/>
+                                    <img src="/images/subscribe-arrow.png" className="img-fluid img" alt=""/>
                                 </div>
                                 <div className="book-subscription-box">
                                     <ul>
