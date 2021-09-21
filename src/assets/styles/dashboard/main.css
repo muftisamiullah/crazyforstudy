@@ -21784,6 +21784,11 @@ font-size: 14px; padding:0 15px; border-left:1px solid #ccc; display:inline-bloc
     }
 }
 @media (max-width: 991px){
+a.btn.ml-auto.offers_k {
+    background: #256ff7;
+    font-size: 13px;
+    font-weight: 400;
+}
 .half-circle {   
     display: none;
 }

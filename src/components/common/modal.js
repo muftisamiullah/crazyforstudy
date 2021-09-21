@@ -2,10 +2,13 @@ import { useRef, useState, useContext, useEffect } from 'react';
 import {saveReview} from '../../libs/book';
 import { useParams } from 'react-router';
 import {AuthContext} from '../../context/AuthContext';
+import { useQueryClient } from 'react-query'
 
 export default function Modal({...props}){
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
+
+    const queryClient = useQueryClient()
 
     const [ratings, setRatings] = useState();
     const [error, setError] = useState();
@@ -55,6 +58,7 @@ export default function Modal({...props}){
         const res = await saveReview(ISBN13, {name:nameRef.current.value, rating:ratings,review:feedbackRef.current.value, country:countryRef.current.value, userId:localStorage.getItem('_id')})
         if(res?.status == 201){
             closeDialog();
+            queryClient.invalidateQueries(ISBN13);
         }
     }
 

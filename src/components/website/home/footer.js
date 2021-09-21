@@ -24,7 +24,7 @@ export default function Footer() {
 					<ul>
 						<li><Link to="/q-and-a"><i className="fa fa-angle-right"></i> Q&A </Link></li>
 						<li><Link to="/textbook-solutions-manuals"><i className="fa fa-angle-right"></i> Solutions Manual</Link></li>
-						<li><Link to="/writing-help"><i className="fa fa-angle-right"></i> Assignment Help</Link></li>
+						<li><Link to="/writing-help/online-assignment-help"><i className="fa fa-angle-right"></i> Assignment Help</Link></li>
 						<li><Link to="/about"><i className="fa fa-angle-right"></i> About Us</Link></li>
 					</ul>
 					</div>

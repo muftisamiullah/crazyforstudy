@@ -11,7 +11,7 @@ export default function Faq({...props}){
     }
     
     return(
-        <section className="faq faq_bg_sctn">
+        <section className="faq faq_bg_sctn faq-t">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-12 text-center mb-5">
@@ -27,7 +27,7 @@ export default function Faq({...props}){
                                     <li key={key}>
                                         <a data-toggle="collapse" className="collapsed" href="#" onClick={(e)=>{openCollapse(e,`faq${key}`)}}>{item.question}<i className="fa fa-angle-up"></i></a>
                                         <div id="" className={"collapse" + (whichCollapse == `faq${key}` ? 'show' : '' )} data-parent=".faq-list" >
-                                            <p className="first-para"><strong>Answer : </strong>{item.answer}</p>
+                                            <p className="first-para"><strong>Answer : </strong><span dangerouslySetInnerHTML={{__html: item.answer}}></span></p>
                                         </div>
                                     </li>
                                 )

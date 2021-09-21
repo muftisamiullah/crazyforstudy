@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.9bfb04d0.chunk.css",
-    "main.js": "/static/js/main.713d569f.chunk.js",
-    "main.js.map": "/static/js/main.713d569f.chunk.js.map",
+    "main.css": "/static/css/main.9815d6e5.chunk.css",
+    "main.js": "/static/js/main.fa267528.chunk.js",
+    "main.js.map": "/static/js/main.fa267528.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.48410b60.js",
     "runtime-main.js.map": "/static/js/runtime-main.48410b60.js.map",
     "static/css/2.3e35ace6.chunk.css": "/static/css/2.3e35ace6.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.36b431f5.chunk.js.map": "/static/js/3.36b431f5.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.3e35ace6.chunk.css.map": "/static/css/2.3e35ace6.chunk.css.map",
-    "static/css/main.9bfb04d0.chunk.css.map": "/static/css/main.9bfb04d0.chunk.css.map",
+    "static/css/main.9815d6e5.chunk.css.map": "/static/css/main.9815d6e5.chunk.css.map",
     "static/js/2.0b3873d0.chunk.js.LICENSE.txt": "/static/js/2.0b3873d0.chunk.js.LICENSE.txt",
     "static/media/font.css": "/static/media/Aspira-Regular.91c26897.woff2",
     "static/media/main.css": "/static/media/wallet_banner.dc817fc9.jpg",
@@ -23,7 +23,7 @@
     "static/js/runtime-main.48410b60.js",
     "static/css/2.3e35ace6.chunk.css",
     "static/js/2.0b3873d0.chunk.js",
-    "static/css/main.9bfb04d0.chunk.css",
-    "static/js/main.713d569f.chunk.js"
+    "static/css/main.9815d6e5.chunk.css",
+    "static/js/main.fa267528.chunk.js"
   ]
 }

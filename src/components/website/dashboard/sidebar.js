@@ -12,7 +12,7 @@ export default function SideBar({...props}){
     const location = useLocation();
     const [display, setDisplay] = useState('none');
     const [display1, setDisplay1] = useState(false);
-    const [display2, setDisplay2] = useState(false);
+    const [display2, setDisplay2] = useState('none');
     const [dis, setDis] = useState(null);
 
     
@@ -90,22 +90,24 @@ export default function SideBar({...props}){
                                 </div>
                             </li>
                             <li className="rs_mual1">
-                                <Link to="/q-and-a" className="menu-toggle waves-effect waves-block"><span>Q and A</span>
-                                </Link>
+                                <ul className="ml-menu" style={{display:"block"}}>
+                                    <li>
+                                        <Link  to="/q-and-a" className="menu-toggle waves-effect waves-block">
+                                        <img src="" className="img-fluid" alt=""/>
+                                        <span>Q and A</span></Link>
+                                    </li>
+                                </ul>
                             </li> 
                             <li className="rs_mual1">
                                 <a href="#" className="menu-toggle waves-effect waves-block" onClick={openMenu}>
                                 <span>Solutions Manual</span> </a>
-                               
-
-
                                 <ul className="" style={{display: `${display}`}}> 
-                                <ul className="ml-menu" style={{display:"block"}}>
-                                <li>
-                                    <Link to="/textbook-solutions-manuals" className="menu-toggle waves-effect waves-block">
-                                    <img src="" className="img-fluid" alt=""/>
-                                    <span>Solution manuals</span></Link>
-                                </li>
+                                    <ul className="ml-menu" style={{display:"block"}}>
+                                        <li>
+                                            <Link to="/textbook-solutions-manuals" className="menu-toggle waves-effect waves-block">
+                                            <img src="" className="img-fluid" alt=""/>
+                                            <span>Solution manuals</span></Link>
+                                        </li>
                                     </ul>
                                     {data && data.map((item, key)=>{
                                         return(<li key={key}>
@@ -113,6 +115,11 @@ export default function SideBar({...props}){
                                                 <img src={`/images/nav-icons/${MakeSlug(item.subject)}.png`} className="img-fluid" alt=""/>
                                                 <span>{item.subject}</span></Link>
                                                 <ul className="ml-menu" style={{display: key == dis && display1 == true ? 'block': 'none' }}>
+                                                    <li>
+                                                        <Link  to={`/textbook-solutions-manuals/${MakeSlug(item.subject)}`} className="menu-toggle waves-effect waves-block">
+                                                        <img src={`/images/nav-icons/${MakeSlug(item.subject)}.png`} className="img-fluid" alt=""/>
+                                                        <span>{item.subject}</span></Link>
+                                                    </li>
                                                     {item.sub_subject.map((it,key)=>{
                                                         return <li key={key}><Link to={`/textbook-solutions-manuals/${MakeSlug(item.subject)+'/'+MakeSlug(it.sub_subject)}`} key={key} className="waves-effect waves-block">{it.sub_subject}</Link></li>
                                                     })}

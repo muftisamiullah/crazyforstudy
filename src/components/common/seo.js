@@ -34,6 +34,7 @@ export default function Seo({...props}){
 
             {props.breadcrumbSchema && (<script type="application/ld+json">{`${JSON.stringify(props.breadcrumbSchema)}`}</script>)}
             {props.reviewSchema && (<script type="application/ld+json">{`${JSON.stringify(props.reviewSchema)}`}</script>)}
+            {props.faqSchema && (<script type="application/ld+json">{`${JSON.stringify(props.faqSchema)}`}</script>)}
         </Helmet>
     )
 }

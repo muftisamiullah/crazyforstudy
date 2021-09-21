@@ -71,15 +71,20 @@ export default function Book(){
     const [altText, setAlttext] = useState();
     const [robots, setRobots] = useState("index, follow");
 
+    //schema
+    const [breadcrumbSchema, setBreadcrumbSchema] = useState(null);
+    const [reviewSchema, setReviewSchema] = useState(null);
+    const [faqSchema, setFaqSchema] = useState(null);
+
     //example call commented out as a reminder
     // const { data: books, isLoading:bookIsLoading, error:bookError } = useQuery([params.book], () => getBook({book_isbn: ISBN13}),{staleTime:Infinity})
-    const { data: books, isLoading:bookIsLoading, error:bookError } = useQuery([ISBN13], () => getBook({book_isbn: ISBN13}),{staleTime:Infinity,enabled: !!ISBN13,})
-    const { data: chapters, isLoading: chapterIsLoading, error:chapterError } = useQuery([`${ISBN13}-chapter`], () => getChapters({book_isbn: ISBN13}),{staleTime:Infinity,enabled: !!ISBN13,})
-    const { data: sections, isLoading: sectionIsLoading, error:sectionError } = useQuery([`${ISBN13}-${chapter}`], () => getSections({book_isbn: ISBN13,chapter_no: chapter}),{staleTime:Infinity,enabled: !!ISBN13,})
-    const { data: exercises, isLoading: exerciseIsLoading, error:exerciseError } = useQuery([`${ISBN13}-${chapter}-${section}`], () => getExercises({book_isbn: ISBN13,chapter_no: chapter, section_no:section}),{staleTime:Infinity,enabled: !!ISBN13,})
-    const { data: problems, isLoading: problemIsLoading, error:problemError } = useQuery([`${ISBN13}-${section}-${exercise}`], () => getProblems({book_isbn: ISBN13,chapter_no: chapter, section_no:section, exercise_no:exercise}, state.Subscribe),{staleTime:Infinity,enabled: !!ISBN13,})
+    const { data: books, isLoading: bookIsLoading, error: bookError } = useQuery([ISBN13], () => getBook({book_isbn: ISBN13}),{staleTime:Infinity,enabled: !!ISBN13,})
+    const { data: chapters, isLoading: chapterIsLoading, error: chapterError } = useQuery([`${ISBN13}-chapter`], () => getChapters({book_isbn: ISBN13}),{staleTime:Infinity,enabled: !!ISBN13,})
+    const { data: sections, isLoading: sectionIsLoading, error: sectionError } = useQuery([`${ISBN13}-${chapter}`], () => getSections({book_isbn: ISBN13,chapter_no: chapter}),{staleTime:Infinity,enabled: !!ISBN13,})
+    const { data: exercises, isLoading: exerciseIsLoading, error: exerciseError } = useQuery([`${ISBN13}-${chapter}-${section}`], () => getExercises({book_isbn: ISBN13,chapter_no: chapter, section_no:section}),{staleTime:Infinity,enabled: !!ISBN13,})
+    const { data: problems, isLoading: problemIsLoading, error: problemError } = useQuery([`${ISBN13}-${section}-${exercise}`], () => getProblems({book_isbn: ISBN13,chapter_no: chapter, section_no:section, exercise_no:exercise}, state.Subscribe),{staleTime:Infinity,enabled: !!ISBN13,})
     
-    const { data: problemsDirect, isLoading: problemDirectIsLoading, error:problemDirectError } = useQuery([`${ISBN13}-${chapter}-${directProblem}`], () => getProblemsDirectly({book_isbn: ISBN13,chapter_no: chapter}, state.Subscribe),{staleTime:Infinity,enabled:directProblem})
+    const { data: problemsDirect, isLoading: problemDirectIsLoading, error: problemDirectError } = useQuery([`${ISBN13}-${chapter}-${directProblem}`], () => getProblemsDirectly({book_isbn: ISBN13,chapter_no: chapter}, state.Subscribe),{staleTime:Infinity,enabled:directProblem})
     
     // const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!ISBN13,}) //changed to below code was getting called when relatedbook was undefined
     const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!relatedBook,})
@@ -232,6 +237,97 @@ export default function Book(){
         }
     },[]);
 
+    //schema useEffect
+    useEffect(()=>{
+        if(books && books.length > 0){
+            setBreadcrumbSchema({
+                "@context": "http://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": 
+                [{
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item": {
+                            "@id": "https://www.crazyforstudy.com/",
+                            "name": "Home"
+                        }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item": {
+                        "@id": "https://www.crazyforstudy.com/textbook-solutions-manuals/",
+                        "name": "Textbook Solutions Manual"
+                        }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "item": {
+                        "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${books[0] && books[0]?.subject_name}/`,
+                        "name": `${capitalize(books[0] && books[0]?.subject_name)}`
+                        }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "item": {
+                        "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${books[0] && books[0]?.subject_name}/${books[0] && books[0]?.sub_subject_name}/`,
+                        "name": `${capitalize(books[0] && books[0]?.sub_subject_name)}`
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "item": {
+                        "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${params.subject}`,
+                        "name": `${books[0].BookName}`
+                    }
+                }]
+            })
+
+            setReviewSchema({
+                "@context" : "http://schema.org",
+                "@type" : "Book",
+                "name" : `${books[0].BookName + ' ' + books[0].Edition + " Solutions manual"}`,
+                "bookEdition": `${(books[0].Edition)?.split(" ", 1)}`,
+                "image" : "https://www.crazyforstudy.com/uploads/.jpg",
+                "author" : {
+                    "@type" : "Person",
+                    "name" : `${books[0].Author1}`
+                },
+                "inLanguage" : "English",
+                "isbn" : `${books[0].ISBN13}`,
+                "aggregateRating" : {
+                    "@type" : "AggregateRating",
+                    "ratingValue" : `${books[0].ratingAv}`,
+                    "bestRating": `${books[0].bestRating}`,
+                    "ratingCount" : `${books[0].total}`
+                }
+            })
+
+            let faqScript = [];
+            books[0] && books[0].faqs.forEach(item => {
+                faqScript.push(
+                    {
+                        "@type": "Question",
+                        "name": `${item.question}`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": `${item.answer}`
+                        }
+                    }
+                )    
+            });
+
+            setFaqSchema({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqScript
+            })
+        }
+    },[books])
+
     if(!ISBN13)
         return <Subject/>
 
@@ -247,104 +343,9 @@ export default function Book(){
     const path = process.env.basePath + location.pathname
     //seo ends
 
-    const breadcrumbSchema = {
-        "@context": "http://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": 
-        [{
-            "@type": "ListItem",
-            "position": 1,
-            "item": {
-                    "@id": "https://www.crazyforstudy.com/",
-                    "name": "Home"
-                }
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "item": {
-                "@id": "https://www.crazyforstudy.com/textbook-solutions-manuals/",
-                "name": "Textbook Solutions Manual"
-                }
-        },
-        {
-            "@type": "ListItem",
-            "position": 3,
-            "item": {
-                "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${books[0] && books[0]?.subject_name}/`,
-                "name": `${capitalize(books[0] && books[0]?.subject_name)}`
-                }
-        },
-        {
-            "@type": "ListItem",
-            "position": 4,
-            "item": {
-                "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${books[0] && books[0]?.subject_name}/${books[0] && books[0]?.sub_subject_name}/`,
-                "name": `${capitalize(books[0] && books[0]?.sub_subject_name)}`
-            }
-        },
-        {
-            "@type": "ListItem",
-            "position": 5,
-            "item": {
-                "@id": `https://www.crazyforstudy.com/textbook-solutions-manuals/${params.subject}`,
-                "name": `${books[0].BookName}`
-            }
-        }]
-    }
-
-    const reviewSchema = {
-        "@context" : "http://schema.org",
-        "@type" : "Book",
-        "name" : `${books[0].BookName + ' ' + books[0].Edition + " Solutions manual"}`,
-        "bookEdition": `${(books[0].Edition)?.split(" ", 1)}`,
-        "image" : "https://www.crazyforstudy.com/uploads/.jpg",
-        "author" : {
-            "@type" : "Person",
-            "name" : `${books[0].Author1}`
-        },
-        "inLanguage" : "English",
-        "isbn" : `${books[0].ISBN13}`,
-        "aggregateRating" : {
-            "@type" : "AggregateRating",
-            "ratingValue" : `${books[0].ratingAv}`,
-            "bestRating": `${books[0].bestRating}`,
-            "ratingCount" : `${books[0].total}`
-        }
-    }
-
-    const faqSchema =  {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "#FaqQuestion",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "#FaqAnswer"
-                }
-            },{
-                "@type": "Question",
-                "name": "#FaqQuestion",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "#FaqAnswer"
-                }
-            },{
-                "@type": "Question",
-                "name": "#FaqQuestion",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "#FaqAnswer"
-                }
-            }
-        ]
-    }
-
     return(
         <>
-            <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema} reviewSchema={reviewSchema}/>
+            <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema} reviewSchema={reviewSchema} faqSchema={faqSchema}/>
             <Header/>
             <Navbar/>
             <BreadCrumb type={"TextBook Manual"} heading={books && books[0] && books[0].BookName} subject={books && books[0] && books[0].subject_name} sub_subject={books && books[0] && books[0].sub_subject_name}/>

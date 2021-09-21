@@ -39,7 +39,7 @@ export default function SubmitAssignment() {
         if(counter < 3 ){
             setCounter(counter + 1);
         }else{
-            setError('Max 3 files can be uploaded only')
+            setError('*max 3 files can be uploaded only')
         }
     }
 
@@ -59,8 +59,11 @@ export default function SubmitAssignment() {
     }
 
     const handleAssignment = async(e) => {
-        // setError('')
         e.preventDefault()
+        if(formData.subject == undefined || formData.sub_subject == undefined){
+            setError('*choose both subject and sub subject')
+            return;
+        }
         setLoader(true)
         let form = new FormData();
         form.append('question',formData.question)
@@ -144,9 +147,9 @@ export default function SubmitAssignment() {
                                                 <div className="form">{[...Array(counter)].map((e, i) =>
                                                     <div className="entry input-group" key={i}>
                                                         {/* <input className="form-control isbncls" type="file" name={`image${i}`} onChange={setHandleImage}/> */}
-                                                        <div class="custm_fill_file"> 
+                                                        <div className="custm_fill_file"> 
                                                             <input id="file-upload" type="file" name={`image${i}`} onChange={setHandleImage}/> 
-                                                            <label for="file-upload" class="custom-file-upload">Choose File</label>
+                                                            <label htmlFor="file-upload" className="custom-file-upload">Choose File</label>
                                                         </div>
                                                         <span className="input-group-btn">
                                                             { counter == i+1 ?

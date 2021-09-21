@@ -967,7 +967,7 @@ input.form-control, input.form-control:focus {
             padding: 30px;
             border-radius: 5px;
             margin: 0px 0px 30px 0;
-            border: none;
+            border: none !important;
         }
 	.company_leaders1 .eff_Morgan img {
     width: auto; 
@@ -1832,6 +1832,13 @@ ul.menu.list-unstyled.notification_scroll {
     }
     
 @media (max-width:991px){
+    .navbar-light .navbar-nav .nav-item.login_signup_top a {
+        font-weight: 700;
+        padding: 8px 0 8px 36px;
+    }
+    div#mobile_nav ul.navbar-nav.ml-auto {
+        background: #fff;
+    }
     .web_font1 .megamenu {
         position: relative;
         width: 100%;
@@ -2334,4 +2341,20 @@ input#file-upload {
     background: #e36304;
     font-size: 13px;
     margin-bottom: 0;
+}
+h3.hding_sol_mual {
+    font-size: 32px;
+    font-weight: 600;
+    padding: 15px 0px;
+    border-bottom: 3px solid #fb0;
+}
+.col-sm-6.nav_pding.col-lg-3.border-right.mb-4 h6 {
+    color: #000;
+}
+section.faq.faq_bg_sctn.faq-t li {
+    color: #000;
+}
+section.faq.faq_bg_sctn.faq-t p {
+    padding: 10px 20px 0 20px;
+    margin-bottom: 7px;
 }

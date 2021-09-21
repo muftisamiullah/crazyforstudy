@@ -72,7 +72,7 @@ export default function Reviews({...props}){
                                                     </ul>
                                                 </div>
                                                 <div className="Dre_Brandell">
-                                                    <p className="font-16"><strong>{item.name}</strong></p>
+                                                    <p className="font-16"><strong>{item.userName}</strong></p>
                                                     <p>{item.review} </p>
                                                 </div>
                                             </div>
