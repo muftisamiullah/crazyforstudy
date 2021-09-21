@@ -37,7 +37,7 @@ export default function SubSubject(){
     const description = `Get Access ${capitalize(params.subsubject)} Textbook Solutions from Crazy For Study. For ${capitalize(params.subsubject)} textbook answers, ${capitalize(params.subsubject)} Step-by-step solutions, ${capitalize(params.subsubject)} Solutions manual and Assignment Help, try Crazy For Study today!`
     const keywords = `${capitalize(params.subsubject)} textbook solutions, ${capitalize(params.subsubject)} solutions manual, ${capitalize(params.subsubject)} textbook solution manuals`
     const copyright = `Copyright ${new Date().getFullYear()} Crazyforstudy.com`
-    const path = process.env.basePath + location.asPath
+    const path = process.env.REACT_APP_URL + location.asPath
 
     const breadcrumbSchema = {
         "@context": "http://schema.org",

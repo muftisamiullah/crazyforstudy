@@ -52,6 +52,7 @@ export default function MyQuestion(){
                               <div className="col-md-12 mt-4 your_subscription pd_lr">
                                  {(!localStorage.getItem('Subscribe')) ? <h2>Your Subscription has expired.<Link to={'/paynow'}><button className="subscription-reciept-btn">Activate Subscription</button></Link></h2>:""}
                               </div>
+                              {questionsIsLoading ? <span className="text-center">loading, please wait. ..</span> : <>
                               <div className="col-md-12 filter_title mt-3 pt-3 bdr_top pd_lr">
                                  <p><span onClick={setFilter}><i className="fa fa-filter"></i>  Filter By </span></p>
                                  <form style={{display:`${display}`}}>
@@ -105,35 +106,13 @@ export default function MyQuestion(){
                                        </div>
                                        <div className="col-md-12 nav_account1 answer_1 mt-3 mb-5 pd_lr">
                                           <h4 className="ans_s"><i className="fa fa-check-circle"></i> Answer and Explanation:</h4>
-                                          <p className="dtal_pr"><span className="name_ans">Sumit Verma</span> answered this  <span className="float-right bookmark_right"><i className="fa fa-bookmark-o"></i> bookmark</span></p>
-                                          <p>Ons left for you to ask before the end of the cycleons left for you to ask before the end cycleon left for you to ask before the end of the cycle Ons left for you to ask before the end of the cycleons left for you to ask before the end cycleon left for you to ask before </p>
+                                          {/* <p className="dtal_pr"><span className="name_ans">Sumit Verma</span> answered this  <span className="float-right bookmark_right"><i className="fa fa-bookmark-o"></i> bookmark</span></p> */}
+                                          <p>{item.shortanswer ? item.shortanswer : 'answer not present'}</p>
+                                          <p>{item.completeanswer ? item.completeanswer : 'explanation not present'}</p>
                                        </div>
                                     </span>
                                  )
-                              })}
-                              {/* <div className="col-md-12 nav_account1 mt-3 pt-3 bdr_top pd_lr">
-                                 <ul>
-                                    <li><a href="">Accounting </a> <i className="fa fa-angle-right"></i></li>
-                                    <li><a href="">Financial Accounting </a> <i className="fa fa-angle-right"></i></li>
-                                    <li><a href="">Financial Analysis</a></li>
-                                 </ul>
-                              </div>
-                              <div className="col-md-12 nav_account1 mt-3 pt-3 pd_lr">
-                                 <h2>Ons left for you to ask before the end of the cycleons left</h2>
-                              </div>
-                              <div className="col-md-12 nav_account1 mt-3 pt-3 bdr_top pd_lr">
-                                 <button className="btn" id="like"><i className="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> like</button>
-                                 <button className="btn" id="deslike"><i className="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> deslike</button>
-                              </div>
-                              <div className="col-md-12 nav_account1 pd_lr">
-                                 <h4 className="ans_s">Question:</h4>
-                                 <p>Ons left for you to ask before the end of the cycleons left for you to ask before the end cycleon left for you to ask before the end of the cycle</p>
-                              </div>
-                              <div className="col-md-12 nav_account1 answer_1 mt-3 mb-5 pd_lr">
-                                 <h4 className="ans_s"><i className="fa fa-check-circle"></i> Answer and Explanation:</h4>
-                                 <p className="dtal_pr"><span className="name_ans">Sumit Verma</span> answered this  <span className="float-right bookmark_right"><i className="fa fa-bookmark-o"></i> bookmark</span></p>
-                                 <p>Ons left for you to ask before the end of the cycleons left for you to ask before the end cycleon left for you to ask before the end of the cycle Ons left for you to ask before the end of the cycleons left for you to ask before the end cycleon left for you to ask before </p>
-                              </div> */}
+                              })}</>}
                            </div>
                         </div>
                      </div>

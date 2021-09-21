@@ -34,7 +34,6 @@ export default function SideBar({...props}){
 
     const openSubMenu = (key) => {
         setDis(key);
-        console.log(key)
         if(display1 == true)
             setDisplay1(false)
         else{

@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react';
+import {useState,useEffect,useRef} from 'react';
 import {searchData} from '../../libs/search'
 import BookImage from './book-image'
 import { Link } from 'react-router-dom';
@@ -31,7 +31,6 @@ export default function SearchComp({...props}){
     },[search]);
 
     async function openSearch (e){
-        
         const data = await searchData({search:e,limit:3});
         if(data){
             setSearchedBooks(data.data2.books);
@@ -43,6 +42,30 @@ export default function SearchComp({...props}){
         }
     }
 
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            /**
+             * Alert if clicked on outside of element
+             */
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    // document.querySelector("body").classList.remove("overlay-open")
+                    setDisplay('none');
+                }
+            }
+    
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+
+    const outsideRef = useRef(null);
+    useOutsideAlerter(outsideRef);
+
     return (
         <>
             <form>
@@ -50,7 +73,7 @@ export default function SearchComp({...props}){
                     <Link to={`/search/${search}`}><button type="submit" className="search_btn">{props.btnText}</button></Link>
             </form>
             
-            <div className="search_prodt1" style={{display: `${display}`}}>
+            <div className="search_prodt1" style={{display: `${display}`}} ref={outsideRef}> 
                 <div className="">
                     <div className="books_bg1">
                         <div className="row">

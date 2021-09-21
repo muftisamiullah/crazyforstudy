@@ -6,7 +6,6 @@ export default function SubscribeHere(){
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
 
-    console.log(state)
     return (<>
         {state.Subscribe != "true" ? 
         <section className="section subscribe_here_bg">

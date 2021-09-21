@@ -340,7 +340,7 @@ export default function Book(){
     return <div id="loading"></div>;
 
     //seo starts
-    const path = process.env.basePath + location.pathname
+    const path = process.env.REACT_APP_URL + location.pathname
     //seo ends
 
     return(

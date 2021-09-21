@@ -40,7 +40,7 @@ export default function BookInfo({...props}){
                         </p>
                             <ul className="rating">
                                 <li className="pl-0 border-left-0">{props.bookData && props.bookData.ratingAv ? props.bookData.ratingAv : 0 }/5 Rating</li>
-                                <li> {props.bookData && props.bookData.totalReviews} <a href="#reviews">Reviews</a></li>
+                                <li> {props.bookData && props.bookData.total} <a href="#reviews">{props.bookData && props.bookData.total == 1 ? 'Review' : 'Reviews'}</a></li>
                             </ul>
             
                             <ul className="books_wtext">

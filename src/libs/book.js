@@ -70,11 +70,9 @@ export async function getRelatedBooks(param) {
 export async function getProblemsDirectly(param, subscription) {
     try {
         if(subscription == "true"){
-            console.log(subscription, "in true")
             const res = await axios.get(apiUrl + 'books/book/only-problem/answer/'+param.book_isbn+'/'+param.chapter_no)
             return res.data.problems;
         }else{
-            console.log(subscription, "in false")
             const res = await axios.get(apiUrl + 'books/book/only-problem/'+param.book_isbn+'/'+param.chapter_no)
             return res.data.problems;
         }

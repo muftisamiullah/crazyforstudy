@@ -26,7 +26,7 @@ export default function Subject(){
     const description = `Get Access ${capitalize(params.subject)} Textbook Solutions from Crazy For Study. For ${capitalize(params.subject)} textbook answers, ${capitalize(params.subject)} Step-by-step solutions, ${capitalize(params.subject)} Solutions manual and Assignment Help, try Crazy For Study today!`
     const keywords = `${capitalize(params.subject)} textbook solutions, ${capitalize(params.subject)} solutions manual, ${capitalize(params.subject)} textbook solution manuals`
     // const copyright = `Copyright ${new Date().getFullYear()} Crazyforstudy.com`
-    const path = process.env.basePath + location.pathname
+    const path = process.env.REACT_APP_URL + location.pathname
 
     const breadcrumbSchema = {
         "@context": "http://schema.org",

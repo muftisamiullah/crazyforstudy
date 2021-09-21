@@ -144,7 +144,6 @@ export default function ProfileSection(){
             case 5:
                 break;
             default:
-                console.log("default")
                 break;
         }
         if(stepCounter < 5){

@@ -95,7 +95,6 @@ export default function AskQuestion(){
    }
 
    useEffect(()=>{
-      console.log(formData)
       if(formData.image1){
          setCount(1);
       }else if(formData.image2){
@@ -115,8 +114,8 @@ export default function AskQuestion(){
             history.push('/user/my-question')
          }});
    }
-   
-   if(!subscribed && !state.Subscribe){
+
+   if(state.Subscribe == "false"){
       return <MyQuestion/>
    }
 
