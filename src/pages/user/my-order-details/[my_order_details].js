@@ -317,14 +317,12 @@ export default function MyOrderDetails(){
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
-                                                        <a href="#">
                                                             <div className="profile_status_rib1 essay clearfix">
                                                                 <p className="status1 Reference essay">
                                                                 <i className="fa fa-user"></i>
                                                                 </p>
                                                                 <h5 className="text_assign">Proper Reference</h5>
                                                             </div>
-                                                        </a>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="profile_status_rib1 essay clearfix">

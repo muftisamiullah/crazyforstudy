@@ -90,7 +90,7 @@ export default function SideBar({...props}){
                             </li>
                             <li className="rs_mual1">
                                 <ul className="ml-menu" style={{display:"block"}}>
-                                    <li>
+                                    <li className="pb-0">
                                         <Link  to="/q-and-a" className="menu-toggle waves-effect waves-block">
                                         <img src="" className="img-fluid" alt=""/>
                                         <span>Q and A</span></Link>
@@ -102,7 +102,7 @@ export default function SideBar({...props}){
                                 <span>Solutions Manual</span> </a>
                                 <ul className="" style={{display: `${display}`}}> 
                                     <ul className="ml-menu" style={{display:"block"}}>
-                                        <li>
+                                        <li className="pb-0">
                                             <Link to="/textbook-solutions-manuals" className="menu-toggle waves-effect waves-block">
                                             <img src="" className="img-fluid" alt=""/>
                                             <span>Solution manuals</span></Link>

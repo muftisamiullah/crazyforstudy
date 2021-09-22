@@ -217,7 +217,7 @@ overflow: hidden;
   .brand_icons{padding:10px !important;}
    .brand_icons img{width:auto !important; text-align:center !important; display:inline-block !important;}
   .bg_shdow{padding-bottom:50px; box-shadow:0 0 20px rgba(0,0,0,0.2); padding:20px 20px 50px 20px; }
-  .bg_shdow ul li a{font-size:15px; color:#000;}
+  .bg_shdow ul li a{font-size:15px; color:#000;margin: 0 3px;}
      /*brand icons end*/
 	 
        /*Follow_cfs start*/
@@ -2196,6 +2196,10 @@ header p span.dccont {
 }
 
 @media (max-width: 991px){
+    .books_text1, .books_text1 a {
+        color: #fff;
+        font-size: 23px;
+    }
 .writing_help_banner .banner_text {
     top: 50%;
 }
@@ -2358,3 +2362,76 @@ section.faq.faq_bg_sctn.faq-t p {
     padding: 10px 20px 0 20px;
     margin-bottom: 7px;
 }
+
+@media (max-width: 767px){
+    .Book_Details_text {
+        padding: 20px 2px;
+    }
+    .Book_Details_text ul li{display: block;
+        font-size: 12px;}
+    }
+    .Book_Details_text ul li span {
+        width: 80px;
+        display: inline-flex;}
+    .testimonial .owl-item.active.center span.img_testimonial {
+        border: 1px solid #f6d123;}
+    .Book_Details_text ul li:last-child span {
+        width: 88px;
+    }
+    .web_font1 .all_banner_text form button {
+        height: 50px;
+        top: 0;
+        right: 0;
+        background: #fb0;
+        padding: 0 40px;
+        box-shadow: 0 3px 5px rgb(0 0 0 / 10%);
+        position: relative;
+        margin-top: 10px;
+    }
+    .next_prew ul li a {
+        display: inline-block;
+        transition: .3s;
+        color: #000;
+        padding: 7px 10px;
+    }
+    .writing_help_banner ul li {
+        text-align: center;
+        font-size: 13px;}
+    .custm_fill_file {
+        position: relative;
+        padding: 8px;
+        background: #f5f5f5;
+        width: 100%;}
+    .col-md-12.filter_title.mt-3.pt-3.bdr_top.pd_lr .form-check-inline {
+        display: block;
+    }
+
+    @media (max-width: 991px){
+        div#mobile_nav .dropdown-menu.sm-menu.show a {
+            background: #fff7d5;
+        }
+        .bg_shdow ul li a {
+            margin: 6px 3px;
+        }
+        }
+
+        .web_font1 footer .socail_icons li:nth-child(1) a:hover {
+            background: #07f;
+        }
+        .web_font1 footer .socail_icons li:nth-child(2) a:hover {
+            background: #00b9ff;
+        }
+        .web_font1 footer .socail_icons li:nth-child(3) a:hover {
+            background: #f00;
+        }
+        .web_font1 footer .socail_icons li:nth-child(4) a:hover {
+            background:#2196f3;
+        }
+        
+        .web_font1 footer .socail_icons li:nth-child(5) a:hover {
+            background:#ff0000;
+        }
+        
+        .web_font1 footer .socail_icons li:nth-child(6) a:hover {
+            background:#ff0000;
+        }

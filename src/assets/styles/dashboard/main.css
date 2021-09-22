@@ -4713,6 +4713,9 @@ body.theme-blush  {
     color: #fff;
 }
 @media screen and (max-width: 991px) {
+    .books1.animated.wow.fadeIn img {
+        width: 100%;
+    }
     .Pay_From_Wallet a {
         padding: 6px 9px !important;
     }
@@ -15231,6 +15234,8 @@ section.content {
 @media only screen and (max-width: 414px) {
     .block-header .breadcrumb {
         float: left;
+        padding:5px 10px;
+        margin-top:30px;
     }
 }
 @media (max-width: 767px) {
@@ -20428,6 +20433,7 @@ p.mb-1.add_more_power.my_ac {
     display: inline-block;
     font-size: 15px;
     font-weight: 400;
+    cursor:default;
 }
 
 .progress_bar_dshbd .progress-bar.progress-bar-success {
@@ -21776,6 +21782,13 @@ font-size: 14px; padding:0 15px; border-left:1px solid #ccc; display:inline-bloc
 }
 
 @media (max-width: 1170px){
+    .navbar.navbar_dashboard1 .navbar-brand {
+        white-space: nowrap;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-left: 30px !important;
+    }
     .ls-closed .bars:after {
         z-index: -1 !important;
     }
@@ -21855,7 +21868,7 @@ section.section.Content_Covered.mt-5.pb-5 .col-md-6.col-lg-3.text-center {
 .web_font1 footer ul li a i {
     padding-right: 7px;}
 footer .col-md-3.pl-4 {
-    padding-left: 1px !important;
+    padding-left: 15px !important;
     padding-top: 0;
 }
 .web_font1 footer .socail_icons li {
@@ -21892,9 +21905,53 @@ row.page-nav-menu-row .col-md-6.text-left {
 @media (max-width: 767px){
 .how_it_bg { 
 height:auto !important; border: 1px solid #ccc;
-margin-bottom: 10px; }
+margin-bottom: 10px;width: 100%; }
 section.section.typical_answer.mt-5.mb-5.pb-5 {
     margin-bottom: 0px !important;
 }
 }
 
+@media (max-width: 767px){
+.row.page-nav-menu-row .col-md-6.text-left, .row.page-nav-menu-row .col-md-6.text-right {
+    width: 50%;
+    padding: 0px;
+}
+.custm_fill_file {
+    position: relative;
+    padding: 8px;
+    background: #f5f5f5;
+    width: 100%;}
+.col-md-12.filter_title.mt-3.pt-3.bdr_top.pd_lr .form-check-inline {
+    display: block;
+}
+}
+
+@media (max-width: 767px){  
+.progress {
+    border-radius: 0;
+    height: 12px;
+    display: inline-block;
+    width: 100%;
+}
+.progress_bar_eddit ul li p a {
+    color: #337afc;
+    font-size: 12px;
+} 
+.block-header .breadcrumb {
+    float: left;
+    padding: 5px 10px;
+    margin-top: 30px;
+}
+}
+
+
+
+ul.dropdown-menu.pullDown.show a li.footer {
+    color: #e36304;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    font-weight: bold;
+    padding: 10px;
+    box-shadow: 0 -1px 3px rgb(0 0 0 / 30%);
+}

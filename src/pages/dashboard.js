@@ -49,7 +49,7 @@ export default function  Dashboard() {
                         <div className="row progress_bar_dshbd">
                             <div className="col-md-3">
                                 <ul>
-                                    <li className="Complete_Your_Profile pt-2"><Link to="/user/my-profile">Complete Your Profile</Link></li>
+                                    <li className="Complete_Your_Profile pt-2"><a href="#">Complete Your Profile</a></li>
                                 </ul>
                             </div>
                             

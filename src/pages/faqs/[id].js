@@ -17,7 +17,11 @@ export default function FaqId(){
     const [whichCollapse, setWhichCollapse] = useState()
 
     const openCollapse = (string) =>{
-        setWhichCollapse(string)
+        if(whichCollapse == string){
+            setWhichCollapse('')
+        }else{
+            setWhichCollapse(string)
+        }
     }
 
     const { data: faqContent, isLoading:faqIsLoading, error:faqError } = useQuery(['faq-category-'+`${params.id}`], () => getCategoryFaqs(params.id),{staleTime:Infinity})

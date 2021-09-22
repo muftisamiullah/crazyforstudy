@@ -115,9 +115,9 @@ export default function AskQuestion(){
          }});
    }
 
-   if(state.Subscribe == "false"){
-      return <MyQuestion/>
-   }
+   // if(state.Subscribe == "false"){
+   //    return <MyQuestion/>
+   // }
 
    return(
       <>

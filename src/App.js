@@ -22,14 +22,6 @@ function App() {
 		}
 	});
 
-	// useEffect(() => {
-	// 	if(window.innerHeight < 1170){
-	// 		document.querySelector("body").classList.add("ls-closed")
-	// 	}else{
-	// 		document.querySelector("body").classList.remove("ls-closed")
-	// 	}
-	// });
-
 	const [width, setWidth] = useState(window.innerWidth);
 
 	function handleWindowSizeChange() {
