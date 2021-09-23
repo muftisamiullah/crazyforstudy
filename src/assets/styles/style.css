@@ -998,15 +998,17 @@ input.form-control, input.form-control:focus {
 
 
 
-.faq_n_p .dynamic_boxes ul li { 
-    float: left;
+.faq_n_p .dynamic_boxes ul li {
+    float: none;
     margin: 1%;
     margin-bottom: 0%;
     background: #fbfbfb;
     padding: 3%;
     cursor: pointer;
-	width: 253px;
+    width: 253px;
+    display: inline-block;
     height: 200px;
+    vertical-align: top;
     box-shadow: 0 0 20px -5px #666;
     border-radius: 30px;
 }
@@ -1931,6 +1933,32 @@ ul.menu.list-unstyled.notification_scroll {
     }
     
     @media (max-width:767px){
+    .web_font1 .search_btn {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        border-radius: 5px;
+        height: 40px;
+        padding: 0 14px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .web_font1 .banner form input {
+        height: 44px;
+        width: 100%;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        padding-right: 85px;
+    }
+    .banner form input.form-control:focus {
+        height: 44px;
+    }
+    .faq_n_p .dynamic_boxes ul li { 
+        margin: 1% 1% 15px !important;  
+        width: 48% !important; 
+        box-shadow: 0 0 20px -5px #bdbdbd; 
+    }
     .our_popular_img {
         height: 250px;
     }
@@ -2196,6 +2224,17 @@ header p span.dccont {
 }
 
 @media (max-width: 991px){
+    .faq_n_p .dynamic_boxes ul li {
+        float: left;
+        margin: 1% 1% 23px;
+        background: #fbfbfb;
+        padding: 3%;
+        cursor: pointer;
+        width: 31%;
+        height: 200px;
+        box-shadow: 0 0 20px -5px #b3b3b3;
+        border-radius: 30px;
+    }
     .books_text1, .books_text1 a {
         color: #fff;
         font-size: 23px;
@@ -2364,20 +2403,14 @@ section.faq.faq_bg_sctn.faq-t p {
 }
 
 @media (max-width: 767px){
+    .Book_Details_text ul li span {
+        width: 100px;
+    }
     .Book_Details_text {
-        padding: 20px 2px;
+        padding: 20px 0px !important;
     }
     .Book_Details_text ul li{display: block;
         font-size: 12px;}
-    }
-    .Book_Details_text ul li span {
-        width: 80px;
-        display: inline-flex;}
-    .testimonial .owl-item.active.center span.img_testimonial {
-        border: 1px solid #f6d123;}
-    .Book_Details_text ul li:last-child span {
-        width: 88px;
-    }
     .web_font1 .all_banner_text form button {
         height: 50px;
         top: 0;
@@ -2385,9 +2418,16 @@ section.faq.faq_bg_sctn.faq-t p {
         background: #fb0;
         padding: 0 40px;
         box-shadow: 0 3px 5px rgb(0 0 0 / 10%);
-        position: relative;
-        margin-top: 10px;
+        position: relative !important;
+        margin-top: 10px !important;
     }
+    .testimonial .owl-item.active.center span.img_testimonial {
+        border: 1px solid #f6d123;}
+    }
+    .Book_Details_text ul li span {
+        display: inline-flex;}
+    
+    
     .next_prew ul li a {
         display: inline-block;
         transition: .3s;
@@ -2407,6 +2447,10 @@ section.faq.faq_bg_sctn.faq-t p {
     }
 
     @media (max-width: 991px){
+        .web_font1 .all_banner_text form button {
+            position: relative;
+            margin-top: 10px;
+        }
         div#mobile_nav .dropdown-menu.sm-menu.show a {
             background: #fff7d5;
         }

@@ -156,12 +156,11 @@ export default function Navbar() {
                         }
                     </li> 
                     <li className="nav-item dmenu dropdown" onClick={()=>{openMenuAMobile()}}>
-                        <Link to="" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Writing Help
                         </Link>
                         {showAMenu && <>
-                                                    <Link to="/writing-help" className="dropdown-item">Writing Help  </Link>
-
+                        <Link to="/writing-help" className="dropdown-item">Writing Help  </Link>
                         <div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown">
                             <Link to="/writing-help/online-assignment-help" className="dropdown-item"><img src="/images/nav-icons/online-assignment-help.png" className="img-fluid" alt=""/> Assignment Help </Link>
                         </div></>}

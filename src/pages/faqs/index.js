@@ -34,7 +34,7 @@ export default function Faq(){
                     </div>
                     
 
-                    <div className="col-md-12 dynamic_boxes">
+                    <div className="col-md-12 dynamic_boxes text-center">
                         <ul>
                             {faqs && faqs.data.map((item,key)=>{
                                 return(

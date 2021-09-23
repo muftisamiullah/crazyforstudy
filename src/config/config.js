@@ -6,10 +6,12 @@ let apiUrl = '';
 let imageUrl = '';
 if(process.env.NODE_ENV === 'production'){
     apiUrl = `${process.env.REACT_APP_LIVE_URL_basePath}/web/v1/`;
-    imageUrl = `${process.env.REACT_APP_LIVE_URL_basePath}/uploads/`;
+    // imageUrl = `${process.env.REACT_APP_LIVE_URL_basePath}/uploads/`;
+    imageUrl = 'https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/';
 }else{
     apiUrl = `${process.env.REACT_APP_LOCAL_URL_basePath}/web/v1/`;
-    imageUrl = `${process.env.REACT_APP_LOCAL_URL_basePath}/uploads/`;
+    // imageUrl = `${process.env.REACT_APP_LOCAL_URL_basePath}/uploads/`;
+    imageUrl = `https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/`;
 }
 
 const config = {

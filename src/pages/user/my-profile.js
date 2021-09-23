@@ -165,35 +165,12 @@ export default function  MyProfile() {
 			clearTimeout(timerError);
 		}
 	}, [error])
-
-    function useOutsideAlerter(ref) {
-        useEffect(() => {
-            /**
-             * Alert if clicked on outside of element
-             */
-            function handleClickOutside(event) {
-                if (ref.current && !ref.current.contains(event.target)) {
-                    document.querySelector("body").classList.remove("overlay-open")
-                }
-            }
     
-            // Bind the event listener
-            document.addEventListener("mousedown", handleClickOutside);
-            return () => {
-                // Unbind the event listener on clean up
-                document.removeEventListener("mousedown", handleClickOutside);
-            };
-        }, [ref]);
-    }
-
-    const wrapperRef = useRef(null);
-    useOutsideAlerter(wrapperRef);
-
     return (
         <>
             <DashboardNavbar data={formData}/>
-            {/* <SideBar data={formData}/> */}
-            <aside id="leftsidebar" ref={wrapperRef} className="sidebar">
+            <SideBar data={formData}/>
+            {/* <aside id="leftsidebar" className="sidebar">
                 <ul className="nav nav-tabs">
                     <li className="nav-item"><Link to="/dashboard" className="nav-link" data-toggle="tab" href="" target="_blank"><i className="zmdi zmdi-home"></i></Link></li>
                     <li className="nav-item"><a className="nav-link active" data-toggle="tab" href="#user">Profile</a></li>
@@ -217,25 +194,6 @@ export default function  MyProfile() {
                                 <div className="detail">
                                     <h4>{formData && formData.Name}</h4>
                                 </div>
-                                {/* <div className="row">
-                                    <div className="col-12">
-                                        <a title="facebook" href=""><i className="zmdi zmdi-facebook"></i></a>
-                                        <a title="twitter" href=""><i className="zmdi zmdi-twitter"></i></a>
-                                        <a title="instagram" href=""><i className="zmdi zmdi-instagram"></i></a>
-                                    </div>
-                                    <div className="col-4 p-r-0">
-                                        <h5 className="m-b-5">$ 13</h5>
-                                        <small>Reward</small>
-                                    </div>
-                                    <div className="col-4">
-                                        <h5 className="m-b-5">$ 33</h5>
-                                        <small>Cashback</small>
-                                    </div>
-                                    <div className="col-4 p-l-0">
-                                        <h5 className="m-b-5">37</h5>
-                                        <small>Order</small>
-                                    </div>
-                                </div> */}
                                 </div>
                             </li>
                             <li>
@@ -252,7 +210,7 @@ export default function  MyProfile() {
                     </div>
                     </div>
                 </div>
-            </aside>
+            </aside> */}
             <section className="content user profile-page">
                 <BlockHeader data={formData}/>
                 {/* <div className="block-header">
