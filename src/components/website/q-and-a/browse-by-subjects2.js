@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { capitalize, MakeSlug } from '../../common/make-slug'
+import { HashLink } from 'react-router-hash-link';
 
 export default function BrowseBySubjects2({...props}){
     
     return(
         <>
-        <section className="section">
+        <section className="section" id="sub-subject">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 Content_Covered_title mb-4 pb-2  text-center get-homework">
@@ -15,10 +16,10 @@ export default function BrowseBySubjects2({...props}){
 						return(
                             <div className="col-md-4 col-lg-3" key={key}>
 								<div className="books1 animated wow fadeIn">
-									<img src={`/images/${item.subject+ "-img"}.jpg`} className="img-fluid" alt=""/>
+									<img src={`/images/${item.subject+ "-img-all"}.jpg`} className="img-fluid" alt=""/>
 									<div className="overlay_books bottom-overlay"> 
 										<div className="books_text1">
-                                            <Link to={'/q-and-a/'+item.subject+'/'+MakeSlug(item.sub_subject)}> {item.sub_subject}</Link>
+                                            <HashLink to={'/q-and-a/'+item.subject+'/'+MakeSlug(item.sub_subject)+ "#questions"}> {item.sub_subject}</HashLink>
 										</div>
 									</div>
 								</div>

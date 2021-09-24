@@ -6,7 +6,7 @@ import striptags from 'striptags';
 
 export default function questions({...props}){
     return(
-        <section className="section font_sz text_justify pt-5 pb-4">
+        <section className="section font_sz text_justify pt-5 pb-4" id='questions'>
             <div className="container">
                 <div className="row">
                 <div className="col-md-12 pb-4">

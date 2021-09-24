@@ -5,6 +5,7 @@ import { getNavbarData } from '../../../libs/home'
 import { useQuery } from 'react-query'
 import { MakeSlug } from '../../common/make-slug'
 import {AuthContext} from '../../../context/AuthContext';
+import { HashLink } from 'react-router-hash-link';
 
 export default function Navbar() {
     const location = useLocation();
@@ -175,8 +176,9 @@ export default function Navbar() {
                 :
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item" onMouseEnter={()=>{openMenuB()}}>
-                        <Link to="/q-and-a" className="nav-link">Q and A
-                        </Link>
+                        <HashLink to="/q-and-a#subjects" className="nav-link">Q and A
+                        </HashLink>
+                        
                     </li>  
                     <li className="nav-item dropdown megamenu-li dmenu" onMouseEnter={()=>{openMenu()}} >
                         <Link to="/textbook-solutions-manuals" className="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions Manual  </Link>
@@ -189,7 +191,7 @@ export default function Navbar() {
                                             {/* <h6>{item.subject} <img src={`/images/nav-icons/${item.subject.toLowerCase().replace(/ /g,"-")}.png`} className="img-fluid" alt=""/> <i className="fa fa-angle-down"></i></h6> */}
                                             <Link to={`/textbook-solutions-manuals/${MakeSlug(item.subject)}`}><h6>{item.subject} <img src={`/images/nav-icons/${MakeSlug(item.subject)}.png`} className="img-fluid" alt=""/> <i className="fa fa-angle-down"></i></h6></Link>
                                             {item.sub_subject.map((it,key)=>{
-                                                return <Link to={`/textbook-solutions-manuals/${MakeSlug(item.subject)+'/'+MakeSlug(it.sub_subject)}`} key={key} className="dropdown-item" onClick={handleClick}>{it.sub_subject}</Link>
+                                                return <HashLink to={`/textbook-solutions-manuals/${MakeSlug(item.subject)+'/'+MakeSlug(it.sub_subject)}`} key={key} className="dropdown-item" onClick={handleClick}>{it.sub_subject}</HashLink>
                                                 // return <Link to={{pathname:`${'textbook-solutions-manuals/'+item.subject.toLowerCase().replace(/ /g,"-")+'/'+it.sub_subject.toLowerCase().replace(/ /g,"-")}`}} key={key}><a className="dropdown-item">{it.sub_subject}</a></Link>
                                                 // return <Link to={{pathname: 'textbook-solutions-manuals', query: {subject: item.subject.toLowerCase().replace(/ /g,"-"), sub_subject_name:it.sub_subject.toLowerCase().replace(/ /g,"-")} }} key={key}><a className="dropdown-item">{it.sub_subject}</a></Link>
                                             })}

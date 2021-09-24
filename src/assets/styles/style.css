@@ -1933,6 +1933,11 @@ ul.menu.list-unstyled.notification_scroll {
     }
     
     @media (max-width:767px){
+        .fill_isbn input.form-control.isbncls {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 3px;
+        }
     .web_font1 .search_btn {
         position: absolute;
         top: 2px;
@@ -2493,4 +2498,8 @@ section.faq.faq_bg_sctn.faq-t p {
             border: 0; cursor:default !important;
             text-decoration: none;
             margin-bottom:20px;
+        }
+
+        .web_font1 footer .socail_icons li:nth-child(6) a:hover {
+            background: #a835b3;
         }

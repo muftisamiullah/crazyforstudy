@@ -15,7 +15,7 @@ export default function  MyProfile() {
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
 
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState();
     const [imageUrl, setImageUrl] = useState();
     const [preview, setPreview] = useState();
     const [defaultImage, setDefaultImage] = useState("/images/profile_av.jpg");
@@ -56,7 +56,7 @@ export default function  MyProfile() {
                 ['Contact']: user.Contact,
                 ['img']: user.img,
             });
-            if(user && user.dob != ""){
+            if(user && user.dob != undefined && user.dob != ""){
                 setStartDate(new Date(user?.dob))
             }
         }

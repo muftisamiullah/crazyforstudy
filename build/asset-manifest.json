@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.625af226.chunk.css",
-    "main.js": "/static/js/main.8f010b83.chunk.js",
-    "main.js.map": "/static/js/main.8f010b83.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.48410b60.js",
-    "runtime-main.js.map": "/static/js/runtime-main.48410b60.js.map",
+    "main.css": "/static/css/main.9aad1009.chunk.css",
+    "main.js": "/static/js/main.1a6cdf30.chunk.js",
+    "main.js.map": "/static/js/main.1a6cdf30.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e3d0f583.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e3d0f583.js.map",
     "static/css/2.3e35ace6.chunk.css": "/static/css/2.3e35ace6.chunk.css",
-    "static/js/2.0b3873d0.chunk.js": "/static/js/2.0b3873d0.chunk.js",
-    "static/js/2.0b3873d0.chunk.js.map": "/static/js/2.0b3873d0.chunk.js.map",
-    "static/js/3.36b431f5.chunk.js": "/static/js/3.36b431f5.chunk.js",
-    "static/js/3.36b431f5.chunk.js.map": "/static/js/3.36b431f5.chunk.js.map",
+    "static/js/2.8ae81729.chunk.js": "/static/js/2.8ae81729.chunk.js",
+    "static/js/2.8ae81729.chunk.js.map": "/static/js/2.8ae81729.chunk.js.map",
+    "static/js/3.1bd78480.chunk.js": "/static/js/3.1bd78480.chunk.js",
+    "static/js/3.1bd78480.chunk.js.map": "/static/js/3.1bd78480.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.3e35ace6.chunk.css.map": "/static/css/2.3e35ace6.chunk.css.map",
-    "static/css/main.625af226.chunk.css.map": "/static/css/main.625af226.chunk.css.map",
-    "static/js/2.0b3873d0.chunk.js.LICENSE.txt": "/static/js/2.0b3873d0.chunk.js.LICENSE.txt",
+    "static/css/main.9aad1009.chunk.css.map": "/static/css/main.9aad1009.chunk.css.map",
+    "static/js/2.8ae81729.chunk.js.LICENSE.txt": "/static/js/2.8ae81729.chunk.js.LICENSE.txt",
     "static/media/font.css": "/static/media/Aspira-Regular.91c26897.woff2",
     "static/media/main.css": "/static/media/wallet_banner.dc817fc9.jpg",
     "static/media/style.css": "/static/media/qa-banner.6e351164.jpg",
     "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.f691f37e.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.48410b60.js",
+    "static/js/runtime-main.e3d0f583.js",
     "static/css/2.3e35ace6.chunk.css",
-    "static/js/2.0b3873d0.chunk.js",
-    "static/css/main.625af226.chunk.css",
-    "static/js/main.8f010b83.chunk.js"
+    "static/js/2.8ae81729.chunk.js",
+    "static/css/main.9aad1009.chunk.css",
+    "static/js/main.1a6cdf30.chunk.js"
   ]
 }

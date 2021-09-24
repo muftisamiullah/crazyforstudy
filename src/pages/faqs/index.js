@@ -40,7 +40,7 @@ export default function Faq(){
                                 return(
                                     <li key={key}> 
                                         <Link to={'/faqs/'+`${item.faq_category}`}>
-                                            <div className="col-md-12 icon_dyanamic text-center"> <img className="img-fluid" alt="Academic Intregrity" src={item.faq_image}/> </div>
+                                            <div className="col-md-12 icon_dyanamic text-center"> <img className="img-fluid" alt="img" src={item.faq_image}/> </div>
                                             <div className="faq_dyanamic_text text-center">
                                                 <h5>{item.faq_category}</h5>
                                             </div>

@@ -450,7 +450,7 @@ export default function Book(){
                                 </div>   */}
                                 
                             </div>
-                        </div>
+                        </div>                       
                     </div>
                 </div>
             </section>
@@ -458,11 +458,17 @@ export default function Book(){
             <section className="section font_sz text_justify pb-4">
                 <div className="container">
                     <div className="row"> 
+                        {chapters.length == 0 ?
+                        <div class="col-md-12 text-center sendnotification">
+                                <div class="ban-sorry"><img src="/images/sorry.png" class="img-fluid" alt="sorry"/></div>
+                                <h5><strong>Sorry!</strong> We don’t have the solution of this book edition yet.</h5>						
+                                <button type="submit" >Click here to request priority authoring of this edition.</button>	
+                        </div> :
                         <div className="col-md-12">
                             <div className="bg_qand_ans">  
                                 <div className="col-md-12 pb-4">
                                     <div className="Qtion_n_Stion_text">
-                                        <h3 className="mb-4"><span>Question and Solution </span></h3>  
+                                        <h3 className="mb-4"><span>Questions</span></h3>  
                                     </div>
                                 </div> 
                                 {searchedItems ? 
@@ -598,7 +604,7 @@ export default function Book(){
                                     </div> 
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </section>

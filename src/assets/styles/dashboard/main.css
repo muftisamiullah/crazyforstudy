@@ -13243,6 +13243,9 @@ body.theme-blush  {
     }
 }
 @media (max-width: 767px) {
+.col-md-9.progress_bar_eddit {
+    padding: 0;
+}
     .navbar-nav.nav_right1 {
         width: 42% !important;
         text-align: center;
@@ -21965,4 +21968,8 @@ ul.dropdown-menu.pullDown.show a li.footer {
     font-weight: bold;
     padding: 10px;
     box-shadow: 0 -1px 3px rgb(0 0 0 / 30%);
+}
+.progress_bar_dshbd ul {
+    background: #fff;
+    padding: 20px 10px;
 }
