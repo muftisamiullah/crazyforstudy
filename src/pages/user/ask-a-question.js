@@ -107,7 +107,17 @@ export default function AskQuestion(){
    const askQuestion = async () => {
       // setFormData({...formData, user_Id : session.user._id, type :'QA'})
       setIsLoading(true)
-      mutation.mutate(formData, 
+      let form = new FormData();
+      form.append('question',formData.question)
+      form.append('subject',formData.subject)
+      form.append('subject_id',formData.subject_id)
+      form.append('sub_subject',formData.sub_subject)
+      form.append('sub_subject_id',formData.sub_subject_id)
+      form.append('user_Id',formData.user_Id)
+      form.append('type',formData.type)
+      form.append('image0',formData.image1)
+      form.append('image1',formData.image2)
+      mutation.mutate(form, 
          { onSuccess: (data, variables, context) => {
             // queryClient.setQueryData(['notifications-false', { user_Id : session.user._id, type: 'QA'} ], data)
             setIsLoading(false)
@@ -124,7 +134,7 @@ export default function AskQuestion(){
       <DashboardNavbar data={user}/>
       <SideBar data={user}/>
       <section className="content user profile-page">
-      <BlockHeader data={user}/>
+      <BlockHeader data={user} currentPage="Ask a Question"/>
       <div className="container-fluid">
          <div className="row clearfix mt-4">
             <div className="col-md-12">

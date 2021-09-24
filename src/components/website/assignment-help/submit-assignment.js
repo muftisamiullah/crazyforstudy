@@ -146,11 +146,11 @@ export default function SubmitAssignment() {
                                             <div className="dynamic-wrap">
                                                 <div className="form">{[...Array(counter)].map((e, i) =>
                                                     <div className="entry input-group" key={i}>
-                                                        {/* <input className="form-control isbncls" type="file" name={`image${i}`} onChange={setHandleImage}/> */}
-                                                        <div className="custm_fill_file"> 
+                                                        <input className="form-control isbncls" type="file" name={`image${i}`} onChange={setHandleImage}/>
+                                                        {/* <div className="custm_fill_file"> 
                                                             <input id="file-upload" type="file" name={`image${i}`} onChange={setHandleImage}/> 
                                                             <label htmlFor="file-upload" className="custom-file-upload">Choose File</label>
-                                                        </div>
+                                                        </div> */}
                                                         <span className="input-group-btn">
                                                             { counter == i+1 ?
                                                             <button className="btn btn-add btn-add_more" type="button" onClick={incrementCounter}>

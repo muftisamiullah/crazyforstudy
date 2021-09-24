@@ -28,7 +28,7 @@ export default function MySubs(){
         <DashboardNavbar data={user}/>
         <SideBar data={user}/>
         <section className="content user profile-page">
-            <BlockHeader data={user}/>
+            <BlockHeader data={user} currentPage="My Subscription"/>
             <div className="container-fluid">
                 <div className="row clearfix mt-4">
                     <div className="col-md-12">

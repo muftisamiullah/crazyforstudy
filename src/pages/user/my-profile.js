@@ -1,8 +1,7 @@
 import DashboardNavbar from '../../components/website/dashboard/dashboard-navbar'
 import BlockHeader from '../../components/website/dashboard/block-header'
 import SideBar from '../../components/website/dashboard/sidebar'
-import { Link } from 'react-router-dom';
-import {useHistory} from 'react-router-dom'
+import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import {useState ,useEffect,useContext, useRef} from 'react'
 import { useQuery } from 'react-query'
 import {getCountries, getUser, editUserProfile, updatePass} from '../../libs/profile'
@@ -28,6 +27,7 @@ export default function  MyProfile() {
         pass: '',
         confirmPass: '',
     })
+
     const [formData, setFormData] = useState({
         Name: '',
         dob:'',
@@ -38,9 +38,10 @@ export default function  MyProfile() {
         Contact: '',
         img:"",
     });
+
     const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
     const { data: countries, isLoading:countriesIsLoading, error:countriesError } = useQuery(['country-list'], () => getCountries(),{staleTime:Infinity})
-    
+
     useEffect(()=>{
         if(user){
             setFormData({
@@ -212,7 +213,7 @@ export default function  MyProfile() {
                 </div>
             </aside> */}
             <section className="content user profile-page">
-                <BlockHeader data={formData}/>
+                <BlockHeader data={formData} currentPage="My Profile"/>
                 {/* <div className="block-header">
                     <div className="row">
                     <div className="col-lg-7 col-md-6 col-sm-12">

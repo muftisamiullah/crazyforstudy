@@ -1,7 +1,7 @@
 import DashboardNavbar from '../../components/website/dashboard/dashboard-navbar'
 import SideBar from '../../components/website/dashboard/sidebar'
 import BlockHeader from '../../components/website/dashboard/block-header'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query'
 import {getUser} from '../../libs/profile'
 import {useState, useContext} from 'react'
@@ -19,15 +19,17 @@ export default function MyOrders(){
 
    const openCollapse = (data) => {
       setDisplay(data);
-  }
+   }
 
+  const location = useLocation();
+  const currentPage = location?.pathname?.substring(6);
 
-    return(
+   return(
         <>
         <DashboardNavbar data={user}/>
         <SideBar data={user}/>
         <section className="content user profile-page">
-   <BlockHeader data={user}/>
+   <BlockHeader data={user} currentPage="My Orders"/>
    <div className="container-fluid">
       <div className="row clearfix mt-4">
          <div className="col-md-12">

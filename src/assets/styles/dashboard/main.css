@@ -4713,7 +4713,7 @@ body.theme-blush  {
     color: #fff;
 }
 @media screen and (max-width: 991px) {
-    li.nav-item.dmenu.float-right.pt_sty.dropdown.show a.dropdown-toggle {
+    li.nav-item.dmenu.float-right.pt_sty.dropdown a.dropdown-toggle {
         width: 40px !important;
         padding-left: 0;
         padding-right: 0;
@@ -13243,6 +13243,10 @@ body.theme-blush  {
     }
 }
 @media (max-width: 767px) {
+    .navbar-nav.nav_right1 {
+        width: 42% !important;
+        text-align: center;
+    }
     .navbar.navbar_dashboard1 .navbar-toggle {
         position: relative;
         margin-right: 12px;

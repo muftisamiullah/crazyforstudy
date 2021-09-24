@@ -14,7 +14,7 @@ export default function BrowseBySubjects({...props}){
 						return(
 							<div className="col-md-4 col-lg-3" key={key}>
 								<div className="books1 animated wow fadeIn">
-									<img src="/images/tbs-books/economics.jpg" className="img-fluid" alt=""/>
+									<img src={`/images/${MakeSlug(item.subject)+ "-img"}.jpg`} className="img-fluid" alt=""/>
 									<div className="overlay_books bottom-overlay"> 
 										<div className="books_text1">
 											<Link to={'q-and-a/'+MakeSlug(item.subject)}> {item.subject}</Link>
