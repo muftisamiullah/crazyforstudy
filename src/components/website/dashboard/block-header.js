@@ -12,7 +12,7 @@ export default function BlockHeader({...props}){
             <div className="col-lg-5 col-md-6 col-sm-12">
                 <ul className="breadcrumb float-md-right">
                     <li className="breadcrumb-item"><Link to="/dashboard">Dashboard</Link></li>
-                    <li className="breadcrumb-item active"><a href="#">{props?.currentPage}</a></li>
+                    {props?.currentPage ? <li className="breadcrumb-item active"><a href="#">{props?.currentPage}</a></li>:""}
                 </ul>
             </div>
             </div>

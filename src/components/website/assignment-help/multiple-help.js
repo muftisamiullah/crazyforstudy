@@ -60,12 +60,114 @@ export default function MultipleHelp() {
                     </ul>
                 </div>
 
-    const two = <div className="tab-pane fade show active"  role="tabpanel" aria-labelledby="accounting-tab"><h3>two</h3></div>
-    const three = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab"><h3>three</h3></div>
-    const four = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab"><h3>four</h3></div>
-    const five = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab"><h3>five</h3></div>
-    const six = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab"><h3>six</h3></div>
-    const seven = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab"><h3>seven</h3></div>
+    const two = <div className="tab-pane fade show active"  role="tabpanel" aria-labelledby="accounting-tab"> <h3>Science/maths Assignment Help</h3>
+    <p>confused? You have no clue what to write in your assignment. We would prefer you to avail our online assignment help service. Have a look at some of the assignment topics handled by our experts earlier. </p>
+    <ul>
+        <li><i className="fa fa-dot-circle-o"></i> Meteorology.</li> 
+        <li><i className="fa fa-dot-circle-o"></i> Zoology.</li> 
+        <li><i className="fa fa-dot-circle-o"></i> Human biology.</li> 
+        <li><i className="fa fa-dot-circle-o"></i> Botany.</li> 
+        <li><i className="fa fa-dot-circle-o"></i> Mycology</li> 
+        <li><i className="fa fa-dot-circle-o"></i>  Maths: Algebra.</li> 
+        <li><i className="fa fa-dot-circle-o"></i> Calculus and analysis.</li> 
+        <li><i className="fa fa-dot-circle-o"></i> Geometry and topology.</li> 
+        <li><i className="fa fa-dot-circle-o"></i> Combinatorics.</li> 
+        <li><i className="fa fa-dot-circle-o"></i> Mathematical physics</li> 
+        <li><i className="fa fa-dot-circle-o"></i> Mathematical physics</li>
+        <li>Quickly register online to avail our top assignment services and get your assignments on time.</li>
+        <li><a href="#">Get Assignment Solutions</a></li>
+    </ul></div>
+    const three = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab">
+        <h3>Finance online assignment help </h3>
+    <p>Forgot to work on your assignments? Now you don’t know what to do when your deadline is near. We would recommend you to hire our professionals for your assignment task. They will never cross the deadline. Check out a few finance subjects delivered by our team recently. </p>
+    <ul>
+        <li><i className="fa fa-dot-circle-o"></i> Private equity</li>
+        <li><i className="fa fa-dot-circle-o"></i> Risk management</li>
+        <li><i className="fa fa-dot-circle-o"></i> Venture capital</li>
+        <li><i className="fa fa-dot-circle-o"></i> Financial management</li>
+        <li><i className="fa fa-dot-circle-o"></i> Financial markets</li>
+        <li><i className="fa fa-dot-circle-o"></i> Financial planning</li>
+        <li><i className="fa fa-dot-circle-o"></i> Financial engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Financial accounting</li>
+        <li><i className="fa fa-dot-circle-o"></i> Financial reporting</li>
+        <li><i className="fa fa-dot-circle-o"></i> International finance</li>
+        <li>Grab our online assignment help service instantly and get the benefit of quality work at a reasonable price.</li>
+        <li><a href="#">Get Assignment Solutions</a></li>
+    </ul>
+    </div>
+    const four = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab">
+        <h3>Engineering online assignment help </h3>
+    <p>Do you lack in presentation skills when it comes to assignments? Then quickly avail our online engineering help service at a very affordable rate. By taking our services, you’ll get engaging, crisp and presentable content which will surely help you in scoring well. Have a look at some assignment topics below.  </p>
+    <ul>
+        <li><i className="fa fa-dot-circle-o"></i> Mechatronics Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Genetic Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Ocean and Marine Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Mining Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Civil Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Mechanical Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Electrical Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Electrical & Electronics Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Electronics & Communication Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> Ocean and marine Engineering</li>
+        <li> If you have any doubt or inquiry on online assignment help service then dial our helpline number instantly.</li>
+        <li><a href="#">Get Assignment Solutions</a></li>
+    </ul>
+   </div>
+    const five = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab">
+         <h3>Computer science online assignment help  </h3>
+    <p> Stressed? Are you preparing assignments for multiple subjects? Then you hire our professionals. They will write fresh content and will deliver on the target date. Have a look at the assignment topics down below.  </p>
+    <ul>
+        <li><i className="fa fa-dot-circle-o"></i> DBMS (DataBase management system)</li>
+        <li><i className="fa fa-dot-circle-o"></i> Video Game Designer</li>
+        <li><i className="fa fa-dot-circle-o"></i> Computer Architecture and Engineering</li>
+        <li><i className="fa fa-dot-circle-o"></i> UI designer</li>
+        <li><i className="fa fa-dot-circle-o"></i> Computer Animation and 3D design</li>
+        <li><i className="fa fa-dot-circle-o"></i> Computer VFX</li>
+        <li><i className="fa fa-dot-circle-o"></i> Motion graphics and Visual Effects</li>
+        <li><i className="fa fa-dot-circle-o"></i> Computer Biosystem</li>
+        <li><i className="fa fa-dot-circle-o"></i> Numeric analysis</li>
+        <li><i className="fa fa-dot-circle-o"></i> Cryptography</li>
+        <li> Dial to request for online assignment help. Get the benefit of affordable assignments today. Hurry! Dial now.</li>
+        <li><a href="#">Get Assignment Solutions</a></li>
+    </ul>
+    </div>
+    const six = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab"> 
+    <h3>Humanities assignment help </h3>
+    <p> You Hate doing assignments? Want to get rid of assignment work? Hire our experts today. They are highly skilled in writing academic work. For now, check our assignment topics submitted in the past.  </p>
+    <ul>
+        <li><i className="fa fa-dot-circle-o"></i> Literature</li>
+        <li><i className="fa fa-dot-circle-o"></i> Philosophy</li>
+        <li><i className="fa fa-dot-circle-o"></i> Religion</li>
+        <li><i className="fa fa-dot-circle-o"></i> Performing arts</li>
+        <li><i className="fa fa-dot-circle-o"></i> Visual arts</li>
+        <li><i className="fa fa-dot-circle-o"></i> Anthropology</li>
+        <li><i className="fa fa-dot-circle-o"></i> Archaeology</li>
+        <li><i className="fa fa-dot-circle-o"></i> Classics</li>
+        <li><i className="fa fa-dot-circle-o"></i> History</li>
+        <li><i className="fa fa-dot-circle-o"></i> Linguistics and languages</li>
+        <li><i className="fa fa-dot-circle-o"></i> Law and politics</li>
+        <li> Make a call if you are looking for quality assignments. We deliver crisp engaging content to our valuable clients.</li>
+        <li><a href="#">Get Assignment Solutions</a></li>
+    </ul>
+     </div>
+    const seven = <div className="tab-pane fade show active" role="tabpanel" aria-labelledby="accounting-tab">
+        <h3>Economics online Assignment Help </h3>
+    <p>Encountering difficulty in hunting the topics? Then you must look for experienced professionals. You can avail our services. We have experience in handling many spheres. Check some of the topics delivered by our subject matter experts. </p>
+    <ul>
+        <li><i className="fa fa-dot-circle-o"></i> Macroeconomics and Monetary Economics</li>
+        <li><i className="fa fa-dot-circle-o"></i> Game Theory and Bargaining Theory</li>
+        <li><i className="fa fa-dot-circle-o"></i> Money and Interest Rates</li>
+        <li><i className="fa fa-dot-circle-o"></i> International Economics and International Trade</li>
+        <li><i className="fa fa-dot-circle-o"></i> Finance and Financial Economics</li>
+        <li><i className="fa fa-dot-circle-o"></i> Public Economics, Taxation, and Government Spending</li>
+        <li><i className="fa fa-dot-circle-o"></i> Health, Education, and Welfare</li>
+        <li><i className="fa fa-dot-circle-o"></i> Labor and Demographic Economics</li>
+        <li><i className="fa fa-dot-circle-o"></i> Agricultural and Natural Resource Economics</li>
+        <li><i className="fa fa-dot-circle-o"></i> Urban, Rural, and Regional Economics</li>
+        <li> Immediately avail our online assignment help services by enrolling on our site. You can also call or live chat 24/7.</li>
+        <li><a href="#">Get Assignment Solutions</a></li>
+    </ul>
+    </div>
     
     return(       
         <section className="section Content_Covered mt-5">

@@ -17,7 +17,7 @@ export default function Modal({...props}){
 
     const nameRef = useRef();
 	const feedbackRef = useRef();
-	const countryRef = useRef();
+	// const countryRef = useRef();
 
     const regex = /\d{13}/g;
     const data = params.subject != undefined ? params.subject.match(regex) : params.subject;
@@ -55,7 +55,7 @@ export default function Modal({...props}){
             setError("Name Can't contain Numbers")
             return;
         }
-        const res = await saveReview(ISBN13, {name:nameRef.current.value, rating:ratings,review:feedbackRef.current.value, country:countryRef.current.value, userId:localStorage.getItem('_id')})
+        const res = await saveReview(ISBN13, {name:nameRef.current.value, rating:ratings,review:feedbackRef.current.value, userId:localStorage.getItem('_id')})
         if(res?.status == 201){
             closeDialog();
             queryClient.invalidateQueries(ISBN13);
@@ -118,14 +118,14 @@ export default function Modal({...props}){
                                                     <label>Write Your Feedback   </label>
                                                     <textarea rows="3" ref={feedbackRef} name="feedback" onChange={setDis} className="form-control" placeholder="Please write your feedback here..."></textarea>
                                                 </div>  
-                                                <div className="col-sm-12 col-md-12 form-group">
+                                                {/* <div className="col-sm-12 col-md-12 form-group">
                                                     <label>Country     </label>
                                                     <select className="form-control" ref={countryRef} name="country">
                                                         <option>--Select Country--</option>
                                                         <option>India</option>
                                                         <option>US</option>
                                                     </select>
-                                                </div>
+                                                </div> */}
                                             </div>
                                             <button type="submit" disabled={disabled} className="btn sbmt_feedbk mt-2 mb-4">Submit Your Feedback</button>
                                     </form>

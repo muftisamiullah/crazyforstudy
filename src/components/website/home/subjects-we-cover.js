@@ -34,7 +34,7 @@ export default function SubjectsWeCover(){
                         <div className="row">
                             <div className="col-md-5 text-center finance_img">
                                 <span>
-                                    <img src="../images/we-cover-img/finance.png" className="img-fluid" alt=""/>
+                                    <img src="../images/we-cover-img/marketing.png" className="img-fluid" alt=""/>
                                 </span>
                             </div>
                             <div className="col-md-7"> 
@@ -59,7 +59,7 @@ export default function SubjectsWeCover(){
                         <div className="row">
                             <div className="col-md-5 text-center finance_img">
                                 <span>
-                                    <img src="../images/we-cover-img/finance.png" className="img-fluid" alt=""/>
+                                    <img src="../images/we-cover-img/biology.png" className="img-fluid" alt=""/>
                                 </span>
                             </div>
                             <div className="col-md-7"> 
@@ -84,7 +84,7 @@ export default function SubjectsWeCover(){
                         <div className="row">
                             <div className="col-md-5 text-center finance_img">
                                 <span>
-                                    <img src="../images/we-cover-img/finance.png" className="img-fluid" alt=""/>
+                                    <img src="../images/we-cover-img/account.png" className="img-fluid" alt=""/>
                                 </span>
                             </div>
                             <div className="col-md-7"> 
@@ -109,7 +109,7 @@ export default function SubjectsWeCover(){
                             <div className="row">
                                 <div className="col-md-5 text-center finance_img">
                                     <span>
-                                        <img src="../images/we-cover-img/finance.png" className="img-fluid" alt=""/>
+                                        <img src="../images/we-cover-img/socialscience.png" className="img-fluid" alt=""/>
                                     </span>
                                 </div>
                                 <div className="col-md-7"> 
@@ -134,7 +134,7 @@ export default function SubjectsWeCover(){
                             <div className="row">
                                 <div className="col-md-5 text-center finance_img">
                                     <span>
-                                        <img src="../images/we-cover-img/finance.png" className="img-fluid" alt=""/>
+                                        <img src="../images/we-cover-img/chemistry.png" className="img-fluid" alt=""/>
                                     </span>
                                 </div>
                                 <div className="col-md-7"> 
@@ -159,7 +159,7 @@ export default function SubjectsWeCover(){
                             <div className="row">
                                 <div className="col-md-5 text-center finance_img">
                                     <span>
-                                        <img src="../images/we-cover-img/finance.png" className="img-fluid" alt=""/>
+                                        <img src="../images/we-cover-img/economics.png" className="img-fluid" alt=""/>
                                     </span>
                                 </div>
                                 <div className="col-md-7"> 
@@ -184,7 +184,7 @@ export default function SubjectsWeCover(){
                         <div className="row">
                             <div className="col-md-5 text-center finance_img">
                                 <span>
-                                    <img src="../images/we-cover-img/finance.png" className="img-fluid" alt=""/>
+                                    <img src="../images/we-cover-img/physics.png" className="img-fluid" alt=""/>
                                 </span>
                             </div>
                             <div className="col-md-7"> 

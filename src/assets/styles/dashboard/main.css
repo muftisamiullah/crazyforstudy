@@ -2092,7 +2092,8 @@ fieldset[disabled] .btn-link.active {
 }
 .theme-blush .form-group .form-control + .input-group-addon,
 .theme-blush .input-group .form-control + .input-group-addon {
-    padding: 6px 18px 6px 0;
+    /* padding: 6px 18px 6px 0; */
+    padding: 10px;
 }
 .theme-blush .form-group .input-group-addon,
 .theme-blush .input-group .input-group-addon {
@@ -19580,8 +19581,8 @@ section small {
     padding: 36px 2em;}
 	
 	.Current_Status .progress .progress-bar{background:#f8d021;}
-	.Current_Status a.Complete{background:#f8d021 !important; width:150px; color:#000;}
-	.Current_Status a.Add_Money{background:#addb42 !important; color:#000;}
+	.Current_Status a.Complete{background:#f8d021 !important; width:150px; color:#000;margin: 10px !important;}
+	.Current_Status a.Add_Money{background:#addb42 !important; color:#000;margin: 10px !important;}
 	
 	.Your_Order_Status span.number{cursor:default;width:67px; height:67px; line-height:67px; color:#000; font-weight:600; font-size:14px; background:#ededed; display:inline-block; border-radius:100px;}
 	
@@ -20903,9 +20904,19 @@ h4.ans_s {
 	height:80px; overflow:hidden;
     vertical-align: bottom !important;
     border:2px solid #f8d021;}
-	.sidebar .user-info .image a{padding:0px !important;cursor:default;}
-	.sidebar .user-info .image img{width:100%; border:none; border-radius: 0;
-    box-shadow: none;}
+	.sidebar .user-info .image a{padding:0px !important;cursor:default;width: 80px;height: 80px;}
+	.sidebar .user-info .image img {
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        max-width: inherit;
+        width: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 	
 	.block-header h2 { 
     font-size: 18px;
@@ -21786,7 +21797,7 @@ font-size: 14px; padding:0 15px; border-left:1px solid #ccc; display:inline-bloc
     -webkit-tap-highlight-color: transparent;
 }
 .Pay_From_Wallet h5 span {
-    cursor: pointer;
+    cursor: default;
     background: #addb42;
     padding: 7px 12px;
     height: 30px;
@@ -21810,6 +21821,9 @@ font-size: 14px; padding:0 15px; border-left:1px solid #ccc; display:inline-bloc
     }
 }
 @media (max-width: 991px){
+    .payment_section2 {
+        height: auto !important;
+    }
 a.btn.ml-auto.offers_k {
     background: #256ff7;
     font-size: 13px;
@@ -21973,3 +21987,4 @@ ul.dropdown-menu.pullDown.show a li.footer {
     background: #fff;
     padding: 20px 10px;
 }
+

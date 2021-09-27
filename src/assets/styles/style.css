@@ -2171,15 +2171,20 @@ button.btn.form-control.submit_btn1:hover {
     box-shadow: 0 3px 6px rgb(44 44 44 / 16%), 0 3px 6px rgb(44 44 44 / 23%);
     margin: auto;
 }
+
 .profile-page .profile-header.img-f .profile-image img {
     border-radius: 0;
-    width: 180px;
+    width: auto;
     margin: auto;
+    max-width: initial;
     border: none;
+    height: 180px;
     position: relative;
     top: 50%;
+    left: 50%;
     box-shadow: none;
-    transform: translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
 }
 
 .react-datepicker-wrapper {
@@ -2502,6 +2507,7 @@ section.faq.faq_bg_sctn.faq-t p {
 
         .web_font1 footer .socail_icons li:nth-child(6) a:hover {
             background: #a835b3;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
         }
         .nav_pding.nav_sitemap {
             padding-top: 0;
@@ -2518,4 +2524,21 @@ section.faq.faq_bg_sctn.faq-t p {
             padding-bottom: 0;
             margin: 7px 0px;
             border-right: 1px solid #ccc;
+        }
+
+        span.my_pics_img.m-r-60.mt-0 img {
+            height: 40px;
+            width: auto;
+            max-width: inherit;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        span.my_pics_img.m-r-60.mt-0 {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
         }

@@ -69,7 +69,7 @@ export default function RazorPay({...props}){
                 "currency": "USD",
                 "name": "New Assignment",
                 "description": "crazy for study",
-                "image": "https://example.com/your_logo",
+                "image": "https://crazyforstudy.com/images/logo_wa.jpg",
                 "order_id": order_id, 
                 "handler":async function (response){              
                     const res = await saveTransactionDetailsForAssignment(

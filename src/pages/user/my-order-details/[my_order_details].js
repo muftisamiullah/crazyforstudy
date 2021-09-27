@@ -470,7 +470,7 @@ export default function MyOrderDetails(){
                         </div>
                         <div className="col-lg-12 col-md-12">
                             <div className="row clearfix">
-                            <div className="col-md-6">
+                            <div className="col-md-12 col-lg-6">
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="cus_modal profile_modal payment_section payment_section2">
@@ -491,9 +491,9 @@ export default function MyOrderDetails(){
                                                     <br/>
                                                     {/* <a href="#" className="btn  ml-auto Complete pay mt-2">Pay From Wallet </a> */}
                                                     <br/>
-                                                    <p className="mt-5">Lorem ilupsm please make the payment so that we could quickly create an amazing Case Study create an amazing Case Study for you
+                                                    {/* <p className="mt-5">Lorem ilupsm please make the payment so that we could quickly create an amazing Case Study create an amazing Case Study for you
                                                     </p>
-                                                    <p className="Jullia_Write">Jullia Write 12 Aug 2020 05:46AM</p>
+                                                    <p className="Jullia_Write">Jullia Write 12 Aug 2020 05:46AM</p> */}
                                                 </div>
                                             </div>
                                         </div>

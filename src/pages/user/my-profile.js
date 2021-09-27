@@ -23,6 +23,7 @@ export default function  MyProfile() {
     const [loader1, setLoader1 ] = useState()
     const [display, setDisplay ] = useState('none')
     const [error, setError] = useState();
+    const [msg, setMsg] = useState();
     const [passData, setPassData] = useState({
         pass: '',
         confirmPass: '',
@@ -151,21 +152,34 @@ export default function  MyProfile() {
 
     const updatePassword = async() => {
         setLoader1(true);
+        console.log(passData.pass.length)
+        if(passData.pass.length < 8){
+            setError('Password must not be less than 8 characters')
+            return;
+        }
+        if(passData.pass == "" || passData.confirmPass == ""){
+            setError('Both fields necessary')
+            return
+        }
+        if(passData.pass !== passData.confirmPass){
+            setError('Password mismatch')
+            return
+        }
         const res = await updatePass(passData);
         if(res.status == 200){
             setLoader1(false)
-            setError('Password updated successfully')
+            setMsg('Password updated successfully')
         }else{
             setLoader1(false)
         }
     }
 
     useEffect(() => {
-		let timerError = setTimeout(() => setError(''), 3000);
+		let timerError = setTimeout(() => {setError('');setMsg('')}, 3000);
 		return () => {
 			clearTimeout(timerError);
 		}
-	}, [error])
+	}, [error, msg])
     
     return (
         <>
@@ -227,6 +241,14 @@ export default function  MyProfile() {
                             <li className="breadcrumb-item active">Profile</li>
                         </ul>
                     </div>
+                    </div>
+                </div> */}
+        	    {/* <div class="row clearfix" id="successfully" style={{display:"block"}}>
+                    <div class="col-lg-12 col-md-12">
+                    <div class="congratulation_text text-center">
+                        <img src="/images/like.png" class="img-fluid" alt=""/>
+                        <h4  class="modal-title text-center">Password Changed Successfully </h4>
+                        </div>
                     </div>
                 </div> */}
                 <div className="container-fluid">
@@ -323,8 +345,8 @@ export default function  MyProfile() {
                                     <input type="password" className="form-control" placeholder="New Password">
                                 </div> --> */}
                                 <button className="btn btn-info btn-round" id="changepass" onClick={openChangePassword}> Changes Password</button>
-
-                                <div className="row clearfix" id="changepass2" style={{display:`${display}`}}>
+                                <div style={{display:`${display}`}}>
+                                <div className="row clearfix" id="changepass2" >
                                     <div className="col-lg-6 col-md-12">
                                         <div className="form-group">
                                         <label>New Password</label>
@@ -338,11 +360,14 @@ export default function  MyProfile() {
                                         </div>
                                     </div>
                                     <div className="col-md-12">
+                                        <span style={{color:"red"}}>{error}</span>
+                                        <span style={{color:"green"}}>{msg}</span>
+                                    </div>
+                                    <div className="col-md-12">
                                         <button className="btn btn-primary btn-round" id="successProfileUpdatebtn" onClick={updatePassword}>{loader1 ? "Updating": "Update Password"}</button>
-                                        <span style={{color:"green"}}>{error}</span>
                                     </div>
                                     </div>
-
+                                    </div>
 
                                 <hr/>
 
