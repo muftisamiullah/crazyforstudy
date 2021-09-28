@@ -95,12 +95,15 @@ export default function AskQuestion(){
    }
 
    useEffect(()=>{
+      console.log(formData)
       if(formData.image1){
-         setCount(1);
-      }else if(formData.image2){
-         setCount(1)
-      }else if(formData.image1 && formData.image2){
-         setCount(2)
+         setCount((count)=>count =  1);
+      }
+      if(formData.image2){
+         setCount((count)=>count =  1)
+      }
+      if(formData.image1 && formData.image2){
+         setCount((count)=>count =  2)
       }
    },[formData])
 

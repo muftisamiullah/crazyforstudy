@@ -166,7 +166,7 @@ export const privateRoutes = [
         component: Notifications
     },
     {
-        path: '/user/cancelation',
+        path: '/user/cancelation/:sub_id',
         component: Cancelation
     },
     {

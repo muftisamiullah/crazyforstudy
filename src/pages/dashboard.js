@@ -1,6 +1,6 @@
 import DashboardNavbar from '../components/website/dashboard/dashboard-navbar'
 import SideBar from '../components/website/dashboard/sidebar'
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import BlockHeader from '../components/website/dashboard/block-header'
 import { Link } from 'react-router-dom';
 import {getUser} from '../libs/profile'
@@ -9,13 +9,48 @@ import { useQuery } from 'react-query'
 import {AuthContext} from '../context/AuthContext';
 
 export default function  Dashboard() {
+    const [percentage, setPercentage] = useState(0);
+
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
     
     const isRead = false;
     const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined, staleTime:Infinity, enabled: !!session})
     const { data: notifications, isLoading:notificationsIsLoading, error:notificationsError } = useQuery([`notifications-${isRead}`], () => getNotifications({user_Id : state._id, type: 'QA'}, isRead),{ staleTime : Infinity, enabled : !!session })
-            
+    console.log(user);
+
+    useEffect(()=>{
+        if(user != 'undefined' && user){
+            if(user && user.img != ""){
+                setPercentage((percentage) => percentage + 20); //20%
+            }
+            if(user && user.Name != ""){
+                setPercentage((percentage) => percentage + 10); //10%
+            }
+            if(user && user.Email != ""){
+                setPercentage((percentage) => percentage + 10); //10%
+            }
+            if(user && user.Country != ""){
+                setPercentage((percentage) => percentage + 10); //10%
+            }
+            if(user && user.Zipcode != ""){
+                setPercentage((percentage) => percentage + 10); //10%
+            }
+            if(user && user.Address != ""){
+                setPercentage((percentage) => percentage + 10); //10%
+            }
+            if(user && user.college != ""){
+                setPercentage((percentage) => percentage + 10); //10%
+            }
+            if(user && user.Contact != ""){
+                setPercentage((percentage) => percentage + 10); //10%
+            }
+            if(user && user.Subscribe == "true"){
+                setPercentage((percentage) => percentage + 10); //10%
+            }
+        }
+    }, [user])
+
     return (
         <>  
             {/* <Header/> */}
@@ -58,10 +93,10 @@ export default function  Dashboard() {
                                     <li>
                                         <div className="pl-0">
                                             <span>
-                                                <p className="file_prsn">Your profile is 20% completed <Link to="/user/my-profile" className="float-right"><i className="fa fa-pencil-square"></i> Edit Profile</Link></p>
+                                                <p className="file_prsn">Your profile is {percentage}% completed <Link to="/user/my-profile" className="float-right"><i className="fa fa-pencil-square"></i> Edit Profile</Link></p>
                                             </span>
                                             <div className="progress progress_wdth">
-                                                <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style={{width: "70%"}}>
+                                                <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style={{width: `${percentage}%`}}>
                                                 </div>
                                             </div>
                                         </div>

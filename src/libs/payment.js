@@ -15,6 +15,18 @@ export async function createSubscription(data) {
     }
 }
 
+export async function cancelSubscription(data) {
+    try {
+        const res = await authAxios.post(apiUrl + 'payment/razorpay-cancel-subs', data)
+        return res;
+    }
+    catch(e){
+        if(e.response.status === 401){
+            return null;
+        }
+    }
+}
+
 export async function saveTransactionDetails(data) {
     try {
         const res = await authAxios.post(apiUrl + 'payment/save-transaction', data)

@@ -1933,6 +1933,22 @@ ul.menu.list-unstyled.notification_scroll {
     }
     
     @media (max-width:767px){
+        .Reviews_bg {
+            border: 1px solid #f7f7f7;
+            padding: 0 0px;
+        }
+        .bg_qand_ans {
+            padding: 30px 0;
+          
+        }
+        .Book_Description_text, .Book_Details_text {
+            padding: 20px 10px; 
+        }
+        .sendnotification h5 { 
+            font-size: 15px; 
+            line-height: 22px;
+            margin-top: 15px;
+        }
         .fill_isbn input.form-control.isbncls {
             width: 100%;
             margin-right: 0;
@@ -2542,3 +2558,182 @@ section.faq.faq_bg_sctn.faq-t p {
             width: 40px;
             height: 40px;
         }
+        @media (max-width: 991px){
+            div#mobile_nav ul.navbar-nav.ml-auto {
+                background: #fff6f0;
+            }
+            .web_font1 .dropdown-menu.megamenu.sm-menu.border-top.show {
+                background: #fff6f0;}
+            }
+        
+            
+
+            @charset "utf-8";
+/* CSS Document */
+
+@media (max-width:991px){
+	.web_font1 p {
+    font-weight: 500;
+    font-size: 14px;
+    color: #323232;
+}
+
+.Why_us_title h3 { 
+    margin-bottom: 10px;
+}
+	
+	section.section.typical_answer.mt-5.mb-5.pb-5 { 
+    margin-top: 0 !important;
+}
+section.section.typical_answer.mt-5.mb-5.pb-5 .col-md-12.mb-5.text-center {
+    margin-bottom: 0 !important;
+}
+.testimonial_text p {
+    font-size: 14px;
+}
+.testimonial_text ul li span.unsty_cam {
+     
+    font-size: 14px;
+}
+.testimonial_text ul li span { 
+    font-size: 14px;
+}
+section.section.typical_answer.mt-5.mb-5 .col-md-6.pr-5.border_right {
+    padding-right: 15px !important;
+}
+.web_font1 .all_banner_text form input {
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
+.web_font1 .qa_banner { 
+    padding: 0 !important;
+}
+.services_boxes {
+    position: relative;
+    top:50px;
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+}
+.col-md-12.Content_Covered_title.mb-4.pb-2.text-center.pt-5.get-homework {
+    padding-top: 0 !important;
+}
+.col-md-12.text-center.pb-5.get-homework {
+    padding-bottom: 0 !important;
+}
+.bg_img_q_s_c { 
+    margin-bottom: 30px;
+}
+.Reviews_bg {
+    border: 1px solid #f7f7f7;
+    padding: 0 1px;
+}
+.Book_Description_text, .Book_Details_text {
+    padding: 20px 5px; 
+}
+.bg_qand_ans {
+    padding: 30px 0; 
+}
+.textbooks_title h2 { 
+    font-size: 22px; 
+}
+.col-md-12.mt-5.fill_isbn {
+    padding: 0 !important;
+}
+.col-md-12.mt-5.fill_isbn .col-sm-10 {
+    padding: 0 !important;
+}
+.fill_isbn input.form-control.isbncls {
+    width: 60%;
+    margin-right: 8px;
+    margin-bottom: 0px;
+}
+ask_qus form { 
+    margin: 30px 0px 30px 0;
+	}
+	.how_it_bg_img .text_tb_center3 {
+    padding-left: 0;
+}
+.theme-blush .pd_lr {
+    padding: 0 15px;
+}
+.nav_account1 p { 
+    width: 100%;
+}
+
+.form_banner { 
+    border-radius: 0px;
+	padding: 20px 0;
+}
+.banner_assign_ment { 
+    padding: 50px 0 0 0;
+}
+.form_banner h2 span {
+    font-size: 25px;
+    font-weight: 600; 
+}
+	.input-group-btn:last-child>.btn { 
+    margin-top: 10px;
+}
+.features_text p { 
+    font-size: 14px;
+    padding: 0 0px;
+}
+.bg_width_fx {
+    width: 100%; 
+}
+.row.bg_width_fx .col-md-4.text-center { 
+    padding: 0 !important;
+}
+.text_white p {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+}
+.include_list li { 
+    display: inline-flex;
+}
+.web_font1 .banner_text {
+    padding: 15px 0;
+}
+.web_font1 .banner .col-md-6.pl-0 {
+    padding-left: 15px !important;
+} 
+.about_text p {
+    font-size: 12px!important;
+    text-align-last: left;
+    text-align: justify;
+}
+.our_popular_isbn_no, .our_popular_title, .star_rating { 
+    margin-top: 10px;
+}
+.bg_banner_color { 
+    margin-bottom: 30px;
+}
+ul.nav.nav-tabs.profile_editbtn { 
+    padding-left: 15px;
+}
+.page-nav-menu {
+    padding: 6px 9px; 
+}
+.Refer_Your_Friend .btn {
+    font-weight: 600;  
+    background-color: #f8d021 !important;
+    color: #000 !important;
+}
+.bg_green1 p { 
+    line-height: 24px;}
+}
+
+@media (max-width:1199px){
+	.half-circle { 
+    border-bottom: 0;
+}
+.how_it_bg2 .half-circle, .how_it_bg4 .half-circle {
+    border: 7px solid #f7d43a;
+    border-bottom: 0; 
+}
+.web_font1 footer .socail_icons li a { 
+    width: 30px;
+	}
+}

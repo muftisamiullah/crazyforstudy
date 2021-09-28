@@ -415,9 +415,9 @@ export default function MyOrderDetails(){
                                         <div className="col-lg-12 col-md-12 col-sm-12 Current_Status">
                                             <div className="text-center Earn_Referral Complete_Profile Pay_From_Wallet">
                                                 <h5 className=" ml-auto Add_Money pay mt-2 mb-0"><span>Pay From Wallet </span></h5>
-                                                <a href="#" className="btn  ml-auto  pay Add_Money">
+                                                {/* <a href="#" className="btn  ml-auto  pay Add_Money">
                                                 <img src="/images/paypal.png" className="img-fluid" alt="paypal"/></a><br/> 
-                                                {/* <a href="#" className="btn ml-auto Add_Money">
+                                                <a href="#" className="btn ml-auto Add_Money">
                                                 <img src="/images/razorpay.png" className="img-fluid" alt="razorpay"/></a> */}
                                                 <Razorpay type="assignment" amt={data && (data.amount * 50)/100}/>
                                             </div>
@@ -485,8 +485,8 @@ export default function MyOrderDetails(){
                                             <div className="body">
                                                 <div className="text-center Earn_Referral mt-4 Complete_Profile">
                                                     <h4 className="m-t-2 Credits_Earned">Proceed by clicking</h4>
-                                                    <a href="#" className="btn  ml-auto Complete pay mt-2"><img src="/images/paypal.png" className="img-fluid" alt="paypal"/> </a>
-                                                    or
+                                                    {/* <a href="#" className="btn  ml-auto Complete pay mt-2"><img src="/images/paypal.png" className="img-fluid" alt="paypal"/> </a>
+                                                    or */}
                                                     <a href="#" className="btn mt-4 mb-4  ml-auto Add_Money"><img src="/images/razorpay.png" className="img-fluid" alt="razorpay"/>  </a>
                                                     <br/>
                                                     {/* <a href="#" className="btn  ml-auto Complete pay mt-2">Pay From Wallet </a> */}

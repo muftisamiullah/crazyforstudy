@@ -60,7 +60,7 @@ export default function MySubs(){
                                                                 <tbody>
                                                                     <tr>
                                                                         <td className="w-10"><span className="">{key}</span></td>
-                                                                        <td className="w-15 "><span className="textbook-t">{item.payment_id}</span></td>
+                                                                        <td className="w-15 "><span className="textbook-t">{item.subscription_id}</span></td>
                                                                         <td className="w-15">{item.SubscribeDate.substring(0,10)}</td>
                                                                         <td className="w-20">07/20/2021</td>
                                                                         <td className="w-20">
@@ -68,7 +68,7 @@ export default function MySubs(){
                                                                             View Receipt
                                                                             </button>
                                                                         </td>
-                                                                        <td className="green-aci w-20">Active</td>
+                                                                        <td className="green-aci w-20">{item.subscription_status}</td>
                                                                     </tr>
                                                                 </tbody>
                                                                 </table>
@@ -79,10 +79,10 @@ export default function MySubs(){
                                                                     <div className="col-md-4">
                                                                         <div className="d-md-flex align-items-center">
                                                                             <div className="receipt-img">
-                                                                            <img className="order-book-img" src="/images/cfs-dumt-img.png" draggable="false"/>
+                                                                            {/* <img className="order-book-img" src="/images/cfs-dumt-img.png" draggable="false"/> */}
                                                                             </div>
                                                                             <div className="receipt-txt">
-                                                                            <h4 className="order-type-collpse">{item.subscription_id}</h4>
+                                                                            <h4 className="order-type-collpse">{item.payment_id}</h4>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -96,11 +96,11 @@ export default function MySubs(){
                                                                     </div>
                                                                     <div className="col-md-2 mt-auto mb-auto collapse-order-data text-left">
                                                                         <p className="item-type-order">Status</p>
-                                                                        <h3>					Active
+                                                                        <h3>{item.subscription_status}
                                                                         </h3>
                                                                     </div>
                                                                     <div className="col-md-3 mt-auto mb-auto ml-auto">
-                                                                        <Link to="/user/cancelation" className="order-sub-cancel">Cancel Subscription Pack</Link>
+                                                                        {item.subscription_status == 'active' ? <Link to={`/user/cancelation/${item.subscription_id}`} className="order-sub-cancel">Cancel Subscription Pack</Link> : '' }
                                                                     </div>
                                                                 </div>
                                                                 </div>
