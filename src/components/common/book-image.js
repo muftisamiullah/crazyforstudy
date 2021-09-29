@@ -14,7 +14,6 @@ function BookImage({isbn,altText}) {
                         "origin": "https://crazyforstudy.s3.ap-south-1.amazonaws.com/"
                      }
                 });
-                console.log(response)
                 if(response.status === 200){
                     setImage(`https://crazyforstudy.s3.ap-south-1.amazonaws.com/isbn/${isbn}-us-300.jpg`);
                 }

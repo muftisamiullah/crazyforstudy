@@ -39,7 +39,7 @@ export default function Reviews({...props}){
                                         <h3 className="">Reviews & Ratings</h3>
                                         <p className="start_review_pr">
                                             {[...Array(5)].map((e, i) => 
-                                                i < props?.book?.ratingAv ? 
+                                                i <  Math.floor(props?.book?.ratingAv) ? 
                                                     <i className="fa fa-star" key={i}></i>
                                                 :
                                                     <i className="fa fa-star-o" key={i}></i>
