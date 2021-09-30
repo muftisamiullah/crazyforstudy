@@ -91,7 +91,7 @@ export default function SideBar({...props}){
                             <li className="rs_mual1">
                                 <ul className="ml-menu" style={{display:"block"}}>
                                     <li className="pb-0">
-                                        <Link  to="/q-and-a" className="menu-toggle waves-effect waves-block">
+                                        <Link  to="/q-and-a" className="menu-toggle tear waves-effect waves-block">
                                         <img src="" className="img-fluid" alt=""/>
                                         <span>Q and A</span></Link>
                                     </li>

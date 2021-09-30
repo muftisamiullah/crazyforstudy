@@ -1,4 +1,4 @@
-import {createSubscription, saveTransactionDetails, createOrder, saveTransactionDetailsForAssignment} from '../../libs/payment'
+import {createSubscription, saveTransactionDetails, createOrder,assignmentPaymentFailure, subsPaymentFailure, saveTransactionDetailsForAssignment} from '../../libs/payment'
 import { useState, useContext } from "react";
 import { useQueryClient } from 'react-query'
 import { useParams, useLocation, useHistory } from 'react-router-dom';
@@ -53,6 +53,17 @@ export default function RazorPay({...props}){
             };
             var rzp1 = new window.Razorpay(options);
             rzp1.open();
+            rzp1.on('payment.failed', function (response){
+                // alert(response.error.code);
+                // alert(response.error.description);
+                // alert(response.error.source);
+                // alert(response.error.step);
+                // alert(response.error.reason);
+                // alert(response.error.metadata.order_id);
+                // alert(response.error.metadata.payment_id);
+                response.error.userId = localStorage.getItem('_id');
+                const res = subsPaymentFailure(response.error);
+            })
         }
         e.preventDefault();
     }
@@ -96,13 +107,14 @@ export default function RazorPay({...props}){
             var rzp1 = new window.Razorpay(options);
             rzp1.open();
             rzp1.on('payment.failed', function (response){
-                alert(response.error.code);
-                alert(response.error.description);
-                alert(response.error.source);
-                alert(response.error.step);
-                alert(response.error.reason);
-                alert(response.error.metadata.order_id);
-                alert(response.error.metadata.payment_id);
+                // alert(response.error.code);
+                // alert(response.error.description);
+                // alert(response.error.source);
+                // alert(response.error.step);
+                // alert(response.error.reason);
+                // alert(response.error.metadata.order_id);
+                // alert(response.error.metadata.payment_id);
+                const res = assignmentPaymentFailure({details: response.error, user_Id: localStorage.getItem('_id')});
             });
         }
         e.preventDefault();

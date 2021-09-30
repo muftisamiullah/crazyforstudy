@@ -71,7 +71,7 @@ export default function  Dashboard() {
                                         <p className="mb-1 add_more_power my_ac">Get An Amazing Winter Offer on Assignment help </p>
                                     </div>
                                     <div className="col-xl-3 col-lg-3 col-sm-12 col-md-3 text-right Earn_Referral d-block mt-auto mb-auto">  
-                                        <a href="#" className="btn ml-auto offers_k">Get Assignment </a>
+                                        <a href="#" className="btn ml-auto offers_k remove_cur">Get Assignment </a>
                                     </div>
                                 </div>
                             </div>

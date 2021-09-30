@@ -34,7 +34,7 @@ export default function Reviews({...props}){
                     <div className="col-md-12">
                         <div className="Reviews_bg">
                             <div className="row">
-                                <div className="col-md-4">
+                                <div className="col-md-4" style={{margin: props.reviews.length > 0 ? "" : "auto"}}>
                                     <div className="Reviews_Ratings_text">
                                         <h3 className="">Reviews & Ratings</h3>
                                         <p className="start_review_pr">

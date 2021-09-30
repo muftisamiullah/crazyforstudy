@@ -455,7 +455,7 @@ export default function MyOrderDetails(){
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-md-6">
+                            <div className="col-lg-4 col-md-6 dear">
                                 <div className="card top_counter Total_Order">
                                     <div className="body body_assignment_deliver">
                                         <div className="content float-left">

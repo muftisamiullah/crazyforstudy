@@ -12,7 +12,6 @@ function App() {
 	const location =  useLocation();
 
 	useEffect( () => { 
-		window.scrollTo(0, 0)
 		if(location.pathname.includes('user') || location.pathname.includes('dashboard')) 
 			{
 				document.querySelector("body").classList.add("theme-blush")

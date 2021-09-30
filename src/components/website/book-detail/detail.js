@@ -13,7 +13,7 @@ export default function Details({...props}){
                                 <li><span>Publisher</span> S Chand & Company Pvt Ltd - He   </li> 
                             </ul>
                             <ul> 
-                                <li><span>Publishing</span> Date  2015   </li>
+                                <li><span>Publishing Date</span> 2015   </li>
                                 <li><span>Product Edition</span> 1</li>
                             </ul>
                         </div>

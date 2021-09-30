@@ -1933,6 +1933,12 @@ ul.menu.list-unstyled.notification_scroll {
     }
     
     @media (max-width:767px){
+        .dropdown-menu.megamenu.sm-menu.border-top.show {
+            background: #fff7d5 !important;
+        }
+        .nav_sm_menu_bg {
+            background: #fff7d5;
+        }
         .Reviews_bg {
             border: 1px solid #f7f7f7;
             padding: 0 0px;

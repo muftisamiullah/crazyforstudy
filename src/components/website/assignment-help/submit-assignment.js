@@ -128,7 +128,7 @@ export default function SubmitAssignment() {
                             </div>
                             <div className="form-group col-md-12">
                                 <select type="text" className="form-control" onChange={selectSubSubject} required>
-                                    <option>Other Subject</option>
+                                    <option>Sub Subject</option>
                                     {subsubjects && subsubjects.data.map((item,key)=>{
                                         return(
                                             <option value={item.sub_subject} key={key} data-subsubjectid={item._id}>{item.sub_subject}</option>

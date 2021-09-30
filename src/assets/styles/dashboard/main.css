@@ -4714,6 +4714,9 @@ body.theme-blush  {
     color: #fff;
 }
 @media screen and (max-width: 991px) {
+    .col-lg-4.col-md-6.dear {
+        margin: 0 auto;
+    }
     li.nav-item.dmenu.float-right.pt_sty.dropdown a.dropdown-toggle {
         width: 40px !important;
         padding-left: 0;
@@ -21148,6 +21151,9 @@ a.btn.ml-auto.offers_k {
     font-size: 15px;
     font-weight: 400;
 }
+a.btn.ml-auto.offers_k.remove_cur{
+    cursor:default;
+}
 .nav_right1 i.zmdi.zmdi-notifications {
     font-size: 25px;
     vertical-align: inherit;
@@ -22114,6 +22120,7 @@ ask_qus form {
     font-weight: 600;
     font-size: 15px;
     line-height: 24px;
+    color:white;
 }
 .include_list li { 
     display: inline-flex;

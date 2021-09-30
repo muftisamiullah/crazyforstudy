@@ -52,12 +52,12 @@ export default function Notifications(){
                                     <table className="table table-hover m-b-0 my-order-new my_subscrption_table">
                                         <thead>
                                         <tr className="table_title order">
-                                            <th className="w-15">S.No</th>
-                                            <th className="w-15">Question</th>
-                                            <th className="w-15">Type</th>
-                                            <th className="w-15">Date</th>
-                                            <th className="w-15">Status</th>
-                                            <th className="w-15">View</th>
+                                            <th className="">S.No</th>
+                                            <th className="">Question</th>
+                                            <th className="">Type</th>
+                                            <th className="">Date</th>
+                                            <th className="">Status</th>
+                                            <th className="">View</th>
                                         </tr>
                                         </thead>
                                         <tbody>

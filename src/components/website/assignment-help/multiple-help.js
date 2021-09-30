@@ -46,7 +46,7 @@ export default function MultipleHelp() {
 
     const one = <div className="tab-pane fade show active"  role="tabpanel" aria-labelledby="accounting-tab">
                     <h3>Accounting Assignment Help</h3>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classNameical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, popular belief, Lorem Ipsum is not simply random text.  </p>
+                    <p>Hunting for online assignment help? We are at your doorstep. You can quickly avail our top online assignment help service. Check out a few assignment topics delivered by our experts in the past. </p>
                     <ul>
                         <li><i className="fa fa-dot-circle-o"></i> Cost Accounting</li>
                         <li><i className="fa fa-dot-circle-o"></i> Management Accounting</li>
