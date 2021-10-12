@@ -12,7 +12,7 @@ import Reviews from '../../../components/website/book-detail/review'
 import BreadCrumb from '../../../components/website/textbook-solutions-manuals/tbs-breadcrumb'
 import { useParams, useHistory, useLocation, Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import {getBook, getChapters, getSections, getExercises, getRelatedBooks, getProblems, getProblemsDirectly, searchQuestions} from '../../../libs/book'
+import {getBook, getChapters, getSections, getExercises, getRelatedBooks, getProblems, getProblemsDirectly, searchQuestions, askForSoltuion} from '../../../libs/book'
 import {useState, useEffect, useContext} from 'react';
 import BookInfo from '../../../components/website/book-detail/book-info'
 import Highlighter from "react-highlight-words";
@@ -60,6 +60,7 @@ export default function Book(){
     const [selectedQuestion, setselectedQuestion] = useState();
     const [selectedItem, setSelectedItem] = useState();
     const [answer, setAnswer] = useState();
+    const [answerObject, setAnswerObject] = useState({});
     const [loc, setLoc] = useState();
 
     //seo 
@@ -85,7 +86,7 @@ export default function Book(){
     const { data: problems, isLoading: problemIsLoading, error: problemError } = useQuery([`${ISBN13}-${section}-${exercise}`], () => getProblems({book_isbn: ISBN13,chapter_no: chapter, section_no:section, exercise_no:exercise}, state.Subscribe),{staleTime:Infinity,enabled: !!ISBN13,})
     
     const { data: problemsDirect, isLoading: problemDirectIsLoading, error: problemDirectError } = useQuery([`${ISBN13}-${chapter}-${directProblem}`], () => getProblemsDirectly({book_isbn: ISBN13,chapter_no: chapter}, state.Subscribe),{staleTime:Infinity,enabled:directProblem})
-    
+
     // const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!ISBN13,}) //changed to below code was getting called when relatedbook was undefined
     const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!relatedBook,})
     
@@ -119,11 +120,27 @@ export default function Book(){
         }
     }
 
-    const clickedQues = (data, answer, key) => {
+    const clickedQues = async(data,item,key) => {
         setselectedQuestion(data)
-        setAnswer(answer)
+        setAnswer(item.answer)
         setSelectedItem(key)
+        setAnswerObject(item);
     }
+
+    const requestAnswer = async() => {
+        if(state.Subscribe === "true" && answerObject.answer == undefined){
+            const res = await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id)
+            console.log(res)
+        }
+    }
+
+    // useEffect(() => {
+    //     const script = document.createElement("script");
+    //     script.id = 'editor';
+    //     script.src = "https://www.wiris.net/demo/plugins/app/WIRISplugins.js?viewer=image";
+    //     script.async = true;
+    //     document.body.appendChild(script);
+    // },[answer])
 
     useEffect(() => {
         if(problems && problems.length > 0 || problemsDirect && problemsDirect.length > 0){
@@ -131,7 +148,7 @@ export default function Book(){
             const QUESTION = slug ? slug[1] : null;
             if(QUESTION){
                 setQuestion(QUESTION)
-                console.log(QUESTION, problems)
+                // console.log(QUESTION, problems)
                 const ques = (problems && problems.length > 0) 
                                 ? problems.filter(item => (item.problem_no.toLowerCase() === QUESTION)) 
                                 : problemsDirect.filter(item => (item.problem_no.toLowerCase() === QUESTION)) 
@@ -476,7 +493,7 @@ export default function Book(){
                                         <div className="Qtion_n_Stion_text Qtion_n_Stion_text_scroll">
                                             {searchedItems && searchedItems.length>0 ? searchedItems.map((item,key) => {
                                                 return(
-                                                        <a href="#top" className="quest-click" key={key}><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, item?.answer, key)}}> <strong>Q : {item.problem_no} </strong>
+                                                        <a href="#top" className="quest-click" key={key}><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question, item, key)}}> <strong>Q : {item.problem_no} </strong>
                                                             <Highlighter
                                                                 highlightClassName="YourHighlightClass"
                                                                 searchWords={[search]}
@@ -496,13 +513,13 @@ export default function Book(){
                                         {problemIsLoading ? 'loading...' :
                                             problems && problems.map((item,key)=>{
                                                 return(
-                                                    <a href="#top" className="quest-click" key={key}><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
+                                                    <a href="#top" className="quest-click" key={key}><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item, key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
                                                 )
                                             })}
                                         {problemDirectIsLoading ? 'loading...' :
                                             problemsDirect && problemsDirect.map((item,key)=>{
                                                 return(
-                                                    <a href="#top"className="quest-click" key={key}><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item.answer,key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
+                                                    <a href="#top"className="quest-click" key={key}><div className="bg_yellow_qa" style={{backgroundColor: key == selectedItem ? "#d3d3d3" : "" }} key={key} onClick={()=>{clickedQues(item.problem_no+" : "+item.question,item, key)}}> <strong>Q  : {item.problem_no }</strong> {item.question}</div></a>
                                                 )
                                             })}
                                         </div>
@@ -589,12 +606,27 @@ export default function Book(){
                                                 </div>
                                             </div>
                                             :
-                                            <div className={answer != undefined ? "read_more_text_a" : "bg_text_img"}>
+                                            <div className={answer != Link ? "read_more_text_a" : "bg_text_img"}>
                                                 {answer == undefined || answer == "" ? 
-                                                    <div className="text-center">
-                                                        <h2 className="text-black font-30">Stay tuned, your answer will be ready within</h2>
-                                                        <span><img src="/images/time_hour.png" className="img-fluid" alt="time hour"/></span>
-                                                    </div> : <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>}
+                                                    <div className="read_more_text_a bg_text_img">
+                                                        <div className="Get_Answer_text m-auto">
+                                                            <p>This problem has not been <span>solved yet!</span></p>
+                                                            <div className="btn1 Get_Answer_btn">
+                                                                {
+                                                                state.isLoggedIn != "true" 
+                                                                    ? <Link to={`${loc}`} className="red_text1">Login to Get Answer</Link> 
+                                                                    : <Link to="#" className="red_text1" onClick={()=>{requestAnswer()}}>Request Answer</Link> 
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                    : 
+                                                    <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>
+                                                    // <div className="text-center">
+                                                    //     <h2 className="text-black font-30">Stay tuned, your answer will be ready within</h2>
+                                                    //     <span><img src="/images/time_hour.png" className="img-fluid" alt="time hour"/></span>
+                                                    // </div> : <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>
+                                                }
                                             </div>}
                                             {/* <div className="read_more_text_a">
                                                 <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>

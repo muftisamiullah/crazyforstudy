@@ -11,6 +11,25 @@ export async function getBook(param) {
     }
 }
 
+export async function askForSoltuion(book_name,chapter_name,section_name,question,q_id,problem_no,email,id) {
+    try {
+        const data = {}; 
+        data.book_name = book_name;
+        data.chapter_name = chapter_name;
+        data.section_name = section_name;
+        data.question = question;
+        data.q_id = q_id;
+        data.problem_no = problem_no;
+        data.email = email;
+        data.user_Id = id;
+        const res = await authAxios.post(apiUrl + 'books/book/ask-for-solution', data)
+        return res.data.data;
+    }
+    catch(e){
+        
+    }
+}
+
 export async function getChapters(param) {
     try {
         const res = await axios.get(apiUrl + 'books/book/chapter/'+param.book_isbn)

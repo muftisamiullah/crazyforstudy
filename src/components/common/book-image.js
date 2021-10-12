@@ -19,6 +19,7 @@ function BookImage({isbn,altText}) {
                 }
             }catch(e){
                 setImage(`https://backup.crazyforstudy.com/uploads/book-images-with-text/IMG-${isbn}.jpg`);
+                // setImage(`/images/book-img.jpg`);
             }
         }
        fetchCoverImage();

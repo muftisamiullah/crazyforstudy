@@ -183,15 +183,18 @@ export default function DashboardNavbar({...props}){
                             <li className="body">
                                 <ul className="menu list-unstyled notification_scroll">
                                     {notifications && notifications.data.map((item,key)=>{
-
+                                         var date = new Date(item.created_at);
+                                         console.log(date.toLocaleString());
                                         return(
                                             <li key={key} onClick={()=>{markAsRead(item._id,item.type)}}>
+                                               
                                                 <Link to="">
                                                         <div className="media">
                                                             <img className="media-object" src="/images/pic2.png" alt=""/>
                                                             <div className="media-body">
-                                                                <span className="name">Ashton Cox <span className="time">30min ago</span></span>
-                                                                <span className="message"><span dangerouslySetInnerHTML={{__html: item.title}}></span></span>                                    
+                                                            <span className="name">{item.type} <span className="time"></span></span>
+                                                            <span className="message"><span dangerouslySetInnerHTML={{__html: item.info}}></span></span>
+                                                            <span style={{fontSize : "10px"}}>{date.toLocaleString()}</span>                                    
                                                             </div>
                                                         </div>
                                                 </Link>

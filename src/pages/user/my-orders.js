@@ -79,6 +79,9 @@ export default function MyOrders(){
                                                    <div className="receipt-img">
                                                       <img className="order-book-img" src={imageUrl + item.image0} draggable="false"/>
                                                    </div>
+                                                   <div className="receipt-img">
+                                                      <img className="order-book-img" src={imageUrl + item.image1} draggable="false"/>
+                                                   </div>
                                                    <div className="receipt-txt">
                                                       <h4 className="order-type-collpse">{item.subscription_id}</h4>{item.question.substring(0,100)}
                                                    </div>

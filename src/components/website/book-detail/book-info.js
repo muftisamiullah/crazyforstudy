@@ -31,7 +31,7 @@ export default function BookInfo({...props}){
                     </div>
 
             <div className="col-md-8 ml-auto pd_b_left">
-                <div className="prduct_details_text">{console.log(props)}
+                <div className="prduct_details_text">
                     <h3>{props.bookData && props.bookData.DisplayTitle ? props.bookData.DisplayTitle : props.bookData.BookName+' '+props.bookData.Edition+' Solutions' }</h3>
                         <p>
                             {[...Array(props.bookData.ratingAv ? Math.floor(props.bookData.ratingAv) : 0)].map((e, i) => 

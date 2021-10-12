@@ -43,7 +43,7 @@ export default function RazorPay({...props}){
                     if(res.data){
                         state.Subscribe = true;
                         // console.log(session)
-                        localStorage.setItem('subscribed',true);
+                        localStorage.setItem('Subscribe',true);
                         history.push('/user/my-subs')
                     }
                 },
