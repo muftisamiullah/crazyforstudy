@@ -12,11 +12,6 @@ import {MakeSlug} from '../../components/common/make-slug'
 import MyQuestion from '../user/my-question'
 import {AuthContext} from '../../context/AuthContext';
 
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-// import ClassicEditor from 'ckeditor5-classic-with-mathtype';
-// import ClassicEditor from '../../components/common/ckeditor'
-// import  CKEditor  from '../../components/common/ckeditor1'
-
 export default function AskQuestion(){
    const { state } = useContext(AuthContext);
    const session = state.isLoggedIn;
@@ -28,13 +23,13 @@ export default function AskQuestion(){
    const { CKEditor, ClassicEditor} = editorRef.current || {}
    const queryClient = useQueryClient()
 
-   useEffect( () => {
-      editorRef.current = {
-        CKEditor: require( '@ckeditor/ckeditor5-react' ).CKEditor, //Added .CKEditor
-        ClassicEditor: require( 'ckeditor5-classic-with-mathtype' ).default,
-      }
-      setEditorLoaded( true )
-  }, [] );
+//    useEffect( () => {
+//       editorRef.current = {
+//         CKEditor: require( '@ckeditor/ckeditor5-react' ).CKEditor, //Added .CKEditor
+//         ClassicEditor: require( 'ckeditor5-classic-with-mathtype' ).default,
+//       }
+//       setEditorLoaded( true )
+//   }, [] );
 
    const [display, setDisplay] = useState(false);
    const [subject, setSubject] = useState();
@@ -231,7 +226,10 @@ export default function AskQuestion(){
                                  /> */}
                                     {/* <label className="mb-0">Question</label>
                                     <textarea name="editor1"></textarea> */}
-                                    { editorLoaded ? <CKEditor
+
+
+                                    {/* new comment */}
+                                    {/* { editorLoaded ? <CKEditor
                                        editor = { ClassicEditor }
                                        config = {{
                                           toolbar: {
@@ -268,7 +266,7 @@ export default function AskQuestion(){
                                        }}
                                     /> 
                                     : 
-                                    <p> Error! Kindly Reload </p> }
+                                    <p> Error! Kindly Reload </p> } */}
                                  </div>
                                  <div className="col-md-6 col-sm-6">
                                     <div className="row">
