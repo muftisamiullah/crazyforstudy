@@ -102,7 +102,7 @@ export default function MyQuestion(){
                                        </div> */}
                                        <div className="col-md-12 nav_account1 pd_lr">
                                           <h4 className="ans_s">Question:</h4>
-                                          <p><span dangerouslySetInnerHTML={{__html:item.question}}></span></p>
+                                          <p><span dangerouslySetInnerHTML={{__html: item.question}}></span></p>
                                        </div>
                                        <div className="col-md-12 nav_account1 answer_1 mt-3 mb-5 pd_lr">
                                           <h4 className="ans_s"><i className="fa fa-check-circle"></i> Answer and Explanation:</h4>
