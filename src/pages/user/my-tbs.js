@@ -3,7 +3,7 @@ import SideBar from '../../components/website/dashboard/sidebar'
 import BlockHeader from '../../components/website/dashboard/block-header'
 import {useState, useContext} from 'react'  
 import { Link } from 'react-router-dom';
-import { useQuery, invalidateQueries, useQueryClient } from 'react-query'
+import { useQuery, useQueryClient } from 'react-query'
 import {getUser} from '../../libs/profile'
 import {getMyTextBooks, addTextBooks, deleteTextBook} from '../../libs/question'
 import {AuthContext} from '../../context/AuthContext';
@@ -27,16 +27,16 @@ export default function MyTbs(){
     const addTextBookData = async (e) => {
         e.preventDefault();
         const res = await addTextBooks(formData.isbn);
-        if(res.error == false){
+        if(res.error === false){
             queryClient.invalidateQueries('textbooks');
         }
     }
 
-    function handleChange(i, event) {
-        const values = [...fields];
-        values[i].value = event.target.value;
-        setFields(values);
-    }
+    // function handleChange(i, event) {
+    //     const values = [...fields];
+    //     values[i].value = event.target.value;
+    //     setFields(values);
+    // }
 
     function handleAdd() {
         const values = [...fields];

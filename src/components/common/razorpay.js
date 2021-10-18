@@ -93,7 +93,6 @@ export default function RazorPay({...props}){
                             assignmentId : param.my_order_details,
                         }
                     )
-                    console.log(res);
                     if(res.data){
                         alert("payment made successfully");
                         queryClient.invalidateQueries(`my-orders`)

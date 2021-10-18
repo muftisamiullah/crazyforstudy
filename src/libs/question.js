@@ -87,3 +87,17 @@ export async function deleteTextBook( user_Id, id ) {
 
     }
 }
+
+export async function askForSolutionQANDA(question_id,email,id) {
+    try {
+        const data = {}; 
+        data.q_id = question_id;
+        data.email = email;
+        data.user_Id = id;
+        const res = await authAxios.post(apiUrl + 'student/ask-already-present-question', data)
+        return res.data.data;
+    }
+    catch(e){
+        
+    }
+}

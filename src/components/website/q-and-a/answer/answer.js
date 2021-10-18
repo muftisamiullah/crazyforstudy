@@ -3,6 +3,7 @@ import striptags from 'striptags';
 import { useState, useContext, useEffect} from 'react';
 import {AuthContext} from '../../../../context/AuthContext';
 import { Link, useParams } from 'react-router-dom';
+import { askForSolutionQANDA } from '../../../../libs/question'
 
 export default function Answer({...props}){
     const { state } = useContext(AuthContext);
@@ -12,6 +13,7 @@ export default function Answer({...props}){
     const [display1, setDisplay1] = useState(true);
     const [display2, setDisplay2] = useState(true);
     const [loc, setLoc] = useState(true);
+    const [answerRequested, setAnswerRequested] = useState();
 
     const showAll1 = () => {
         if(display1){
@@ -36,6 +38,21 @@ export default function Answer({...props}){
             setLoc('/paynow')
         }
     },[]);
+
+    useEffect(()=>{
+        if (props.data && props.data.user_Id) {
+            setAnswerRequested(true);
+        } else {
+            setAnswerRequested(false);
+        }
+    },[props?.data]);
+
+    const requestAnswer = async () => {
+        if(state.Subscribe === "true" && props.data.answer == undefined){
+            const res =  await askForSolutionQANDA(props.data._id, state.email, state._id)
+            console.log(res)
+        }
+    }
 
     return(
         <section className="section font_sz text_justify pt-5 pb-4">
@@ -79,17 +96,36 @@ export default function Answer({...props}){
                                     <div className="Get_Answer_text m-auto">
                                         <p>This problem has been <span>solved!</span></p>
                                         <div className="btn1 Get_Answer_btn">
-                                            <Link to={`${loc}`} className="red_text1">Click to Get Answer</Link>
+                                            <Link to={`${loc}`} className="red_text1">{state.isLoggedIn != "true" ? "Login to Get Answer" : (state.Subscribe != "true") ? "Subscribe to Get Answer" : "Click to Get Answer"}</Link>
                                         </div>
                                     </div>
                                 </div>
                                 : 
                                 <div className={props?.data?.completeanswer != undefined ? "read_more_text_a" : "bg_text_img"}>
-                                    {props?.data?.completeanswer == undefined || props?.data?.completeanswer == "" ? 
+                                    {(props?.data?.completeanswer == undefined || props?.data?.completeanswer == "") && answerRequested == true ? 
                                         <div className="text-center">
                                             <h2 className="text-black font-30">Stay tuned, your answer will be ready within</h2>
                                             <span><img src="/images/time_hour.png" className="img-fluid" alt="time hour"/></span>
-                                        </div> : props?.data?.completeanswer}
+                                        </div> 
+                                    :((props?.data?.completeanswer == undefined || props?.data?.completeanswer == "") && answerRequested == false ?
+                                        <div className="read_more_text_a bg_text_img">
+                                            <div className="Get_Answer_text m-auto">
+                                                <p>This problem has not been <span>solved yet!</span></p>
+                                                <div className="btn1 Get_Answer_btn">
+                                                    {
+                                                    state.isLoggedIn != "true" 
+                                                        ? <Link to={`${loc}`} className="red_text1">Login to Get Answer</Link> 
+                                                        : <Link to="#" className="red_text1" onClick={()=>{requestAnswer()}}>Request Answer</Link> 
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    : 
+                                        <>
+                                            {/* <span dangerouslySetInnerHTML={{__html: `${props?.data?.shortanswer}`}}></span><br/> */}
+                                            <span dangerouslySetInnerHTML={{__html: `${props?.data?.completeanswer}`}}></span>
+                                        </>
+                                    )}
                                 </div>}
                             </div>
                         </div>

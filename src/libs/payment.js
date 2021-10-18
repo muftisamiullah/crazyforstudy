@@ -43,7 +43,6 @@ export async function saveTransactionDetails(data) {
 
 export async function subsPaymentFailure(data) {
     try {
-        console.log(data)
         const res = await authAxios.post(apiUrl + 'payment/failure-payment-subscription', data)
         if(res.status === 200){
             return res.data;

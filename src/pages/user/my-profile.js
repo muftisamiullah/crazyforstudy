@@ -152,7 +152,6 @@ export default function  MyProfile() {
 
     const updatePassword = async() => {
         setLoader1(true);
-        console.log(passData.pass.length)
         if(passData.pass.length < 8){
             setError('Password must not be less than 8 characters')
             return;

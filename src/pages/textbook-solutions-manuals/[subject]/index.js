@@ -61,6 +61,7 @@ export default function Book(){
     const [selectedItem, setSelectedItem] = useState();
     const [answer, setAnswer] = useState();
     const [answerObject, setAnswerObject] = useState({});
+    const [answerRequested, setAnswerRequested] = useState();
     const [loc, setLoc] = useState();
 
     //seo 
@@ -121,15 +122,20 @@ export default function Book(){
     }
 
     const clickedQues = async(data,item,key) => {
+        if (item.answerRequestIds.some(e => e.user_id === state._id)) {
+            setAnswerRequested(true);
+        } else {
+            setAnswerRequested(false);
+        }
         setselectedQuestion(data)
         setAnswer(item.answer)
         setSelectedItem(key)
         setAnswerObject(item);
     }
 
-    const requestAnswer = async() => {
+    const requestAnswer = async () => {
         if(state.Subscribe === "true" && answerObject.answer == undefined){
-            const res = await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id)
+            const res =  await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id)
             console.log(res)
         }
     }
@@ -597,40 +603,42 @@ export default function Book(){
                                         <div className="Qtion_n_Stion_text"> 
                                             <div className="read_more_q">  
                                             {state.Subscribe !== "true" ? 
-                                            <div className="read_more_text_a bg_text_img">
-                                                <div className="Get_Answer_text m-auto">
-                                                    <p>This problem has been <span>solved!</span></p>
-                                                    <div className="btn1 Get_Answer_btn">
-                                                        <Link to={`${loc}`} className="red_text1">{state.isLoggedIn != "true" ? "Login to Get Answer" : (state.Subscribe != "true") ? "Subscribe to Get Answer" : "Click to Get Answer"}</Link>
+                                                <div className="read_more_text_a bg_text_img">
+                                                    <div className="Get_Answer_text m-auto">
+                                                        <p>This problem has been <span>solved!</span></p>
+                                                        <div className="btn1 Get_Answer_btn">
+                                                            <Link to={`${loc}`} className="red_text1">{state.isLoggedIn != "true" ? "Login to Get Answer" : (state.Subscribe != "true") ? "Subscribe to Get Answer" : "Click to Get Answer"}</Link>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            :
-                                            <div className={answer != Link ? "read_more_text_a" : "bg_text_img"}>
-                                                {answer == undefined || answer == "" ? 
-                                                    <div className="read_more_text_a bg_text_img">
-                                                        <div className="Get_Answer_text m-auto">
-                                                            <p>This problem has not been <span>solved yet!</span></p>
-                                                            <div className="btn1 Get_Answer_btn">
-                                                                {
-                                                                state.isLoggedIn != "true" 
-                                                                    ? <Link to={`${loc}`} className="red_text1">Login to Get Answer</Link> 
-                                                                    : <Link to="#" className="red_text1" onClick={()=>{requestAnswer()}}>Request Answer</Link> 
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                    </div> 
-                                                    : 
-                                                    <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>
-                                                    // <div className="text-center">
-                                                    //     <h2 className="text-black font-30">Stay tuned, your answer will be ready within</h2>
-                                                    //     <span><img src="/images/time_hour.png" className="img-fluid" alt="time hour"/></span>
-                                                    // </div> : <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>
-                                                }
-                                            </div>}
-                                            {/* <div className="read_more_text_a">
-                                                <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>
-                                            </div>}  */}
+                                                :
+                                                <div className={answer != Link ? "read_more_text_a" : "bg_text_img"}>
+                                                    {(answer == undefined || answer == "") && answerRequested == true 
+                                                        ?  
+                                                        <div className="text-center">
+                                                            <h2 className="text-black font-30">Stay tuned, your answer will be ready within</h2>
+                                                            <span><img src="/images/time_hour.png" className="img-fluid" alt="time hour"/></span>
+                                                        </div> 
+                                                        : 
+                                                        ((answer == undefined || answer == "") && answerRequested == false ?
+                                                            <div className="read_more_text_a bg_text_img">
+                                                                <div className="Get_Answer_text m-auto">
+                                                                    <p>This problem has not been <span>solved yet!</span></p>
+                                                                    <div className="btn1 Get_Answer_btn">
+                                                                        {
+                                                                        state.isLoggedIn != "true" 
+                                                                            ? <Link to={`${loc}`} className="red_text1">Login to Get Answer</Link> 
+                                                                            : <Link to="#" className="red_text1" onClick={()=>{requestAnswer()}}>Request Answer</Link> 
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                            : 
+                                                            <span dangerouslySetInnerHTML={{__html: `${answer}`}}></span>
+                                                        )
+                                                    }
+                                                </div>
+                                            }
                                             </div>
                                         </div>
                                     </div> 

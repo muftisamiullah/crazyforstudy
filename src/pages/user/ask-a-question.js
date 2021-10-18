@@ -23,13 +23,13 @@ export default function AskQuestion(){
    const { CKEditor, ClassicEditor} = editorRef.current || {}
    const queryClient = useQueryClient()
 
-//    useEffect( () => {
-//       editorRef.current = {
-//         CKEditor: require( '@ckeditor/ckeditor5-react' ).CKEditor, //Added .CKEditor
-//         ClassicEditor: require( 'ckeditor5-classic-with-mathtype' ).default,
-//       }
-//       setEditorLoaded( true )
-//   }, [] );
+   useEffect( () => {
+      editorRef.current = {
+        CKEditor: require( '@ckeditor/ckeditor5-react' ).CKEditor, //Added .CKEditor
+        ClassicEditor: require( 'ckeditor5-classic-with-mathtype' ).default,
+      }
+      setEditorLoaded( true )
+  }, [] );
 
    const [display, setDisplay] = useState(false);
    const [subject, setSubject] = useState();
@@ -90,7 +90,6 @@ export default function AskQuestion(){
    }
 
    useEffect(()=>{
-      console.log(formData)
       if(formData.image1){
          setCount((count)=>count =  1);
       }
@@ -229,7 +228,7 @@ export default function AskQuestion(){
 
 
                                     {/* new comment */}
-                                    {/* { editorLoaded ? <CKEditor
+                                    { editorLoaded ? <CKEditor
                                        editor = { ClassicEditor }
                                        config = {{
                                           toolbar: {
@@ -266,7 +265,7 @@ export default function AskQuestion(){
                                        }}
                                     /> 
                                     : 
-                                    <p> Error! Kindly Reload </p> } */}
+                                    <p> Error! Kindly Reload </p> }
                                  </div>
                                  <div className="col-md-6 col-sm-6">
                                     <div className="row">

@@ -1,8 +1,7 @@
 import DashboardNavbar from '../../components/website/dashboard/dashboard-navbar'
 import SideBar from '../../components/website/dashboard/sidebar'
 import BlockHeader from '../../components/website/dashboard/block-header'
-import {useState, useEffect, useContext} from 'react'  
-import { Link } from 'react-router-dom';
+import { useContext } from 'react'  
 import { useQuery } from 'react-query'
 import {getUser} from '../../libs/profile'
 import {getNotifications} from '../../libs/question'
@@ -29,7 +28,6 @@ export default function Notifications(){
                     document.getElementById(id).innerHTML="";
                     document.getElementById(id).innerHTML=duration.hours() + ":" + duration.minutes() + ":" + duration.seconds();
                 }
-                // console.log(id,duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
             }, interval);
         }   
     }

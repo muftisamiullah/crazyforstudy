@@ -184,7 +184,6 @@ export default function DashboardNavbar({...props}){
                                 <ul className="menu list-unstyled notification_scroll">
                                     {notifications && notifications.data.map((item,key)=>{
                                          var date = new Date(item.created_at);
-                                         console.log(date.toLocaleString());
                                         return(
                                             <li key={key} onClick={()=>{markAsRead(item._id,item.type)}}>
                                                
