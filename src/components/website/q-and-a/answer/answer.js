@@ -4,11 +4,13 @@ import { useState, useContext, useEffect} from 'react';
 import {AuthContext} from '../../../../context/AuthContext';
 import { Link, useParams } from 'react-router-dom';
 import { askForSolutionQANDA } from '../../../../libs/question'
+import { useQueryClient } from 'react-query'
 
 export default function Answer({...props}){
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
     const params = useParams();
+    const queryClient = useQueryClient()
 
     const [display1, setDisplay1] = useState(true);
     const [display2, setDisplay2] = useState(true);
@@ -50,7 +52,9 @@ export default function Answer({...props}){
     const requestAnswer = async () => {
         if(state.Subscribe === "true" && props.data.answer == undefined){
             const res =  await askForSolutionQANDA(props.data._id, state.email, state._id)
-            console.log(res)
+            if(res){
+                queryClient.invalidateQueries([props.data.old_qid]);
+            }
         }
     }
 

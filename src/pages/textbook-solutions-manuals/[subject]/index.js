@@ -11,7 +11,7 @@ import Details from '../../../components/website/book-detail/detail'
 import Reviews from '../../../components/website/book-detail/review'
 import BreadCrumb from '../../../components/website/textbook-solutions-manuals/tbs-breadcrumb'
 import { useParams, useHistory, useLocation, Link } from 'react-router-dom'
-import { useQuery } from 'react-query'
+import { useQuery, useQueryClient } from 'react-query'
 import {getBook, getChapters, getSections, getExercises, getRelatedBooks, getProblems, getProblemsDirectly, searchQuestions, askForSoltuion} from '../../../libs/book'
 import {useState, useEffect, useContext} from 'react';
 import BookInfo from '../../../components/website/book-detail/book-info'
@@ -31,6 +31,7 @@ export default function Book(){
     //and passed variable ISBN13 to all the react useQuery instead of params.book dated 29 april 
     //previous code could be found on github under Rohit Sharmas repo.
 
+    const queryClient = useQueryClient()
     const params = useParams();
     const history = useHistory();
     const location = useLocation();
@@ -136,7 +137,9 @@ export default function Book(){
     const requestAnswer = async () => {
         if(state.Subscribe === "true" && answerObject.answer == undefined){
             const res =  await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id)
-            console.log(res)
+            if(res){
+                queryClient.invalidateQueries();
+            }
         }
     }
 

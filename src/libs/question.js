@@ -95,7 +95,7 @@ export async function askForSolutionQANDA(question_id,email,id) {
         data.email = email;
         data.user_Id = id;
         const res = await authAxios.post(apiUrl + 'student/ask-already-present-question', data)
-        return res.data.data;
+        return res;
     }
     catch(e){
         

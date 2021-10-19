@@ -23,7 +23,7 @@ export async function askForSoltuion(book_name,chapter_name,section_name,questio
         data.email = email;
         data.user_Id = id;
         const res = await authAxios.post(apiUrl + 'books/book/ask-for-solution', data)
-        return res.data.data;
+        return res;
     }
     catch(e){
         

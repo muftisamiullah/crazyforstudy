@@ -9,7 +9,6 @@ import { useQuery } from 'react-query'
 import { getQandAnswer } from '../../../libs/subsubject'
 import { useParams } from "react-router-dom";
 import { useState } from 'react'
-// import { GetName, capitalize } from '../../../components/common/make-slug'
 
 export default function QuestionsAndAnswers() {
     const params = useParams();

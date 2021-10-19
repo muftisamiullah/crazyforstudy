@@ -6,6 +6,7 @@ import { useLocation, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import AuthProvider from './context/AuthContext.jsx';
 import {useCallback, useEffect, useState} from 'react';
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 function App() {
 	const queryClient = new QueryClient();
@@ -60,6 +61,7 @@ function App() {
 							{publicRoutes && publicRoutes.map((route => (
 								<Route exact={true} key={route.path} path={route.path} component={route.component} />
 							)))}
+							<ReactQueryDevtools initialIsOpen={false}/>
 						{/* </Switch> */}
 					</AuthProvider>
 				</QueryClientProvider>
