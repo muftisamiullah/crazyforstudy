@@ -125,6 +125,28 @@ export default function Book(){
     const clickedQues = async(data,item,key) => {
         if (item.answerRequestIds.some(e => e.user_id === state._id)) {
             setAnswerRequested(true);
+            
+            //timer
+            let creation_time
+            item.answerRequestIds.filter((e) => {
+                if(e.user_id === state._id){
+                    creation_time = e.answerRequestDate;
+                }
+            })
+            let addedTwoHours = new Date(new Date(creation_time).getTime() + 4*60*60*1000).getTime();
+            let currentTime = new Date().getTime()
+            let difference  = ((addedTwoHours - currentTime) / 1000).toFixed(0) ;
+            if(difference <= 0){
+                setTotalSeconds(0)
+                stopTimer()
+                startTimer(0);
+                
+            }else{
+                setTotalSeconds(difference)
+                stopTimer()
+                startTimer(difference);
+            }
+
         } else {
             setAnswerRequested(false);
         }
@@ -133,12 +155,41 @@ export default function Book(){
         setSelectedItem(key)
         setAnswerObject(item);
     }
+    
+    //timer creation from here
+    const [timer, setTimer] = useState('00:00:00');
+    const [totalSeconds, setTotalSeconds] = useState();
+    const [timerId, setTimerId] = useState(null);
+    
+    function startTimer(duration) {
+        var timer = duration, hours, minutes, seconds;
+        setTimerId(setInterval(function () {
+            hours   = parseInt(timer / (60 * 60), 10)
+            minutes = parseInt((timer / 60) % 60, 10)
+            seconds = parseInt(timer % 60, 10);
+                        
+            hours 	= hours 	< 10 ? "0" + hours 	 : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+            setTimer(hours + ":" + minutes + ":" + seconds);
+    
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000))
+    }
+
+    function stopTimer() {
+        clearInterval(timerId);
+    };
 
     const requestAnswer = async () => {
         if(state.Subscribe === "true" && answerObject.answer == undefined){
             const res =  await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id)
-            if(res){
-                queryClient.invalidateQueries();
+            // console.log(res);
+            if(res && res.status == 200){
+                queryClient.invalidateQueries([ISBN13]);
             }
         }
     }
@@ -368,7 +419,7 @@ export default function Book(){
     //seo starts
     const path = process.env.REACT_APP_URL + location.pathname
     //seo ends
-
+    
     return(
         <>
             <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema} reviewSchema={reviewSchema} faqSchema={faqSchema} ISBN13={ISBN13 && ISBN13}/>
@@ -620,7 +671,11 @@ export default function Book(){
                                                         ?  
                                                         <div className="text-center">
                                                             <h2 className="text-black font-30">Stay tuned, your answer will be ready within</h2>
-                                                            <span><img src="/images/time_hour.png" className="img-fluid" alt="time hour"/></span>
+                                                            <span><br/>
+                                                                <p className="text-center"><strong>{timer}</strong></p>
+                                                                {totalSeconds == 0 ? <p className="text-center">Its taking longer than expected, Please be Patient</p> : ''}
+                                                                {/* <img src="/images/time_hour.png" className="img-fluid" alt="time hour"/> */}
+                                                            </span>
                                                         </div> 
                                                         : 
                                                         ((answer == undefined || answer == "") && answerRequested == false ?

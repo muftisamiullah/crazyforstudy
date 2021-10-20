@@ -1,6 +1,6 @@
 import parse from 'html-react-parser';
 import striptags from 'striptags';
-import { useState, useContext, useEffect} from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import {AuthContext} from '../../../../context/AuthContext';
 import { Link, useParams } from 'react-router-dom';
 import { askForSolutionQANDA } from '../../../../libs/question'
@@ -44,6 +44,29 @@ export default function Answer({...props}){
     useEffect(()=>{
         if (props.data && props.data.user_Id) {
             setAnswerRequested(true);
+
+            // let fourHours = 60 * 60 * 4;
+            // let localTimeFull = new Date(props.data.created_at);
+            // let localTime = new Date(props.data.created_at).getTime();
+            // console.log(localTime, "- local time -", localTimeFull);
+            let addedTwoHours = new Date(new Date(props.data.created_at).getTime() + 4*60*60*1000).getTime();
+            // console.log(addedTwoHours, "- local time added 2 hrs");
+            // let currentTimeFull = new Date()
+            let currentTime = new Date().getTime()
+            // console.log(currentTime, "- current Time -", currentTimeFull);
+            let difference  = ((addedTwoHours - currentTime) / 1000).toFixed(0) ;
+            if(difference <= 0){
+                // console.log(difference, "difference")
+                // console.log(fourHours, "fourHours")
+                setTotalSeconds(0)
+                startTimer(0);
+            }else{
+                // console.log(difference, "difference else")
+                // console.log(fourHours, "fourHours else")
+                setTotalSeconds(difference)
+                startTimer(difference);
+            }
+
         } else {
             setAnswerRequested(false);
         }
@@ -56,6 +79,29 @@ export default function Answer({...props}){
                 queryClient.invalidateQueries([props.data.old_qid]);
             }
         }
+    }
+
+    //timer creation from here
+    const [timer, setTimer] = useState('00:00:00');
+    const [totalSeconds, setTotalSeconds] = useState();
+    
+    function startTimer(duration) {
+        var timer = duration, hours, minutes, seconds;
+        setInterval(function () {
+            hours   = parseInt(timer / (60 * 60), 10)
+            minutes = parseInt((timer / 60) % 60, 10)
+            seconds = parseInt(timer % 60, 10);
+                        
+            hours 	= hours 	< 10 ? "0" + hours 	 : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+            setTimer(hours + ":" + minutes + ":" + seconds);
+    
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
     }
 
     return(
@@ -109,7 +155,11 @@ export default function Answer({...props}){
                                     {(props?.data?.completeanswer == undefined || props?.data?.completeanswer == "") && answerRequested == true ? 
                                         <div className="text-center">
                                             <h2 className="text-black font-30">Stay tuned, your answer will be ready within</h2>
-                                            <span><img src="/images/time_hour.png" className="img-fluid" alt="time hour"/></span>
+                                            <span><br/>
+                                                <p className="text-center"><strong>{timer}</strong></p>
+                                                {totalSeconds == 0 ? <p className="text-center">Its taking longer than expected, Please be Patient</p> : ''}
+                                                {/* <img src="/images/time_hour.png" className="img-fluid" alt="time hour"/> */}
+                                            </span>
                                         </div> 
                                     :((props?.data?.completeanswer == undefined || props?.data?.completeanswer == "") && answerRequested == false ?
                                         <div className="read_more_text_a bg_text_img">
