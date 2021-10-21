@@ -18,11 +18,13 @@ export async function searchData(params) {
         searchT = searchT.substring(0, 100);
         
         const res = await axios.all([
-            axios.post(apiUrl + 'books/search-chapter-question',{search:searchT, limit:params.limit}),
+            // axios.post(apiUrl + 'books/search-chapter-question',{search:searchT, limit:params.limit}),
             axios.get(apiUrl + 'books/search-book-name-isbn/'+searchT+'/'+params.limit),
-            axios.post(apiUrl + 'question/search-question',{search:searchT, limit:params.limit})
+            // axios.post(apiUrl + 'question/search-question',{search:searchT, limit:params.limit})
         ])
-        return {'data1':res[0].data,'data2':res[1].data,'data3':res[2].data};
+        // return {'data1':res[0].data,'data2':res[1].data,'data3':res[2].data};
+        console.log(res)
+        return {'data2':res[0].data};
     }
     catch(e){
     }
