@@ -46,7 +46,7 @@ export default function Book(){
     // const data = params.book != undefined ? params.book.match(regex) : params.book;
     const data = params.subject  != undefined ? params.subject.match(regex) : params.subject;
     const ISBN13 = data ? data[0] : null; 
-    
+
     const [question, setQuestion] = useState();
     const [chapter, setChapter] = useState();
     const [chapterName, setChapterName] = useState();
@@ -194,13 +194,14 @@ export default function Book(){
         }
     }
 
-    // useEffect(() => {
-    //     const script = document.createElement("script");
-    //     script.id = 'editor';
-    //     script.src = "https://www.wiris.net/demo/plugins/app/WIRISplugins.js?viewer=image";
-    //     script.async = true;
-    //     document.body.appendChild(script);
-    // },[answer])
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.id = 'editor';
+        script.src = "https://www.wiris.net/demo/plugins/app/WIRISplugins.js?viewer=image";
+        // script.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.0.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        script.async = true;
+        document.body.appendChild(script);
+    })
 
     useEffect(() => {
         if(problems && problems.length > 0 || problemsDirect && problemsDirect.length > 0){
@@ -536,8 +537,8 @@ export default function Book(){
                 <div className="container">
                     <div className="row"> 
                         {chapters.length == 0 ?
-                        <div class="col-md-12 text-center sendnotification">
-                                <div class="ban-sorry"><img src="/images/sorry.png" class="img-fluid" alt="sorry"/></div>
+                        <div className="col-md-12 text-center sendnotification">
+                                <div className="ban-sorry"><img src="/images/sorry.png" className="img-fluid" alt="sorry"/></div>
                                 <h5><strong>Sorry!</strong> We don’t have the solution of this book edition yet.</h5>						
                                 <button type="submit" >Click here to request priority authoring of this edition.</button>	
                         </div> :

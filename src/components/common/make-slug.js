@@ -63,6 +63,17 @@ function reverseString(str) {
     return joinArray; // "olleh"
 }
 
+const getEdition = (ed) => {
+    if (ed > 3 && ed < 21) return 'th';
+    switch (ed % 10) {
+        case 1:  return "st";
+        case 2:  return "nd";
+        case 3:  return "rd";
+        default: return "th";
+    }
+}
+
+
 export {
     MakeSlug,
     SameSlug,
@@ -73,5 +84,6 @@ export {
     replaceAll,
     stringToSlug,
     MakeSlug2,
-    reverseString
+    reverseString,
+    getEdition
 }

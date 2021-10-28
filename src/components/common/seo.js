@@ -1,6 +1,6 @@
 import {Helmet} from 'react-helmet-async'
 
-export default function Seo({...props}){
+export default function keywordsSeo({...props}){
     const copyright = `Copyright ${new Date().getFullYear()} Crazyforstudy.com`
 
     return(

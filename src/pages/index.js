@@ -18,7 +18,8 @@ export default function Home() {
   return (
     <>
 		<Helmet>
-			<title>Crazy For Study</title>
+			<title>Crazy For Study | Homework Help | Textbook Solution | Q&A</title>
+			<meta name="description" content="CFS is a leading homework help platform. We offer 24/7 Assignment Help, Textbook Solution and Q & A services crafted by PhD Subject Experts at just $7 per month!"></meta>
 		</Helmet>
 		<Header/>
 		<Navbar/>

@@ -21151,9 +21151,9 @@ a.btn.ml-auto.offers_k {
     font-size: 15px;
     font-weight: 400;
 }
-a.btn.ml-auto.offers_k.remove_cur{
+/* a.btn.ml-auto.offers_k.remove_cur{
     cursor:default;
-}
+} */
 .nav_right1 i.zmdi.zmdi-notifications {
     font-size: 25px;
     vertical-align: inherit;
@@ -22168,4 +22168,35 @@ ul.nav.nav-tabs.profile_editbtn {
 .web_font1 footer .socail_icons li a { 
     width: 30px;
 	}
+}
+
+.my-order-new.my_subscrption_table.tbbl_adjst td, .my-order-new.my_subscrption_table.tbbl_adjst th, table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.tbbl_adjst td {
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.my-order-new.my_subscrption_table.tbbl_adjst td:nth-child(2) span {
+    max-width: 280px;
+    white-space: normal;
+    display: inline-block;
+    overflow: hidden;
+    display: -webkit-box;
+    width: 100%;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.tbbl_adjst th{width:17%;}
+table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.tbbl_adjst td{width:17%;}
+table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.tbbl_adjst th:nth-child(1) {
+    width: 10%;
+}
+table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.tbbl_adjst th:nth-child(2) {
+    width: 20%;
+}
+
+table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.tbbl_adjst td:nth-child(1) {
+    width: 10%;
+}
+table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.tbbl_adjst td:nth-child(2) {
+    width: 20%;
 }

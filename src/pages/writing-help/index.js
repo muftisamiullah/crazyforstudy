@@ -15,7 +15,8 @@ export default function WritingHelp(){
     return(
         <>
         <Helmet>
-            <title>Crazy For Study | Writing Help</title>
+            <title>Writing Help Services for Better Grades | CFS </title>
+            <meta name="description" content="Get 100% plagiarism free writing help solutions within shorter deadlines. Get help for assignment writing, essay writing, medical writing, and others."></meta>
         </Helmet>
         <Header/>
         <Navbar/>

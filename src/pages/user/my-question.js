@@ -7,8 +7,7 @@ import {getUser} from '../../libs/profile'
 import {getQuestions} from '../../libs/question'
 import {useEffect, useState, useContext} from 'react'
 import {AuthContext} from '../../context/AuthContext';
-
-
+import { imageUrl } from '../../config/config'
 
 export default function MyQuestion(){
    const { state } = useContext(AuthContext);
@@ -127,7 +126,7 @@ export default function MyQuestion(){
                                  <div className="col-md-12 nav_account1 mt-3 pt-3 bdr_top pd_lr">
                                     <ul>
                                        <li><a href="">{item.subject} </a> <i className="fa fa-angle-right"></i></li>
-                                       <li><a href="">{item.sub_subject} </a> <i className="fa fa-angle-right"></i></li>
+                                       <li><a href="">{ item.sub_subject} </a> <i className="fa fa-angle-right"></i></li>
                                        {/* <li><a href="">Financial Analysis</a></li> */}
                                     </ul>
                                  </div>
@@ -140,7 +139,7 @@ export default function MyQuestion(){
                                  </div> */}
                                  <div className="col-md-12 nav_account1 pd_lr">
                                     <h4 className="ans_s">Question:</h4>
-                                    <p><span dangerouslySetInnerHTML={{__html: item.question}}></span></p>
+                                    <p><span dangerouslySetInnerHTML={{__html: item.question}}></span>{item.image0 && <img src={imageUrl+item.image0} className="mr-5" style={{"height":"200px", "width":"400px"}}/>}{item.image1 && <img src={imageUrl + item.image1} style={{"height":"200px", "width":"400px"}}/>}</p>
                                  </div>
                                  <div className="col-md-12 nav_account1 answer_1 mt-3 mb-5 pd_lr">
                                     <h4 className="ans_s"><i className="fa fa-check-circle"></i> Answer and Explanation:</h4>

@@ -170,7 +170,7 @@ export default function Navbar() {
                     ?
                     <li className="nav-item login_signup_top"><Link to="/auth/signin" className="nav-link">Login / Signup <i className="fa fa-user"></i></Link></li>
                     : 
-                    <li className="nav-item login_signup_top"><Link to="/dashboard" className="nav-link">My Profile <i className="fa fa-user"></i></Link></li>
+                    <li className="nav-item login_signup_top"><Link to="/user/my-profile" className="nav-link">My Profile <i className="fa fa-user"></i></Link></li>
                     } 
                 </ul>
                 :
@@ -215,7 +215,7 @@ export default function Navbar() {
                     ?
                     <li className="nav-item login_signup_top"><Link to="/auth/signin" className="nav-link">Login / Signup <i className="fa fa-user"></i></Link></li>
                     : 
-                    <li className="nav-item login_signup_top"><Link to="/dashboard" className="nav-link">My Profile <i className="fa fa-user"></i></Link></li>
+                    <li className="nav-item login_signup_top"><Link to="/user/my-profile" className="nav-link">My Profile <i className="fa fa-user"></i></Link></li>
                     } 
                 </ul>}
                 </div>

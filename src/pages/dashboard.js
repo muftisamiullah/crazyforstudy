@@ -70,7 +70,7 @@ export default function  Dashboard() {
                                         <p className="mb-1 add_more_power my_ac">Get An Amazing Winter Offer on Assignment help </p>
                                     </div>
                                     <div className="col-xl-3 col-lg-3 col-sm-12 col-md-3 text-right Earn_Referral d-block mt-auto mb-auto">  
-                                        <a href="#" className="btn ml-auto offers_k remove_cur">Get Assignment </a>
+                                        <Link to="/writing-help/online-assignment-help" className="btn ml-auto offers_k remove_cur">Get Assignment Help</Link>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ export default function  Dashboard() {
                                         <div className="col-lg-6 col-sm-6">
                                             <div className="Refer_Your_Friend">
                                                 <h2>Get quick access to your college
-                                                <span>Question?</span></h2>
+                                                <span> Question?</span></h2>
                                                 <p>Add your Books Here</p>
                                                 <Link to="/user/my-tbs" className="btn">Add</Link>
                                             </div>

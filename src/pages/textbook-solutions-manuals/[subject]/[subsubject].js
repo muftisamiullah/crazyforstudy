@@ -88,7 +88,7 @@ export default function SubSubject(){
 
     if(isLoading)
         return <div id="loading"></div>
-
+    
     return (
         <>
             {/* <Helmet>

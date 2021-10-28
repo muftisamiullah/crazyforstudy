@@ -38,6 +38,7 @@ export default function AskQuestion(){
    const [image, setImage] = useState({});
    const [isLoading, setIsLoading] = useState(false);
    const [count, setCount] = useState(0);
+   const [error, setError] = useState('');
 
    const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined, staleTime:Infinity, enabled: !!session})
    const { data: subjects, isLoading:subjectsIsLoading, error:subjectsError } = useQuery(['subjects'], () => getSubjects(),{staleTime:Infinity, enabled: !!session}) //only called when session would be present
@@ -103,7 +104,17 @@ export default function AskQuestion(){
 
    const askQuestion = async () => {
       // setFormData({...formData, user_Id : session.user._id, type :'QA'})
-      setIsLoading(true)
+
+      if(formData.question === undefined){
+         setError('You have enetered a valid question.')
+      }
+      if(formData.subject === undefined){
+         setError('You have selected a subject.')
+      }
+      if(formData.sub_subject === undefined){
+         setError('You have selected a sub subject.')
+      }
+      setIsLoading(true);
       let form = new FormData();
       form.append('question',formData.question)
       form.append('subject',formData.subject)
@@ -165,7 +176,7 @@ export default function AskQuestion(){
                                     <select className="form-control" onChange={getSelectedSubject} name="subject">
                                        {subjects && subjects.data.map((item,key)=>{
                                           return(
-                                             <option value={MakeSlug(item.subject)} key={key} data-subjectid={item._id}>{item.subject}</option>
+                                             <option value={item.subject} key={key} data-subjectid={item._id}>{item.subject}</option>
                                           )
                                        })}
                                     </select>
@@ -311,6 +322,7 @@ export default function AskQuestion(){
                                     </div>
                                  </div>
                                  <div className="col-sm-12 col-md-12 form-group">
+                                    <span style={{"color":"red"}}>{error}</span>
                                     <button type="button" className="btn btn-info" onClick={askQuestion}>{isLoading ? 'Posting' : 'Post a Question'}</button>
                                  </div>
                               </div>

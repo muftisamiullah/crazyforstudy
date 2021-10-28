@@ -13,7 +13,7 @@ export default function BrowseBySubjects({...props}){
 					{props.data && props.data.data.map((item,key)=>{
 						return(
 							<div className="col-md-4 col-lg-3" key={key}>
-								<div className="books1 animated wow fadeIn">{console.log(item.subject)}
+								<div className="books1 animated wow fadeIn">
 									<img src={`/images/${item.subject+ "-img"}.jpg`} className="img-fluid" alt=""/>
 									<div className="overlay_books bottom-overlay"> 
 										<div className="books_text1">

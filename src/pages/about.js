@@ -53,9 +53,9 @@ export default function About() {
             <h2>Co-Founder and CEO</h2> 
                     
                         <p>Jeff Morgan is the Co-Founder and CEO of Crazy For Study. He oversees the company's overall operations, formulates and implements company policies, sets and evaluates performance goals, promotes company culture, and manages relations with clients and partners. Before joining the company, he worked as an Executive Director in Cambridge University Press for 8 years. He received his Master's degree in Policy, Organization, and Leadership Studies from Stanford University School of Education.</p>
-                        <ul>
+                        {/* <ul>
                         <li><Link to=""><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Jeff on Linkedin</Link></li>
-                        </ul>
+                        </ul> */}
                     </div>
                     </div>
                 </div>
@@ -74,9 +74,9 @@ export default function About() {
             <h5 className="pb-2">Peter Kennedy</h5>
             <h2>Co-Founder and COO</h2> 
                         <p>Peter Kennedy is the Co-Founder and COO of Crazy For Study. After completing his Master's of Science in Education Entrepreneurship from the University of Pennsylvania, he worked in various experiential positions in the Education industry. He advocated for equal education throughout his professional life. As the COO, he is responsible for overseeing all of CFS's major corporate decisions and maintaining communication between the Board of Directors and the organization. He deals with major strategic initiatives that contribute to the company's overall growth.</p>
-                        <ul>
+                        {/* <ul>
                         <li><Link to=""><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Peter on Linkedin</Link></li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </div>
@@ -116,9 +116,9 @@ export default function About() {
             <h5 className="pb-2">Lewis Levine</h5>
             <h2>Director of Content Operations</h2> 
                         <p>Lewis Levine is the Director of Content Operations of Crazy For Study. Backed by a diverse experience in the Education Industry through teaching, managing and content strategizing, Lewis is now with CFS. Here, he creates, distributes, and promotes highly relevant and valuable content to attract and engage the target audience. He earned his Master's degree in Communication and Media Studies with a specialization in Content Marketing from Texas A&M University. </p>
-                        <ul>
+                        {/* <ul>
                         <li><Link to=""><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Lewis on Linkedin</Link></li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </div>

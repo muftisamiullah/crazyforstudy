@@ -145,8 +145,10 @@ export default function SignIn({ csrfToken, providers }) {
 
 	const handleResetCode = async (e) =>{
 		e.preventDefault();
-		setOtp(code['1']+code['2']+code['3']+code['4'])
-		const res = await verifyOtp(otp);
+		// console.log(code);
+		// return;
+		// setOtp((otp) => code['1']+code['2']+code['3']+code['4'])
+		const res = await verifyOtp(code);
 		if(res.status == 200){
 			setUserId(res.data.userId);
 			setWhichSegment('change-p');
@@ -185,6 +187,27 @@ export default function SignIn({ csrfToken, providers }) {
 			setOpenPassword('name')
 		}
 		
+	}
+	const showP1 = () => {
+		if(openPassword == "name"){
+			setOpenPassword('password')
+		}else{
+			setOpenPassword('name')
+		}
+		
+	}
+	const showP2 = () => {
+		if(openPassword == "name"){
+			setOpenPassword('password')
+		}else{
+			setOpenPassword('name')
+		}
+		
+	}
+
+	const resendVerificationCode = (e) => {
+		e.preventDefault();
+		console.log(forgotEmailRef.current.value);
 	}
 
 	const responseGoogle = async (response) => {
@@ -412,7 +435,7 @@ return (
 										<button type="submit" className="btn btn-block btn-danger btn-login buttons" id="submitCode">Submit</button>
 									</div>
 									<div className="col-md-12">
-										<p className="text-center resendOtp"><a href="" className="link-anchor">Resend Verification Code</a></p>
+										<p className="text-center resendOtp"><a href="#" className="link-anchor" onClick={sendForgotEmail}>Resend Verification Code</a></p>
 									</div>
 									</div>
 								</form>
@@ -427,16 +450,16 @@ return (
 									<div className="row">
 										<div className="col-md-12">
 											<div className="form-group bdr_log_up"> 
-												<input type="password" className="form-control" name="chnageP" ref={chPRef} required placeholder="New Password"/>  
+												<input type={openPassword} className="form-control" name="chnageP" ref={chPRef} required placeholder="New Password" />  
 												{/* <span  className="error">Please Enter Password</span> */}
-												<span className="fa fa-eye field-icon toggle-password"></span>
+												<span onClick={showP1} className={"field-icon toggle-password2 " +(openPassword != "password" ? "fa fa-eye" : "fa fa-eye-slash")}></span>
 											</div>
 										</div>
 										<div className="col-md-12 mb-4">
 											<div className="form-group bdr_log_up"> 
-												<input type="password" className="form-control" name="confirmchangeP" required ref={conchPRef} placeholder="Confirm Password"/> 
+												<input type={openPassword} className="form-control" name="confirmchangeP" required ref={conchPRef} placeholder="Confirm Password" /> 
 												<span  className="error">{error}</span>
-												<span className="fa fa-eye field-icon toggle-password"></span>
+												<span onClick={showP2} className={"field-icon toggle-password2 " +(openPassword != "password" ? "fa fa-eye" : "fa fa-eye-slash")} ></span>
 											</div>
 										</div>
 										<div className="col-md-12 mt-4">

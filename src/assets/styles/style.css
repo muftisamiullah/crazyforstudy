@@ -1788,11 +1788,13 @@ ul.menu.list-unstyled.notification_scroll {
     overflow-y: scroll;
 }
 .tble_scrollN_fx {
-    max-height: 300px;
+    max-height: 600px;
 }
 
 
-
+.user_icon1_text.text-center ul li span.img {
+    overflow: hidden;
+}
 
 
 

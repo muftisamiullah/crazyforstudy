@@ -3,7 +3,7 @@ import  OwlCarousel  from "react-owl-carousel";
 import { Link } from 'react-router-dom';
 import BookImage from '../../common/book-image'
 import Pagination from '../../common/pagination'
-import { MakeSlug,stringToSlug } from '../../common/make-slug'
+import { MakeSlug,stringToSlug, getEdition } from '../../common/make-slug'
 import parse from 'html-react-parser';
 import striptags from 'striptags';
 

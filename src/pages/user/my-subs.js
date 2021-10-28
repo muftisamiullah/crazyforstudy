@@ -44,7 +44,7 @@ export default function MySubs(){
                                         <th className="w-10">S.No</th>
                                         <th className="w-15">Order ID</th>
                                         <th className="w-15">Start Date</th>
-                                        <th className="w-20">End Date</th>
+                                        {/* <th className="w-20">End Date</th> */}
                                         <th className="w-20">Action</th>
                                         <th className="w-20">Status</th>
                                     </tr>
@@ -62,7 +62,7 @@ export default function MySubs(){
                                                                         <td className="w-10"><span className="">{key}</span></td>
                                                                         <td className="w-15 "><span className="textbook-t">{item.subscription_id}</span></td>
                                                                         <td className="w-15">{item.SubscribeDate.substring(0,10)}</td>
-                                                                        <td className="w-20">07/20/2021</td>
+                                                                        {/* <td className="w-20"></td> */}
                                                                         <td className="w-20">
                                                                             <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" onClick={()=>{openCollapse(`collapse${key}`)}}>
                                                                             View Receipt

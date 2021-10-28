@@ -23,7 +23,8 @@ export default function QandA() {
     return(
         <>
             <Helmet>
-			    <title>Crazy For Study</title>
+			    <title>Q&A Services | 30 Minutes Solution | 24x7 Services</title>
+                <meta name="description" content="CFS offers the fastest Q&A services. The students can ask 50 new questions every month. Also, get unlimited access to our answer library."></meta>
 		    </Helmet>
             <Header/>
             <Navbar/>

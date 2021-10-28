@@ -16,7 +16,8 @@ export default function OnlineAssignmentHelp() {
   return (
     <>
       <Helmet>
-        <title>Crazy For Study | Online Assessment Help</title>
+          <title>Assignment Help Services | Customized Assignment Solutions</title>
+          <meta name="description" content="CFS offers fully customized, and plagiarism free assignment help services that help you gain better scores in exams."></meta>
       </Helmet>
       <Header/>
       <Navbar/>
