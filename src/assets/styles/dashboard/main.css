@@ -21190,7 +21190,7 @@ a.btn.ml-auto.offers_k {
 
 .ans_s i{color:#17940f;}
 
-.answer_1{border-top:1px solid #ccc; padding-top:15px;}
+.answer_1{border-top:1px solid #fff; padding-top:15px;}
 
 
 .hiddenRow{white-space:inherit;}
@@ -22199,4 +22199,24 @@ table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.tbbl_adjst td:nt
 }
 table.table.table-hover.m-b-0.my-order-new.my_subscrption_table.tbbl_adjst td:nth-child(2) {
     width: 20%;
+}
+
+
+
+
+.nav_account1 ul li a {
+    display: inline-block;
+    color: #2f2f2f;
+    text-transform: capitalize;
+    padding: 0 8px;
+}
+.nav_account1 ul li:nth-child(1) a {
+    padding-left: 0;
+}
+.nav_account1 p {
+    color: rgba(0,0,0,.6);
+    font-size: 15px;
+    font-weight: 500;
+    width: 100%;
+    text-align: justify;
 }

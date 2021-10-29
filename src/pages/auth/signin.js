@@ -152,7 +152,7 @@ export default function SignIn({ csrfToken, providers }) {
 		if(res.status == 200){
 			setUserId(res.data.userId);
 			setWhichSegment('change-p');
-			setError("OTP matched");
+			// setError("OTP matched");
 		}else{
 			setError("otp doesnt match");
 		}

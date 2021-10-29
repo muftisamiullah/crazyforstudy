@@ -8,7 +8,7 @@ const isLoggedIn = localStorage.getItem('isLoggedIn')
 const access_token =  localStorage.getItem('access_token');
 const refresh_token =  localStorage.getItem('refresh_token');
 const _id =  localStorage.getItem('_id');
-const Subscribe =  localStorage.getItem('Subscribe');
+const Subscribe =  "";
 
 const initialState = {
     isLoggedIn: isLoggedIn ? isLoggedIn : false,
@@ -59,6 +59,16 @@ const reducer = (state, action) => {
                 _id: null,
                 Subscribe:null,
             }    
+        case 'SUBSCRIBE':
+            return {
+                ...state,
+                Subscribe: true,
+            } 
+        case 'UNSUBSCRIBE':
+            return {
+                ...state,
+                Subscribe: false,
+            } 
         default:
             return state;
     }  

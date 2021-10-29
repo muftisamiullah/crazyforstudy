@@ -4,10 +4,10 @@ import { apiUrl,authAxios } from '../config/config'
 export async function askAQuestion(formData) {
     try {
         const res = await authAxios.post(apiUrl + 'student/ask-question', formData)
-        return res.data;
+        return res;
     }
     catch(e){
-        
+        return e
     }
 }
 

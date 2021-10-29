@@ -152,7 +152,7 @@ export default function  Dashboard() {
                         <div className="col-xl-12 col-lg-12 col-md-12 notification_text1">
                             <div className="card">
                                 <div className="header">
-                                    <h3><i className="fa fa-bell"></i> Notification </h3>
+                                    <h3><i className="fa fa-bell"></i> Recent Notifications</h3>
                                     <ul className="header-dropdown">
                                         <li> <Link to="/user/notifications" className=""> Read All </Link> </li> 
                                     </ul>
@@ -187,17 +187,19 @@ export default function  Dashboard() {
                                             </div>                                
                                         </li> */}
                                         {notifications && notifications.data.map((item,key)=>{
-                                            return(
+                                            var date = new Date(item.created_at);
+                                            return key < 4 ? (
                                                 <li className="col-12 border_btm_notify" key={key}>
                                                     <div className="avatar">
                                                         <a href="#"><img className="img-fluid" src="/images/avatar-s-10.png" alt="user"/></a>
                                                     </div>                                
                                                     <div className="comment-action">
-                                                        <h4 className="c_name"><span dangerouslySetInnerHTML={{__html: item.title}}></span></h4>  
-                                                        <small className="">{item.created_at}</small>
+                                                        <h4 className="c_name"><span dangerouslySetInnerHTML={{__html: item.type}}></span></h4>  
+                                                        <h4 className="c_name"><p dangerouslySetInnerHTML={{__html: item.title}}></p></h4>  
+                                                        <small className="">{date.toLocaleString()}</small>
                                                     </div>                                
                                                 </li>
-                                            )
+                                            ) : ""
                                         })}
                                     </ul>
                                 </div>
