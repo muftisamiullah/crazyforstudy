@@ -1855,7 +1855,9 @@ ul.menu.list-unstyled.notification_scroll {
     color: #f96332;
 }
 /* //responsive */
-
+.bg_clr_frgot .bdr_log_up .field-icon.TR{
+    color: black;
+}
 
 @media (max-width:1199px){
     .tabs_frst1 {
