@@ -7,6 +7,7 @@ import {getUser} from '../libs/profile'
 import {getNotifications} from '../libs/question'
 import { useQuery } from 'react-query'
 import {AuthContext} from '../context/AuthContext';
+import moment from 'moment';
 
 export default function  Dashboard() {
     const [percentage, setPercentage] = useState(0);
@@ -49,6 +50,22 @@ export default function  Dashboard() {
             }
         }
     }, [user])
+
+    const calculateTime = (id, eventTime) => {
+        const currentTime = new Date().getTime();
+        var diffTime = (eventTime + 14400000) - currentTime;
+        var duration = moment.duration(diffTime, 'milliseconds');
+        var interval = 1000;
+        if(currentTime < (eventTime + 14400000)){
+            var inter = setInterval(() => {
+                duration = moment.duration(duration - interval, 'milliseconds');
+                if(document.getElementById(id) !== null){
+                    document.getElementById(id).innerHTML="";
+                    document.getElementById(id).innerHTML=duration.hours() + ":" + duration.minutes() + ":" + duration.seconds();
+                }
+            }, interval);
+        }   
+    } 
 
     return (
         <>  
@@ -152,55 +169,97 @@ export default function  Dashboard() {
                         <div className="col-xl-12 col-lg-12 col-md-12 notification_text1">
                             <div className="card">
                                 <div className="header">
-                                    <h3><i className="fa fa-bell"></i> Notification </h3>
+                                    <h3><i className="fa fa-bell"></i> Recent Notifications</h3>
                                     <ul className="header-dropdown">
-                                        <li> <Link to="/user/notifications" className=""> Read All </Link> </li> 
+                                        <li> <Link to="/user/notifications" className=""> View All </Link> </li> 
                                     </ul>
                                 </div>
-                                <div className="body">
+                                <div className="table-responsive tble_scrollN_fx" id="accordion">
+                                    <table className="table table-hover m-b-0 my-order-new my_subscrption_table tbbl_adjst">
+                                        <thead>
+                                        <tr className="table_title order">
+                                            <th className="">S.No</th>
+                                            <th className="">Question</th>
+                                            <th className="">Type</th>
+                                            <th className="">Date</th>
+                                            <th className="">Status</th>
+                                            <th className="">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            {notifications && notifications.data.map((item,key)=>{
+                                                var utcDate = item.created_at;  // ISO-8601 formatted date returned from server
+                                                var localDate = new Date(utcDate);
+                                                var currentTime = new Date();
+                                                let title = item.title
+                                                return key < 4 ? (
+                                                    <>
+                                                    <tr key={key}>
+                                                        <td>{key+1}</td>
+                                                        <td><span dangerouslySetInnerHTML={{__html: title}}></span></td>
+                                                        <td>{item.type}</td>
+                                                        <td>{item.created_at.substring(0,10)}</td>
+                                                        <td id={`${item.type+key}`}><span className="badge">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'completed'}</span></td>
+                                                        <td><button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270" >View</button></td>
+                                                
+                                                    </tr>
+                                                    {/* <tr key={key}>
+                                                        <td colSpan="6" style={{padding:"0px"}}>
+                                                            <div className="card-header pl-0 pr-0">
+                                                            <table style={{width: "100%"}}>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>{key+1}</td>
+                                                                        <td><span dangerouslySetInnerHTML={{__html: title}}></span></td>
+                                                                        <td>{item.type}
+                                                                        </td>
+                                                                        <td>{item.created_at.substring(0,10)}</td>
+                                                                        <td id={`${item.type+key}`}><span className="badge">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'completed'}</span></td>
+                                                                        <td><button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270" onClick={()=>{openCollapse(`collapse${key}`)}}>View</button></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            </div>
+                                                            <div id="collapse1" className="collapse accod_tab" aria-labelledby="headingTwo2270" data-parent="#accordion" style={ display == `collapse${key}` ? {display:"block"} : {display:"none"} }>
+                                                            <div className="card-body">
+                                                                <div className="row">
+                                                                    <div className="col-md-8">
+                                                                        <span dangerouslySetInnerHTML={{__html: item.title}}></span>
+                                                                    </div>
+                                                                    <div className="col-md-4">
+                                                                        <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270" onClick={()=>{gotoParticularItem(item.type)}} disabled={currentTime < (localDate.getTime() + 14400000)}>Open</button>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr> */}
+                                                    </>
+                                                    ) : ""
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {/* <div className="body">
                                     <ul className="row list-unstyled c_review">
-                                        {/* <li className="col-12 border_btm_notify">
-                                            <div className="avatar">
-                                                <a href=""><img className="img-fluid" src="/images/avatar-s-10.png" alt="user"/></a>
-                                            </div>                                
-                                            <div className="comment-action">
-                                                <h4 className="c_name">Your Question is solved: How much position tolerance is allowed o... </h4>  
-                                                <small className="">Dec 21, 2017</small>
-                                            </div>                                
-                                        </li>
-                                        <li className="col-12 border_btm_notify">
-                                            <div className="avatar">
-                                                <a href="#"><img className="img-fluid" src="/images/avatar-s-10.png" alt="user"/></a>
-                                            </div>                                
-                                            <div className="comment-action">
-                                                <h4 className="c_name">Please make 50% advance payment, so that our experts can start your assignment</h4>  
-                                                <small className="">03.:44PM</small>
-                                            </div>                                
-                                        </li>
-                                        <li className="col-12 border_btm_notify">
-                                            <div className="avatar">
-                                                <a href="#"><img className="img-fluid" src="/images/avatar-s-10.png" alt="user"/></a>
-                                            </div>                                
-                                            <div className="comment-action">
-                                                <h4 className="c_name">Your Question is solved: 1. How does a project manager price out</h4>  
-                                                <small className="">03.:44PM</small>
-                                            </div>                                
-                                        </li> */}
                                         {notifications && notifications.data.map((item,key)=>{
-                                            return(
+                                            var date = new Date(item.created_at);
+                                            return key < 4 ? (
                                                 <li className="col-12 border_btm_notify" key={key}>
                                                     <div className="avatar">
                                                         <a href="#"><img className="img-fluid" src="/images/avatar-s-10.png" alt="user"/></a>
                                                     </div>                                
                                                     <div className="comment-action">
-                                                        <h4 className="c_name"><span dangerouslySetInnerHTML={{__html: item.title}}></span></h4>  
-                                                        <small className="">{item.created_at}</small>
+                                                        <h4 className="c_name"><span dangerouslySetInnerHTML={{__html: item.type}}></span></h4>  
+                                                        <h4 className="c_name"><p dangerouslySetInnerHTML={{__html: item.title}}></p></h4>  
+                                                        <small className="">{date.toLocaleString()}</small>
                                                     </div>                                
                                                 </li>
-                                            )
+                                            ) : ""
                                         })}
                                     </ul>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div> 

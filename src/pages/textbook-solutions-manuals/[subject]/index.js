@@ -121,7 +121,7 @@ export default function Book(){
             setRobots("noindex, nofollow")
         }
     }
-
+    
     const clickedQues = async(data,item,key) => {
         if (item.answerRequestIds.some(e => e.user_id === state._id)) {
             setAnswerRequested(true);
@@ -422,7 +422,7 @@ export default function Book(){
     //seo ends
     
     return(
-        <>
+        <>{console.log(state.Subscribe)}
             <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema} reviewSchema={reviewSchema} faqSchema={faqSchema} ISBN13={ISBN13 && ISBN13}/>
             <Header/>
             <Navbar/>

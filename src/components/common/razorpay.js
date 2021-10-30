@@ -10,7 +10,7 @@ export default function RazorPay({...props}){
     const param = useParams();
     const location = useLocation();
     const history = useHistory();
-    const { state } = useContext(AuthContext);
+    const { dispatch, state } = useContext(AuthContext);
 
     const handleRazor = async (e) => {
         setIsLoading(true);
@@ -41,7 +41,8 @@ export default function RazorPay({...props}){
                         }
                     )
                     if(res.data){
-                        state.Subscribe = true;
+                        dispatch({type: 'SUBSCRIBE'});
+                        // state.Subscribe = true;
                         // console.log(session)
                         localStorage.setItem('Subscribe',true);
                         history.push('/user/my-subs')

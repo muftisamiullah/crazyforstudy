@@ -129,10 +129,21 @@ export default function AskQuestion(){
       form.append('image1',formData.image2)
       mutation.mutate(form, 
          { onSuccess: (data, variables, context) => {
+            // console.log(data)
             // queryClient.setQueryData(['notifications-false', { user_Id : session.user._id, type: 'QA'} ], data)
-            setIsLoading(false)
-            history.push('/user/my-question')
-         }});
+            if(data && data?.response?.status == 501){
+               setError('You Have Already asked 50 questions')
+            }else{
+               setIsLoading(false)
+               history.push('/user/my-question')
+            }
+         },
+         onError: (error, variables, context) => {
+            // An error happened!
+            console.log("in error")
+            console.log(error,context,variables)
+         },
+      });
    }
 
    // if(state.Subscribe == "false"){

@@ -19,6 +19,7 @@ export default function SignIn({ csrfToken, providers }) {
 	const [otp, setOtp] = useState();
 	const [checkedState, setCheckedState] = useState(true);
 	const [openPassword, setOpenPassword] = useState('password');
+	const [openPassword2, setOpenPassword2] = useState('password');
 
 	const { dispatch, state } = useContext(AuthContext);
 	const [code, setCode] = useState({
@@ -152,7 +153,7 @@ export default function SignIn({ csrfToken, providers }) {
 		if(res.status == 200){
 			setUserId(res.data.userId);
 			setWhichSegment('change-p');
-			setError("OTP matched");
+			// setError("OTP matched");
 		}else{
 			setError("otp doesnt match");
 		}
@@ -197,10 +198,10 @@ export default function SignIn({ csrfToken, providers }) {
 		
 	}
 	const showP2 = () => {
-		if(openPassword == "name"){
-			setOpenPassword('password')
+		if(openPassword2 == "name"){
+			setOpenPassword2('password')
 		}else{
-			setOpenPassword('name')
+			setOpenPassword2('name')
 		}
 		
 	}
@@ -457,9 +458,9 @@ return (
 										</div>
 										<div className="col-md-12 mb-4">
 											<div className="form-group bdr_log_up"> 
-												<input type={openPassword} className="form-control" name="confirmchangeP" required ref={conchPRef} placeholder="Confirm Password" /> 
+												<input type={openPassword2} className="form-control" name="confirmchangeP" required ref={conchPRef} placeholder="Confirm Password" /> 
 												<span  className="error">{error}</span>
-												<span onClick={showP2} className={"field-icon toggle-password2 " +(openPassword != "password" ? "fa fa-eye" : "fa fa-eye-slash")} ></span>
+												<span onClick={showP2} className={"field-icon toggle-password2 " +(openPassword2 != "password" ? "fa fa-eye" : "fa fa-eye-slash")} ></span>
 											</div>
 										</div>
 										<div className="col-md-12 mt-4">

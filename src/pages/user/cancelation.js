@@ -9,7 +9,7 @@ import { useQuery } from 'react-query'
 import {cancelSubscription} from '../../libs/payment'
 
 export default function Cancelation(){
-    const { state } = useContext(AuthContext);
+    const { dispatch, state } = useContext(AuthContext);
     const session = state.isLoggedIn;
     const params = useParams();
     const history = useHistory();
@@ -40,6 +40,9 @@ export default function Cancelation(){
 
     const cancelModal = async (cancel_at_cycle_end) => {
         // const user_Id = localStorage.getItem('_id');
+        if(cancel_at_cycle_end == 0){
+            dispatch({type: 'SUBSCRIBE'});
+        }
         const data = cancelSubscription({subscribe_Id: params.sub_id, cancel_at_cycle_end: cancel_at_cycle_end, reason:reason, message:message ,user_Id: localStorage.getItem('_id')});
         closeModal()
         history.push(`/`);
@@ -166,8 +169,8 @@ export default function Cancelation(){
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#" className="KeepMySubscription-btn">I don’t want to cancel
-                                        </a>
+                                        <Link to="/user/my-subs" className="KeepMySubscription-btn">I don’t want to cancel
+                                        </Link>
                                     </div>
                                     </form>
                                 </div>

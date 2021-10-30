@@ -80,7 +80,7 @@ export default function Notifications(){
                                                 let title = item.title
                                                 return  ( 
                                                     <>
-                                                    {/* <tr key={key}>
+                                                    <tr key={key}>
                                                         <td>{key+1}</td>
                                                         <td><span dangerouslySetInnerHTML={{__html: title}}></span></td>
                                                         <td>{item.type}</td>
@@ -88,8 +88,8 @@ export default function Notifications(){
                                                         <td id={`${item.type+key}`}><span className="badge">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'completed'}</span></td>
                                                         <td><button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270" onClick={()=>{openCollapse(`collapse${key}`)}}>View</button></td>
                                                 
-                                                    </tr> */}
-                                                    <tr key={key}>
+                                                    </tr>
+                                                    {/* <tr key={key}>
                                                         <td colSpan="6" style={{padding:"0px"}}>
                                                             <div className="card-header pl-0 pr-0">
                                                             <table style={{width: "100%"}}>
@@ -120,7 +120,7 @@ export default function Notifications(){
                                                             </div>
                                                             </div>
                                                         </td>
-                                                    </tr>
+                                                    </tr> */}
                                                     </>
                                                     )
                                             })}

@@ -8,9 +8,13 @@ import {getQuestions} from '../../libs/question'
 import {useEffect, useState, useContext} from 'react'
 import {AuthContext} from '../../context/AuthContext';
 import { imageUrl } from '../../config/config'
+import { capitalize } from '../../components/common/make-slug'
+import Paynow from '../../pages/paynow';
+import { useHistory } from 'react-router-dom';
 
 export default function MyQuestion(){
    const { state } = useContext(AuthContext);
+   const history = useHistory();
    const session = state.isLoggedIn;
    const [ flag, setFlag ] = useState('all');
    const [display, setDisplay ] = useState('none');
@@ -52,6 +56,10 @@ export default function MyQuestion(){
        }, 1000);
    }
 
+   if(state.Subscribe == "false"){
+      history.push('/paynow')
+   }
+
    return(
       <>
          <DashboardNavbar data={user}/>
@@ -76,7 +84,7 @@ export default function MyQuestion(){
                            {(!localStorage.getItem('Subscribe')) ? <h2>Your Subscription has expired.<Link to={'/paynow'}><button className="subscription-reciept-btn">Activate Subscription</button></Link></h2>:""}
                         </div>
                         {questionsIsLoading ? <span className="text-center">loading, please wait. ..</span> : <>
-                        <div className="col-md-12 filter_title mt-3 pt-3 bdr_top pd_lr">
+                        <div className="col-md-12 filter_title mt-3 pt-3 bdr_top pd_lr inline-bb">
                            <p><span onClick={setFilter}><i className="fa fa-filter"></i>  Filter By </span></p>
                            <form style={{display:`${display}`}}>
                               <div className="form-check-inline">
@@ -125,10 +133,14 @@ export default function MyQuestion(){
                               <span key={key}>
                                  <div className="col-md-12 nav_account1 mt-3 pt-3 bdr_top pd_lr">
                                     <ul>
-                                       <li><a href="">{item.subject} </a> <i className="fa fa-angle-right"></i></li>
-                                       <li><a href="">{ item.sub_subject} </a> <i className="fa fa-angle-right"></i></li>
+                                    <li>Subject: <a href="" className="twzt">{capitalize(item.subject)} </a><i className="fa fa-angle-right mr-1"></i></li>
+                                       <li>Sub Subject: <a href="" className="twzt"> { capitalize(item.sub_subject)} </a></li>
                                        {/* <li><a href="">Financial Analysis</a></li> */}
+                                       {item.flag == "rejected" ? <div className="rejected"><p>Rejected</p></div> : (item.flag == "pending" ? <div className="pending"><p>Pending</p></div> : <div className="answered"><p>Answered</p></div>)  }
+                                       {/* <div className="rejected"><p>Rejected</p></div>
+                                       <div className="pending"><p>Pending</p></div> */}
                                     </ul>
+                                    
                                  </div>
                                  {/* <div className="col-md-12 nav_account1 mt-3 pt-3 pd_lr">
                                     <h2>Ons left for you to ask before the end of the cycleons left</h2>
@@ -142,9 +154,12 @@ export default function MyQuestion(){
                                     <p><span dangerouslySetInnerHTML={{__html: item.question}}></span>{item.image0 && <img src={imageUrl+item.image0} className="mr-5" style={{"height":"200px", "width":"400px"}}/>}{item.image1 && <img src={imageUrl + item.image1} style={{"height":"200px", "width":"400px"}}/>}</p>
                                  </div>
                                  <div className="col-md-12 nav_account1 answer_1 mt-3 mb-5 pd_lr">
-                                    <h4 className="ans_s"><i className="fa fa-check-circle"></i> Answer and Explanation:</h4>
-                                    {/* <p className="dtal_pr"><span className="name_ans">Sumit Verma</span> answered this  <span className="float-right bookmark_right"><i className="fa fa-bookmark-o"></i> bookmark</span></p> */}
-                                    <p>{item.shortanswer && item.completeanswer ? <><span>{item.shortanswer}</span><span>{item.completeanswer}</span></> : 'Not Answered yet! Its taking longer than expected, please be patient!'}</p>
+                                    {item.flag == "answered" ? 
+                                    <>
+                                       <h4 className="ans_s"><i className="fa fa-check-circle"></i> Answer and Explanation:</h4>
+                                       <p><><strong>Answer:</strong><span dangerouslySetInnerHTML={{__html: item.shortanswer}}></span><span dangerouslySetInnerHTML={{__html: item.completeanswer}}></span></></p>
+                                    </>
+                                   : (item.flag == "pending" ? <p><strong>Answer: </strong></p> : <p><strong>Comments: </strong><span dangerouslySetInnerHTML={{__html: item.rejectionReason}}></span><br/><span dangerouslySetInnerHTML={{__html: item.rejectionReason1}}></span></p>)}
                                  </div>
                               </span>
                            )

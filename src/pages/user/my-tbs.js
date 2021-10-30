@@ -52,6 +52,7 @@ export default function MyTbs(){
 
     const deleteTextBuk =  async (id) => {
         const data =  await deleteTextBook(state._id, id);
+        console.log(data)
         if(data.error == false){
             queryClient.invalidateQueries('textbooks');
         }

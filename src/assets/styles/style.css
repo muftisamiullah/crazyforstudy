@@ -1797,15 +1797,67 @@ ul.menu.list-unstyled.notification_scroll {
 }
 
 
+.col-md-12.filter_title.mt-3.pt-3.bdr_top.pd_lr.inline-bb .form-check-inline {
+    display: inline-block;
+}
+
+.answered, .rejected, .pending {float: right;}
+.answered p {color: #0f0700;font-size: 14px;font-weight: bold;}
+.pending-text {color: #2475fc;font-weight: bold;}
+.pending-text strong {color: red;font-weight: bold;font-size: 20px;}
+.answered p, .rejected p, .pending p {
+    margin-top: 0px; width:130px !important;
+}
+    
+    .rejected p:before {
+    content: "\0078";
+    margin-right: 2px;
+    color: #ffffff;
+    background: #ff0000;
+    padding: 0px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    text-align: center;
+} 
+.pending p:before {
+    content: "\29D7";
+    margin-right: 2px;
+    color: #ffffff;
+    background: #ff8d65;
+    padding: 0px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    text-align: center;
+}
+.answered p:before {
+    content: "\2714";
+    margin-right: 2px;
+    color: #ffffff;
+    background: #009d13;
+    padding: 0px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    text-align: center;
+}
 
 
 
-
-
-
-
+.nav_account1 ul li a.twzt{
+    color: #f96332;
+}
 /* //responsive */
-
+.bg_clr_frgot .bdr_log_up .field-icon.TR{
+    color: black;
+}
 
 @media (max-width:1199px){
     .tabs_frst1 {
