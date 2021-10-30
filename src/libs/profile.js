@@ -55,3 +55,15 @@ export async function updatePass(data) {
     }
 }
 
+export async function updateImageName(data) {
+    try {
+        const res = await authAxios.post(apiUrl + 'student/update-image-name', data)
+        return res;
+    }
+    catch(e){
+        if(e.response.status === 401){
+            return null;
+        }
+    }
+}
+
