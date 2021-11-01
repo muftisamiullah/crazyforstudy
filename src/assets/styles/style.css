@@ -2838,3 +2838,17 @@ span.play_btnsd2 {
 i#image3 {font-size: 22px;}
 i#image4 { padding-top: 4px;}
 .Light_Blue_BG{position:absolute; right:0px; top:4px;}
+
+
+.notifica_numbr span {
+    position: absolute;
+    display: inline-block;
+    background: #fff;
+    color:#ff4600;
+    width: 17px;
+    height: 17px;
+    text-align: center;
+    border-radius: 20px;
+    top: 8px;
+    right: 0;
+    font-size: 12px;}

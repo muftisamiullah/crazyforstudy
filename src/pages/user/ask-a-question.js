@@ -95,23 +95,26 @@ export default function AskQuestion(){
    const removeImage1 = () => {
       image1.current.src="/images/upload-icon1.png";
       formData.image1 = undefined
-      setFormData({...formData, [image1]: undefined })
+      setFormData({...formData, ["image1"]: undefined })
+      setCount((count)=>count =  count-1);
    }
 
    const removeImage2 = () => {
       image2.current.src="/images/upload-icon1.png";
       formData.image2 = undefined
-      setFormData({...formData, [image2]: undefined })
+      setFormData({...formData, ["image2"]: undefined })
+      setCount((count)=>count =  count-1);
    }
 
    useEffect(()=>{
-      if(formData.image1){
+      console.log(formData)
+      if(formData.image1 && formData.image1 != undefined){
          setCount((count)=>count =  1);
       }
-      if(formData.image2){
+      if(formData.image2 && formData.image2 != undefined){
          setCount((count)=>count =  1)
       }
-      if(formData.image1 && formData.image2){
+      if(formData.image1 && formData.image2 && formData.image1 != undefined && formData.image2 != undefined){
          setCount((count)=>count =  2)
       }
    },[formData])

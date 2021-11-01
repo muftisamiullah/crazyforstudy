@@ -8,10 +8,12 @@ import Answer from '../../../components/website/q-and-a/answer/answer'
 import { useQuery } from 'react-query'
 import { getQandAnswer } from '../../../libs/subsubject'
 import { useParams } from "react-router-dom";
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import {AuthContext} from '../../../context/AuthContext';
 import Marquee from '../../../components/common/marquee';
 
 export default function QuestionsAndAnswers() {
+    const { state } = useContext(AuthContext);
     const params = useParams();
 
     const regex = /\d+$/; //
@@ -21,7 +23,7 @@ export default function QuestionsAndAnswers() {
     const getHighlight = params.subject?.substr(0, params.subject.length-6);
     const abstrophy = unescape(getHighlight)
 
-    const { data: answer, isLoading:answerIsLoading, error:answerSubjectsError } = useQuery([old_qid], () => getQandAnswer(old_qid),{staleTime:Infinity, enabled: !!old_qid}) //only called when subject would be present
+    const { data: answer, isLoading:answerIsLoading, error:answerSubjectsError } = useQuery([old_qid], () => getQandAnswer(old_qid, state.Subscribe),{staleTime:Infinity, enabled: !!old_qid}) //only called when subject would be present
 
     return(
         <>

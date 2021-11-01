@@ -154,6 +154,7 @@ export default function DashboardNavbar({...props}){
                         </div>}
                     </li>
                     <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} onMouseEnter={openDropdown}>
+                    
                         <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="my_pics_img m-r-60 mt-0"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img) : "/images/profile_av.jpg"} alt="User" className="img-fluid"/></span></a>
                         {showDropdown && <><div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>{hideDropdown()}}>
                             <Link to="/dashboard" className="dropdown-item" href="#"> Dashboard</Link>
@@ -178,6 +179,9 @@ export default function DashboardNavbar({...props}){
                         <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" onMouseEnter={()=>{openNotification()}}>
                             <i className="fa fa-bell zmdi zmdi-notifications"></i> 
                         </a>
+                        <div class="notifica_numbr">
+                            <span>{notifications && notifications?.data.length}</span>
+                        </div>
                         {showNotification &&
                         <ul className={`dropdown-menu pullDown ${classname}`} onMouseLeave={()=>{hideNotification()}}>
                             <li className="body">

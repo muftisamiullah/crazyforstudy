@@ -86,10 +86,15 @@ export async function getQandAChildSubjects2(param) {
     }
 }
 
-export async function getQandAnswer(param) {
+export async function getQandAnswer(param, subscription) {
     try {
-        const res = await axios.post(apiUrl + `subsubject/get-answer/${param}`)
-        return res.data.data;
+        if(subscription == "true"){
+            const res = await axios.post(apiUrl + `subsubject/get-answer-sub/${param}`)
+            return res.data.data;
+        }else{
+            const res = await axios.post(apiUrl + `subsubject/get-answer/${param}`)
+            return res.data.data;
+        }
     }
     catch(e){
 
