@@ -4,7 +4,7 @@ import SideBar from '../../components/website/dashboard/sidebar'
 import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import {useState ,useEffect,useContext, useRef} from 'react'
 import { useQuery } from 'react-query'
-import {getCountries, getUser, editUserProfile, updatePass} from '../../libs/profile'
+import {getCountries, getUser, editUserProfile, updatePass,updateImageName} from '../../libs/profile'
 // import { signIn } from 'next-auth/client'
 import {AuthContext} from '../../context/AuthContext';
 import {capitalize} from '../../components/common/make-slug';
@@ -15,10 +15,12 @@ export default function  MyProfile() {
     const { state } = useContext(AuthContext);
     const session = state.isLoggedIn;
 
+    const [formSubmitMsg, setFormSubmitMsg] = useState();
+    const [imageLinkUpdate, setImageLinkUpdate] = useState();
     const [startDate, setStartDate] = useState();
     const [imageUrl, setImageUrl] = useState();
     const [preview, setPreview] = useState();
-    const [defaultImage, setDefaultImage] = useState("/images/profile_av.jpg");
+    const [defaultImage, setDefaultImage] = useState(1);
     const [loader, setLoader ] = useState()
     const [loader1, setLoader1 ] = useState()
     const [display, setDisplay ] = useState('none')
@@ -57,6 +59,9 @@ export default function  MyProfile() {
                 ['Contact']: user.Contact,
                 ['img']: user.img,
             });
+
+            if(user.img){ setDefaultImage(0); }
+
             if(user && user.dob != undefined && user.dob != ""){
                 setStartDate(new Date(user?.dob))
             }
@@ -68,6 +73,7 @@ export default function  MyProfile() {
         localStorage.removeItem('refresh_token_student')
         localStorage.removeItem('student_name')
         localStorage.removeItem('student_email')
+        
         // Router.push('login')
         // signOut({ callbackUrl: 'http://localhost:3000/auth/signin' });
         // const data = await signOut({redirect: false, callbackUrl: "/auth/signin"})
@@ -103,13 +109,15 @@ export default function  MyProfile() {
         form.append('file', imageUrl);
         const res = await editUserProfile(form);
         if(res){
-            
-        }setLoader(false)
+            setFormSubmitMsg("Profile has been Updated");
+        }
+        setLoader(false)
     }
 
     const openChangePassword = () => {
         if(display == 'block'){
             setDisplay('none')
+            
         }else{
             setDisplay('block')
         }
@@ -127,19 +135,37 @@ export default function  MyProfile() {
     }
 
     const changeImage = (e) => {
-        // setImageUrl(e.target.src)
+         setImageLinkUpdate(e.target.src);
+         const imgData= {
+            image_name: e.target.title,
+            email: state.email
+         }
+         updateImageName(imgData);
     }
+
+    useEffect(() => {
+        setFormData({...formData, ['img']: null})
+        setDefaultImage(0);
+        console.log('defaultImage : '+defaultImage)
+        console.log('imageLinkUpdate : '+imageLinkUpdate)
+        setPreview(imageLinkUpdate);
+    }, [imageLinkUpdate]);
+
 
     useEffect(() => {
         if (!imageUrl) {
             setPreview(undefined)
             return
         }
-        const objectUrl = URL.createObjectURL(imageUrl)
-        setPreview(objectUrl)
 
+        console.log('imageUrl : '+imageUrl);
+        
+        const objectUrl = URL.createObjectURL(imageUrl)
+        console.log('preview : '+objectUrl);
+        setPreview(objectUrl)
         // free memory when ever this component is unmounted
         return () => URL.revokeObjectURL(objectUrl)
+        
     }, [imageUrl])
 
     const changeP = (e) => {
@@ -174,16 +200,17 @@ export default function  MyProfile() {
     }
 
     useEffect(() => {
-		let timerError = setTimeout(() => {setError('');setMsg('')}, 3000);
+		let timerError = setTimeout(() => {setError('');setMsg('');setFormSubmitMsg();}, 3000);
 		return () => {
 			clearTimeout(timerError);
 		}
-	}, [error, msg])
+	}, [error, msg,formSubmitMsg])
     
     return (
         <>
+            
             <DashboardNavbar data={formData}/>
-            <SideBar data={formData}/>
+            <SideBar data={formData} defimg={defaultImage}/>
             {/* <aside id="leftsidebar" className="sidebar">
                 <ul className="nav nav-tabs">
                     <li className="nav-item"><Link to="/dashboard" className="nav-link" data-toggle="tab" href="" target="_blank"><i className="zmdi zmdi-home"></i></Link></li>
@@ -258,8 +285,15 @@ export default function  MyProfile() {
                                     <div className="profile-image">
                                         <div className="user-info">
                                             <div className="image circle">
-                                                <img src={formData.img ? (formData.img.includes('http') ? formData.img : imageUrl1 + formData.img)  : (preview) ? preview : defaultImage} className="profile-pic circle" alt="User"/>
-                                            </div>
+
+{defaultImage=='0' && <img src={formData.img ? 
+(formData.img.includes('http') ? formData.img : imageUrl1 + formData.img)  : 
+(preview) ? preview : ''} className="profile-pic circle" alt="User"/>}
+
+{defaultImage=='1' && <div className="default-profile-name">
+    {formData.Name ? formData.Name.substring(0,1).toUpperCase() : localStorage.getItem('fullname').substring(0,1).toUpperCase()}</div>}
+
+                                                </div>
                                             <div className="profile_pic_change">
                                                 <div className="p-image p-image2">
                                                     <i className="fa fa-camera upload-button" onClick={uploadImage}></i>
@@ -289,32 +323,32 @@ export default function  MyProfile() {
                                     <ul className="new_friend_list list-unstyled row">
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic1.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
+                                            <img src="/images/pic1.png" title="pic1.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic2.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
+                                            <img src="/images/pic2.png" title="pic2.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic3.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
+                                            <img src="/images/pic3.png" title="pic3.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic4.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
+                                            <img src="/images/pic4.png" title="pic4.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic5.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
+                                            <img src="/images/pic5.png" title="pic5.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                         <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                             <a href="#">
-                                            <img src="/images/pic6.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
+                                            <img src="/images/pic6.png" title="pic6.png" className="img-thumbnail" alt="User Image" onClick={changeImage}/>
                                             </a>
                                         </li>
                                     </ul>
@@ -329,6 +363,7 @@ export default function  MyProfile() {
                                 <li className="nav-item"><a className="nav-link active" data-toggle="tab" href="#Account"><i className="fa fa-edit"></i></a></li>
                             </ul> */}
                             
+
                             <ul className="nav nav-tabs profile_editbtn">
                                 <li className="nav-item"><a className="nav-link active" data-toggle="tab" href="#Account">Personal Details</a></li>
                                 <li className="nav-item">
@@ -337,6 +372,8 @@ export default function  MyProfile() {
                             </ul>
                             <div className="tab-content">
                                 <div className="tab-pane body active" id="Account">
+
+                                
                                 {/* <!--<div className="form-group">
                                     <input type="password" className="form-control" placeholder="Current Password">
                                 </div>
@@ -349,7 +386,7 @@ export default function  MyProfile() {
                                     <div className="col-lg-6 col-md-12">
                                         <div className="form-group">
                                         <label>New Password</label>
-                                            <input type="password" className="form-control" name="pass" placeholder="New Password" onChange={changeP}/>
+                                            <input type="password" autocomplete="new-password" className="form-control" name="pass" placeholder="New Password" onChange={changeP}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-12">
@@ -438,7 +475,9 @@ export default function  MyProfile() {
                                     </div>--> */}
                                     <div className="col-md-12">
                                         <button onClick={saveForm} className="btn btn-primary btn-round" >{loader ? "updating" : "Update"}</button>
+                                        <span style={{ color:"green",fontSize:20}}>{formSubmitMsg}</span>
                                     </div>
+                                    
                                 </div>
                                 </div>
                             </div>

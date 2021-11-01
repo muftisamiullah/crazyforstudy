@@ -75,7 +75,21 @@ export default function SideBar({...props}){
                             <li className="mb-0 border-bottom-0">
                                 <div className="user-info  border-bottom-0">
                                     <div className="image circle">
-                                        <Link to="/user/my-profile"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img) : "/images/profile_av.jpg"} className="profile-pic" alt="User"/></Link>
+
+                                        <Link to="/user/my-profile">
+
+{
+props.data && props.data.img && 
+    <img src={props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img} className="profile-pic" alt="User"/>
+}
+
+{props.defimg && props.defimg=='1' && <div className="side-default-profile-name">
+{props.data.Name ? props.data.Name.substring(0,1).toUpperCase() : localStorage.getItem('fullname').substring(0,1).toUpperCase()}</div>}
+
+
+
+    </Link>
+
                                         <div className="profile_pic_change">
                                             <div className="p-image">
                                                 <i className="fa fa-camera upload-button"></i>

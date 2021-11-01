@@ -487,8 +487,9 @@ export default function MyOrderDetails(){
                                                     <h4 className="m-t-2 Credits_Earned">Proceed by clicking</h4>
                                                     {/* <a href="#" className="btn  ml-auto Complete pay mt-2"><img src="/images/paypal.png" className="img-fluid" alt="paypal"/> </a>
                                                     or */}
-                                                    <a href="#" className="btn mt-4 mb-4  ml-auto Add_Money"><img src="/images/razorpay.png" className="img-fluid" alt="razorpay"/>  </a>
-                                                    <br/>
+                                                    <Razorpay type="subscription"/>
+                                                    {/*<a href="#" className="btn mt-4 mb-4  ml-auto Add_Money"><img src="/images/razorpay.png" className="img-fluid" alt="razorpay"/>  </a>
+                                                    <br/>*/}
                                                     {/* <a href="#" className="btn  ml-auto Complete pay mt-2">Pay From Wallet </a> */}
                                                     <br/>
                                                     {/* <p className="mt-5">Lorem ilupsm please make the payment so that we could quickly create an amazing Case Study create an amazing Case Study for you
