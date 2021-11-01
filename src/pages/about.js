@@ -95,9 +95,9 @@ export default function About() {
             <h5 className="pb-2">Joanna Donati</h5>
             <h2>Tutor – Operations Manager</h2> 
                         <p>Joanna Donati is the Operations Manager of Crazy For Study. She is responsible for managing various activities related to the production and distribution of services at CFS. She oversees the operations process, service design, performance control, and delivery strategy. Her responsibilities include communicating with the managers of finance, accounting, marketing, and other company functional areas. She received an MBA in Production Management from the University of Georgia.</p>
-                        <ul>
+                        {/*<ul>
                         <li><Link to=""><img src="/images/aboutus-img/linkedin.png" className="img-fluid" alt=""/> Joanna on Linkedin</Link></li>
-                        </ul>
+                        </ul>*/}
                     </div>
                     </div>
                 </div>
