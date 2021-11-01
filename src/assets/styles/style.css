@@ -2797,3 +2797,31 @@ ul.nav.nav-tabs.profile_editbtn {
     width: 30px;
 	}
 }
+
+.modal-body.hghgyt.text-left button {
+    display: block;
+}
+.can-modal .modal-content .modal-header button {
+    position: absolute;
+    right: 9px;
+    top: 4px;
+    outline: 0;}
+
+.modal-body.hghgyt button {
+    margin: 8px;
+}
+.time_hid {
+    position: absolute;
+    z-index: 999;
+    font-size: 22px;
+    background: #e36304;
+    width: 24px;
+    text-align: center;
+    color: #fff;
+    top: 27%;
+    cursor: pointer;
+    height: 24px;
+    line-height: 23px;
+    border-radius: 20px;
+    left: 105px;
+}

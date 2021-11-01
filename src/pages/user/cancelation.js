@@ -151,7 +151,7 @@ export default function Cancelation(){
                                     <div className="continoue-btn">
                                         <button type="button" id="submitbtn" name="submit" className="subscontinoue-btn" onClick={cancel} >Cancel my subscription </button>
                                         {/* <button type="button" id="submitbtn2" name="submit22" className="subscontinoue-btn">Cancel my subscription Immediately</button> */}
-                                        <div id="myModal" className="modal modalsbu123" role="dialog" style={{display: `${dis}`}}>
+                                        <div id="myModal" className="modal modalsbu123 can-modal" role="dialog" style={{display: `${dis}`}}>
                                             <div className="modal-dialog" style={{paddingTop: "100px"}}>
                                                 
                                                 <div className="modal-content">
@@ -159,13 +159,13 @@ export default function Cancelation(){
                                                     <button type="button" className="close" data-dismiss="modal" onClick={closeModal}>×</button>
                                                     <h4 className="modal-title mt-0" id="modalTit">We will provide the solution manual within next 6-12 hours. Do you still Want to cancel the subscription?</h4>
                                                 </div>
-                                                <div className="modal-body">
-                                                </div>
-                                                <div className="modal-footer">
-                                                    <button type="button" id="submit2btn" name="submit2" className="btn btn-default dark_btn1" onClick={closeModal}>Okay, I'll Wait For the Solution Manual</button>
+                                                <div className="modal-body hghgyt">
+                                                <button type="button" id="submit2btn" name="submit2" className="btn btn-default dark_btn1" onClick={closeModal}>Okay, I'll Wait For the Solution Manual</button>
                                                     <button type="button" name="submit" className="btn btn-default"  onClick={()=>{cancelModal(0)}}>No, Cancel Immediately</button>
                                                     <button type="button" name="submit" className="btn btn-default"  onClick={()=>{cancelModal(1)}}>No, Cancel at the End of the Month</button>
                                                 </div>
+                                                {/* <div className="modal-footer">
+                                                </div> */}
                                                 </div>
                                             </div>
                                         </div>

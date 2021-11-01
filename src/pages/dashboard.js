@@ -73,7 +73,7 @@ export default function  Dashboard() {
             <DashboardNavbar data={user}/>
             <SideBar data={user}/>
             <section className="content user profile-page">
-                <BlockHeader data={user}/>                
+                <BlockHeader data={user} currentPage={"Dashboard"}/>                
                 <div className="container-fluid">
                     <div className="row clearfix mt-4">
                         <div className="col-xl-12">

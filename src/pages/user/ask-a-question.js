@@ -315,6 +315,7 @@ export default function AskQuestion(){
                                                    <div className="upload_img_icon">
                                                       <img id="img1" src={image && image.image1 ? image.image1 : '/images/upload-icon1.png'} alt="your image"/>
                                                    </div>
+                                                   <div class="time_hid"><span>x</span></div>
                                                 </div>
                                              </div>
                                              <div className="col-md-6 pl-0">
@@ -326,6 +327,7 @@ export default function AskQuestion(){
                                                    <div className="upload_img_icon">
                                                       <img id="img2" src={image && image.image2 ? image.image2 : '/images/upload-icon1.png'} alt="your image" />
                                                    </div>
+                                                   <div class="time_hid"><span>x</span></div>
                                                 </div>
                                              </div>
                                           </div>
