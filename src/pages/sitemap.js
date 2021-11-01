@@ -2,8 +2,14 @@
 import Header from '../components/website/home/header'
 import Navbar from '../components/website/home/navbar'
 import Footer from '../components/website/home/footer'
+import {useEffect} from 'react'
 
 export default function SiteMap(){
+    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return(
         <>
             <Header/>

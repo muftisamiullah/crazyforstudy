@@ -31,6 +31,20 @@ export default function Cancelation(){
             setError('You need to select a reason')
             return
         }
+        if(tab === 1 || tab===2 || tab===5 && message == ""){
+            if(tab === 1){
+                setError('You need to type an ISBN')
+                return
+            }
+            if(tab === 2){
+                setError('You need to type the Question and select the subject')
+                return
+            }
+            if(tab === 5){
+                setError('You need to type the reason')
+                return
+            }
+        }
         setDis('block')
     }
 
@@ -41,9 +55,10 @@ export default function Cancelation(){
     const cancelModal = async (cancel_at_cycle_end) => {
         // const user_Id = localStorage.getItem('_id');
         if(cancel_at_cycle_end == 0){
-            dispatch({type: 'SUBSCRIBE'});
+            dispatch({type: 'UNSUBSCRIBE'});
         }
-        const data = cancelSubscription({subscribe_Id: params.sub_id, cancel_at_cycle_end: cancel_at_cycle_end, reason:reason, message:message ,user_Id: localStorage.getItem('_id')});
+        const data = await  cancelSubscription({subscribe_Id: params.sub_id, cancel_at_cycle_end: cancel_at_cycle_end, reason:reason, message:message ,user_Id: localStorage.getItem('_id')});
+        console.log(data);
         closeModal()
         history.push(`/`);
     }

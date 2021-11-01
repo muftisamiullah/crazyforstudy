@@ -15,7 +15,7 @@ if(process.env.NODE_ENV === 'production'){
     imageUrl = `https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/`;
 }
 
-apiUrl = `http://127.0.0.1:8000/web/v1/`;
+// apiUrl = `http://127.0.0.1:8000/web/v1/`;
 
 const config = {
     baseURL: apiUrl,

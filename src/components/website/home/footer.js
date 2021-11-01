@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link';
 
 export default function Footer() {
     return (
@@ -22,8 +23,9 @@ export default function Footer() {
 					<div className="col-md-3 pl-5">
 					<h3>Study Help</h3>
 					<ul>
-						<li><Link to="/q-and-a"><i className="fa fa-angle-right"></i> Q&A </Link></li>
-						<li><Link to="/textbook-solutions-manuals"><i className="fa fa-angle-right"></i> Solutions Manual</Link></li>
+						<li><HashLink to="/q-and-a#subjects"><i className="fa fa-angle-right"></i> Q and A
+                        </HashLink></li>
+						<li><HashLink to="/textbook-solutions-manuals#solution-manuals"><i className="fa fa-angle-right"></i> Solutions Manual</HashLink></li>
 						<li><Link to="/writing-help/online-assignment-help"><i className="fa fa-angle-right"></i> Assignment Help</Link></li>
 						<li><Link to="/about"><i className="fa fa-angle-right"></i> About Us</Link></li>
 					</ul>
@@ -33,7 +35,7 @@ export default function Footer() {
 					<ul>
 						<li><Link to="/privacy-and-policy"><i className="fa fa-angle-right"></i> Privacy & Policy</Link></li>
 						<li><Link to="/faqs"><i className="fa fa-angle-right"></i> FAQ</Link></li>
-						<li><Link to="/terms-and-conditions"><i className="fa fa-angle-right"></i> Term of Use</Link></li>
+						<li><Link to="/terms-and-conditions"><i className="fa fa-angle-right"></i> Terms and Condtitions</Link></li>
 						{/* <li><Link to="#"><i className="fa fa-angle-right"></i> Tutor Login</Link></li> */}
 					</ul>
 					</div>

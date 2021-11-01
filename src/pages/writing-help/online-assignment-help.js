@@ -11,8 +11,14 @@ import Reviews from "../../components/website/assignment-help/reviews"
 import WhyChoose from "../../components/website/assignment-help/why-choose"
 import WhatStudentsThink from "../../components/website/assignment-help/what-students-think"
 import StudyHelp from '../../components/common/study-help'
+import {useEffect} from 'react'
 
 export default function OnlineAssignmentHelp() {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       <Helmet>

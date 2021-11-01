@@ -2825,3 +2825,16 @@ ul.nav.nav-tabs.profile_editbtn {
     border-radius: 20px;
     left: 105px;
 }
+
+
+
+/* marquee */
+
+.tst_scroll_text{background:#cee6f8;}
+marquee#marquee { font-family: 'Aspira'; margin: 0 20px; color:#f40808; font-size:15px; font-weight:500; padding-top: 5px;}
+.Content_Bar{position:relative;}
+span.play_btnsd2 {
+    position: absolute; top:6px; left:0;}
+i#image3 {font-size: 22px;}
+i#image4 { padding-top: 4px;}
+.Light_Blue_BG{position:absolute; right:0px; top:4px;}

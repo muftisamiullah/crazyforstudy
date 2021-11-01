@@ -422,7 +422,7 @@ export default function Book(){
     //seo ends
     
     return(
-        <>{console.log(state.Subscribe)}
+        <>{console.log(state.Subscribe)}{console.log(typeof(state.Subscribe))}
             <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema} reviewSchema={reviewSchema} faqSchema={faqSchema} ISBN13={ISBN13 && ISBN13}/>
             <Header/>
             <Navbar/>

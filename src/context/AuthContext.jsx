@@ -62,12 +62,12 @@ const reducer = (state, action) => {
         case 'SUBSCRIBE':
             return {
                 ...state,
-                Subscribe: true,
+                Subscribe: "true",
             } 
         case 'UNSUBSCRIBE':
             return {
                 ...state,
-                Subscribe: false,
+                Subscribe: "false",
             } 
         default:
             return state;

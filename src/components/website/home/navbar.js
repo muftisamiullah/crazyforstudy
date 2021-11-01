@@ -6,6 +6,7 @@ import { useQuery } from 'react-query'
 import { MakeSlug } from '../../common/make-slug'
 import {AuthContext} from '../../../context/AuthContext';
 import { HashLink } from 'react-router-hash-link';
+import { Marquee } from '../../common/marquee';
 
 export default function Navbar() {
     const location = useLocation();
@@ -181,7 +182,7 @@ export default function Navbar() {
                         
                     </li>  
                     <li className="nav-item dropdown megamenu-li dmenu" onMouseEnter={()=>{openMenu()}} >
-                        <Link to="/textbook-solutions-manuals" className="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions Manual  </Link>
+                        <HashLink to="/textbook-solutions-manuals#solution-manuals" className="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions Manual  </HashLink>
                         {showMenu &&
                         <div className={`dropdown-menu megamenu sm-menu border-top ${classname}`}   onMouseLeave={()=>hideMenu()}>
                             <div className="row">

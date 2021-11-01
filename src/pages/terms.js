@@ -4,8 +4,13 @@ import Navbar from '../components/website/home/navbar'
 import Follow from '../components/website/home/follow'
 import Footer from '../components/website/home/footer'
 import BreadCrumb from '../components/website/all-subjects/breadcrumb'
+import {useEffect} from 'react'
 
 export default function Privacy() {
+   useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
+  
     return (
       <>
       <Header/>

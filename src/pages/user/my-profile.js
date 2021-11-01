@@ -386,7 +386,7 @@ export default function  MyProfile() {
                                     <div className="col-lg-6 col-md-12">
                                         <div className="form-group">
                                         <label>New Password</label>
-                                            <input type="password" autocomplete="new-password" className="form-control" name="pass" placeholder="New Password" onChange={changeP}/>
+                                            <input type="password" autoComplete="new-password" className="form-control" name="pass" placeholder="New Password" onChange={changeP}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-12">
