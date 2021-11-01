@@ -16,6 +16,7 @@ import {getSubSubject} from '../../../libs/subsubject'
 import { capitalize } from "../../../components/common/make-slug";
 import Seo from '../../../components/common/seo'
 import { useEffect, useState } from 'react';
+import Marquee from '../../../components/common/marquee';
 
 export default function Subject(){
     const params = useParams();
@@ -102,7 +103,7 @@ export default function Subject(){
                 <meta name="twitter:site" content="@CrazyForStudy1"/>
                 <meta name="twitter:image" content="#SameAsBookImageURL" />
             </Helmet> */}
-
+            <Marquee/>
             <Seo path={path} title={title} description={description} keywords={keywords} breadcrumbSchema={breadcrumbSchema} robots={robots}/>
             <Header/>
             <Navbar/>

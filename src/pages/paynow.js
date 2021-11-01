@@ -8,6 +8,7 @@ import StripePay from '../components/common/stripe'
 import { useEffect, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom'
 import {AuthContext} from '../context/AuthContext';
+import Marquee from '../components/common/marquee';
 
 export default function PayNow(){
     const { state } = useContext(AuthContext);
@@ -26,6 +27,7 @@ export default function PayNow(){
 
     return(
         <>
+        <Marquee/>
         <Header/>
         <Navbar/>
         <section className="section pt-3 pb-3">

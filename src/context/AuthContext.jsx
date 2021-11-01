@@ -60,11 +60,13 @@ const reducer = (state, action) => {
                 Subscribe:null,
             }    
         case 'SUBSCRIBE':
+            localStorage.setItem('Subscribe',"true");
             return {
                 ...state,
                 Subscribe: "true",
             } 
         case 'UNSUBSCRIBE':
+            localStorage.setItem('Subscribe',"false");
             return {
                 ...state,
                 Subscribe: "false",

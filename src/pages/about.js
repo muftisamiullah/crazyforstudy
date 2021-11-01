@@ -5,6 +5,7 @@ import Navbar from '../components/website/home/navbar'
 import Follow from '../components/website/home/follow'
 import Footer from '../components/website/home/footer'
 import BreadCrumb from '../components/website/all-subjects/breadcrumb'
+import Marquee from '../components/common/marquee';
 
 export default function About() {
 
@@ -14,6 +15,7 @@ export default function About() {
 
     return (
         <>
+        <Marquee/>
         <Header/>
         <Navbar/>
         <BreadCrumb heading="About us" type="About us"/>

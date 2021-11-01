@@ -146,8 +146,6 @@ export default function  MyProfile() {
     useEffect(() => {
         setFormData({...formData, ['img']: null})
         setDefaultImage(0);
-        console.log('defaultImage : '+defaultImage)
-        console.log('imageLinkUpdate : '+imageLinkUpdate)
         setPreview(imageLinkUpdate);
     }, [imageLinkUpdate]);
 
@@ -286,12 +284,12 @@ export default function  MyProfile() {
                                         <div className="user-info">
                                             <div className="image circle">
 
-{defaultImage=='0' && <img src={formData.img ? 
-(formData.img.includes('http') ? formData.img : imageUrl1 + formData.img)  : 
-(preview) ? preview : ''} className="profile-pic circle" alt="User"/>}
+                                {defaultImage=='0' && <img src={formData.img ? 
+                                (formData.img.includes('http') ? formData.img : imageUrl1 + formData.img)  : 
+                                (preview) ? preview : ''} className="profile-pic circle" alt="User"/>}
 
-{defaultImage=='1' && <div className="default-profile-name">
-    {formData.Name ? formData.Name.substring(0,1).toUpperCase() : localStorage.getItem('fullname').substring(0,1).toUpperCase()}</div>}
+                                {defaultImage=='1' && <div className="default-profile-name">
+                                    {formData.Name ? formData.Name.substring(0,1).toUpperCase() : localStorage.getItem('fullname').substring(0,1).toUpperCase()}</div>}
 
                                                 </div>
                                             <div className="profile_pic_change">

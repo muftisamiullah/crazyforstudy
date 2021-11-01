@@ -15,6 +15,7 @@ import WhatStudentsThink from '../../components/website/assignment-help/what-stu
 import BrowseBySubjects from '../../components/website/q-and-a/browse-by-subjects'
 import { useQuery } from 'react-query'
 import {getSubjects} from '../../libs/subsubject'
+import Marquee from '../../components/common/marquee';
 
 export default function QandA() {
 
@@ -26,6 +27,7 @@ export default function QandA() {
 			    <title>Q&A Services | 30 Minutes Solution | 24x7 Services</title>
                 <meta name="description" content="CFS offers the fastest Q&A services. The students can ask 50 new questions every month. Also, get unlimited access to our answer library."></meta>
 		    </Helmet>
+            <Marquee/>
             <Header/>
             <Navbar/>
             <QandASearch/>

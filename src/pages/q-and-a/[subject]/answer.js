@@ -9,6 +9,7 @@ import { useQuery } from 'react-query'
 import { getQandAnswer } from '../../../libs/subsubject'
 import { useParams } from "react-router-dom";
 import { useState } from 'react'
+import Marquee from '../../../components/common/marquee';
 
 export default function QuestionsAndAnswers() {
     const params = useParams();
@@ -27,6 +28,7 @@ export default function QuestionsAndAnswers() {
             <Helmet>
                 <title>Crazy For Study</title>
             </Helmet>
+            <Marquee/>
             <Header/>
             <Navbar/>
             {/* <BreadCrumb type={"Q & A"} heading={abstrophy} subject={answer?.subject} sub_subject={answer?.subsubject} sub_sub_subject={params.chieldsubject}/> */}

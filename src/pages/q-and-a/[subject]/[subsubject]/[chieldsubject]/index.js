@@ -14,6 +14,7 @@ import {getQandAChildSubjects} from '../../../../../libs/subsubject'
 import { useParams } from "react-router-dom";
 import { useState } from 'react'
 import { GetName, capitalize } from '../../../../../components/common/make-slug'
+import Marquee from '../../../../components/common/marquee';
 
 export default function QuestionsAndAnswers() {
     const [pageNo, setPageNo] = useState(0);
@@ -26,6 +27,7 @@ export default function QuestionsAndAnswers() {
             <Helmet>
                 <title>Crazy For Study</title>
             </Helmet>
+            <Marquee/>
             <Header/>
             <Navbar/>
             <BreadCrumb type={"Q & A"} heading={params.chieldsubject} subject={params.subject} sub_subject={params.subsubject}/>

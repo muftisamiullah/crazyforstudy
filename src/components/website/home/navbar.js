@@ -6,7 +6,6 @@ import { useQuery } from 'react-query'
 import { MakeSlug } from '../../common/make-slug'
 import {AuthContext} from '../../../context/AuthContext';
 import { HashLink } from 'react-router-hash-link';
-import { Marquee } from '../../common/marquee';
 
 export default function Navbar() {
     const location = useLocation();

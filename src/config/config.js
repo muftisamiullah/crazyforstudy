@@ -10,7 +10,7 @@ if(process.env.NODE_ENV === 'production'){
     imageUrl = 'https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/';
 }else{
    // apiUrl = `${process.env.REACT_APP_LOCAL_URL_basePath}/web/v1/`;
-   apiUrl = `http://127.0.0.1:8080/web/v1/`;
+   apiUrl = `http://127.0.0.1:8000/web/v1/`;
     // imageUrl = `${process.env.REACT_APP_LOCAL_URL_basePath}/uploads/`;
     imageUrl = `https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/`;
 }

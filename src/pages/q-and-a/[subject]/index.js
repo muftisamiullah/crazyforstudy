@@ -17,6 +17,7 @@ import { capitalize } from "../../../components/common/make-slug";
 import Seo from '../../../components/common/seo'
 import { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import Marquee from '../../../components/common/marquee';
 
 export default function QandACategory() {
     const params = useParams();
@@ -50,6 +51,7 @@ export default function QandACategory() {
     
     return(
         <>
+            <Marquee/>
             <Seo path={path} title={title} description={description} keywords={keywords} robots={robots}/>
             <Header/>
             <Navbar/>

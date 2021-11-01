@@ -16,6 +16,7 @@ import { useQuery } from 'react-query'
 import {Helmet} from 'react-helmet-async'
 import { capitalize,GetName } from "../../../components/common/make-slug";
 import Seo from '../../../components/common/seo'
+import Marquee from '../../../components/common/marquee';
 
 // export async  function getServerSideProps(context){
 //     const data = await getBooks(context.params.subsubject);
@@ -117,7 +118,7 @@ export default function SubSubject(){
                 <meta name="twitter:site" content="@CrazyForStudy1"/>
                 <meta name="twitter:image" content="#SameAsBookImageURL" />
             </Helmet> */}
-
+            <Marquee/>
             <Seo path={path} title={title} description={description} keywords={keywords} breadcrumbSchema={breadcrumbSchema}/>  
             <Header/>
             <Navbar/>
