@@ -378,7 +378,7 @@ export default function  MyProfile() {
                                 <div className="form-group">
                                     <input type="password" className="form-control" placeholder="New Password">
                                 </div> --> */}
-                                <button className="btn btn-info btn-round" id="changepass" onClick={openChangePassword}> Changes Password</button>
+                                <button className="btn btn-info btn-round" id="changepass" onClick={openChangePassword}> Change Password</button>
                                 <div style={{display:`${display}`}}>
                                 <div className="row clearfix" id="changepass2" >
                                     <div className="col-lg-6 col-md-12">
