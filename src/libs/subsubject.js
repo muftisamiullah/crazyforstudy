@@ -14,6 +14,17 @@ export async function getBooks( param ) {
     }
 }
 
+export async function getRandomQuestions( param ) {
+    try {
+        // const sub_subject = GetName(param.sub_subject_name);
+        const res = await axios.post(apiUrl + `subsubject/get-random-questions/${param.subject_name}/${param.sub_subject_name}/${param.limit}`)
+        return res.data;
+    }
+    catch(e){
+
+    }
+}
+
 export async function getSubSubject( param ) {
     try {
         const res = await axios.get(apiUrl + `subsubject/${param}`)

@@ -8,13 +8,13 @@ import AllBooks from '../../../components/website/all-subjects/all-books'
 import AddBook from '../../../components/website/all-subjects/add-book'
 import StudentViewed from '../../../components/website/all-subjects/students-viewed'
 import GetSolManual from '../../../components/website/all-subjects/get-sol-manual'
-import {getBooks} from "../../../libs/subsubject"
+import {getBooks, getRandomQuestions} from "../../../libs/subsubject"
 import { useParams, useLocation, useHistory } from "react-router-dom";
 // import {getNavbarData} from "../../../libs/home"
 import {useEffect, useState} from 'react';
 import { useQuery } from 'react-query'
 import {Helmet} from 'react-helmet-async'
-import { capitalize,GetName } from "../../../components/common/make-slug";
+import { capitalize, GetName } from "../../../components/common/make-slug";
 import Seo from '../../../components/common/seo'
 import Marquee from '../../../components/common/marquee';
 
@@ -79,6 +79,7 @@ export default function SubSubject(){
     }
     
     const { data, isLoading, error } = useQuery([params.subsubject,params.subject,pageNo], () => getBooks({sub_subject_name: params.subsubject, subject_name: params.subject, pageno : pageNo}))
+    const { data: randomQuestions, isLoadingRandomQuestions, errorRandomQuestions } = useQuery([params.subsubject,params.subject], () => getRandomQuestions({sub_subject_name: params.subsubject, subject_name: params.subject, limit : 3}))
     
     useEffect(()=>{
         if(saveParam != params.subsubject){
@@ -126,7 +127,7 @@ export default function SubSubject(){
             <BuySubscription/>
             <AllBooks data={data} setPageNo={setPageNo} pageNo={pageNo}/>
             <AddBook bookname={capitalize(GetName(params.subsubject))}/>
-            <StudentViewed bookname={capitalize(GetName(params.subsubject))}/>
+            <StudentViewed bookname={capitalize(GetName(params.subsubject))} data={randomQuestions} url={`/q-and-a/${params.subject}/${params.subsubject}`}/>
             <GetSolManual bookname={capitalize(GetName(params.subsubject))}/>
             <Follow/>
             <Footer/>
