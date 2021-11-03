@@ -8,8 +8,7 @@ export default function HomeWork(){
                 </div>
                 <div className="col-md-12 text-center pb-5 get-homework">
                     <p> Crazy For Study is one of the leading providers of Socialogy Homework Answers for college and university students. Get Socialogy homework help and expert answers to your toughest Socialogy homework questions. Master your Socialogy assignments with our step-by-step Socialogy homework answers. Ask any Socialogy homework question and get an answer from our experts in as fast as 30 minutes. With Crazy For Study, we've got you covered 24/7. </p>
-                    <p> Crazy For Study is one of the leading providers of Socialogy Homework Answers for college and university students. Get Socialogy homework help and expert answers to your toughest Socialogy homework questions. Master your Socialogy assignments with our step-by-step Socialogy homework answers. Ask any Socialogy homework question and get an answer from our experts in as fast as 30 minutes. With Crazy For Study, we've got you covered 24/7. </p>
-                </div>
+                    </div>
                 </div>
             </div>
         </section>
