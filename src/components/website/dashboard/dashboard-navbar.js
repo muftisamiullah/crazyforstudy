@@ -154,7 +154,18 @@ export default function DashboardNavbar({...props}){
                         </div>}
                     </li>
                     <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} onMouseEnter={openDropdown}>
-                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="my_pics_img m-r-60 mt-0"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img) : "/images/profile_av.jpg"} alt="User" className="img-fluid"/></span></a>
+                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><
+                            span className="my_pics_img m-r-60 mt-0">
+
+<div className="navbar-default-profile-name" style={{display:(props.data.img ? 'none' : 'block')}}>
+{props.data.Name ? props.data.Name.substring(0,1).toUpperCase() : '...'}</div>
+
+{props.data && props.data.img && <img src={props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img}
+className="img-fluid" alt="User"/>}
+
+                            
+                            </span>
+                            </a>
                         {showDropdown && <><div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>{hideDropdown()}}>
                             <Link to="/dashboard" className="dropdown-item" href="#"> Dashboard</Link>
                             <Link to="/user/my-orders" className="dropdown-item" href="#"> My Orders</Link>

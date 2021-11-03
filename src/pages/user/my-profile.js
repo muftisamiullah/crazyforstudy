@@ -20,7 +20,6 @@ export default function  MyProfile() {
     const [startDate, setStartDate] = useState();
     const [imageUrl, setImageUrl] = useState();
     const [preview, setPreview] = useState();
-    const [defaultImage, setDefaultImage] = useState(1);
     const [loader, setLoader ] = useState()
     const [loader1, setLoader1 ] = useState()
     const [display, setDisplay ] = useState('none')
@@ -45,8 +44,9 @@ export default function  MyProfile() {
     const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
     const { data: countries, isLoading:countriesIsLoading, error:countriesError } = useQuery(['country-list'], () => getCountries(),{staleTime:Infinity})
 
-    useEffect(()=>{
+     useEffect(()=>{
         if(user){
+
             setFormData({
                 ...formData,
                 ['Name']: user.Name,
@@ -60,8 +60,7 @@ export default function  MyProfile() {
                 ['img']: user.img,
             });
 
-            if(user.img){ setDefaultImage(0); }
-
+        
             if(user && user.dob != undefined && user.dob != ""){
                 setStartDate(new Date(user?.dob))
             }
@@ -145,13 +144,10 @@ export default function  MyProfile() {
 
     useEffect(() => {
         setFormData({...formData, ['img']: null})
-        setDefaultImage(0);
-        console.log('defaultImage : '+defaultImage)
         console.log('imageLinkUpdate : '+imageLinkUpdate)
         setPreview(imageLinkUpdate);
     }, [imageLinkUpdate]);
-
-
+    
     useEffect(() => {
         if (!imageUrl) {
             setPreview(undefined)
@@ -209,8 +205,8 @@ export default function  MyProfile() {
     return (
         <>
             
-            <DashboardNavbar data={formData}/>
-            <SideBar data={formData} defimg={defaultImage}/>
+            <DashboardNavbar data={formData} previewimg={preview}/>
+            <SideBar data={formData} previewimg={preview}/>
             {/* <aside id="leftsidebar" className="sidebar">
                 <ul className="nav nav-tabs">
                     <li className="nav-item"><Link to="/dashboard" className="nav-link" data-toggle="tab" href="" target="_blank"><i className="zmdi zmdi-home"></i></Link></li>
@@ -286,12 +282,15 @@ export default function  MyProfile() {
                                         <div className="user-info">
                                             <div className="image circle">
 
-{defaultImage=='0' && <img src={formData.img ? 
-(formData.img.includes('http') ? formData.img : imageUrl1 + formData.img)  : 
-(preview) ? preview : ''} className="profile-pic circle" alt="User"/>}
 
-{defaultImage=='1' && <div className="default-profile-name">
-    {formData.Name ? formData.Name.substring(0,1).toUpperCase() : localStorage.getItem('fullname').substring(0,1).toUpperCase()}</div>}
+<div className="default-profile-name" style={{display:(formData.img || preview ? 'none' : 'block')}}>
+    {formData.Name ? formData.Name.substring(0,1).toUpperCase() : '...'}</div>
+    
+<img src={formData.img ? 
+(formData.img.includes('http') ? formData.img : imageUrl1 + formData.img)  : 
+(preview) ? preview : ''} 
+className="profile-pic circle" alt="Users"/>
+
 
                                                 </div>
                                             <div className="profile_pic_change">

@@ -19667,6 +19667,14 @@ section small {
     font-size: 50px;
     color: white;
 } 
+.navbar-default-profile-name{
+    background-color: purple;
+    font-size: -20px;
+    color: white;
+    margin-left: -1px;
+    font-size: 29px;
+    text-align: center;
+}
 	
 .profile_left{overflow-y: scroll !important; margin-right:0 !important;}	
 	
