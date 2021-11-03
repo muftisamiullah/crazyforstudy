@@ -178,16 +178,24 @@ export default function  MyProfile() {
 
     const updatePassword = async() => {
         setLoader1(true);
+        if(passData.pass == ""){
+            setError('Password is empty')
+            setLoader1(false)
+            return;
+        }
         if(passData.pass.length < 8){
             setError('Password must not be less than 8 characters')
+            setLoader1(false)
             return;
         }
         if(passData.pass == "" || passData.confirmPass == ""){
             setError('Both fields necessary')
+            setLoader1(false)
             return
         }
         if(passData.pass !== passData.confirmPass){
             setError('Password mismatch')
+            setLoader1(false)
             return
         }
         const res = await updatePass(passData);
@@ -412,7 +420,7 @@ className="profile-pic circle" alt="Users"/>
                                         <span style={{color:"green"}}>{msg}</span>
                                     </div>
                                     <div className="col-md-12">
-                                        <button className="btn btn-primary btn-round" id="successProfileUpdatebtn" onClick={updatePassword}>{loader1 ? "Updating": "Update Password"}</button>
+                                        <button className="btn btn-primary btn-round" id="successProfileUpdatebtn" onClick={updatePassword}>{loader1 ? "Saving": "Save"}</button>
                                     </div>
                                     </div>
                                     </div>

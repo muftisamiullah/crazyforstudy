@@ -21,6 +21,7 @@ export default function StudentViewed({...props}){
                             </div>
                         </div>
                         {props.data ? (props.data.data.length >! 0 ? props.data.data.map((item, key)=>{
+                            const html = "'" + item.question + "'";
                             return(
                             <div className="text_q_nd_ans" key={key}>
                                 <div className="Qtion_n_Stion_text Recent_text">
@@ -34,7 +35,7 @@ export default function StudentViewed({...props}){
                                                 </>
                                                 :
                                                 <>
-                                                    <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(`${item.question}`)}`}}></p>
+                                                    <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(`${html}`)}`}}></p>
                                                 </>
                                                 }
                                         </div>

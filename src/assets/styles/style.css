@@ -2852,3 +2852,8 @@ i#image4 { padding-top: 4px;}
     top: 8px;
     right: 0;
     font-size: 12px;}
+
+.\\\"scrolledContentWrap\\\" table tr td, .\\\"scrolledContentWrap\\\" table tr th {
+    white-space: break-spaces;
+    padding: 10px;
+}

@@ -123,12 +123,15 @@ export default function AskQuestion(){
       // setFormData({...formData, user_Id : session.user._id, type :'QA'})
       if(formData.question === undefined){
          setError('You have enetered a valid question.')
+         return;
       }
       if(formData.subject === undefined){
          setError('You have selected a subject.')
+         return;
       }
       if(formData.sub_subject === undefined){
          setError('You have selected a sub subject.')
+         return;
       }
       setIsLoading(true);
       let form = new FormData();
