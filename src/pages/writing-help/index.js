@@ -10,6 +10,7 @@ import WhyChooseOurWriting from '../../components/website/writing-help/why-choos
 import PopularHelpServices from '../../components/website/writing-help/popular-help-services'
 import BannerBottom from '../../components/website/writing-help/banner-bottom'
 import {Helmet} from 'react-helmet-async'
+import Marquee from '../../components/common/marquee';
 
 export default function WritingHelp(){
     return(
@@ -18,6 +19,7 @@ export default function WritingHelp(){
             <title>Writing Help Services for Better Grades | CFS </title>
             <meta name="description" content="Get 100% plagiarism free writing help solutions within shorter deadlines. Get help for assignment writing, essay writing, medical writing, and others."></meta>
         </Helmet>
+        <Marquee/>
         <Header/>
         <Navbar/>
         <WritingHelpBanner/>

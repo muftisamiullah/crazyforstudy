@@ -151,13 +151,15 @@ export default function MyQuestion(){
                                  </div> */}
                                  <div className="col-md-12 nav_account1 pd_lr">
                                     <h4 className="ans_s">Question:</h4>
-                                    <p><span dangerouslySetInnerHTML={{__html: item.question}}></span>{item.image0 && <img src={imageUrl+item.image0} className="mr-5" style={{"height":"200px", "width":"400px"}}/>}{item.image1 && <img src={imageUrl + item.image1} style={{"height":"200px", "width":"400px"}}/>}</p>
+                                    <p><span dangerouslySetInnerHTML={{__html: item.question}}></span>{item.image0 && <img src={imageUrl+item.image0} className="mr-5 mb-2" style={{"height":"200px", "width":"400px"}}/>}{item.image1 && <img src={imageUrl + item.image1} style={{"height":"200px", "width":"400px"}}/>}</p>
                                  </div>
                                  <div className="col-md-12 nav_account1 answer_1 mt-3 mb-5 pd_lr">
                                     {item.flag == "answered" ? 
                                     <>
                                        <h4 className="ans_s"><i className="fa fa-check-circle"></i> Answer and Explanation:</h4>
-                                       <p><><strong>Answer:</strong><span dangerouslySetInnerHTML={{__html: item.shortanswer}}></span><span dangerouslySetInnerHTML={{__html: item.completeanswer}}></span></></p>
+                                       <p><><strong>Answer:</strong>
+                                       {/* <span dangerouslySetInnerHTML={{__html: item.shortanswer}}></span> */}
+                                       <span dangerouslySetInnerHTML={{__html: item.completeanswer}}></span></></p>
                                     </>
                                    : (item.flag == "pending" ? <p><strong>Answer: </strong></p> : <p><strong>Comments: </strong><span dangerouslySetInnerHTML={{__html: item.rejectionReason}}></span><br/><span dangerouslySetInnerHTML={{__html: item.rejectionReason1}}></span></p>)}
                                  </div>

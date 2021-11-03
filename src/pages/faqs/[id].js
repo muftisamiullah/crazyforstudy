@@ -8,6 +8,7 @@ import { useQuery } from 'react-query'
 import { Link, useParams } from 'react-router-dom';
 import {useState, useContext} from 'react';
 import {AuthContext} from '../../context/AuthContext';
+import Marquee from '../../components/common/marquee';
 
 export default function FaqId(){
     const { state } = useContext(AuthContext);
@@ -28,6 +29,7 @@ export default function FaqId(){
 
     return(
         <>
+        <Marquee/>
         <Header/>
         <Navbar/>
         <BreadCrumbFAQ type={"Frequently Asked Questions"} heading={params.id} subject={params.id} sub_subject={""}/>

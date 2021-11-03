@@ -31,6 +31,20 @@ export default function Cancelation(){
             setError('You need to select a reason')
             return
         }
+        if(tab === 1 || tab===2 || tab===5 && message == ""){
+            if(tab === 1){
+                setError('You need to type an ISBN')
+                return
+            }
+            if(tab === 2){
+                setError('You need to type the Question and select the subject')
+                return
+            }
+            if(tab === 5){
+                setError('You need to type the reason')
+                return
+            }
+        }
         setDis('block')
     }
 
@@ -41,9 +55,14 @@ export default function Cancelation(){
     const cancelModal = async (cancel_at_cycle_end) => {
         // const user_Id = localStorage.getItem('_id');
         if(cancel_at_cycle_end == 0){
-            dispatch({type: 'SUBSCRIBE'});
+            dispatch({type: 'UNSUBSCRIBE'});
         }
-        const data = cancelSubscription({subscribe_Id: params.sub_id, cancel_at_cycle_end: cancel_at_cycle_end, reason:reason, message:message ,user_Id: localStorage.getItem('_id')});
+        const data = await  cancelSubscription({subscribe_Id: params.sub_id, cancel_at_cycle_end: cancel_at_cycle_end, reason:reason, message:message ,user_Id: localStorage.getItem('_id')});
+        console.log(data);
+        if(data.data.status == 200){
+            dispatch({type: 'UNSUBSCRIBE'});
+            localStorage.setItem('Subscribe','false');
+        }
         closeModal()
         history.push(`/`);
     }
@@ -151,7 +170,7 @@ export default function Cancelation(){
                                     <div className="continoue-btn">
                                         <button type="button" id="submitbtn" name="submit" className="subscontinoue-btn" onClick={cancel} >Cancel my subscription </button>
                                         {/* <button type="button" id="submitbtn2" name="submit22" className="subscontinoue-btn">Cancel my subscription Immediately</button> */}
-                                        <div id="myModal" className="modal modalsbu123" role="dialog" style={{display: `${dis}`}}>
+                                        <div id="myModal" className="modal modalsbu123 can-modal" role="dialog" style={{display: `${dis}`}}>
                                             <div className="modal-dialog" style={{paddingTop: "100px"}}>
                                                 
                                                 <div className="modal-content">
@@ -159,13 +178,13 @@ export default function Cancelation(){
                                                     <button type="button" className="close" data-dismiss="modal" onClick={closeModal}>×</button>
                                                     <h4 className="modal-title mt-0" id="modalTit">We will provide the solution manual within next 6-12 hours. Do you still Want to cancel the subscription?</h4>
                                                 </div>
-                                                <div className="modal-body">
-                                                </div>
-                                                <div className="modal-footer">
-                                                    <button type="button" id="submit2btn" name="submit2" className="btn btn-default dark_btn1" onClick={closeModal}>Okay, I'll Wait For the Solution Manual</button>
+                                                <div className="modal-body hghgyt">
+                                                <button type="button" id="submit2btn" name="submit2" className="btn btn-default dark_btn1" onClick={closeModal}>Okay, I'll Wait For the Solution Manual</button>
                                                     <button type="button" name="submit" className="btn btn-default"  onClick={()=>{cancelModal(0)}}>No, Cancel Immediately</button>
                                                     <button type="button" name="submit" className="btn btn-default"  onClick={()=>{cancelModal(1)}}>No, Cancel at the End of the Month</button>
                                                 </div>
+                                                {/* <div className="modal-footer">
+                                                </div> */}
                                                 </div>
                                             </div>
                                         </div>

@@ -189,6 +189,9 @@ className="img-fluid" alt="User"/>}
                         <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" onMouseEnter={()=>{openNotification()}}>
                             <i className="fa fa-bell zmdi zmdi-notifications"></i> 
                         </a>
+                        <div class="notifica_numbr">
+                            <span>{notifications && notifications?.data.length}</span>
+                        </div>
                         {showNotification &&
                         <ul className={`dropdown-menu pullDown ${classname}`} onMouseLeave={()=>{hideNotification()}}>
                             <li className="body">

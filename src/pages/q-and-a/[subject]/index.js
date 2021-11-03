@@ -17,16 +17,23 @@ import { capitalize } from "../../../components/common/make-slug";
 import Seo from '../../../components/common/seo'
 import { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import Marquee from '../../../components/common/marquee';
 
 export default function QandACategory() {
     const params = useParams();
     const location = useLocation();
 
-    const regex = /\d+$/; //
+    //new  code to retrve id
+    const segment_array = params.subject != undefined ? params.subject.split( '-' ) : params.subject;
+    const last_segment = segment_array.pop();
+    //new  code to retrve id
 
-    const data = params.subject != undefined ? params.subject.match(regex) : params.subject;
-    const OLD_QID = data ? data[0] : null; 
+    //prev code before last segment
+    // const regex = /\d+$/; //
 
+    // const data = params.subject != undefined ? params.subject.match(regex) : params.subject;
+    // const OLD_QID = data ? data[0] : null; 
+    //prev code before last segment
     
     const [title, setTitle] = useState(`Get Reliable ${capitalize(params.subject)} Question and Answers`);
     const [description, setDescription] = useState(``);
@@ -45,11 +52,18 @@ export default function QandACategory() {
         }
     },[subsubjects])
 
-    if(OLD_QID)
+    //new code
+    if(last_segment && last_segment.match(/^[0-9a-fA-F]{24}$/))
         return <Answer/>
+    
+
+    //prev code before last segment
+    // if(OLD_QID)
+    //     return <Answer/>
     
     return(
         <>
+            <Marquee/>
             <Seo path={path} title={title} description={description} keywords={keywords} robots={robots}/>
             <Header/>
             <Navbar/>

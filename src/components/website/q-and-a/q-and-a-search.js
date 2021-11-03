@@ -3,7 +3,7 @@ import SearchComp from '../../common/search-comp'
 export default function QandASearch() {
     return (
         <>
-            <section className="qa_banner pt-5 pb-5"> 
+            <section className="qa_banner pt-5 pb-5" id="solution-manuals"> 
                 <div className="container">
                     <div className="row"> 
                     <div className="col-md-8 m-auto text-center">

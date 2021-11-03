@@ -139,6 +139,12 @@ export default function Answer({...props}){
                     </div>
                     <div className="col-md-12 pb-4">
                         <div className="Qtion_n_Stion_text">
+                            <h3 className="mb-2 mt-3 font-14"><i className="fa fa-check-circle"></i> Short Answer </h3>
+                            <div className="read_more_q">
+                                <div>
+                                    <span dangerouslySetInnerHTML={{__html: `${props?.data?.shortanswer}`}}></span><br/>
+                                </div>
+                            </div>
                             <h3 className="mb-2 mt-3 font-14"><i className="fa fa-check-circle"></i> Expert Answer </h3>
                             <div className="read_more_q">
                                 <span className="qustion_mark">A:</span> 

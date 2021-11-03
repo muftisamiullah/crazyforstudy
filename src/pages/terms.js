@@ -4,10 +4,17 @@ import Navbar from '../components/website/home/navbar'
 import Follow from '../components/website/home/follow'
 import Footer from '../components/website/home/footer'
 import BreadCrumb from '../components/website/all-subjects/breadcrumb'
+import {useEffect} from 'react'
+import Marquee from '../components/common/marquee';
 
 export default function Privacy() {
+   useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
+  
     return (
       <>
+      <Marquee/>
       <Header/>
         <Navbar/>
         <BreadCrumb heading="Terms And Condition" type="Terms And Condition"/> 

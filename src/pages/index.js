@@ -13,6 +13,7 @@ import PopularTbs from '../components/website/home/popular-tbs'
 import SubscribeHere from '../components/website/home/subscribe-here'
 import TutorCollege from '../components/website/home/tutor-college'
 import Follow from '../components/website/home/follow'
+import Marquee from '../components/common/marquee';
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
 			<title>Crazy For Study | Homework Help | Textbook Solution | Q&A</title>
 			<meta name="description" content="CFS is a leading homework help platform. We offer 24/7 Assignment Help, Textbook Solution and Q & A services crafted by PhD Subject Experts at just $7 per month!"></meta>
 		</Helmet>
+		<Marquee/>
 		<Header/>
 		<Navbar/>
 		<Banner/>

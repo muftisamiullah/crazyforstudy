@@ -11,14 +11,22 @@ import Reviews from "../../components/website/assignment-help/reviews"
 import WhyChoose from "../../components/website/assignment-help/why-choose"
 import WhatStudentsThink from "../../components/website/assignment-help/what-students-think"
 import StudyHelp from '../../components/common/study-help'
+import {useEffect} from 'react'
+import Marquee from '../../components/common/marquee';
 
 export default function OnlineAssignmentHelp() {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       <Helmet>
           <title>Assignment Help Services | Customized Assignment Solutions</title>
           <meta name="description" content="CFS offers fully customized, and plagiarism free assignment help services that help you gain better scores in exams."></meta>
       </Helmet>
+      <Marquee/>
       <Header/>
       <Navbar/>
       <SubmitAssignment/>

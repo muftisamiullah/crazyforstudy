@@ -23,6 +23,7 @@ import Seo from '../../../components/common/seo'
 import {AuthContext} from '../../../context/AuthContext';
 import parse from 'html-react-parser';
 import striptags from 'striptags';
+import Marquee from '../../../components/common/marquee';
 
 export default function Book(){
     const { state } = useContext(AuthContext);
@@ -422,7 +423,8 @@ export default function Book(){
     //seo ends
     
     return(
-        <>{console.log(state.Subscribe)}
+        <>{console.log(state.Subscribe)}{console.log(typeof(state.Subscribe))}
+            <Marquee/>
             <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema} reviewSchema={reviewSchema} faqSchema={faqSchema} ISBN13={ISBN13 && ISBN13}/>
             <Header/>
             <Navbar/>

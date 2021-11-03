@@ -55,7 +55,7 @@ export default function BookInfo({...props}){
             
                             <ul className="books_wtext">
                                 <li className="pl-0 border-left-0"><img src="/images/book1.jpg" className="img-fluid" alt=""/> Edition: <span>{props.bookData && props.bookData.Edition},</span></li>
-                                <li><img src="/images/book2.jpg" className="img-fluid" alt=""/> Author: <span>{props.bookData && props.bookData?.Author1}, </span><span>{props.bookData && props?.bookData.Author2}, </span><span>{props.bookData && props.bookData?.Author3}</span></li>
+                                <li><img src="/images/book2.jpg" className="img-fluid" alt=""/> Author: <span>{props.bookData && props.bookData?.Author1}{props.bookData && props.bookData?.Author2 && ","}</span><span>{props.bookData && props?.bookData.Author2}{props.bookData && props.bookData?.Author3 && ","} </span><span>{props.bookData && props.bookData?.Author3}</span></li>
                                 <li><img src="/images/book3.jpg" className="img-fluid" alt=""/> ISBN: <span>{props.bookData && props.bookData.ISBN13}</span></li>
                             </ul>
                             {state.Subscribe != "true"  ? 

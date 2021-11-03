@@ -15,6 +15,8 @@ import StepByStep from "../../components/website/textbook-solutions-manuals/step
 import {Helmet} from 'react-helmet-async'
 import { useLocation } from "react-router-dom";
 import Seo from '../../components/common/seo'
+import Marquee from '../../components/common/marquee';
+
 
 export default function TextbookSolutionsManuals(){
     
@@ -48,6 +50,7 @@ export default function TextbookSolutionsManuals(){
 
     return(
         <>  
+        <Marquee/>
             <Seo path={path} title={title} description={description} keywords={keywords} breadcrumbSchema={breadcrumbSchema}/>
             <Header/>
             <Navbar/>

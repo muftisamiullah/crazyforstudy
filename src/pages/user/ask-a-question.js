@@ -19,6 +19,8 @@ export default function AskQuestion(){
    //ckeditor
 
    const editorRef = useRef()
+   const image1 = useRef()
+   const image2 = useRef()
    const [ editorLoaded, setEditorLoaded ] = useState( false )
    const { CKEditor, ClassicEditor} = editorRef.current || {}
    const queryClient = useQueryClient()
@@ -90,21 +92,35 @@ export default function AskQuestion(){
       setImage({...image, [e.target.name] : URL.createObjectURL(e.target.files[0])})
    }
 
+   const removeImage1 = () => {
+      image1.current.src="/images/upload-icon1.png";
+      formData.image1 = undefined
+      setFormData({...formData, ["image1"]: undefined })
+      setCount((count)=>count =  count-1);
+   }
+
+   const removeImage2 = () => {
+      image2.current.src="/images/upload-icon1.png";
+      formData.image2 = undefined
+      setFormData({...formData, ["image2"]: undefined })
+      setCount((count)=>count =  count-1);
+   }
+
    useEffect(()=>{
-      if(formData.image1){
+      console.log(formData)
+      if(formData.image1 && formData.image1 != undefined){
          setCount((count)=>count =  1);
       }
-      if(formData.image2){
+      if(formData.image2 && formData.image2 != undefined){
          setCount((count)=>count =  1)
       }
-      if(formData.image1 && formData.image2){
+      if(formData.image1 && formData.image2 && formData.image1 != undefined && formData.image2 != undefined){
          setCount((count)=>count =  2)
       }
    },[formData])
 
    const askQuestion = async () => {
       // setFormData({...formData, user_Id : session.user._id, type :'QA'})
-
       if(formData.question === undefined){
          setError('You have enetered a valid question.')
       }
@@ -313,8 +329,9 @@ export default function AskQuestion(){
                                                       <input type='file' name="image1" className="imgInp" data-id='img1' onChange={setHandleImage}/>
                                                    </div>
                                                    <div className="upload_img_icon">
-                                                      <img id="img1" src={image && image.image1 ? image.image1 : '/images/upload-icon1.png'} alt="your image"/>
+                                                      <img id="img1" src={image && image.image1 ? image.image1 : '/images/upload-icon1.png'} alt="your image" ref={image1}/>
                                                    </div>
+                                                   {formData.image1 && <div className="time_hid" onClick={removeImage1}><span>x</span></div>}
                                                 </div>
                                              </div>
                                              <div className="col-md-6 pl-0">
@@ -324,8 +341,9 @@ export default function AskQuestion(){
                                                       <input type='file' name="image2" className="imgInp"  data-id='img2' onChange={setHandleImage}/>
                                                    </div>
                                                    <div className="upload_img_icon">
-                                                      <img id="img2" src={image && image.image2 ? image.image2 : '/images/upload-icon1.png'} alt="your image" />
+                                                      <img id="img2" src={image && image.image2 ? image.image2 : '/images/upload-icon1.png'} alt="your image" ref={image2}/>
                                                    </div>
+                                                   {formData.image2 && <div className="time_hid" onClick={removeImage2}><span>x</span></div>}
                                                 </div>
                                              </div>
                                           </div>

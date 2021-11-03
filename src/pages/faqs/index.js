@@ -8,6 +8,7 @@ import { getFaqCategory } from '../../libs/faq'
 import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom';
 import BreadCrumbFAQ from '../../components/website/faq/breadcrumbFAQ'
+import Marquee from '../../components/common/marquee';
 
 export default function Faq(){
     const { data: faqs, isLoading:faqIsLoading, error:faqError } = useQuery(['faq-category'], () => getFaqCategory(),{staleTime:Infinity})
@@ -17,6 +18,7 @@ export default function Faq(){
 
     return(
         <>
+        <Marquee/>
         <Header/>
         <Navbar/>
         <BreadCrumbFAQ type={"Frequently Asked Questions"} heading={"Frequently Asked Questions"} subject={""} sub_subject={""}/>

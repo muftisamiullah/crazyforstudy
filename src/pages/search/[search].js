@@ -11,6 +11,7 @@ import { useQuery } from 'react-query'
 import { searchData,searchDataIndividual, searchDataIndividualQ, searchDataIndividualQandA } from '../../libs/search'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Marquee from '../../components/common/marquee';
 
 export default function Search() {
     const params = useParams();
@@ -27,6 +28,7 @@ export default function Search() {
 
     return(
         <>
+            <Marquee/>
             <Header/>
             <Navbar/>
             <SearchTab/>

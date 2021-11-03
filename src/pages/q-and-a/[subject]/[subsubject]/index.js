@@ -21,6 +21,7 @@ import { useState } from 'react'
 import { GetName, capitalize } from '../../../../components/common/make-slug'
 import AskFifty from '../../../../components/website/q-and-a/question/ask-fifty'
 import HomeWork from '../../../../components/website/q-and-a/question/home-work'
+import Marquee from '../../../../components/common/marquee';
 
 export default function QandASubCategory() {
     const [pageNo, setPageNo] = useState(0);
@@ -35,6 +36,7 @@ export default function QandASubCategory() {
             <Helmet>
                 <title>Crazy For Study</title>
             </Helmet>
+            <Marquee/>
             <Header/>
             <Navbar/>
             <BreadCrumb type={"Q & A"} heading={params.subsubject} subject={params.subject} sub_subject={params.subsubject}/>

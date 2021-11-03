@@ -2,10 +2,18 @@
 import Header from '../components/website/home/header'
 import Navbar from '../components/website/home/navbar'
 import Footer from '../components/website/home/footer'
+import {useEffect} from 'react'
+import Marquee from '../components/common/marquee';
 
 export default function SiteMap(){
+    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return(
         <>
+            <Marquee/>
             <Header/>
             <Navbar/>
             <section class="section sitemap_bg mt-5 mb-5">

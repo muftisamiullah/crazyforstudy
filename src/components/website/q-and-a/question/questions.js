@@ -38,8 +38,8 @@ export default function questions({...props}){
                                         ? <p className="font-15"><Link to={`${'/q-and-a/'+router.query.subject+'/'+router.query.subsubject+'/'+router.query.chieldsubject+'/'+stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>
                                         : <p className="font-15"><Link to={`${'/q-and-a/'+router.query.subject+'/'+router.query.subsubject+'/'+router.query.chieldsubject+'/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>} */}
                                         {item.question.includes('<p>')
-                                        ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>
-                                        : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>}
+                                        ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>
+                                        : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>}
                                     </div>
                                     </div>
                                 </div>
