@@ -169,8 +169,8 @@ export default function DashboardNavbar({...props}){
                         <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><
                             span className="my_pics_img m-r-60 mt-0">
 
-<div className="navbar-default-profile-name" style={{display:(props.data.img ? 'none' : 'block')}}>
-{props.data.Name ? props.data.Name.substring(0,1).toUpperCase() : '...'}</div>
+<div className="navbar-default-profile-name" style={{display:(props.data && props.data.img ? 'none' : 'block')}}>
+{props.data && props.data.Name ? props.data.Name.substring(0,1).toUpperCase() : '...'}</div>
 
 {props.data && props.data.img && <img src={props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img}
 className="img-fluid" alt="User"/>}
