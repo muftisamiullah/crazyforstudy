@@ -56,8 +56,8 @@ export default function Reviews({...props}){
                                         </ul>
                                     </div>
                                 </div>
-                                <div className="col-md-8">
-                                    {props.reviews && props.reviews.map((item,key)=>{
+                                {props.reviews.length > 0 && <div className="col-md-8">
+                                    { props.reviews.map((item,key)=>{
                                         return(
                                             <div className="user_icon1_bg" key={key}>
                                                 <div className="user_icon1_text text-center">
@@ -81,7 +81,7 @@ export default function Reviews({...props}){
                                     {/* <div className="btn1 text-right pr-4 pb-3">
                                         <a href="#" className="text-black rev-btn">View all</a>
                                     </div> */}
-                                </div>
+                                </div>}
                             </div>
                         </div>
                     </div>

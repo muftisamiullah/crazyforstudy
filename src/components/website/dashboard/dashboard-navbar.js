@@ -9,8 +9,20 @@ import {getNotifications, readNotification} from '../../../libs/question'
 import {Helmet} from 'react-helmet-async'
 import {AuthContext} from '../../../context/AuthContext';
 import { imageUrl } from '../../../config/config';
+import tawkTo from "tawkto-react";
 
 export default function DashboardNavbar({...props}){
+    const tawkToPropertyId = '5c3332467a7b8d5de7293fcb'
+
+    // Direct Chat Link
+    // https://tawk.to/chat/tawkToPropertyId/tawkToKey
+
+    const tawkToKey = '99ad2d1fc594db8f70e110920ae1e11530800c0c'
+
+    useEffect(() => {
+        tawkTo(tawkToPropertyId, tawkToKey)
+    })
+    
     const history = useHistory();
     const params =  useParams();
     const [ showNotification, setShowNotification ] = useState(false);
@@ -179,7 +191,7 @@ export default function DashboardNavbar({...props}){
                         <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" onMouseEnter={()=>{openNotification()}}>
                             <i className="fa fa-bell zmdi zmdi-notifications"></i> 
                         </a>
-                        <div class="notifica_numbr">
+                        <div className="notifica_numbr">
                             <span>{notifications && notifications?.data.length}</span>
                         </div>
                         {showNotification &&

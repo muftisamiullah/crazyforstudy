@@ -26,24 +26,35 @@ export default function MyTbs(){
 
     const addTextBookData = async (e) => {
         e.preventDefault();
-        const res = await addTextBooks(formData.isbn);
+        console.log(fields)
+        const res = await addTextBooks(JSON.stringify(fields));
         if(res.error === false){
             queryClient.invalidateQueries('textbooks');
         }
     }
 
-    // function handleChange(i, event) {
-    //     const values = [...fields];
-    //     values[i].value = event.target.value;
-    //     setFields(values);
-    // }
+    function handleChange(i, event) {
+        const values = [...fields];
+        values[i].value = event.target.value;
+        setFields(values);
+    }
 
     function handleAdd() {
         const values = [...fields];
         values.push({ value: null });
         setFields(values);
     }
+
+    // function handleAdd() {
+    //     setInputList([...inputList, { isbn: "" }]);
+    // }
     
+    // function handleRemove(i) {
+    //     const list = [...inputList];
+    //     list.splice(i, 1);
+    //     setInputList(list);
+    // }
+
     function handleRemove(i) {
         const values = [...fields];
         values.splice(i, 1);
@@ -52,12 +63,13 @@ export default function MyTbs(){
 
     const deleteTextBuk =  async (id) => {
         const data =  await deleteTextBook(state._id, id);
-        console.log(data)
         if(data.error == false){
             queryClient.invalidateQueries('textbooks');
         }
     }
-    
+
+    const [inputList, setInputList] = useState([{ isbn: ""}]);
+
     return(
         <>
         <DashboardNavbar data={user}/>
@@ -162,20 +174,23 @@ export default function MyTbs(){
                                                                                     return (
                                                                                         <div className="entry input-group" key={idx}>
                                                                                             <label className="barcode1234"><i className="fa fa-barcode"></i></label>
-                                                                                            <input className="form-control isbncls" name="isbn" type="text" minLength="13" maxLength="13" pattern="[0-9]+" title="ISBN (13)" placeholder="ISBN Number" required="required" onChange={handleIsbn}/>
+                                                                                            <input className="form-control isbncls" name="isbn" type="text" minLength="13" maxLength="13" pattern="[0-9]+" title="ISBN (13)" placeholder="ISBN Number" required="required" value={field.value} onChange={(event)=>handleChange(idx,event)}/>
                                                                                             <span className="input-group-btn">
-                                                                                                {idx == 0 ? 
+                                                                                            {fields.length !== 1 && <button
+                                                                                                 className="btn btn-add_more btn-remove trash_iconadd" type="button"
+                                                                                                onClick={() => handleRemove(idx)}> <i className="fa fa-trash "></i></button>}
+                                                                                                {fields.length - 1 === idx && <button className="btn btn-add btn-add_more" type="button" onClick={handleAdd}><i className="fa fa-plus"></i></button>}
+                                                                                                {/* {idx == 0 ? 
                                                                                                 <button className="btn btn-add btn-add_more" type="button" onClick={handleAdd}>
                                                                                                     <i className="fa fa-plus"></i>
                                                                                                 </button> : 
                                                                                                 <button className="btn btn-add_more btn-remove trash_iconadd" type="button" onClick={(idx)=>{handleRemove(idx)}}>
                                                                                                     <i className="fa fa-trash "></i>
-                                                                                                </button>}
+                                                                                                </button>} */}
                                                                                             </span>
                                                                                         </div>
                                                                                     );
                                                                                 })}
-                                                                                
                                                                     </div>
                                                                 </div>
                                                             </div>
