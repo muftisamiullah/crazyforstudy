@@ -50,7 +50,7 @@ export default function TextbookSolutionsManuals(){
 
     return(
         <>  
-        <Marquee/>
+            <Marquee/>
             <Seo path={path} title={title} description={description} keywords={keywords} breadcrumbSchema={breadcrumbSchema}/>
             <Header/>
             <Navbar/>
