@@ -79,8 +79,8 @@ export default function SideBar({...props}){
                                         <Link to="/user/my-profile">
 
 
-<div className="side-default-profile-name" style={{display:(props.data.img ? 'none' : 'block')}}>
-{props.data.Name ? props.data.Name.substring(0,1).toUpperCase() : '...'}</div>
+<div className="side-default-profile-name" style={{display:(props.data && props.data.img ? 'none' : 'block')}}>
+{props.data && props.data.Name ? props.data.Name.substring(0,1).toUpperCase() : '...'}</div>
 
 {props.data && props.data.img && 
 <img src={props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img}
