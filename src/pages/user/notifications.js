@@ -8,6 +8,7 @@ import {getNotifications} from '../../libs/question'
 import moment from 'moment';
 import {AuthContext} from '../../context/AuthContext';
 import {useState} from 'react'
+import {Link} from 'react-router-dom';
 
 export default function Notifications(){
     const { state } = useContext(AuthContext);
@@ -86,7 +87,12 @@ export default function Notifications(){
                                                         <td>{item.type}</td>
                                                         <td>{item.created_at.substring(0,10)}</td>
                                                         <td id={`${item.type+key}`}><span className="badge">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'completed'}</span></td>
-                                                        <td><button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270" onClick={()=>{openCollapse(`collapse${key}`)}}>View</button></td>
+                                                        <td>
+                                                            <Link to={item.link}>
+                                                                <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">View
+                                                                </button>
+                                                            </Link>
+                                                        </td>
                                                 
                                                     </tr>
                                                     {/* <tr key={key}>

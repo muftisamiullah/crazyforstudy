@@ -78,7 +78,7 @@ export default function AskQuestion(){
 
    const getSelectedSubject = (e) => {
       const subjectId = e.target.options[e.target.selectedIndex].dataset.subjectid
-      setFormData({...formData, subject: e.target.value,subject_id: subjectId, user_Id : state._id, email : state.email, name : state.fullname, type :'QA'})
+      setFormData({...formData, subject: e.target.value,subject_id: subjectId, user_Id : state._id, email : state.email, name : state.fullname, type :'ASK50', link:"/user/my-question"})
       setSubject(e.target.value)
    }
 
@@ -142,6 +142,7 @@ export default function AskQuestion(){
       form.append('sub_subject_id',formData.sub_subject_id)
       form.append('user_Id',formData.user_Id)
       form.append('email',formData.email)
+      form.append('link',formData.link)
       form.append('name',formData.name)
       form.append('type',formData.type)
       form.append('image0',formData.image1)

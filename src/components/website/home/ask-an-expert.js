@@ -10,8 +10,8 @@ export default function AskExpert(){
                     <div className="col-md-6">
                         <div className="Text_title text_tb_center pb-3">
                         <h5 className="pb-2"> HOMEWORK Q&A </h5>
-                        <h2>Get Answer as Fast as <span className="d_b">in 30 Minutes.</span></h2>
-                        <p> Getting Tough or Difficult homework questions? Don’t worry! Get immediate access to over 50 million Q/A solutions and Ask 50 Homework questions directly from our expert professor.</p>
+                        <h2>Get answer as fast as <span className="d_b">in 30 minutes.</span></h2>
+                        <p>Unable to solve difficult homework questions? Don’t worry! CFS is here to help. Get immediate access to over 50 million Q/A solutions instantly. What’s more alluring is that you can even ask 50 Homework questions directly to our experts every month! Our experts will deliver step-by-step answers in just 30 minutes.</p>
                             <div className="btn1">
                                 <Link to="/user/ask-a-question">Ask an Expert</Link>
                             </div>

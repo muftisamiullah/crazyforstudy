@@ -15,9 +15,9 @@ export default function SubjectsWeCover(){
                             <div className="col-md-7"> 
                                 <div className="Text_title text_tb_center3 pb-3">
                                     <h5 className="pb-2">Finance</h5>
-                                    <h2> We have a team of experts in Finance</h2>
-                                    <p>We have a team of experts in Finance who work incessantly <span>24/7 to solve all your queries</span> related to Finance, provide textbook solutions manual and create your assignments. </p>
-                                    <p>Crazy For Study team of experts consists of professors, researchers and finance experts with a prolonged experience in the academic field. </p> 
+                                    <h2>Understand Finance subjects like never before!</h2>
+                                    <p>Stuck with long financial equations? Our experts will help you with step-by-step solutions. Once subscribed to our services, you get instant access to millions of Finance textbook solutions.</p>
+                                    <p>We offer instant solutions to your Assignment questions and Homework questions. Our detailed solutions will help to increase your conceptual understanding. </p> 
                                     <div className="btn1">
                                         <ul>
                                             <li>  <Link to="/writing-help/online-assignment-help">Assignment Help</Link></li>
@@ -40,9 +40,9 @@ export default function SubjectsWeCover(){
                             <div className="col-md-7"> 
                                 <div className="Text_title text_tb_center3 pb-3">
                                     <h5 className="pb-2">Marketing</h5>
-                                    <h2> We have a team of experts in Marketing</h2>
-                                    <p>We have a team of marketing experts from top business schools who work incessantly <span>24/7 to solve all your queries</span> related to Marketing, provide textbook solutions manual and create your assignments. </p>
-                                    <p>Crazy For Study team of experts consists of professors, researchers and subject matter experts with a prolonged experience in the academic field. </p> 
+                                    <h2>Learn Marketing conceptions to the very core!</h2>
+                                    <p>Get detailed answers to all your marketing questions within 30 minutes. We provide textbook solutions, assignment solutions, and Q&A solutions 24x7. Our answers and solutions are in a detailed step-by-step manner.</p>
+                                    <p>We hire the best marketing experts to assist our writers in creating concise content. We cover as much as possible content from Marketing courses of major universities.</p> 
                                     <div className="btn1">
                                         <ul>
                                             <li>  <Link to="/writing-help/online-assignment-help">Assignment Help</Link></li>
@@ -65,9 +65,9 @@ export default function SubjectsWeCover(){
                             <div className="col-md-7"> 
                                 <div className="Text_title text_tb_center3 pb-3">
                                     <h5 className="pb-2">Biology</h5>
-                                    <h2> We have a team of experts in Biology</h2>
-                                    <p>We have a team of experts in different disciplines of Biology like Microbiology, Zoology, Genetics, Biotechnology, Bioinformatics and Earth Sciences. Crazyforstudy's experts work incessantly <span>24/7 to solve all your queries,</span> provide textbook solutions manual and create your assignments.</p>
-                                    <p>Crazy for study team of experts consists of professors, researchers and subject matter experts with a prolonged experience in the academic field. </p> 
+                                    <h2>We make the mysteries of Life look easier! </h2>
+                                    <p>With CFS’s Biology Solutions, you will get a detailed insight on all the complicated topics of Biology. We cover Genetics, Ecology, Zoology, Botany, Microbiology, and many other disciplines. </p>
+                                    <p>We guarantee that our textbook solutions on Biology will get you closer to your dream grades. With our 30 minutes delivery and 24x7 help, rest assured that you will get the best out of your Biology assignments every time!  </p> 
                                     <div className="btn1">
                                         <ul>
                                             <li>  <Link to="/writing-help/online-assignment-help">Assignment Help</Link></li>
@@ -90,9 +90,9 @@ export default function SubjectsWeCover(){
                             <div className="col-md-7"> 
                                 <div className="Text_title text_tb_center3 pb-3">
                                     <h5 className="pb-2">Accounts</h5>
-                                    <h2> We have a team of experts in Accounts</h2>
-                                    <p>We have a team of experts in Accounts who work incessantly <span>24/7 to solve all your queries</span> related to Accounts, provide textbook solutions manual and create your assignments. </p>
-                                    <p>Crazy for study's team of experts consists of professors, researchers and accounts experts with a prolonged experience in the academic field. </p> 
+                                    <h2> We deliver step-by-step solutions to Accounts questions!</h2>
+                                    <p>Facing trouble in understanding tricky problems in your Accounts course? Let CFS help you with your question! Just post your query in our portal and our Phd Experts will solve your question in 30 minutes! </p>
+                                    <p>In the meantime, you can explore our expert-crafted solutions. We are sure that they will help you understand the concepts easily and improve your accounting skills. </p> 
                                     <div className="btn1">
                                         <ul>
                                             <li>  <Link to="/writing-help/online-assignment-help">Assignment Help</Link></li>
@@ -115,9 +115,9 @@ export default function SubjectsWeCover(){
                                 <div className="col-md-7"> 
                                     <div className="Text_title text_tb_center3 pb-3">
                                         <h5 className="pb-2">Social Science</h5>
-                                        <h2> We have a team of experts in Social Science</h2>
-                                        <p>We have a team of experts in Social Science who work incessantly <span>24/7 to solve all your queries</span> related to Social Science, provide textbook solutions manual and create your assignments. </p>
-                                        <p>Our team of experts consists of professors, researchers and social science experts with a prolonged experience in the academic field. </p> 
+                                        <h2>In-Depth solutions for your Social Science doubts!</h2>
+                                        <p>With the main motive of going into the depths, our experts write answers that are easy to understand and remember. We cover History, Geography, Political Science, Economics, Anthropology, and many other disciplines. </p>
+                                        <p>We simplify answers for your better understanding. Get access to millions of Social Science textbooks and assignment questions instantly. </p> 
                                         <div className="btn1">
                                             <ul>
                                                 <li>  <Link to="/writing-help/online-assignment-help">Assignment Help</Link></li>
@@ -140,9 +140,9 @@ export default function SubjectsWeCover(){
                                 <div className="col-md-7"> 
                                     <div className="Text_title text_tb_center3 pb-3">
                                         <h5 className="pb-2">Chemistry</h5>
-                                        <h2> We have a team of experts in Chemistry</h2>
-                                        <p>We have a team of experts in different disciplines of Chemistry like Organic Chemistry, Biochemistry, Physical Chemistry and Inorganic Chemistry. Our experts work incessantly <span>24/7 to solve all your queries,</span> provide textbook solutions manual and create your assignments.</p>
-                                        <p>Crazy for study team of experts consists of professors, researchers and chemistry experts with a prolonged experience in the academic field. </p> 
+                                        <h2> Solve the mysteries of Organic & In-Organic Chemistry! </h2>
+                                        <p>We have the best Chemistry professors in our company. They know how to make things easier for students who are weak in the subject. They explain chemical reactions, numericals, and bonding problems in a step-by-step and systematic manner. Hence, with our solutions, Chemistry becomes very easy for you! </p>
+                                        <p>We cover every major topic of organic, inorganic, and physical chemistry. You will find thousands of the most commonly asked questions in our Q&A section. </p> 
                                         <div className="btn1">
                                             <ul>
                                                 <li>  <Link to="/writing-help/online-assignment-help">Assignment Help</Link></li>
@@ -165,9 +165,9 @@ export default function SubjectsWeCover(){
                                 <div className="col-md-7"> 
                                     <div className="Text_title text_tb_center3 pb-3">
                                         <h5 className="pb-2">Economics</h5>
-                                        <h2> We have a team of experts in Economics</h2>
-                                        <p>We have a team of experts in Economics who work incessantly <span>24/7 to solve all your queries</span> related to Microeconomics and Macroeconomics, provide textbook solutions manual and create your assignments. </p>
-                                        <p>CFS team of experts consists of professors, researchers and Economics experts with a prolonged experience in the academic field. </p> 
+                                        <h2>Master the basic conceptions behind Economics! </h2>
+                                        <p>Economics is an easy subject only when you have the fundamentals clear. Our PhD experts make that possible if you study from our Economics textbook solutions. Our 24x7 Economics Homework help ensures that you get the best solutions whenever you want! </p>
+                                        <p>We cover all the major sub-disciplines of Economics. And the best part is, you can get all your answers in just 30 minutes! </p> 
                                         <div className="btn1">
                                             <ul>
                                                 <li>  <Link to="/writing-help/online-assignment-help">Assignment Help</Link></li>
@@ -190,9 +190,9 @@ export default function SubjectsWeCover(){
                             <div className="col-md-7"> 
                                 <div className="Text_title text_tb_center3 pb-3">
                                     <h5 className="pb-2">Physics</h5>
-                                    <h2> We have a team of experts in Physics</h2>
-                                    <p>We have a team of experts in Physics who work incessantly <span>24/7 to solve all your queries</span> related to Physics, provide textbook solutions manual and create your assignments. </p>
-                                    <p>CFS team of physics experts consists of professors, researchers and physics experts with a prolonged experience in the academic field. </p> 
+                                    <h2>100% accurate Physics solutions, written by PhD experts! </h2>
+                                    <p>Learning Physics becomes a lot easier when you have our textbook solution manuals. Our proficient Physics professors have a track record of delivering the most appropriate solutions to learners. </p>
+                                    <p>From Mechanics to Modern Physics, we have solutions for everything! Explore our pool of Physics Q&As to find what you need. You can also ask new questions, which we are most likely to deliver even less than an hour. </p> 
                                     <div className="btn1">
                                         <ul>
                                             <li>  <Link to="/writing-help/online-assignment-help">Assignment Help</Link></li>
@@ -255,7 +255,7 @@ export default function SubjectsWeCover(){
                     <div className="col-md-12 text-center">
                         <div className="Content_Covered_title pb-3">
                             <h2>Subjects We Cover</h2>
-                            <h3>We cover various subjects from different fields. Explore each subject Explore each subject to learn more.</h3>
+                            <h3>We cover 100+ subjects across different fields. Explore each field to know more about your options. </h3>
                         </div>
                     </div>
             

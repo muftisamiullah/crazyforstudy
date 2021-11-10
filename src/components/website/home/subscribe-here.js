@@ -22,12 +22,12 @@ export default function SubscribeHere(){
                             <h3>Subscribe <span>HERE</span></h3>
                         <div className="text_subscribe">
                         <div className="price_pr_month">
-                            <h2>$7.00/<small>month</small></h2>
+                            <h2><small>Just</small> $7.00/<small>month</small></h2>
                         </div>
                         <ul>
-                        <li><i className="fa fa-long-arrow-right"></i>  Ask 50 New Homework Questions</li>
-                        <li><i className="fa fa-long-arrow-right"></i> Unlimited Access to Pre-existing Homework Q&A </li>
-                            <li><i className="fa fa-long-arrow-right"></i>Unlimited Textbook Solutions Manual</li>
+                        <li><i className="fa fa-long-arrow-right"></i> Unlimited access to our Q&A solutions</li>
+                        <li><i className="fa fa-long-arrow-right"></i> 50 New Questions to ask every month</li>
+                            <li><i className="fa fa-long-arrow-right"></i> Unlimited access to Textbook Solutions </li>
                         </ul>
                         </div>
                             <div className="btn1 text-left mt-3">

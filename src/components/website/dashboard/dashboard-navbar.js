@@ -105,13 +105,13 @@ export default function DashboardNavbar({...props}){
         }
     }
 
-    const markAsRead = async(id,type) => {
+    const markAsRead = async(id, type, link) => {
         const res = await readNotification(id);
         let url = "";
         if(!res.error){
-            if(type == "QA"){
-                url = "/user/my-question";
-            }
+            // if(type == "ASK50"){
+                url = link;
+            // }
             history.push(url)
         }
     }
@@ -211,9 +211,9 @@ className="img-fluid" alt="User"/>}
                                     {notifications && notifications.data.map((item,key)=>{
                                          var date = new Date(item.created_at);
                                         return(
-                                            <li key={key} onClick={()=>{markAsRead(item._id,item.type)}}>
+                                            <li key={key} onClick={()=>{markAsRead(item._id,item.type,item.link)}}>
                                                
-                                                <Link to="">
+                                                <Link to="#">
                                                         <div className="media">
                                                             <img className="media-object" src="/images/pic2.png" alt=""/>
                                                             <div className="media-body">

@@ -10,7 +10,7 @@ export default function TutorCollege(){
                 <div className="row">
                     <div className="col-md-12 text-center mb-5">
                         <div className="Content_Covered_title pb-3">
-                            <h2>Some of our tutors studied at these colleges:  </h2> 
+                            <h2>Want to know where our writers studied? Here they are -  </h2> 
                         </div>
                     </div>
                     <OwlCarousel items={4} className="owl-carousel" loop autoplay={true} nav margin={10}>

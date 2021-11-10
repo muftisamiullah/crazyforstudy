@@ -134,7 +134,7 @@ export default function MyQuestion(){
                                  <div className="col-md-12 nav_account1 mt-3 pt-3 bdr_top pd_lr">
                                     <ul>
                                     <li>Subject: <a href="" className="twzt">{capitalize(item.subject)} </a><i className="fa fa-angle-right mr-1"></i></li>
-                                       <li>Sub Subject: <a href="" className="twzt"> { capitalize(item.sub_subject)} </a></li>
+                                       <li> <a href="" className="twzt"> { capitalize(item.sub_subject)} </a></li>
                                        {/* <li><a href="">Financial Analysis</a></li> */}
                                        {item.flag == "rejected" ? <div className="rejected"><p>Rejected</p></div> : (item.flag == "pending" ? <div className="pending"><p>Pending</p></div> : <div className="answered"><p>Answered</p></div>)  }
                                        {/* <div className="rejected"><p>Rejected</p></div>
