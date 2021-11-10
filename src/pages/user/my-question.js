@@ -115,6 +115,7 @@ export default function MyQuestion(){
                            </form>
                         </div>
                         {questions && questions.data.map((item, key)=>{
+                           const askedDate = new Date(item.created_at);
                            if( !item.shortanswer || item.shortanswer === '' || item.shortanswer == "undefined" && !item.completeanswer || item.completeanswer  === '' || item.completeanswer == "undefined" ){
                               let time;
                               let addedTwoHours = new Date(new Date(item.created_at).getTime() + 4*60*60*1000).getTime()
@@ -132,15 +133,20 @@ export default function MyQuestion(){
                            return(
                               <span key={key}>
                                  <div className="col-md-12 nav_account1 mt-3 pt-3 bdr_top pd_lr">
-                                    <ul>
+                                    <ul className="ul-old mb-0">
                                     <li>Subject: <a href="" className="twzt">{capitalize(item.subject)} </a><i className="fa fa-angle-right mr-1"></i></li>
                                        <li> <a href="" className="twzt"> { capitalize(item.sub_subject)} </a></li>
                                        {/* <li><a href="">Financial Analysis</a></li> */}
                                        {item.flag == "rejected" ? <div className="rejected"><p>Rejected</p></div> : (item.flag == "pending" ? <div className="pending"><p>Pending</p></div> : <div className="answered"><p>Answered</p></div>)  }
                                        {/* <div className="rejected"><p>Rejected</p></div>
                                        <div className="pending"><p>Pending</p></div> */}
+                                       <li></li>
                                     </ul>
-                                    
+                                    <ul className="">
+                                       <li className="li-new">
+                                          {askedDate.toLocaleString()}
+                                       </li>
+                                    </ul>
                                  </div>
                                  {/* <div className="col-md-12 nav_account1 mt-3 pt-3 pd_lr">
                                     <h2>Ons left for you to ask before the end of the cycleons left</h2>

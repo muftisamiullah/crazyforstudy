@@ -27,7 +27,7 @@ export default function MyTbs(){
     const addTextBookData = async (e) => {
         e.preventDefault();
         console.log(fields)
-        const res = await addTextBooks(JSON.stringify(fields));
+        const res = await addTextBooks(fields);
         if(res.error === false){
             queryClient.invalidateQueries('textbooks');
         }

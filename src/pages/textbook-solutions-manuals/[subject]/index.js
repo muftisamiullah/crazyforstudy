@@ -86,9 +86,9 @@ export default function Book(){
     const { data: chapters, isLoading: chapterIsLoading, error: chapterError } = useQuery([`${ISBN13}-chapter`], () => getChapters({book_isbn: ISBN13}),{staleTime:Infinity,enabled: !!ISBN13,})
     const { data: sections, isLoading: sectionIsLoading, error: sectionError } = useQuery([`${ISBN13}-${chapter}`], () => getSections({book_isbn: ISBN13,chapter_no: chapter}),{staleTime:Infinity,enabled: !!ISBN13,})
     const { data: exercises, isLoading: exerciseIsLoading, error: exerciseError } = useQuery([`${ISBN13}-${chapter}-${section}`], () => getExercises({book_isbn: ISBN13,chapter_no: chapter, section_no:section}),{staleTime:Infinity,enabled: !!ISBN13,})
-    const { data: problems, isLoading: problemIsLoading, error: problemError } = useQuery([`${ISBN13}-${section}-${exercise}`], () => getProblems({book_isbn: ISBN13,chapter_no: chapter, section_no:section, exercise_no:exercise}, state.Subscribe),{staleTime:Infinity,enabled: !!ISBN13,})
+    const { data: problems, isLoading: problemIsLoading, error: problemError, refetch: refetchProblems } = useQuery([`${ISBN13}-${section}-${exercise}`], () => getProblems({book_isbn: ISBN13,chapter_no: chapter, section_no:section, exercise_no:exercise}, state.Subscribe),{staleTime:Infinity,enabled: !!ISBN13,})
     
-    const { data: problemsDirect, isLoading: problemDirectIsLoading, error: problemDirectError } = useQuery([`${ISBN13}-${chapter}-${directProblem}`], () => getProblemsDirectly({book_isbn: ISBN13,chapter_no: chapter}, state.Subscribe),{staleTime:Infinity,enabled:directProblem})
+    const { data: problemsDirect, isLoading: problemDirectIsLoading, error: problemDirectError, refetch: refetchProblemsDirect } = useQuery([`${ISBN13}-${chapter}-${directProblem}`], () => getProblemsDirectly({book_isbn: ISBN13,chapter_no: chapter}, state.Subscribe),{staleTime:Infinity,enabled:directProblem})
 
     // const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!ISBN13,}) //changed to below code was getting called when relatedbook was undefined
     const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!relatedBook,})
@@ -190,11 +190,15 @@ export default function Book(){
         if(state.Subscribe === "true" && answerObject.answer == undefined){
             const link = "/textbook-solutions-manuals/" + notificationLink;
             const res =  await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id, link)
-            // console.log(res);
+            console.log(res);
             if(res && res.status == 200){
-                queryClient.invalidateQueries([ISBN13]);
+                    if(directProblem){
+                        refetchProblemsDirect();
+                    }else{
+                        refetchProblems();
+                    }
             }
-        }
+        }        
     }
 
     useEffect(() => {

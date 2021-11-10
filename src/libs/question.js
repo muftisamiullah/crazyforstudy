@@ -57,7 +57,7 @@ export async function getMyTextBooks(id) {
 
 export async function addTextBooks(isbn) {
     try {
-        const res = await authAxios.post(apiUrl + `student/check-book-isbn/${isbn}`)
+        const res = await authAxios.post(apiUrl + `student/check-book-isbn`, {isbn:isbn})
         return res.data;
     }
     catch(e){
