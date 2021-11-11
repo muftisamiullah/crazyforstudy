@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { getNavbarData } from '../../../libs/home'
 import { signOut } from '../../../libs/auth'
 import { useQuery } from 'react-query'
@@ -9,7 +9,7 @@ import {getNotifications, readNotification} from '../../../libs/question'
 import {Helmet} from 'react-helmet-async'
 import {AuthContext} from '../../../context/AuthContext';
 import { imageUrl } from '../../../config/config';
-import tawkTo from "tawkto-react";
+//import tawkTo from "tawkto-react";
 
 export default function DashboardNavbar({...props}){
     const tawkToPropertyId = '5c3332467a7b8d5de7293fcb'
@@ -20,7 +20,7 @@ export default function DashboardNavbar({...props}){
     const tawkToKey = '99ad2d1fc594db8f70e110920ae1e11530800c0c'
 
     useEffect(() => {
-        tawkTo(tawkToPropertyId, tawkToKey)
+        //tawkTo(tawkToPropertyId, tawkToKey)
     })
     
     const history = useHistory();
@@ -33,6 +33,26 @@ export default function DashboardNavbar({...props}){
     const {state, dispatch} = useContext(AuthContext);
     const session = state.isLoggedIn;
 
+
+    /////
+    const myRef = useRef();
+    const profileRef = useRef();
+    const handleClickOutside = e => {
+        if (!myRef.current.contains(e.target)) {
+          //hideNotification()
+          setShowNotification(false);
+        }
+        if (!profileRef.current.contains(e.target)) {
+          setShowDropdown(false);
+        }
+    };
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    });
+    /////
+
+
     async function SignOut () {
         const data = await signOut()
         if(data){
@@ -40,13 +60,12 @@ export default function DashboardNavbar({...props}){
             history.push('/')
         }
     }
-
     const openNotification = () => {
         setShowNotification(true);
         setShowDropdown(false);
         setShowAMenu(false);
         setShowMenu(false);
-        setClassname('show');   
+        setClassname('show');
     }
 
     const openDropdown = () => {
@@ -165,7 +184,7 @@ export default function DashboardNavbar({...props}){
                             <Link to="/writing-help/online-assignment-help" className="dropdown-item"><img src="/images/nav-icons/online-assignment-help.png" className="img-fluid" alt=""/> Assignment Help</Link>
                         </div>}
                     </li>
-                    <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} onMouseEnter={openDropdown}>
+                    <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} ref={profileRef} onMouseOver={openDropdown}>
                         <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><
                             span className="my_pics_img m-r-60 mt-0">
 
@@ -179,9 +198,9 @@ className="img-fluid" alt="User"/>}
                             </span>
                             </a>
                         {showDropdown && <><div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>{hideDropdown()}}>
-                            <Link to="/dashboard" className="dropdown-item" href="#"> Dashboard</Link>
-                            <Link to="/user/my-orders" className="dropdown-item" href="#"> My Orders</Link>
-                            <Link to="/user/my-profile" className="dropdown-item" href="#"> My Profile</Link>
+                            <Link to="/dashboard" className="dropdown-item" href="#" onClick={()=>setShowDropdown(false)}> Dashboard</Link>
+                            <Link to="/user/my-orders" className="dropdown-item" href="#" onClick={()=>setShowDropdown(false)}> My Orders</Link>
+                            <Link to="/user/my-profile" className="dropdown-item" href="#" onClick={()=>setShowDropdown(false)}> My Profile</Link>
                             <a className="dropdown-item" href="#" onClick={SignOut}><i className="fas fa-sign-out-alt"></i> Logout </a>
                         </div></>}
                     </li>
@@ -197,15 +216,15 @@ className="img-fluid" alt="User"/>}
                         </form><i className="fa fa-close close_btn_top"></i> 
                     </div>
                     
-                    <li className={`dropdown float-right pt_sty ${classname}`}>
-                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" onMouseEnter={()=>{openNotification()}}>
+                    <li className={`dropdown float-right pt_sty ${classname}`} ref={myRef}>
+                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" onMouseOver={()=>{openNotification()}}>
                             <i className="fa fa-bell zmdi zmdi-notifications"></i> 
                         </a>
                         <div className="notifica_numbr">
                             <span>{notifications && notifications?.data.length}</span>
                         </div>
                         {showNotification &&
-                        <ul className={`dropdown-menu pullDown ${classname}`} onMouseLeave={()=>{hideNotification()}}>
+                        <ul className={`dropdown-menu pullDown ${classname}`} onMouseLeave={()=>{hideNotification()}} >
                             <li className="body">
                                 <ul className="menu list-unstyled notification_scroll">
                                     {notifications && notifications.data.map((item,key)=>{
@@ -228,7 +247,7 @@ className="img-fluid" alt="User"/>}
                                     })}
                                 </ul>
                             </li>
-                            <Link to="/user/notifications"><li className="footer" href="#">View All </li></Link>
+                            <Link to="/user/notifications"><li className="footer" href="#" onClick={()=>setShowNotification(false)}>View All </li></Link>
                         </ul>}
                     </li>
                     <li className="float-right search_btn_top">
