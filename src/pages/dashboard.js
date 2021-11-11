@@ -1,3 +1,4 @@
+import React from 'react';
 import DashboardNavbar from '../components/website/dashboard/dashboard-navbar'
 import SideBar from '../components/website/dashboard/sidebar'
 import { useEffect, useContext, useState } from 'react';
@@ -193,8 +194,8 @@ export default function  Dashboard() {
                                                 var currentTime = new Date();
                                                 let title = item.title
                                                 return key < 4 ? (
-                                                    <>
-                                                    <tr key={key}>
+                                                    <React.Fragment key={key}>
+                                                    <tr>
                                                         <td>{key+1}</td>
                                                         <td><span dangerouslySetInnerHTML={{__html: title}}></span></td>
                                                         <td>{item.type}</td>
@@ -239,7 +240,7 @@ export default function  Dashboard() {
                                                             </div>
                                                         </td>
                                                     </tr> */}
-                                                    </>
+                                                    </React.Fragment>
                                                     ) : ""
                                             })}
                                         </tbody>

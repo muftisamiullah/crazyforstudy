@@ -9,7 +9,7 @@ import {getNotifications, readNotification} from '../../../libs/question'
 import {Helmet} from 'react-helmet-async'
 import {AuthContext} from '../../../context/AuthContext';
 import { imageUrl } from '../../../config/config';
-import tawkTo from "tawkto-react";
+//import tawkTo from "tawkto-react";
 
 export default function DashboardNavbar({...props}){
     const tawkToPropertyId = '5c3332467a7b8d5de7293fcb'
@@ -20,7 +20,7 @@ export default function DashboardNavbar({...props}){
     const tawkToKey = '99ad2d1fc594db8f70e110920ae1e11530800c0c'
 
     useEffect(() => {
-        tawkTo(tawkToPropertyId, tawkToKey)
+        //tawkTo(tawkToPropertyId, tawkToKey)
     })
     
     const history = useHistory();
@@ -36,26 +36,20 @@ export default function DashboardNavbar({...props}){
 
     /////
     const myRef = useRef();
-    const [isActive, setActive] = useState(false)
-    const [width, setWidth] = useState(window.innerWidth);
+    const profileRef = useRef();
     const handleClickOutside = e => {
         if (!myRef.current.contains(e.target)) {
           //hideNotification()
           setShowNotification(false);
-          setActive(false);
+        }
+        if (!profileRef.current.contains(e.target)) {
+          setShowDropdown(false);
         }
     };
     useEffect(() => {
-        setWidth(window.innerWidth);
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     });
-    let isMobile = Boolean(width <= 768);
-    const handleClickNoti = () => {
-        console.log(isActive)
-        setActive(!isActive); 
-    
-    }
     /////
 
 
@@ -190,7 +184,7 @@ export default function DashboardNavbar({...props}){
                             <Link to="/writing-help/online-assignment-help" className="dropdown-item"><img src="/images/nav-icons/online-assignment-help.png" className="img-fluid" alt=""/> Assignment Help</Link>
                         </div>}
                     </li>
-                    <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} onMouseEnter={openDropdown}>
+                    <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} ref={profileRef} onMouseOver={openDropdown}>
                         <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><
                             span className="my_pics_img m-r-60 mt-0">
 
@@ -204,9 +198,9 @@ className="img-fluid" alt="User"/>}
                             </span>
                             </a>
                         {showDropdown && <><div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>{hideDropdown()}}>
-                            <Link to="/dashboard" className="dropdown-item" href="#"> Dashboard</Link>
-                            <Link to="/user/my-orders" className="dropdown-item" href="#"> My Orders</Link>
-                            <Link to="/user/my-profile" className="dropdown-item" href="#"> My Profile</Link>
+                            <Link to="/dashboard" className="dropdown-item" href="#" onClick={()=>setShowDropdown(false)}> Dashboard</Link>
+                            <Link to="/user/my-orders" className="dropdown-item" href="#" onClick={()=>setShowDropdown(false)}> My Orders</Link>
+                            <Link to="/user/my-profile" className="dropdown-item" href="#" onClick={()=>setShowDropdown(false)}> My Profile</Link>
                             <a className="dropdown-item" href="#" onClick={SignOut}><i className="fas fa-sign-out-alt"></i> Logout </a>
                         </div></>}
                     </li>
@@ -224,7 +218,7 @@ className="img-fluid" alt="User"/>}
                     
                     <li className={`dropdown float-right pt_sty ${classname}`} ref={myRef}>
                         <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" onMouseOver={()=>{openNotification()}}>
-                            <i className="fa fa-bell zmdi zmdi-notifications" onClick={()=>{handleClickNoti()}}></i> 
+                            <i className="fa fa-bell zmdi zmdi-notifications"></i> 
                         </a>
                         <div className="notifica_numbr">
                             <span>{notifications && notifications?.data.length}</span>

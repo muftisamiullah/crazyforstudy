@@ -7,7 +7,7 @@ import {getUser} from '../../libs/profile'
 import {getNotifications} from '../../libs/question'
 import moment from 'moment';
 import {AuthContext} from '../../context/AuthContext';
-import {useState} from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 
 export default function Notifications(){
@@ -80,8 +80,8 @@ export default function Notifications(){
                                                 var currentTime = new Date();
                                                 let title = item.title
                                                 return  ( 
-                                                    <>
-                                                    <tr key={key}>
+                                                    <React.Fragment key={key}>
+                                                    <tr>
                                                         <td>{key+1}</td>
                                                         <td><span dangerouslySetInnerHTML={{__html: title}}></span></td>
                                                         <td>{item.type}</td>
@@ -127,7 +127,7 @@ export default function Notifications(){
                                                             </div>
                                                         </td>
                                                     </tr> */}
-                                                    </>
+                                                    </React.Fragment>
                                                     )
                                             })}
                                         </tbody>
