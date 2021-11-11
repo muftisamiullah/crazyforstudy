@@ -124,7 +124,7 @@ export default function Book(){
     }
     
     const clickedQues = async(data,item,key) => {
-        if (item.answerRequestIds.some(e => e.user_id === state._id)) {
+        if (item.answerRequestIds?.some(e => e.user_id === state._id)) {
             setAnswerRequested(true);
             
             //timer

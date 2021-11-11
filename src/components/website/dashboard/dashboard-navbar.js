@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { getNavbarData } from '../../../libs/home'
 import { signOut } from '../../../libs/auth'
 import { useQuery } from 'react-query'
@@ -21,6 +21,32 @@ export default function DashboardNavbar({...props}){
     const {state, dispatch} = useContext(AuthContext);
     const session = state.isLoggedIn;
 
+
+    /////
+    const myRef = useRef();
+    const [isActive, setActive] = useState(false)
+    const [width, setWidth] = useState(window.innerWidth);
+    const handleClickOutside = e => {
+        if (!myRef.current.contains(e.target)) {
+          //hideNotification()
+          setShowNotification(false);
+          setActive(false);
+        }
+    };
+    useEffect(() => {
+        setWidth(window.innerWidth);
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    });
+    let isMobile = Boolean(width <= 768);
+    const handleClickNoti = () => {
+        console.log(isActive)
+        setActive(!isActive); 
+    
+    }
+    /////
+
+
     async function SignOut () {
         const data = await signOut()
         if(data){
@@ -28,13 +54,12 @@ export default function DashboardNavbar({...props}){
             history.push('/')
         }
     }
-
     const openNotification = () => {
         setShowNotification(true);
         setShowDropdown(false);
         setShowAMenu(false);
         setShowMenu(false);
-        setClassname('show');   
+        setClassname('show');
     }
 
     const openDropdown = () => {
@@ -175,15 +200,15 @@ export default function DashboardNavbar({...props}){
                         </form><i className="fa fa-close close_btn_top"></i> 
                     </div>
                     
-                    <li className={`dropdown float-right pt_sty ${classname}`}>
-                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" onMouseEnter={()=>{openNotification()}}>
-                            <i className="fa fa-bell zmdi zmdi-notifications"></i> 
+                    <li className={`dropdown float-right pt_sty ${classname}`} ref={myRef}>
+                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" onMouseOver={()=>{openNotification()}}>
+                            <i className="fa fa-bell zmdi zmdi-notifications" onClick={()=>{handleClickNoti()}}></i> 
                         </a>
-                        <div class="notifica_numbr">
+                        <div className="notifica_numbr">
                             <span>{notifications && notifications?.data.length}</span>
                         </div>
                         {showNotification &&
-                        <ul className={`dropdown-menu pullDown ${classname}`} onMouseLeave={()=>{hideNotification()}}>
+                        <ul className={`dropdown-menu pullDown ${classname}`} onMouseLeave={()=>{hideNotification()}} >
                             <li className="body">
                                 <ul className="menu list-unstyled notification_scroll">
                                     {notifications && notifications.data.map((item,key)=>{
@@ -206,7 +231,7 @@ export default function DashboardNavbar({...props}){
                                     })}
                                 </ul>
                             </li>
-                            <Link to="/user/notifications"><li className="footer" href="#">View All </li></Link>
+                            <Link to="/user/notifications"><li className="footer" href="#" onClick={()=>setShowNotification(false)}>View All </li></Link>
                         </ul>}
                     </li>
                     <li className="float-right search_btn_top">
