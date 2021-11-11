@@ -57,7 +57,7 @@ export async function getMyTextBooks(id) {
 
 export async function addTextBooks(isbn) {
     try {
-        const res = await authAxios.post(apiUrl + `student/check-book-isbn/${isbn}`)
+        const res = await authAxios.post(apiUrl + `student/check-book-isbn`, {isbn:isbn})
         return res.data;
     }
     catch(e){
@@ -86,12 +86,13 @@ export async function deleteTextBook( user_Id, id ) {
     }
 }
 
-export async function askForSolutionQANDA(question_id,email,id) {
+export async function askForSolutionQANDA(question_id,email,id,link) {
     try {
         const data = {}; 
         data.q_id = question_id;
         data.email = email;
         data.user_Id = id;
+        data.link = link;
         const res = await authAxios.post(apiUrl + 'student/ask-already-present-question', data)
         return res;
     }

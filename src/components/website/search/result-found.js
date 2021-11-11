@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import BookImage from '../../common/book-image'
 import Pagination from '../../common/pagination'
 import { MakeSlug,stringToSlug, getEdition } from '../../common/make-slug'
-import parse from 'html-react-parser';
-import striptags from 'striptags';
+// import parse from 'html-react-parser';   // we used htmlDecode for the same purpose
+// import striptags from 'striptags';   // we used htmlDecode for the same purpose
+import { htmlDecode } from "../../common/make-slug";
 
 export default function ResultsFound({...props}){
     const [classn, setClassN]= useState('books');
@@ -186,8 +187,10 @@ export default function ResultsFound({...props}){
                                                 <span className="qustion_mark1">Q :</span>
                                                 <div className="ques_pl">
                                                     {item.question.includes('<p>')
-                                                    ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${striptags(item.question).substr(0,120)}`}}></p>
-                                                    : <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(item.question).substr(0,120)}`}}></p>}
+                                                    // ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${striptags(item.question).substr(0,120)}`}}></p>
+                                                    // : <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(item.question).substr(0,120)}`}}></p>}
+                                                    ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(item.question).substr(0,120)}`}}></p>
+                                                    : <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(item.question).substr(0,120)}`}}></p>}
                                                 </div>
                                             </div>
                                             </div>
@@ -197,8 +200,10 @@ export default function ResultsFound({...props}){
                                                 <div className="ans_pl">
                                                     <p className="font-15">
                                                     {item.question.includes('<p>')
-                                                    ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>
-                                                    : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>}
+                                                    ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item.old_qid}`}>View Answer</Link></p>
+                                                    : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item.old_qid}`}>View Answer</Link></p>}
+                                                    {/* ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(parse(striptags(item.question)).substr(0,90)+'-'+item.old_qid}`}>View Answer</Link></p>
+                                                    : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>} */}
                                                     </p>
                                                 </div>
                                             </div>

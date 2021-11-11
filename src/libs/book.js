@@ -11,7 +11,7 @@ export async function getBook(param) {
     }
 }
 
-export async function askForSoltuion(book_name,chapter_name,section_name,question,q_id,problem_no,email,id) {
+export async function askForSoltuion(book_name,chapter_name,section_name,question,q_id,problem_no,email,id,link) {
     try {
         const data = {}; 
         data.book_name = book_name;
@@ -22,6 +22,7 @@ export async function askForSoltuion(book_name,chapter_name,section_name,questio
         data.problem_no = problem_no;
         data.email = email;
         data.user_Id = id;
+        data.link = link;
         const res = await authAxios.post(apiUrl + 'books/book/ask-for-solution', data)
         return res;
     }

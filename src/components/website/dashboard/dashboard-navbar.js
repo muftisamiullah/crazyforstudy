@@ -9,8 +9,20 @@ import {getNotifications, readNotification} from '../../../libs/question'
 import {Helmet} from 'react-helmet-async'
 import {AuthContext} from '../../../context/AuthContext';
 import { imageUrl } from '../../../config/config';
+import tawkTo from "tawkto-react";
 
 export default function DashboardNavbar({...props}){
+    const tawkToPropertyId = '5c3332467a7b8d5de7293fcb'
+
+    // Direct Chat Link
+    // https://tawk.to/chat/tawkToPropertyId/tawkToKey
+
+    const tawkToKey = '99ad2d1fc594db8f70e110920ae1e11530800c0c'
+
+    useEffect(() => {
+        tawkTo(tawkToPropertyId, tawkToKey)
+    })
+    
     const history = useHistory();
     const params =  useParams();
     const [ showNotification, setShowNotification ] = useState(false);
@@ -118,13 +130,13 @@ export default function DashboardNavbar({...props}){
         }
     }
 
-    const markAsRead = async(id,type) => {
+    const markAsRead = async(id, type, link) => {
         const res = await readNotification(id);
         let url = "";
         if(!res.error){
-            if(type == "QA"){
-                url = "/user/my-question";
-            }
+            // if(type == "ASK50"){
+                url = link;
+            // }
             history.push(url)
         }
     }
@@ -179,8 +191,18 @@ export default function DashboardNavbar({...props}){
                         </div>}
                     </li>
                     <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} onMouseEnter={openDropdown}>
-                    
-                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="my_pics_img m-r-60 mt-0"><img src={props.data && props.data.img ? (props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img) : "/images/profile_av.jpg"} alt="User" className="img-fluid"/></span></a>
+                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><
+                            span className="my_pics_img m-r-60 mt-0">
+
+<div className="navbar-default-profile-name" style={{display:(props.data && props.data.img ? 'none' : 'block')}}>
+{props.data && props.data.Name ? props.data.Name.substring(0,1).toUpperCase() : '...'}</div>
+
+{props.data && props.data.img && <img src={props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img}
+className="img-fluid" alt="User"/>}
+
+                            
+                            </span>
+                            </a>
                         {showDropdown && <><div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>{hideDropdown()}}>
                             <Link to="/dashboard" className="dropdown-item" href="#"> Dashboard</Link>
                             <Link to="/user/my-orders" className="dropdown-item" href="#"> My Orders</Link>
@@ -214,9 +236,9 @@ export default function DashboardNavbar({...props}){
                                     {notifications && notifications.data.map((item,key)=>{
                                          var date = new Date(item.created_at);
                                         return(
-                                            <li key={key} onClick={()=>{markAsRead(item._id,item.type)}}>
+                                            <li key={key} onClick={()=>{markAsRead(item._id,item.type,item.link)}}>
                                                
-                                                <Link to="">
+                                                <Link to="#">
                                                         <div className="media">
                                                             <img className="media-object" src="/images/pic2.png" alt=""/>
                                                             <div className="media-body">

@@ -78,7 +78,7 @@ export default function AskQuestion(){
 
    const getSelectedSubject = (e) => {
       const subjectId = e.target.options[e.target.selectedIndex].dataset.subjectid
-      setFormData({...formData, subject: e.target.value,subject_id: subjectId, user_Id : state._id, email : state.email, name : state.fullname, type :'QA'})
+      setFormData({...formData, subject: e.target.value,subject_id: subjectId, user_Id : state._id, email : state.email, name : state.fullname, type :'ASK50', link:"/user/my-question"})
       setSubject(e.target.value)
    }
 
@@ -121,45 +121,53 @@ export default function AskQuestion(){
 
    const askQuestion = async () => {
       // setFormData({...formData, user_Id : session.user._id, type :'QA'})
-      if(formData.question === undefined){
-         setError('You have enetered a valid question.')
+      if(state.Subscribe != "true"){
+            history.push('/paynow')
+      }else{
+         if(formData.question === undefined){
+            setError('You have not entered a valid question.')
+            return;
+         }
+         if(formData.subject === undefined){
+            setError('You have not selected a subject.')
+            return;
+         }
+         if(formData.sub_subject === undefined){
+            setError('You have not selected a sub subject.')
+            return;
+         }
+         setIsLoading(true);
+         let form = new FormData();
+         form.append('question',formData.question)
+         form.append('subject',formData.subject)
+         form.append('subject_id',formData.subject_id)
+         form.append('sub_subject',formData.sub_subject)
+         form.append('sub_subject_id',formData.sub_subject_id)
+         form.append('user_Id',formData.user_Id)
+         form.append('email',formData.email)
+         form.append('link',formData.link)
+         form.append('name',formData.name)
+         form.append('type',formData.type)
+         form.append('image0',formData.image1)
+         form.append('image1',formData.image2)
+         mutation.mutate(form, 
+            { onSuccess: (data, variables, context) => {
+               // console.log(data)
+               // queryClient.setQueryData(['notifications-false', { user_Id : session.user._id, type: 'QA'} ], data)
+               if(data && data?.response?.status == 501){
+                  setError('You Have Already asked 50 questions')
+               }else{
+                  setIsLoading(false)
+                  history.push('/user/my-question')
+               }
+            },
+            onError: (error, variables, context) => {
+               // An error happened!
+               console.log("in error")
+               console.log(error,context,variables)
+            },
+         });
       }
-      if(formData.subject === undefined){
-         setError('You have selected a subject.')
-      }
-      if(formData.sub_subject === undefined){
-         setError('You have selected a sub subject.')
-      }
-      setIsLoading(true);
-      let form = new FormData();
-      form.append('question',formData.question)
-      form.append('subject',formData.subject)
-      form.append('subject_id',formData.subject_id)
-      form.append('sub_subject',formData.sub_subject)
-      form.append('sub_subject_id',formData.sub_subject_id)
-      form.append('user_Id',formData.user_Id)
-      form.append('email',formData.email)
-      form.append('name',formData.name)
-      form.append('type',formData.type)
-      form.append('image0',formData.image1)
-      form.append('image1',formData.image2)
-      mutation.mutate(form, 
-         { onSuccess: (data, variables, context) => {
-            // console.log(data)
-            // queryClient.setQueryData(['notifications-false', { user_Id : session.user._id, type: 'QA'} ], data)
-            if(data && data?.response?.status == 501){
-               setError('You Have Already asked 50 questions')
-            }else{
-               setIsLoading(false)
-               history.push('/user/my-question')
-            }
-         },
-         onError: (error, variables, context) => {
-            // An error happened!
-            console.log("in error")
-            console.log(error,context,variables)
-         },
-      });
    }
 
    // if(state.Subscribe == "false"){

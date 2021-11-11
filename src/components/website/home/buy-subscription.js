@@ -11,11 +11,12 @@ export default function BuySubscription(){
                             <div className="Text_title text_tb_center3 pb-3">
                                 <h5 className="pb-2">SUBSCRIPTION INCLUDE</h5>
                                 <h2> Get step by step answers <span className="d_b">from <span className="yellow">our</span> expert tutors</span></h2>
-                                <p>Get immediate access to 24/7 Homework Help, <span>step-by-step</span> solutions, instant homework answer to over 40 million Textbook solution </p>
+                                <p>Subscribing with just $7 per month can give you 24x7 access to our Homework Help and <span>step-by-step</span> Textbook Solutions. We have experts who deliver comprehensive content for your better grades. </p>
+                                <p>Our subscription includes -</p>
                                 <ul className="include_list">
-                                    <li><i className="fa fa-check-circle"></i> 50 Question to ask every month </li>
-                                    <li><i className="fa fa-check-circle"></i> Unlimited access to textbook Solutions </li>
-                                    <li><i className="fa fa-check-circle"></i> Unlimited access to Q/A library </li>
+                                    <li><i className="fa fa-check-circle"></i>Unlimited access to our Q&A solutions</li>
+                                    <li><i className="fa fa-check-circle"></i>50 New Questions to ask every month</li>
+                                    <li><i className="fa fa-check-circle"></i>Unlimited access to Textbook Solutions</li>
                                 </ul>
                                 {/* <div className="btn1">
                                     <a href="#">Buy Subscription</a>

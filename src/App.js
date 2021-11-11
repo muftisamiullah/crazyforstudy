@@ -61,7 +61,7 @@ function App() {
 							{publicRoutes && publicRoutes.map((route => (
 								<Route exact={true} key={route.path} path={route.path} component={route.component} />
 							)))}
-							{/* <ReactQueryDevtools initialIsOpen={false}/> */}
+							<ReactQueryDevtools initialIsOpen={false}/>
 						{/* </Switch> */}
 					</AuthProvider>
 				</QueryClientProvider>

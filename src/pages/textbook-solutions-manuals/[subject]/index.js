@@ -21,8 +21,6 @@ import {Helmet} from 'react-helmet-async'
 import Subject from './subject'
 import Seo from '../../../components/common/seo'
 import {AuthContext} from '../../../context/AuthContext';
-import parse from 'html-react-parser';
-import striptags from 'striptags';
 import Marquee from '../../../components/common/marquee';
 
 export default function Book(){
@@ -80,15 +78,17 @@ export default function Book(){
     const [reviewSchema, setReviewSchema] = useState(null);
     const [faqSchema, setFaqSchema] = useState(null);
 
+    const [notificationLink, setNotificationLink] = useState(null);
+
     //example call commented out as a reminder
     // const { data: books, isLoading:bookIsLoading, error:bookError } = useQuery([params.book], () => getBook({book_isbn: ISBN13}),{staleTime:Infinity})
     const { data: books, isLoading: bookIsLoading, error: bookError } = useQuery([ISBN13], () => getBook({book_isbn: ISBN13}),{staleTime:Infinity,enabled: !!ISBN13,})
     const { data: chapters, isLoading: chapterIsLoading, error: chapterError } = useQuery([`${ISBN13}-chapter`], () => getChapters({book_isbn: ISBN13}),{staleTime:Infinity,enabled: !!ISBN13,})
     const { data: sections, isLoading: sectionIsLoading, error: sectionError } = useQuery([`${ISBN13}-${chapter}`], () => getSections({book_isbn: ISBN13,chapter_no: chapter}),{staleTime:Infinity,enabled: !!ISBN13,})
     const { data: exercises, isLoading: exerciseIsLoading, error: exerciseError } = useQuery([`${ISBN13}-${chapter}-${section}`], () => getExercises({book_isbn: ISBN13,chapter_no: chapter, section_no:section}),{staleTime:Infinity,enabled: !!ISBN13,})
-    const { data: problems, isLoading: problemIsLoading, error: problemError } = useQuery([`${ISBN13}-${section}-${exercise}`], () => getProblems({book_isbn: ISBN13,chapter_no: chapter, section_no:section, exercise_no:exercise}, state.Subscribe),{staleTime:Infinity,enabled: !!ISBN13,})
+    const { data: problems, isLoading: problemIsLoading, error: problemError, refetch: refetchProblems } = useQuery([`${ISBN13}-${section}-${exercise}`], () => getProblems({book_isbn: ISBN13,chapter_no: chapter, section_no:section, exercise_no:exercise}, state.Subscribe),{staleTime:Infinity,enabled: !!ISBN13,})
     
-    const { data: problemsDirect, isLoading: problemDirectIsLoading, error: problemDirectError } = useQuery([`${ISBN13}-${chapter}-${directProblem}`], () => getProblemsDirectly({book_isbn: ISBN13,chapter_no: chapter}, state.Subscribe),{staleTime:Infinity,enabled:directProblem})
+    const { data: problemsDirect, isLoading: problemDirectIsLoading, error: problemDirectError, refetch: refetchProblemsDirect } = useQuery([`${ISBN13}-${chapter}-${directProblem}`], () => getProblemsDirectly({book_isbn: ISBN13,chapter_no: chapter}, state.Subscribe),{staleTime:Infinity,enabled:directProblem})
 
     // const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!ISBN13,}) //changed to below code was getting called when relatedbook was undefined
     const { data: relatedBooks, isLoading: relatedBooksIsLoading, error:relatedBooksError } = useQuery([`${relatedBook}-related-books`], () => getRelatedBooks({sub_subject: relatedBook}),{staleTime:Infinity,enabled: !!relatedBook,})
@@ -124,7 +124,8 @@ export default function Book(){
     }
     
     const clickedQues = async(data,item,key) => {
-        if (item.answerRequestIds?.some(e => e.user_id === state._id)) {
+        // console.log(data, item ,key)
+        if (item.answerRequestIds.some(e => e.user_id === state._id)) {
             setAnswerRequested(true);
             
             //timer
@@ -187,12 +188,17 @@ export default function Book(){
 
     const requestAnswer = async () => {
         if(state.Subscribe === "true" && answerObject.answer == undefined){
-            const res =  await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id)
-            // console.log(res);
+            const link = "/textbook-solutions-manuals/" + notificationLink;
+            const res =  await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id, link)
+            console.log(res);
             if(res && res.status == 200){
-                queryClient.invalidateQueries([ISBN13]);
+                    if(directProblem){
+                        refetchProblemsDirect();
+                    }else{
+                        refetchProblems();
+                    }
             }
-        }
+        }        
     }
 
     useEffect(() => {
@@ -241,6 +247,7 @@ export default function Book(){
             // else{
             //     setTitle(books[0].BookName + ' ' + books[0].Edition + " Solutions");
             // }
+            setNotificationLink(params.subject)
         }
         return () => {}
     }, [books, seo])
@@ -423,7 +430,7 @@ export default function Book(){
     //seo ends
     
     return(
-        <>{console.log(state.Subscribe)}{console.log(typeof(state.Subscribe))}
+        <>
             <Marquee/>
             <Seo path={path} title={title} description={description} keywords={keywords} robots={robots} breadcrumbSchema={breadcrumbSchema} reviewSchema={reviewSchema} faqSchema={faqSchema} ISBN13={ISBN13 && ISBN13}/>
             <Header/>

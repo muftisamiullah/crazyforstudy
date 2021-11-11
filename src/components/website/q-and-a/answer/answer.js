@@ -1,10 +1,11 @@
-import parse from 'html-react-parser';
-import striptags from 'striptags';
+// import parse from 'html-react-parser';   // we used htmlDecode for the same purpose
+// import striptags from 'striptags';   // we used htmlDecode for the same purpose
 import { useState, useContext, useEffect, useRef } from 'react';
 import {AuthContext} from '../../../../context/AuthContext';
 import { Link, useParams } from 'react-router-dom';
 import { askForSolutionQANDA } from '../../../../libs/question'
 import { useQueryClient } from 'react-query'
+import { stringToSlug, htmlDecode } from '../../../common/make-slug';
 
 export default function Answer({...props}){
     const { state } = useContext(AuthContext);
@@ -72,11 +73,12 @@ export default function Answer({...props}){
         }
     },[props?.data]);
 
-    const requestAnswer = async () => {
+    const requestAnswer = async (link) => {
         if(state.Subscribe === "true" && props.data.answer == undefined){
-            const res =  await askForSolutionQANDA(props.data._id, state.email, state._id)
+            const res =  await askForSolutionQANDA(props.data._id, state.email, state._id, link)
+            console.log(res);
             if(res){
-                queryClient.invalidateQueries([props.data.old_qid]);
+                queryClient.invalidateQueries([props.data._id]);
             }
         }
     }
@@ -104,6 +106,15 @@ export default function Answer({...props}){
         }, 1000);
     }
 
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.id = 'editor';
+        script.src = "https://www.wiris.net/demo/plugins/app/WIRISplugins.js?viewer=image";
+        // script.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.0.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        script.async = true;
+        document.body.appendChild(script);
+    })
+    
     return(
         <section className="section font_sz text_justify pt-5 pb-4">
             <div className="container">
@@ -119,7 +130,8 @@ export default function Answer({...props}){
                                     {props.data && props.data.question && props?.data?.question.includes('<p>')
                                     ?
                                     <>  
-                                        <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question))}`}}></p>
+                                        {/* <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question))}`}}></p> */}
+                                        <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(htmlDecode(props?.data?.question))}`}}></p>
                                         {/* code commented for read less and read more */}
                                         {/* <p className="mb-0" style={{display: display1 === false ? "block" : "none" }} dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question))}`}}></p>
                                         <p className="mb-0" style={{display: display1 === false ? "none" : "block" }} dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question)).substr(0,120)}`}}></p>
@@ -127,7 +139,8 @@ export default function Answer({...props}){
                                     </>
                                     :
                                     <>
-                                        <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(`${props?.data?.question}`)}`}}></p>
+                                        {/* <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(`${props?.data?.question}`)}`}}></p> */}
+                                        <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(`${props?.data?.question}`)}`}}></p>
                                         {/* code commented for read less and read more */}
                                         {/* <p className="mb-0" style={{display: display2 === false ? "block" : "none" }} dangerouslySetInnerHTML={{__html: `${parse(`${props?.data?.question}`)}`}}></p>
                                         <p className="mb-0" style={{display: display2 === false ? "none" : "block" }} dangerouslySetInnerHTML={{__html: `${parse(`${props?.data?.question}`).substr(0,120)}`}}></p>
@@ -175,7 +188,7 @@ export default function Answer({...props}){
                                                     {
                                                     state.isLoggedIn != "true" 
                                                         ? <Link to={`${loc}`} className="red_text1">Login to Get Answer</Link> 
-                                                        : <Link to="#" className="red_text1" onClick={()=>{requestAnswer()}}>Request Answer</Link> 
+                                                        : <Link to="#" className="red_text1" onClick={()=>{requestAnswer(`${'/q-and-a/'+stringToSlug(htmlDecode(props.data.question)).substr(0,90)+'-'+props.data._id}`)}}>Request Answer</Link> 
                                                     }
                                                 </div>
                                             </div>

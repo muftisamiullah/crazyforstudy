@@ -3,9 +3,9 @@ import {searchData} from '../../libs/search'
 import BookImage from './book-image'
 import { Link } from 'react-router-dom';
 import {MakeSlug} from '../common/make-slug'
-import parse from 'html-react-parser';
-import { stringToSlug } from '../common/make-slug';
-import striptags from 'striptags';
+// import parse from 'html-react-parser';   // we used htmlDecode for the same purpose
+import { stringToSlug, htmlDecode } from '../common/make-slug';
+// import striptags from 'striptags';   // we used htmlDecode for the same purpose
 
 export default function SearchComp({...props}){
 
@@ -132,14 +132,16 @@ export default function SearchComp({...props}){
                                     {QA && QA.map((item,key)=>{
                                         let child = "";
                                         if(item.question.includes('<p>')){
-                                            child = stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item.old_qid;
+                                            // child = stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item.old_qid;
+                                            child = stringToSlug(htmlDecode(item.question).substr(0,90))+'-'+item.old_qid;
                                         }else{
-                                            child = stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid
+                                            // child = stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid
+                                            child = stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item.old_qid
                                         }
                                     return(<span key={key}>
                                         <Link to={`/q-and-a/${child}`}>
                                             <div className="Picking_Cotton">
-                                                <h3 dangerouslySetInnerHTML={{__html:(parse(item.question)).substr(0,200)}}></h3>
+                                                <h3 dangerouslySetInnerHTML={{__html:(htmlDecode(item.question)).substr(0,200)}}></h3>
                                                 <p><span>Subject Name: {item.subject}, Sub Subject: {item.sub_subject}</span></p>
                                             </div>
                                         </Link>

@@ -10,9 +10,8 @@ export default function AssignmentHelp(){
                     <div className="col-md-6 float-left">
                         <div className="Text_title text_tb_center2 pb-3">
                         <h5 className="pb-2">ASSIGNMENT HELP </h5>
-                        <h2>Your Assignment <span className="d_b">Deadline is our priority.</span></h2>
-                        <p>Get the Best Assignment Assistance by Expert Writers to meet your professors’ Expectations. Our Phd Experts are available here to complete your Assignment before the deadline complete your Assignment before the deadline
-                        Our Phd Experts.</p>
+                        <h2>Your assignment <span className="d_b">deadline is our priority.</span></h2>
+                        <p>90% of our learners have achieved better grades using our assignment help solutions. You can be one of them too! Get the best assignment assistance by our PhD experts. Our experts customize the answers to meet your professor's expectations. Get plagiarism-free assignment solutions 24x7.</p>
                             <div className="btn1">
                             <Link to="writing-help/online-assignment-help">Get Assignment Help</Link>
                             </div>

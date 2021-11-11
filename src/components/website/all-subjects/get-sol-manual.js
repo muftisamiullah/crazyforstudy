@@ -9,7 +9,7 @@ export default function GetSolManual({...props}){
                         </div>
                     </div>
                     <div className="col-md-12 text-center">
-                        <p> Crazy For Study is one of the leading providers of {props.bookname} solution manuals for college and high school students. Get textbook answers help and expert answers to your toughest {props.bookname} textbook questions. Master your {props.bookname} assignments with our step-by-step {props.bookname} textbook solutions. Ask any {props.bookname} question and get an answer from our experts in as fast as 30 minutes. With Crazy For Study, we've got you covered 24/7. </p>
+                        {/* <p> Crazy For Study is one of the leading providers of {props.bookname} solution manuals for college and high school students. Get textbook answers help and expert answers to your toughest {props.bookname} textbook questions. Master your {props.bookname} assignments with our step-by-step {props.bookname} textbook solutions. Ask any {props.bookname} question and get an answer from our experts in as fast as 30 minutes. With Crazy For Study, we've got you covered 24/7. </p> */}
                         <p> Crazy For Study is one of the leading providers of {props.bookname} solution manuals for college and high school students. Get textbook answers help and expert answers to your toughest {props.bookname} textbook questions. Master your {props.bookname} assignments with our step-by-step {props.bookname} textbook solutions. Ask any {props.bookname} question and get an answer from our experts in as fast as 30 minutes. With Crazy For Study, we've got you covered 24/7. </p>
                     </div>
                     

@@ -15,7 +15,7 @@ export default function Banner() {
                     <div className="col-md-6 pl-0">
                         <div className="banner_text">
                             <h4>Your Academic Search Engine</h4>
-                            <h1> Access step-wise solutions to over 50 million textbooks</h1>
+                            <h1>Access stepwise solutions to over 50 million textbooks</h1>
                             <Search placeholder={"Search ISBN, textbook name or homework..."} btnText={"Search"}/>
                         </div>
                     </div>
