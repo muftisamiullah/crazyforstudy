@@ -211,7 +211,7 @@ export default function AskQuestion(){
                                     <select className="form-control" onChange={getSelectedSubject} name="subject">
                                        {subjects && subjects.data.map((item,key)=>{
                                           return(
-                                             <option value={item.subject} key={key} data-subjectid={item._id}>{item.subject}</option>
+                                             <option value={MakeSlug(item.subject)} key={key} data-subjectid={item._id}>{item.subject}</option>
                                           )
                                        })}
                                     </select>

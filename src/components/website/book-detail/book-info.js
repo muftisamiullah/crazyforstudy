@@ -2,7 +2,7 @@ import BookImage from '../../common/book-image'
 import { Link } from 'react-router-dom';
 import { useState, useEffect,useContext } from 'react';
 import {AuthContext} from '../../../context/AuthContext';
-import { getEdition } from '../../common/make-slug'
+// import { getEdition } from '../../common/make-slug'
 
 export default function BookInfo({...props}){
     const [ location, setLocation ] = useState('/');
@@ -44,7 +44,7 @@ export default function BookInfo({...props}){
                 <div className="prduct_details_text">
                     <h3>{props.bookData && (props.bookData.DisplayTitle ? props.bookData.DisplayTitle : props.bookData.BookName+' '+ props.bookData.Edition +' Solutions')}</h3>
                         <p>
-                            {[...Array(props.bookData.ratingAv ? Math.floor(props.bookData.ratingAv) : 0)].map((e, i) => 
+                            {[...Array(props?.bookData?.ratingAv ? Math.floor(props.bookData.ratingAv) : 0)].map((e, i) => 
                                 <i className="fa fa-star" key={i}></i>
                             )}
                         </p>

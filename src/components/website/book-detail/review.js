@@ -34,7 +34,7 @@ export default function Reviews({...props}){
                     <div className="col-md-12">
                         <div className="Reviews_bg">
                             <div className="row">
-                                <div className="col-md-4" style={{margin: props.reviews.length > 0 ? "" : "auto"}}>
+                                <div className="col-md-4" style={{margin: props && props.reviews && props.reviews?.length > 0 ? "" : "auto"}}>
                                     <div className="Reviews_Ratings_text">
                                         <h3 className="">Reviews & Ratings</h3>
                                         <p className="start_review_pr">
@@ -47,11 +47,16 @@ export default function Reviews({...props}){
                                             <span className="ml-1">{props?.book?.ratingAv} out of 5 stars</span>
                                         </p>
                                         <ul>
-                                            <li>5 <i className="fa fa-star"></i> <span className="line_rating span5"></span> {props?.book?.rating_5}</li>
+                                            <li>5 <i className="fa fa-star"></i> <span className={"line_rating " + (props?.book?.ratingAv == 5 ? "span5" : "") }></span> {props?.book?.rating_5}</li>
+                                            <li>4 <i className="fa fa-star"></i> <span className={"line_rating " + (props?.book?.ratingAv == 4 ? "span4" : "" ) }></span> {props?.book?.rating_4}</li>
+                                            <li>3 <i className="fa fa-star"></i> <span className={"line_rating " + (props?.book?.ratingAv == 3 ? "span3" : "" ) }></span> {props?.book?.rating_3}</li>
+                                            <li>2 <i className="fa fa-star"></i> <span className={"line_rating " + (props?.book?.ratingAv == 2 ? "span2" : "" ) }></span> {props?.book?.rating_2}</li>
+                                            <li>1 <i className="fa fa-star"></i> <span className={"line_rating " + (props?.book?.ratingAv == 1 ? "span1" : "" ) }></span> {props?.book?.rating_1}</li>
+                                            {/* <li>5 <i className="fa fa-star"></i> <span className="line_rating span5"></span> {props?.book?.rating_5}</li>
                                             <li>4 <i className="fa fa-star"></i> <span className="line_rating span4"></span> {props?.book?.rating_4}</li>
                                             <li>3 <i className="fa fa-star"></i> <span className="line_rating span3"></span> {props?.book?.rating_3}</li>
                                             <li>2 <i className="fa fa-star"></i> <span className="line_rating span2"></span> {props?.book?.rating_2}</li>
-                                            <li>1 <i className="fa fa-star"></i> <span className="line_rating span1"></span> {props?.book?.rating_1}</li>
+                                            <li>1 <i className="fa fa-star"></i> <span className="line_rating span1"></span> {props?.book?.rating_1}</li> */}
                                             <li onClick={openDialog}><a href="" onClick={(e)=>{e.preventDefault()}}><i className="fa fa-pencil"></i> WRITE YOUR REVIEW</a></li>
                                         </ul>
                                     </div>

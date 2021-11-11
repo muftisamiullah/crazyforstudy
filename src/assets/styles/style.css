@@ -594,8 +594,11 @@ background: #f6d123;
 	.Reviews_Ratings_text ul li{list-style:none; font-size:16px; font-weight:500;}
 	.Reviews_Ratings_text ul li span{width:160px; position:relative; height:5px; margin:0 10px; background:#e5e5e5; border-radius:5px; display:inline-block;}
 	.Reviews_Ratings ul li span.line_rating:before{content:""; position:absolute; top:0px; left:0px;  height:5px;    border-radius:5px; display:inline-block;}
-	.Reviews_Ratings_text ul li .span4:before{ width:80%; background:#21ba45;}
+	.Reviews_Ratings_text ul li .span5:before{ width:80%; background:#21ba45;}
+	.Reviews_Ratings_text ul li .span4:before{ width:60%; background:#21ba45;}
 	.Reviews_Ratings_text ul li .span3:before{ width:60%; background:#21ba45;}
+	.Reviews_Ratings_text ul li .span2:before{ width:60%; background:#21ba45;}
+	.Reviews_Ratings_text ul li .span1:before{ width:60%; background:#21ba45;}
  .Reviews_Ratings_text ul li i{color:#fcd600; }
  .Reviews_Ratings_text ul li a i{padding-right:20px; color:#939393;}
  .Reviews_Ratings_text ul li a{background:#f7f7f7; display:inline-block; color:#000; margin-top:20px; width:100%; border:1px solid #b7b7b7; font-size:14px; text-transform:uppercase; text-align:center; padding:7px 0px;}

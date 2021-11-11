@@ -17,6 +17,7 @@
     "axios": "^0.21.1",
     "ckeditor5-classic-with-mathtype": "^1.0.0",
     "font-awesome": "^4.7.0",
+    "html-converter-react": "^1.0.3",
     "html-react-parser": "^1.2.8",
     "moment": "^2.29.1",
     "node-jose-tools": "^1.6.28",
