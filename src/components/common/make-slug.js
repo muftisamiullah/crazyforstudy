@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const MakeSlug = (str) => {
     return str?.trim().toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');   
 }
@@ -79,6 +81,22 @@ function  htmlDecode(content) {
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 }
 
+const calculateTime = (id, eventTime) => {
+    const currentTime = new Date().getTime();
+    var diffTime = (eventTime + 14400000) - currentTime;
+    var duration = moment.duration(diffTime, 'milliseconds');
+    var interval = 1000;
+    if(currentTime < (eventTime + 14400000)){
+        var inter = setInterval(() => {
+            duration = moment.duration(duration - interval, 'milliseconds');
+            if(document.getElementById(id) !== null){
+                document.getElementById(id).innerHTML="";
+                document.getElementById(id).innerHTML=duration.hours() + ":" + duration.minutes() + ":" + duration.seconds();
+            }
+        }, interval);
+    }   
+} 
+
 export {
     MakeSlug,
     SameSlug,
@@ -91,5 +109,6 @@ export {
     MakeSlug2,
     reverseString,
     getEdition,
-    htmlDecode
+    htmlDecode,
+    calculateTime,
 }

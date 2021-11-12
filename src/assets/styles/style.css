@@ -2866,3 +2866,11 @@ i#image4 { padding-top: 4px;}
     margin:0px;
     padding:0px;
 }
+.timer-ask{
+    float: right;
+    margin-right: 30px;
+    font-size: 16px;
+    background: #f8d021;
+    padding: 1px 20px;
+    border-radius: 20px;
+}

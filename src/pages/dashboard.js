@@ -202,9 +202,10 @@ export default function  Dashboard() {
                                                         <td>{item.created_at.substring(0,10)}</td>
                                                         <td id={`${item.type+key}`}><span className="badge">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'completed'}</span></td>
                                                         <td>
+                                                            <Link to={item.link}>
                                                             <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">
                                                             View
-                                                            </button>
+                                                            </button> </Link>
                                                         </td>
                                                 
                                                     </tr>

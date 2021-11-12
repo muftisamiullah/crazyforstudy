@@ -8,7 +8,7 @@ import {getQuestions} from '../../libs/question'
 import {useEffect, useState, useContext} from 'react'
 import {AuthContext} from '../../context/AuthContext';
 import { imageUrl } from '../../config/config'
-import { capitalize } from '../../components/common/make-slug'
+import { capitalize, calculateTime } from '../../components/common/make-slug'
 import Paynow from '../../pages/paynow';
 import { useHistory } from 'react-router-dom';
 
@@ -34,27 +34,7 @@ export default function MyQuestion(){
    }
 
    //timer creation from here
-   const [timer, setTimer] = useState('00:00:00');
-   const [totalSeconds, setTotalSeconds] = useState();
-   
-   function startTimer(duration) {
-       var timer = duration, hours, minutes, seconds;
-       setInterval(function () {
-           hours   = parseInt(timer / (60 * 60), 10)
-           minutes = parseInt((timer / 60) % 60, 10)
-           seconds = parseInt(timer % 60, 10);
-                       
-           hours 	= hours 	< 10 ? "0" + hours 	 : hours;
-           minutes = minutes < 10 ? "0" + minutes : minutes;
-           seconds = seconds < 10 ? "0" + seconds : seconds;
-   
-           setTimer(hours + ":" + minutes + ":" + seconds);
-   
-           if (--timer < 0) {
-               timer = duration;
-           }
-       }, 1000);
-   }
+
 
    if(state.Subscribe == "false"){
       history.push('/paynow')
@@ -117,18 +97,12 @@ export default function MyQuestion(){
                         {questions && questions.data.map((item, key)=>{
                            const askedDate = new Date(item.created_at);
                            if( !item.shortanswer || item.shortanswer === '' || item.shortanswer == "undefined" && !item.completeanswer || item.completeanswer  === '' || item.completeanswer == "undefined" ){
-                              let time;
-                              let addedTwoHours = new Date(new Date(item.created_at).getTime() + 4*60*60*1000).getTime()
-                              let currentTime = new Date()
-                              let difference  = ((addedTwoHours - currentTime) / 1000).toFixed(0) ;
-                              if(difference <= 0){
-                                 // startTimer(0);
-                                 time = 0 ;
-                              }else{
-                                 // startTimer(difference);
-                                 time = difference;
-                              }
+                              
                            }
+                           var utcDate = item.created_at;  // ISO-8601 formatted date returned from server
+                           var localDate = new Date(utcDate);
+                           var currentTime = new Date();
+                           let title = item.title;
 
                            return(
                               <span key={key}>
@@ -137,7 +111,7 @@ export default function MyQuestion(){
                                     <li>Subject: <a href="" className="twzt">{capitalize(item.subject)} </a><i className="fa fa-angle-right mr-1"></i></li>
                                        <li> <a href="" className="twzt"> { capitalize(item.sub_subject)} </a></li>
                                        {/* <li><a href="">Financial Analysis</a></li> */}
-                                       {item.flag == "rejected" ? <div className="rejected"><p>Rejected</p></div> : (item.flag == "pending" ? <div className="pending"><p>Pending</p></div> : <div className="answered"><p>Answered</p></div>)  }
+                                       {item.flag == "rejected" ? <div className="rejected"><p>Rejected</p></div> : (item.flag == "pending" ? <><div className="pending"><p>Pending</p></div><div id={`${item.type+key}`} className="timer-ask">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'time-over'}</div></> : <div className="answered"><p>Answered</p></div>)  }
                                        {/* <div className="rejected"><p>Rejected</p></div>
                                        <div className="pending"><p>Pending</p></div> */}
                                        <li></li>

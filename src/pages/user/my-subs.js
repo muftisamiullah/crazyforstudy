@@ -8,7 +8,7 @@ import {getUser} from '../../libs/profile'
 import {getMySubscription} from '../../libs/question'
 import moment from 'moment'
 import {AuthContext} from '../../context/AuthContext';
-
+import BuyBookSub from '../../components/common/buy-book-sub'
 
 export default function MySubs(){
     const { state } = useContext(AuthContext);
@@ -28,7 +28,7 @@ export default function MySubs(){
         <DashboardNavbar data={user}/>
         <SideBar data={user}/>
         <section className="content user profile-page">
-            <BlockHeader data={user} currentPage="My Subscription"/>
+            <BlockHeader data={user} currentPage="Subscription Details"/>
             <div className="container-fluid">
                 <div className="row clearfix mt-4">
                     <div className="col-md-12">
@@ -50,7 +50,7 @@ export default function MySubs(){
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        {subscription && subscription.transactions.map((item,key)=>{
+                                        {subscription ? subscription.transactions.map((item,key)=>{
                                             if (item.type == "subscription"){
                                                 return(
                                                     <tr key={key}>
@@ -100,7 +100,7 @@ export default function MySubs(){
                                                                         </h3>
                                                                     </div>
                                                                     <div className="col-md-3 mt-auto mb-auto ml-auto">
-                                                                        {item.subscription_status == 'active' ? <Link to={`/user/cancelation/${item.subscription_id}`} className="order-sub-cancel">Cancel Subscription Pack</Link> : '' }
+                                                                        {item.subscription_status == 'active' ? <Link to={`/user/cancelation/${item.subscription_id}`} className="order-sub-cancel">Cancel Subscription Pack</Link> : <BuyBookSub classname="" text="Buy Subscription"/> }
                                                                     </div>
                                                                 </div>
                                                                 </div>
@@ -109,7 +109,22 @@ export default function MySubs(){
                                                     </tr>
                                                 )
                                             }  
-                                        })}
+                                        }) 
+                                        : 
+                                        <tr>
+                                            <td colSpan="6" style={{padding:"0px"}}>
+                                                <div className="card-header pl-0 pr-0">
+                                                    <table style={{width: "100%"}}>
+                                                        <tbody>
+                                                            <tr>
+                                                                <BuyBookSub classname="" text="Buy Subscription"/>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>

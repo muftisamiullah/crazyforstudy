@@ -49,6 +49,14 @@ export default function AskQuestion(){
    const mutation = useMutation(askAQuestion)
 
    useEffect(() => {
+      if(subjects && subjects.data){
+         setSubject(MakeSlug(subjects.data[0].subject))
+      }
+      return () => {
+      }
+   }, [subjects])
+
+   useEffect(() => {
       setSubscribed(localStorage.getItem('subscribed'));
       return () => {
       }
@@ -107,7 +115,6 @@ export default function AskQuestion(){
    }
 
    useEffect(()=>{
-      console.log(formData)
       if(formData.image1 && formData.image1 != undefined){
          setCount((count)=>count =  1);
       }
@@ -197,7 +204,7 @@ export default function AskQuestion(){
                   <div className="col-md-12 mt-4 your_subscription ask_qus">
                      <h2>Ask a Question </h2>
                      <p>50 questions left for you to ask before the end of the cycle. Ask away!
-                        <span className="end_date1">Your cycle ends on 2022-01-31</span>
+                        {/* <span className="end_date1">Your cycle ends on 2022-01-31</span> */}
                      </p>
                      <p>Post your homework question and get notified when it has been answered. <span className="few_hours">We don’t take more than a few hours.</span></p>
                   </div>
