@@ -9,6 +9,7 @@ import moment from 'moment';
 import {AuthContext} from '../../context/AuthContext';
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
+import { calculateTime } from '../../components/common/make-slug'
 
 export default function Notifications(){
     const { state } = useContext(AuthContext);
@@ -19,22 +20,6 @@ export default function Notifications(){
     const { data: notifications, isLoading:notificationsIsLoading, error:notificationsError } = useQuery([`notifications-${isRead}`], () => getNotifications({user_Id : state._id, type: 'QA'}, isRead),{ staleTime : Infinity, enabled : !!session })
     
     const [display, setDisplay] = useState();
-
-    const calculateTime = (id, eventTime) => {
-        const currentTime = new Date().getTime();
-        var diffTime = (eventTime + 14400000) - currentTime;
-        var duration = moment.duration(diffTime, 'milliseconds');
-        var interval = 1000;
-        if(currentTime < (eventTime + 14400000)){
-            var inter = setInterval(() => {
-                duration = moment.duration(duration - interval, 'milliseconds');
-                if(document.getElementById(id) !== null){
-                    document.getElementById(id).innerHTML="";
-                    document.getElementById(id).innerHTML=duration.hours() + ":" + duration.minutes() + ":" + duration.seconds();
-                }
-            }, interval);
-        }   
-    } 
     
     const openCollapse = (data) => {
         if(display == data){
@@ -86,7 +71,7 @@ export default function Notifications(){
                                                         <td><span dangerouslySetInnerHTML={{__html: title}}></span></td>
                                                         <td>{item.type}</td>
                                                         <td>{item.created_at.substring(0,10)}</td>
-                                                        <td id={`${item.type+key}`}><span className="badge">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'completed'}</span></td>
+                                                        <td id={`${item.type+key}`}>{calculateTime(item.type + key, localDate.getTime(), '<span class="badge">completed</span>')}</td>
                                                         <td>
                                                             <Link to={item.link}>
                                                                 <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">View

@@ -9,6 +9,8 @@ import {getNotifications} from '../libs/question'
 import { useQuery } from 'react-query'
 import {AuthContext} from '../context/AuthContext';
 import moment from 'moment';
+import { calculateTime } from '../components/common/make-slug'
+
 
 export default function  Dashboard() {
     const [percentage, setPercentage] = useState(0);
@@ -51,22 +53,6 @@ export default function  Dashboard() {
             }
         }
     }, [user])
-
-    const calculateTime = (id, eventTime) => {
-        const currentTime = new Date().getTime();
-        var diffTime = (eventTime + 14400000) - currentTime;
-        var duration = moment.duration(diffTime, 'milliseconds');
-        var interval = 1000;
-        if(currentTime < (eventTime + 14400000)){
-            var inter = setInterval(() => {
-                duration = moment.duration(duration - interval, 'milliseconds');
-                if(document.getElementById(id) !== null){
-                    document.getElementById(id).innerHTML="";
-                    document.getElementById(id).innerHTML=duration.hours() + ":" + duration.minutes() + ":" + duration.seconds();
-                }
-            }, interval);
-        }   
-    } 
 
     return (
         <>  
@@ -200,7 +186,7 @@ export default function  Dashboard() {
                                                         <td><span dangerouslySetInnerHTML={{__html: title}}></span></td>
                                                         <td>{item.type}</td>
                                                         <td>{item.created_at.substring(0,10)}</td>
-                                                        <td id={`${item.type+key}`}><span className="badge">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'completed'}</span></td>
+                                                        <td id={`${item.type+key}`}>{calculateTime(item.type + key, localDate.getTime(), '<span class="badge">completed</span>')}</td>
                                                         <td>
                                                             <Link to={item.link}>
                                                             <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">

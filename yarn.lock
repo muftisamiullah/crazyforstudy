@@ -1863,6 +1863,13 @@
   "resolved" "https://registry.npmjs.org/@types/component-emitter/-/component-emitter-1.2.10.tgz"
   "version" "1.2.10"
 
+"@types/dompurify@^2.1.0":
+  "integrity" "sha512-YJth9qa0V/E6/XPH1Jq4BC8uCMmO8V1fKWn8PCvuZcAhMn7q0ez9LW6naQT04UZzjFfAPhyRMZmI2a2rbMlEFA=="
+  "resolved" "https://registry.npmjs.org/@types/dompurify/-/dompurify-2.3.1.tgz"
+  "version" "2.3.1"
+  dependencies:
+    "@types/trusted-types" "*"
+
 "@types/eslint@^7.2.6":
   "integrity" "sha512-XhZKznR3i/W5dXqUhgU9fFdJekufbeBd5DALmkuXoeFcjbQcPk+2cL+WLHf6Q81HWAnM2vrslIHpGVyCAviRwg=="
   "resolved" "https://registry.npmjs.org/@types/eslint/-/eslint-7.28.1.tgz"
@@ -2015,6 +2022,11 @@
   "version" "5.14.1"
   dependencies:
     "@types/jest" "*"
+
+"@types/trusted-types@*":
+  "integrity" "sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg=="
+  "resolved" "https://registry.npmjs.org/@types/trusted-types/-/trusted-types-2.0.2.tgz"
+  "version" "2.0.2"
 
 "@types/uglify-js@*":
   "integrity" "sha512-O3MmRAk6ZuAKa9CHgg0Pr0+lUOqoMLpc9AS4R8ano2auvsg7IE8syF3Xh/NPr26TWklxYcqoEEFdzLLs1fV9PQ=="
@@ -4603,6 +4615,11 @@
   dependencies:
     "domelementtype" "^2.2.0"
 
+"dompurify@^2.2.7":
+  "integrity" "sha512-dqnqRkPMAjOZE0FogZ+ceJNM2dZ3V/yNOuFB7+39qpO93hHhfRpHw3heYQC7DPK9FqbQTfBKUJhiSfz4MvXYwg=="
+  "resolved" "https://registry.npmjs.org/dompurify/-/dompurify-2.3.3.tgz"
+  "version" "2.3.3"
+
 "domutils@^1.7.0":
   "integrity" "sha512-Lgd2XcJ/NjEw+7tFvfKxOzCYKZsdct5lczQ2ZaQY8Djz7pfAD3Gbp8ySJWtreII/vDlMVmxwa6pHmdxIYgttDg=="
   "resolved" "https://registry.npmjs.org/domutils/-/domutils-1.7.0.tgz"
@@ -6016,6 +6033,14 @@
   "resolved" "https://registry.npmjs.org/hsla-regex/-/hsla-regex-1.0.0.tgz"
   "version" "1.0.0"
 
+"html-converter-react@^1.0.3":
+  "integrity" "sha512-QG+Qcd6A9MeVMAYCULhBeL4hCFiSEANt30HSFZkQ/ZuUjXHU5KAStJcFfTC8Yms6ocbLF2VqgLirYW+UEsZRrQ=="
+  "resolved" "https://registry.npmjs.org/html-converter-react/-/html-converter-react-1.0.3.tgz"
+  "version" "1.0.3"
+  dependencies:
+    "html-react-parser" "^1.2.6"
+    "isomorphic-dompurify" "^0.13.0"
+
 "html-dom-parser@1.0.2":
   "integrity" "sha512-Jq4oVkVSn+10ut3fyc2P/Fs1jqTo0l45cP6Q8d2ef/9jfkYwulO0QXmyLI0VUiZrXF4czpGgMEJRa52CQ6Fk8Q=="
   "resolved" "https://registry.npmjs.org/html-dom-parser/-/html-dom-parser-1.0.2.tgz"
@@ -6054,7 +6079,7 @@
     "relateurl" "^0.2.7"
     "terser" "^4.6.3"
 
-"html-react-parser@^1.2.8":
+"html-react-parser@^1.2.6", "html-react-parser@^1.2.8":
   "integrity" "sha512-v8Kxy+7L90ZFSM690oJWBNRzZWZOQquYPpQt6kDQPzQyZptXgOJ69kHSi7xdqNdm1mOfsDPwF4K9Bo/dS5gRTQ=="
   "resolved" "https://registry.npmjs.org/html-react-parser/-/html-react-parser-1.4.0.tgz"
   "version" "1.4.0"
@@ -6749,6 +6774,15 @@
   "resolved" "https://registry.npmjs.org/isobject/-/isobject-3.0.1.tgz"
   "version" "3.0.1"
 
+"isomorphic-dompurify@^0.13.0":
+  "integrity" "sha512-j2/kt/PGbxvfeEm1uiRLlttZkQdn3hFe1rMr/wm3qFnMXSIw0Nmqu79k+TIoSj+KOwO98Sz9TbuNHU7ejv7IZA=="
+  "resolved" "https://registry.npmjs.org/isomorphic-dompurify/-/isomorphic-dompurify-0.13.0.tgz"
+  "version" "0.13.0"
+  dependencies:
+    "@types/dompurify" "^2.1.0"
+    "dompurify" "^2.2.7"
+    "jsdom" "^16.5.2"
+
 "istanbul-lib-coverage@^3.0.0":
   "integrity" "sha512-UiUIqxMgRDET6eR+o5HbfRYP1l0hqkWOs7vNxC/mggutCMUIhWMm8gAHb8tHlyfD3/l6rlgNA5cKdDzEAf6hEg=="
   "resolved" "https://registry.npmjs.org/istanbul-lib-coverage/-/istanbul-lib-coverage-3.0.0.tgz"
@@ -7264,7 +7298,7 @@
     "argparse" "^1.0.7"
     "esprima" "^4.0.0"
 
-"jsdom@^16.4.0":
+"jsdom@^16.4.0", "jsdom@^16.5.2":
   "integrity" "sha512-u9Smc2G1USStM+s/x1ru5Sxrl6mPYCbByG1U/hUmqaVsm4tbNyS7CicOSRyuGQYZhTu0h84qkZZQ/I+dzizSVw=="
   "resolved" "https://registry.npmjs.org/jsdom/-/jsdom-16.7.0.tgz"
   "version" "16.7.0"
@@ -11662,6 +11696,11 @@
     "minizlib" "^2.1.1"
     "mkdirp" "^1.0.3"
     "yallist" "^4.0.0"
+
+"tawkto-react@^2.0.3":
+  "integrity" "sha512-KnTMAEA/DJNKlWNa4T7uB6+EzvgTXaEagJRGf7hPBTzMyGHARQQl4LRUi0rLPsss5dDW5ZigiORpmwHCRxk4VA=="
+  "resolved" "https://registry.npmjs.org/tawkto-react/-/tawkto-react-2.0.3.tgz"
+  "version" "2.0.3"
 
 "temp-dir@^1.0.0":
   "integrity" "sha1-CnwOom06Oa+n4OvqnB/AvE2qAR0="
