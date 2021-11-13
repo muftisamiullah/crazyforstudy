@@ -81,20 +81,33 @@ function  htmlDecode(content) {
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 }
 
-const calculateTime = (id, eventTime) => {
-    const currentTime = new Date().getTime();
-    var diffTime = (eventTime + 14400000) - currentTime;
-    var duration = moment.duration(diffTime, 'milliseconds');
-    var interval = 1000;
-    if(currentTime < (eventTime + 14400000)){
-        var inter = setInterval(() => {
-            duration = moment.duration(duration - interval, 'milliseconds');
-            if(document.getElementById(id) !== null){
-                document.getElementById(id).innerHTML="";
-                document.getElementById(id).innerHTML=duration.hours() + ":" + duration.minutes() + ":" + duration.seconds();
+function pad (str, max) {
+    str = str.toString();
+    return str.length < max ? pad("0" + str, max) : str;
+}
+
+const calculateTime = (id, eventTime, afterComplete) => {
+    var countDownDate = new Date(eventTime).getTime();        
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate + 14400000 - now;
+        //console.log(distance);
+        let ele = document.getElementById(id);
+        if (distance < 4000) {
+            clearInterval(x);
+            if(ele){
+                ele.innerHTML = afterComplete;
             }
-        }, interval);
-    }   
+        }else{
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = (days*24)+Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if(ele){
+                ele.innerHTML = pad(hours,2) + ":"  + pad(minutes,2) + ":" + pad(seconds,2);
+            }
+        }
+    }, 1000);
 } 
 
 export {

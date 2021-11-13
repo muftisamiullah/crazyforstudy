@@ -111,7 +111,7 @@ export default function MyQuestion(){
                                     <li>Subject: <a href="" className="twzt">{capitalize(item.subject)} </a><i className="fa fa-angle-right mr-1"></i></li>
                                        <li> <a href="" className="twzt"> { capitalize(item.sub_subject)} </a></li>
                                        {/* <li><a href="">Financial Analysis</a></li> */}
-                                       {item.flag == "rejected" ? <div className="rejected"><p>Rejected</p></div> : (item.flag == "pending" ? <><div className="pending"><p>Pending</p></div><div id={`${item.type+key}`} className="timer-ask">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'time-over'}</div></> : <div className="answered"><p>Answered</p></div>)  }
+                                       {item.flag == "rejected" ? <div className="rejected"><p>Rejected</p></div> : (item.flag == "pending" ? <><div className="pending"><p>Pending</p></div><div id={`${item.type+key}`} className="timer-ask">{calculateTime(item.type + key, localDate.getTime(), 'time-over')}</div></> : <div className="answered"><p>Answered</p></div>)  }
                                        {/* <div className="rejected"><p>Rejected</p></div>
                                        <div className="pending"><p>Pending</p></div> */}
                                        <li></li>
