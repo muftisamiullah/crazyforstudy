@@ -12,7 +12,7 @@ import Reviews from '../../../components/website/book-detail/review'
 import BreadCrumb from '../../../components/website/textbook-solutions-manuals/tbs-breadcrumb'
 import { useParams, useHistory, useLocation, Link } from 'react-router-dom'
 import { useQuery, useQueryClient } from 'react-query'
-import {getBook, getChapters, getSections, getExercises, getRelatedBooks, getProblems, getProblemsDirectly, searchQuestions, askForSoltuion} from '../../../libs/book'
+import {getBook, getChapters, getSections, getExercises, getRelatedBooks, getProblems, getProblemsDirectly, searchQuestions, askForSoltuion, askForBook} from '../../../libs/book'
 import {useState, useEffect, useContext} from 'react';
 import BookInfo from '../../../components/website/book-detail/book-info'
 import Highlighter from "react-highlight-words";
@@ -195,7 +195,6 @@ export default function Book(){
         if(state.Subscribe === "true" && answerObject.answer == undefined){
             const link = "/textbook-solutions-manuals/" + notificationLink;
             const res =  await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id, link)
-            console.log(res);
             if(res && res.status == 200){
                     if(directProblem){
                         refetchProblemsDirect();
@@ -204,6 +203,13 @@ export default function Book(){
                     }
             }
         }        
+    }
+
+    const startAuthoring =  async () => {
+        const res =  await askForBook(ISBN13, books[0]?.BookName, books[0].Edition, state._id, state.fullname)
+            if(res && res.status == 200){
+                history.push('/user/my-tbs')
+            }
     }
 
     useEffect(() => {
@@ -516,7 +522,7 @@ export default function Book(){
                         <div className="col-md-12 text-center sendnotification">
                                 <div className="ban-sorry"><img src="/images/sorry.png" className="img-fluid" alt="sorry"/></div>
                                 <h5><strong>Sorry!</strong> We don’t have the solution of this book edition yet.</h5>						
-                                <button type="button" style={{cursor: "pointer !important"}}>Click here to request priority authoring of this edition. <strong>(under development)</strong></button>	
+                                <button type="button" className="btnnn" onClick={startAuthoring}>Click here to request priority authoring of this edition.</button>	
                         </div> :
                         <div className="col-md-12">
                             <div className="bg_qand_ans">  

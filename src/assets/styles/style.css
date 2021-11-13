@@ -2579,7 +2579,7 @@ section.faq.faq_bg_sctn.faq-t p {
             padding: 10px 31px; font-weight:500;
             border-radius: 3px;
             color: #000; font-size:15px;
-            border: 0; cursor:default !important;
+            border: 0; cursor:default;
             text-decoration: none;
             margin-bottom:20px;
         }
@@ -2873,4 +2873,11 @@ i#image4 { padding-top: 4px;}
     background: #f8d021;
     padding: 1px 20px;
     border-radius: 20px;
+}
+.btnnn{
+    cursor: pointer !important;
+}
+a.fromSubs {
+    display: inline-block;
+    margin-bottom: 10px;
 }

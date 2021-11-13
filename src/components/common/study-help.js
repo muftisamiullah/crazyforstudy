@@ -9,7 +9,7 @@ export default function StudyHelp() {
     const { data, isLoading } = useQuery('menus', getNavbarData);
     
     return(
-        <section className="section Study_Help_bg mt-5 mb-5 pb-5">
+        <section className="section Study_Help_bg mt-5 mb-5 pb-5" id="#StudyHelp">
             <div className="container">
             <div className="row">
                 <div className="col-md-12 mb-4 text-left">

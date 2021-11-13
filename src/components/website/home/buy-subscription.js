@@ -10,7 +10,7 @@ export default function BuySubscription(){
                         <div className="col-md-6 float-left">
                             <div className="Text_title text_tb_center3 pb-3">
                                 <h5 className="pb-2">SUBSCRIPTION INCLUDE</h5>
-                                <h2> Get step by step answers <span className="d_b">from <span className="yellow">our</span> expert tutors</span></h2>
+                                <h2>Small Subscription,<span className="d_b"><span className="yellow">Big </span>Benefits.</span></h2>
                                 <p>Subscribing with just $7 per month can give you 24x7 access to our Homework Help and <span>step-by-step</span> Textbook Solutions. We have experts who deliver comprehensive content for your better grades. </p>
                                 <p>Our subscription includes -</p>
                                 <ul className="include_list">

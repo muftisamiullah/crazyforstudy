@@ -9,6 +9,7 @@ import moment from 'moment';
 import {AuthContext} from '../../context/AuthContext';
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 export default function Notifications(){
     const { state } = useContext(AuthContext);

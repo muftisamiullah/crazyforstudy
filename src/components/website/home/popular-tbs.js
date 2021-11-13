@@ -2,6 +2,7 @@ import { useQuery } from 'react-query'
 import { getPopularBooks } from '../../../libs/home'
 import BookImage from '../../common/book-image'
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 export default function PopularTbs(){
 
@@ -14,7 +15,7 @@ export default function PopularTbs(){
                     <div className="col-md-12 text-center mb-5">
                         <div className="Content_Covered_title pb-3">
                             <h2>Our Popular Textbook Solution Manual</h2>
-                            <h3>We cover various subjects from different fields. Explore each subject to learn more.</h3>
+                            <h3>We have already solved over 5000 textbooks. Explore some of the most popular ones below.</h3>
                         </div>
                     </div>
                     {data && data.map((book,key) => {
@@ -41,7 +42,7 @@ export default function PopularTbs(){
                     }
 
                 <div className="col-md-12 btn1 text-center">
-                    <Link to="/textbook-solutions-manuals" className="pl-5 pr-5">View All</Link>
+                    <HashLink to="/textbook-solutions-manuals#StudyHelp" className="pl-5 pr-5">View All</HashLink>
                 </div>
 
                 </div>

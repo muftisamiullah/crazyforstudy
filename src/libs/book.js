@@ -31,6 +31,23 @@ export async function askForSoltuion(book_name,chapter_name,section_name,questio
     }
 }
 
+export async function askForBook(isbn, book_name, edition, id, user_name) {
+    try {
+        const data = {}; 
+        data.isbn = isbn;
+        data.book_name = book_name;
+        data.edition = edition;
+        data.user_Id = id;
+        data.user_name = user_name;
+        data.inStock = true;
+        const res = await authAxios.post(apiUrl + 'books/book/ask-for-book', data)
+        return res;
+    }
+    catch(e){
+        
+    }
+}
+
 export async function getChapters(param) {
     try {
         const res = await axios.get(apiUrl + 'books/book/chapter/'+param.book_isbn)

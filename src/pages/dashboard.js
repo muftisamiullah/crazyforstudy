@@ -9,6 +9,7 @@ import {getNotifications} from '../libs/question'
 import { useQuery } from 'react-query'
 import {AuthContext} from '../context/AuthContext';
 import moment from 'moment';
+import { HashLink } from 'react-router-hash-link';
 
 export default function  Dashboard() {
     const [percentage, setPercentage] = useState(0);
@@ -202,10 +203,17 @@ export default function  Dashboard() {
                                                         <td>{item.created_at.substring(0,10)}</td>
                                                         <td id={`${item.type+key}`}><span className="badge">{currentTime < (localDate.getTime() + 14400000) ? calculateTime(item.type + key, localDate.getTime()) : 'completed'}</span></td>
                                                         <td>
+                                                            {item.type == "ASK50" ? 
+                                                            <HashLink to={item.link+'#ASK50'+item._id}> 
+                                                                <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">
+                                                                View
+                                                                </button> 
+                                                            </HashLink> :
                                                             <Link to={item.link}>
-                                                            <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">
-                                                            View
-                                                            </button> </Link>
+                                                                <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">
+                                                                    View
+                                                                </button>
+                                                            </Link>}
                                                         </td>
                                                 
                                                     </tr>

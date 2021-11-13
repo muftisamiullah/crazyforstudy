@@ -49,8 +49,8 @@ export default function MySubs(){
                                         <th className="w-20">Status</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                        {subscription ? subscription.transactions.map((item,key)=>{
+                                    <tbody>{console.log(subscription)}
+                                        {subscription?.transactions>0 ? subscription.transactions.map((item,key)=>{
                                             if (item.type == "subscription"){
                                                 return(
                                                     <tr key={key}>
@@ -117,7 +117,7 @@ export default function MySubs(){
                                                     <table style={{width: "100%"}}>
                                                         <tbody>
                                                             <tr>
-                                                                <BuyBookSub classname="" text="Buy Subscription"/>
+                                                                <BuyBookSub classname="fromSubs" text="Buy Subscription" />
                                                             </tr>
                                                         </tbody>
                                                     </table>

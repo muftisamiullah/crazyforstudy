@@ -48,13 +48,13 @@ export default function AskQuestion(){
 
    const mutation = useMutation(askAQuestion)
 
-   useEffect(() => {
-      if(subjects && subjects.data){
-         setSubject(MakeSlug(subjects.data[0].subject))
-      }
-      return () => {
-      }
-   }, [subjects])
+   // useEffect(() => {
+   //    if(subjects && subjects.data){
+   //       setSubject(MakeSlug(subjects.data[0].subject))
+   //    }
+   //    return () => {
+   //    }
+   // }, [subjects])
 
    useEffect(() => {
       setSubscribed(localStorage.getItem('subscribed'));
@@ -143,6 +143,7 @@ export default function AskQuestion(){
             setError('You have not selected a sub subject.')
             return;
          }
+         setError('')
          setIsLoading(true);
          let form = new FormData();
          form.append('question',formData.question)
@@ -216,6 +217,7 @@ export default function AskQuestion(){
                                  <div className="col-sm-6 col-md-6 form-group">
                                     <label className="mb-0">Main Subject</label>
                                     <select className="form-control" onChange={getSelectedSubject} name="subject">
+                                       <option value="999">Select Subject</option>
                                        {subjects && subjects.data.map((item,key)=>{
                                           return(
                                              <option value={MakeSlug(item.subject)} key={key} data-subjectid={item._id}>{item.subject}</option>

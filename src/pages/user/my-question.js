@@ -105,7 +105,7 @@ export default function MyQuestion(){
                            let title = item.title;
 
                            return(
-                              <span key={key}>
+                              <span key={key} id={item._id}>
                                  <div className="col-md-12 nav_account1 mt-3 pt-3 bdr_top pd_lr">
                                     <ul className="ul-old mb-0">
                                     <li>Subject: <a href="" className="twzt">{capitalize(item.subject)} </a><i className="fa fa-angle-right mr-1"></i></li>
@@ -137,9 +137,10 @@ export default function MyQuestion(){
                                     {item.flag == "answered" ? 
                                     <>
                                        <h4 className="ans_s"><i className="fa fa-check-circle"></i> Answer and Explanation:</h4>
-                                       <p><><strong>Answer:</strong>
-                                       {/* <span dangerouslySetInnerHTML={{__html: item.shortanswer}}></span> */}
-                                       <span dangerouslySetInnerHTML={{__html: item.completeanswer}}></span></></p>
+                                       {item.shortanswer && <p><strong>Short Answer:</strong>
+                                       <span dangerouslySetInnerHTML={{__html: item.shortanswer}}></span></p>}
+                                       {item.completeanswer && <p><strong>Complete Answer:</strong>
+                                       <span dangerouslySetInnerHTML={{__html: item.completeanswer}}></span></p>}
                                     </>
                                    : (item.flag == "pending" ? <p><strong>Answer: </strong></p> : <p><strong>Comments: </strong><span dangerouslySetInnerHTML={{__html: item.rejectionReason}}></span><br/><span dangerouslySetInnerHTML={{__html: item.rejectionReason1}}></span></p>)}
                                  </div>
