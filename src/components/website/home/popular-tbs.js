@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 import { getPopularBooks } from '../../../libs/home'
 import BookImage from '../../common/book-image'
+import {MakeSlug} from '../../common/make-slug'
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
@@ -21,6 +22,7 @@ export default function PopularTbs(){
                     {data && data.map((book,key) => {
                         return (<div className="col-md-3 pbtm" key={key}>
                                     <div className="our_popular_text">
+                                    <Link to={`/textbook-solutions-manuals/isbn-${book.ISBN13}-${MakeSlug(book.BookName)}-${MakeSlug(book.Edition)}`}>
                                         <div className="our_popular_img">
                                             <BookImage isbn={book.ISBN13}/>
                                             {/* <img src="../images/our-popular/img1.jpg" className="img-fluid" alt=""/> */}
@@ -34,6 +36,7 @@ export default function PopularTbs(){
                                         <div className="star_rating">
                                             <i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star-half-empty"></i>
                                         </div>
+                                    </Link>
                                     </div>
                                 </div>
                                 )
