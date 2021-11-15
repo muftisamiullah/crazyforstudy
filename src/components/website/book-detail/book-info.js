@@ -28,7 +28,7 @@ export default function BookInfo({...props}){
     // },[props])
 
     
-    let isbn_10 = props.bookData.ISBN10.length === 9?'0'+props.bookData.ISBN10:props.bookData.ISBN10;
+    let isbn_10 = props.bookData.ISBN10.padStart(10, "0");
 
     function openAmazonAffilate() {
         let url = `https://www.amazon.com/gp/product/${isbn_10}/?tag=crazyprep-20`
