@@ -71,6 +71,7 @@ export default function Book(){
     //seo 
     const [seo, setSeo] = useState(false);
     const [similarBooks, setSimilarBooks] = useState(false);
+    const [answerFetched, setAnswerFetched] = useState(false);
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
     const [keywords, setKeywords] = useState();
@@ -196,6 +197,7 @@ export default function Book(){
             const link = "/textbook-solutions-manuals/" + notificationLink;
             const res =  await askForSoltuion(books[0]?.BookName,chapterName,sections[0]?.section_name,answerObject.question,answerObject.q_id,answerObject.problem_no, state.email, state._id, link)
             if(res && res.status == 200){
+                    setAnswerFetched(true);
                     if(directProblem){
                         refetchProblemsDirect();
                     }else{
@@ -612,7 +614,7 @@ export default function Book(){
                                                                         {
                                                                         state.isLoggedIn != "true" 
                                                                             ? <Link to={`${loc}`} className="red_text1">Login to Get Answer</Link> 
-                                                                            : <Link to="#" className="red_text1" onClick={()=>{requestAnswer()}}>Request Answer</Link> 
+                                                                            : <Link to="#" className={"red_text1 " + (answerFetched ? "disabled" : "")} onClick={()=>{requestAnswer()}}>{answerFetched ? "Requested" : "Request Answer"}</Link> 
                                                                         }
                                                                     </div>
                                                                 </div>
