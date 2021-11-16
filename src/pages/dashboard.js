@@ -190,7 +190,7 @@ export default function  Dashboard() {
                                                         <td id={`${item.type+key}`}>{calculateTime(item.type + key, localDate.getTime(), '<span class="badge">completed</span>')}</td>
                                                         <td>
                                                             {item.type == "ASK50" ? 
-                                                            <HashLink to={item.link+'#ASK50'+item._id}> 
+                                                            <HashLink to={item.link+'#ASK50'+item.data_Id}> 
                                                                 <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">
                                                                 View
                                                                 </button> 

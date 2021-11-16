@@ -125,20 +125,20 @@ export default function DashboardNavbar({...props}){
         }
     }
 
-    const markAsRead = async(id, type, link, data_id) => {
+    const markAsRead = async(id, type, link) => {
         const res = await readNotification(id);
         let url = "";
         if(!res.error){
-            if(type == "ASK50"){
-                url = link + "#ASK50" + data_id;
-            }
+            // if(type == "ASK50"){
+                url = link;
+            // }
             history.push(url)
         }
     }
-    const [subMenu, setSubMenu] = useState('');
+
     const openSubMenu = (key) => {
         setList(key)
-        setSubMenu('show');
+        // setSubMenu('show');
     }
 
     const isRead = false;
@@ -146,7 +146,7 @@ export default function DashboardNavbar({...props}){
     const { data: notifications, isLoading:notificationsIsLoading, error:notificationsError } = useQuery([`notifications-${isRead}`], () => getNotifications({user_Id : state._id, type: 'QA'}, isRead),{ staleTime : Infinity, enabled : !!session })
     
     return( <>
-            <nav className="navbar navbar-expand-lg navbar-light navbar-dashboad  navbar_dashboard1 p-l-5 p-r-5">
+            <nav className="navbar  navbar_dashboard1 p-l-5 p-r-5">
                 <ul className="nav navbar-nav navbar-left nav_left1 mr-auto">
                     <li>
                         <div className="navbar-header">
@@ -156,41 +156,39 @@ export default function DashboardNavbar({...props}){
                     </li>      
                 </ul>
    
-                <ul className="nav navbar-nav navbar-light  nav_right1 solu_nav ml-auto">
-                    <li className="nav-item dp_n">
-                        <HashLink to="/q-and-a#subjects" className="nav-link">Q and A
-                        </HashLink>
+                <ul className="nav navbar-nav navbar-left nav_right1 ml-auto">
+                    <li className="dp_n">
+                        <Link to="/q-and-a" className="mega-menu">Q and A</Link>           
                     </li>
-                    <li className={`nav-item dp_n  ${classname}`} onMouseEnter={()=>{openMenu()}}>
-                        <HashLink to="/textbook-solutions-manuals#solution-manuals" className="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions Manual  </HashLink>
+                    <li className="nav-item megamenu-li dmenu dp_n" onMouseEnter={()=>{openMenu()}}>
+                        <Link to="/textbook-solutions-manuals" className="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions Manual  </Link>
                         {showMenu &&
-                        <ul className={`dropdown-menu dropdownmenu_main ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>hideMenu()}>
+                        <div className={`dropdown-menu megamenu sm-menu border-top ${classname}`} aria-labelledby="dropdown01"  onMouseLeave={()=>hideMenu()}>
+                            <div className="row">
                                 {data && data.map((item,key)=>{
-                                    return(<li className="dropright" key={key}>
-                                        <Link className={"dropdown-item " + (list === key ? 'active' : '')} data-toggle="dropdown" to={`/textbook-solutions-manuals/${MakeSlug(item.subject)}`} onMouseEnter={()=>{openSubMenu(key)}}>
-                                            <h6><img src={`/images/nav-icons/${MakeSlug(item.subject)}.png`} className="img-fluid" alt=""/> {item.subject} <i className="fa fa-angle-right"></i></h6>
-                                        </Link> 
-                                        <div className={"dropdown-menu dropdown_main2 " + (list === key ? 'show' : '')}> 
+                                    return(  
+                                        <div className={`col-sm-6 nav_pding ${key % 2 == 1 ? 'nav_sm_menu_bg' : ''} col-lg-2 border-right mb-4`} key={key}>
+                                            <Link to={`/textbook-solutions-manuals/${MakeSlug(item.subject)}`}><h6>{item.subject} <img src={`/images/nav-icons/${MakeSlug(item.subject)}.png`} className="img-fluid" alt=""/> <i className="fa fa-angle-down"></i></h6></Link>
                                             {item.sub_subject.map((it,key)=>{
-                                                return(
-                                                    <HashLink to={`/textbook-solutions-manuals/${MakeSlug(item.subject)+'/'+MakeSlug(it.sub_subject)}`} key={key} className="dropdown-item" onClick={handleClick}><i className="fa fa-circle"></i> {it.sub_subject}</HashLink>
-                                                )
+                                                return <Link to={`/textbook-solutions-manuals/${MakeSlug(item.subject)+'/'+MakeSlug(it.sub_subject)}`} key={key} className="dropdown-item" onClick={handleClick}>{it.sub_subject}</Link>
                                             })}
-                                        </div>
-                                    </li>)
+                                        </div> 
+                                    )
                                 })}
-                        </ul>}
-                    </li>
-                    <li className="nav-item dropdown_reltv dp_n" onMouseEnter={()=>{openMenuA()}}>
+                            </div>
+                        </div>
+                        }
+                    </li> 
+                    <li className="nav-item dmenu Writing_help_top dp_n" onMouseEnter={()=>{openMenuA()}}>
                         <Link to="/writing-help" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Writing Help
                         </Link>
                         {showAMenu && 
                         <div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>hideMenuA()}>
-                            <Link to="/writing-help/online-assignment-help" className="dropdown-item"><img src="/images/nav-icons/online-assignment-help.png" className="img-fluid" alt=""/> Assignment Help </Link>
+                            <Link to="/writing-help/online-assignment-help" className="dropdown-item"><img src="/images/nav-icons/online-assignment-help.png" className="img-fluid" alt=""/> Assignment Help</Link>
                         </div>}
                     </li>
-                    <li className={`nav-item dmenu float-right pt_sty dropdown  ${classname}`} ref={profileRef} onMouseOver={openDropdown}>
+                    <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} ref={profileRef} onMouseOver={openDropdown}>
                         <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span className="my_pics_img m-r-60 mt-0">
                                 <div className="navbar-default-profile-name" style={{display:(props.data && props.data.img ? 'none' : 'block')}}>
@@ -219,7 +217,7 @@ export default function DashboardNavbar({...props}){
                         </form><i className="fa fa-close close_btn_top"></i> 
                     </div>
                     
-                    <li className={`dropdown float-right pt_sty bell_noti ${classname}`} ref={myRef}>
+                    <li className={`dropdown float-right pt_sty ${classname}`} ref={myRef}>
                         <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" onMouseOver={()=>{openNotification()}}>
                             <i className="fa fa-bell zmdi zmdi-notifications"></i> 
                         </a>
@@ -233,7 +231,7 @@ export default function DashboardNavbar({...props}){
                                     {notifications && notifications.data.map((item,key)=>{
                                          var date = new Date(item.created_at);
                                         return(
-                                            <li key={key} onClick={()=>{markAsRead(item._id,item.type,item.link, item.data_Id)}}>
+                                            <li key={key} onClick={()=>{markAsRead(item._id,item.type,item.link)}}>
                                                
                                                 <Link to="#">
                                                         <div className="media">

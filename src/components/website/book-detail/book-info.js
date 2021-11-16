@@ -26,7 +26,6 @@ export default function BookInfo({...props}){
     //         setUpdatedEdition(props.bookData.Edition + ed + ' Edition')
     //     }
     // },[props])
-
     
     let isbn_10 = props.bookData.ISBN10.padStart(10, "0");
 

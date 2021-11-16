@@ -562,7 +562,7 @@ background: #f6d123;
 .prduct_details_text ul.books_wtext li span{font-weight:500;}
  
 .prduct_details_img li img{width:100%; padding:20px; border:1px solid #b7b7b7;}
-.prduct_details_img li.buy_with_amazon{height:40px; line-height:40px; margin-top:10px; color:#000; text-transform:uppercase; font-weight:bold;  background:#ffd700;}
+.prduct_details_img li.buy_with_amazon{height:40px; cursor:pointer;line-height:40px; margin-top:10px; color:#000; text-transform:uppercase; font-weight:bold;  background:#ffd700;}
 .prduct_details_img li.buy_with_amazon i{height: 40px;
     width: 50px;
      background:#e9c60a;
@@ -3030,4 +3030,8 @@ a.disabled {
 
 .dropdown-menu.dropdown_main2 {
     box-shadow: none !important;
+}
+
+li.nav-item.dropdown.dropdown_reltv {
+    position: relative;
 }

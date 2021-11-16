@@ -104,11 +104,22 @@ export default function MyTbs(){
                                                 <tbody>
                                                 {textbooks && textbooks.data.map((item,key)=>{
                                                     return(
-                                                        <tr key={key}>
+                                                        <tr key={key}>{console.log(item)}
                                                             <td><span className="">{key+1}</span></td>
                                                             <td><span className="textbook-t">{item.isbn}</span></td>
-                                                            <td>{item.book_name ? 'Available' : 'Not Available'}</td>
-                                                            <td>{item.book_name ? <Link to={`/textbook-solutions-manuals/isbn-${item.isbn}-${MakeSlug(item.book_name)}-${MakeSlug(item.edition)}`} className="btn btn-info btn-sm btn-rounded view-reciept-btn"> View Now </Link> : <button className="btn btn-info btn-sm btn-rounded view-reciept-btn">Will be available in 3-4 working Days</button>}</td>
+                                                            <td>{!item.inStock  ? 'Available' : 'Not Available'}</td>
+                                                            <td>{item.inStock && item.authoring 
+                                                                ? 
+                                                                <Link to={`/textbook-solutions-manuals/isbn-${item.isbn}-${MakeSlug(item.book_name)}-${MakeSlug(item.edition)}`} className="btn btn-info btn-sm btn-rounded view-reciept-btn"> Chapters will be made available in 3-4 days </Link> 
+                                                                : 
+                                                                    (item.inStock && !item.authoring
+                                                                        ? 
+                                                                        <Link to={`/textbook-solutions-manuals/isbn-${item.isbn}-${MakeSlug(item.book_name)}-${MakeSlug(item.edition)}`} className="btn btn-info btn-sm btn-rounded view-reciept-btn">View Now</Link> 
+                                                                        : 
+                                                                        <button className="btn btn-info btn-sm btn-rounded view-reciept-btn">Will be available in 3-4 working Days</button>
+                                                                    )
+                                                                }
+                                                            </td>
                                                             <td>
                                                                 <span className="trash_textbooks" onClick={()=>{deleteTextBuk(item._id)}} style={{cursor:"pointer"}}><i className="fa fa-trash"></i></span>
                                                             </td>

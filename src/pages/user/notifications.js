@@ -10,6 +10,7 @@ import {AuthContext} from '../../context/AuthContext';
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 import { calculateTime } from '../../components/common/make-slug'
+import { HashLink } from 'react-router-hash-link';
 
 export default function Notifications(){
     const { state } = useContext(AuthContext);
@@ -73,10 +74,16 @@ export default function Notifications(){
                                                         <td>{item.created_at.substring(0,10)}</td>
                                                         <td id={`${item.type+key}`}>{calculateTime(item.type + key, localDate.getTime(), '<span class="badge">completed</span>')}</td>
                                                         <td>
+                                                            {item.type == "ASK50" ? 
+                                                            <HashLink to={item.link+'#ASK50'+item.data_Id}> 
+                                                                <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">
+                                                                View
+                                                                </button> 
+                                                            </HashLink> :
                                                             <Link to={item.link}>
                                                                 <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse2270" aria-expanded="false" aria-controls="collapse2270">View
                                                                 </button>
-                                                            </Link>
+                                                            </Link>}
                                                         </td>
                                                 
                                                     </tr>

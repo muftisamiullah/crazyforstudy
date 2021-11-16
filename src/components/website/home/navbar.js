@@ -86,10 +86,9 @@ export default function Navbar() {
         if(subMenu === "show"){
             setList(999)
             setSubMenu('');
-        }else{
-            setList(key)
-            setSubMenu('show');
         }
+        setList(key)
+        setSubMenu('show');
     }
 
     const openSubMenu = (key) => {

@@ -35,10 +35,21 @@ export default function MyQuestion(){
 
    //timer creation from here
 
-
    if(state.Subscribe == "false"){
       history.push('/paynow')
    }
+
+   useEffect(()=>{
+      const hash = history.location.hash;
+      const hash1 = hash.slice(1);
+      console.log(hash1)
+      var elmnt = document.getElementById(hash1);
+      console.log(elmnt)
+      if(elmnt){
+         console.log(elmnt)
+         elmnt.scrollIntoView();
+      }
+   },[questions]);
 
    return(
       <>
@@ -105,7 +116,7 @@ export default function MyQuestion(){
                            let title = item.title;
 
                            return(
-                              <span key={key} id={item._id}>
+                              <span key={key} id={"ASK50"+item._id}>
                                  <div className="col-md-12 nav_account1 mt-3 pt-3 bdr_top pd_lr">
                                     <ul className="ul-old mb-0">
                                     <li>Subject: <a href="" className="twzt">{capitalize(item.subject)} </a><i className="fa fa-angle-right mr-1"></i></li>

@@ -40,6 +40,7 @@ export async function askForBook(isbn, book_name, edition, id, user_name) {
         data.user_Id = id;
         data.user_name = user_name;
         data.inStock = true;
+        data.authoring = true;
         const res = await authAxios.post(apiUrl + 'books/book/ask-for-book', data)
         return res;
     }
