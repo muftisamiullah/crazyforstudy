@@ -1,6 +1,6 @@
 export default function About(){
     return(
-        <section className="section" id="#StudyHelp">
+        <section className="section" id="StudyHelp">
             <div className="container">
                 <div className="row">
                 <div className="col-md-12 Content_Covered_title mb-4 pb-2  text-center pt-5 get-homework">

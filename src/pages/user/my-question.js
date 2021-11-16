@@ -42,11 +42,8 @@ export default function MyQuestion(){
    useEffect(()=>{
       const hash = history.location.hash;
       const hash1 = hash.slice(1);
-      console.log(hash1)
       var elmnt = document.getElementById(hash1);
-      console.log(elmnt)
       if(elmnt){
-         console.log(elmnt)
          elmnt.scrollIntoView();
       }
    },[questions]);

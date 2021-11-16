@@ -12,7 +12,6 @@ import About from "../../components/website/textbook-solutions-manuals/about";
 import AskAnExpert from "../../components/website/textbook-solutions-manuals/ask-an-expert";
 import CollegeTextbooks from "../../components/website/textbook-solutions-manuals/college-texbooks";
 import StepByStep from "../../components/website/textbook-solutions-manuals/step-by-step";
-import {Helmet} from 'react-helmet-async'
 import { useLocation } from "react-router-dom";
 import Seo from '../../components/common/seo'
 import Marquee from '../../components/common/marquee';
