@@ -27,6 +27,14 @@ export default function BookInfo({...props}){
     //     }
     // },[props])
 
+    
+    let isbn_10 = props.bookData.ISBN10.padStart(10, "0");
+
+    function openAmazonAffilate() {
+        let url = `https://www.amazon.com/gp/product/${isbn_10}/?tag=crazyprep-20`
+        window.open(url, '_blank').focus();
+    }
+
     return (
         <section className="section font_sz text_justify pt-5 pb-4">
             <div className="container">
@@ -35,7 +43,7 @@ export default function BookInfo({...props}){
                         <div className="prduct_details_img">
                             <ul>
                                 <li><span><BookImage isbn={props.bookData && props.bookData.ISBN13} altText={props.altText && props.altText}/></span></li>
-                                <li className="buy_with_amazon"><i className="fa fa-shopping-bag"></i> BUY WITH AMAZON</li>
+                                <li className="buy_with_amazon" onClick={openAmazonAffilate}><i className="fa fa-shopping-bag"></i> BUY WITH AMAZON</li>
                             </ul>
                         </div>
                     </div>
