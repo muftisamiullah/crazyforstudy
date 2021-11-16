@@ -9,6 +9,7 @@ import {getNotifications, readNotification} from '../../../libs/question'
 import {Helmet} from 'react-helmet-async'
 import {AuthContext} from '../../../context/AuthContext';
 import { imageUrl } from '../../../config/config';
+import { HashLink } from 'react-router-hash-link';
 //import tawkTo from "tawkto-react";
 
 export default function DashboardNavbar({...props}){
@@ -32,7 +33,7 @@ export default function DashboardNavbar({...props}){
     const [showAMenu,setShowAMenu] = useState(false);
     const {state, dispatch} = useContext(AuthContext);
     const session = state.isLoggedIn;
-
+    const [list, setList] = useState(0);
 
     /////
     const myRef = useRef();
@@ -135,6 +136,11 @@ export default function DashboardNavbar({...props}){
         }
     }
 
+    const openSubMenu = (key) => {
+        setList(key)
+        // setSubMenu('show');
+    }
+
     const isRead = false;
     const { data, isLoading } = useQuery('menus', getNavbarData,{ staleTime:Infinity})
     const { data: notifications, isLoading:notificationsIsLoading, error:notificationsError } = useQuery([`notifications-${isRead}`], () => getNotifications({user_Id : state._id, type: 'QA'}, isRead),{ staleTime : Infinity, enabled : !!session })
@@ -165,8 +171,6 @@ export default function DashboardNavbar({...props}){
                                             <Link to={`/textbook-solutions-manuals/${MakeSlug(item.subject)}`}><h6>{item.subject} <img src={`/images/nav-icons/${MakeSlug(item.subject)}.png`} className="img-fluid" alt=""/> <i className="fa fa-angle-down"></i></h6></Link>
                                             {item.sub_subject.map((it,key)=>{
                                                 return <Link to={`/textbook-solutions-manuals/${MakeSlug(item.subject)+'/'+MakeSlug(it.sub_subject)}`} key={key} className="dropdown-item" onClick={handleClick}>{it.sub_subject}</Link>
-                                                // return <Link to={{pathname:`${'textbook-solutions-manuals/'+item.subject.toLowerCase().replace(/ /g,"-")+'/'+it.sub_subject.toLowerCase().replace(/ /g,"-")}`}} key={key}><a className="dropdown-item">{it.sub_subject}</a></Link>
-                                                // return <Link to={{pathname: 'textbook-solutions-manuals', query: {subject: item.subject.toLowerCase().replace(/ /g,"-"), sub_subject_name:it.sub_subject.toLowerCase().replace(/ /g,"-")} }} key={key}><a className="dropdown-item">{it.sub_subject}</a></Link>
                                             })}
                                         </div> 
                                     )
@@ -175,6 +179,26 @@ export default function DashboardNavbar({...props}){
                         </div>
                         }
                     </li> 
+                    {/* <li className={`nav-item dropdown ${classname}`} onMouseEnter={()=>{openMenu()}}>
+                            <HashLink to="/textbook-solutions-manuals#solution-manuals" className="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions Manual  </HashLink>
+                            {showMenu &&
+                            <ul className={`dropdown-menu dropdownmenu_main ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>hideMenu()}>
+                                    {data && data.map((item,key)=>{
+                                        return(<li className="dropright" key={key}>
+                                            <Link className={"dropdown-item " + (list === key ? 'active' : '')} data-toggle="dropdown" to={`/textbook-solutions-manuals/${MakeSlug(item.subject)}`} onMouseEnter={()=>{openSubMenu(key)}}>
+                                                <h6><img src={`/images/nav-icons/${MakeSlug(item.subject)}.png`} className="img-fluid" alt=""/> {item.subject} <i className="fa fa-angle-right"></i></h6>
+                                            </Link> 
+                                            <div className={"dropdown-menu dropdown_main2 " + (list === key ? 'show' : '')}> 
+                                                {item.sub_subject.map((it,key)=>{
+                                                    return(
+                                                        <HashLink to={`/textbook-solutions-manuals/${MakeSlug(item.subject)+'/'+MakeSlug(it.sub_subject)}`} key={key} className="dropdown-item" onClick={handleClick}><i className="fa fa-circle"></i> {it.sub_subject}</HashLink>
+                                                    )
+                                                })}
+                                            </div>
+                                        </li>)
+                                    })}
+                            </ul>}
+                        </li> */}
                     <li className="nav-item dmenu Writing_help_top dp_n" onMouseEnter={()=>{openMenuA()}}>
                         <Link to="/writing-help" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Writing Help
@@ -185,16 +209,13 @@ export default function DashboardNavbar({...props}){
                         </div>}
                     </li>
                     <li className={`nav-item dmenu float-right pt_sty dropdown ${classname}`} ref={profileRef} onMouseOver={openDropdown}>
-                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><
-                            span className="my_pics_img m-r-60 mt-0">
+                        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span className="my_pics_img m-r-60 mt-0">
+                                <div className="navbar-default-profile-name" style={{display:(props.data && props.data.img ? 'none' : 'block')}}>
+                                {props.data && props.data.Name ? props.data.Name.substring(0,1).toUpperCase() : '...'}</div>
 
-<div className="navbar-default-profile-name" style={{display:(props.data && props.data.img ? 'none' : 'block')}}>
-{props.data && props.data.Name ? props.data.Name.substring(0,1).toUpperCase() : '...'}</div>
-
-{props.data && props.data.img && <img src={props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img}
-className="img-fluid" alt="User"/>}
-
-                            
+                                {props.data && props.data.img && <img src={props.data.img.includes('http') ? props.data.img : imageUrl + props.data.img}
+                                className="img-fluid" alt="User"/>}
                             </span>
                             </a>
                         {showDropdown && <><div className={`dropdown-menu sm-menu ${classname}`} aria-labelledby="navbarDropdown" onMouseLeave={()=>{hideDropdown()}}>
