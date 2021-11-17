@@ -22441,3 +22441,24 @@ position: absolute;
     li.nav-item.dmenu.float-right.pt_sty.dropdown.show  .dropdown-menu.sm-menu.show a{margin-top: 0px;
         
     }
+
+
+    .my-ques {
+        background: #f8d021;
+    }
+    .my-ques .col-md-12.nav_account1.answer_1.mt-3.mb-5.pd_lr {
+        margin-bottom: 0 !important;
+        border: none;     padding-bottom: 30px;
+    }
+    .my-ques .col-md-12.nav_account1.answer_1.mt-3.mb-5.pd_lr p {
+        margin-bottom: 0px;
+    }
+    
+    .my-ques .col-md-12.nav_account1.mt-3.pt-3.bdr_top.pd_lr {
+        margin-top: 0px !important;
+    }
+    .hello-ques .col-md-12.nav_account1.mt-3.pt-3.bdr_top.pd_lr {
+    margin-top: 0 !important;
+}
+.hello-ques .col-md-12.nav_account1.answer_1.mt-3.mb-5.pd_lr {
+    margin-bottom: 0 !important;}

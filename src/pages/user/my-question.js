@@ -18,6 +18,7 @@ export default function MyQuestion(){
    const session = state.isLoggedIn;
    const [ flag, setFlag ] = useState('all');
    const [display, setDisplay ] = useState('none');
+   const [hashes, setHashes ] = useState('');
    const { data: user, isLoading:userIsLoading, error:userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
    const { data: questions, isLoading:questionsIsLoading, error:questionsError } = useQuery([`user-questions-${flag}`], () => getQuestions({user_Id: state._id, type: 'QA'}, flag),{staleTime:Infinity, enabled: !!session})
    
@@ -42,6 +43,7 @@ export default function MyQuestion(){
    useEffect(()=>{
       const hash = history.location.hash;
       const hash1 = hash.slice(1);
+      setHashes(hash1)
       var elmnt = document.getElementById(hash1);
       if(elmnt){
          elmnt.scrollIntoView();
@@ -113,7 +115,7 @@ export default function MyQuestion(){
                            let title = item.title;
 
                            return(
-                              <span key={key} id={"ASK50"+item._id}>
+                              <div key={key} id={"ASK50"+item._id} className={"hello-ques " + (hashes == "ASK50"+item._id ?  "my-ques" : "")}>
                                  <div className="col-md-12 nav_account1 mt-3 pt-3 bdr_top pd_lr">
                                     <ul className="ul-old mb-0">
                                     <li>Subject: <a href="" className="twzt">{capitalize(item.subject)} </a><i className="fa fa-angle-right mr-1"></i></li>
@@ -152,7 +154,7 @@ export default function MyQuestion(){
                                     </>
                                    : (item.flag == "pending" ? <p><strong>Answer: </strong></p> : <p><strong>Comments: </strong><span dangerouslySetInnerHTML={{__html: item.rejectionReason}}></span><br/><span dangerouslySetInnerHTML={{__html: item.rejectionReason1}}></span></p>)}
                                  </div>
-                              </span>
+                              </div>
                            )
                         })}</>}
                      </div>

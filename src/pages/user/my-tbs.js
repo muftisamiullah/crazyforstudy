@@ -110,13 +110,13 @@ export default function MyTbs(){
                                                             <td>{!item.inStock  ? 'Available' : 'Not Available'}</td>
                                                             <td>{item.inStock && item.authoring 
                                                                 ? 
-                                                                <Link to={`/textbook-solutions-manuals/isbn-${item.isbn}-${MakeSlug(item.book_name)}-${MakeSlug(item.edition)}`} className="btn btn-info btn-sm btn-rounded view-reciept-btn"> Chapters will be made available in 3-4 days </Link> 
+                                                                <Link to={`/textbook-solutions-manuals/isbn-${item.isbn}-${MakeSlug(item.book_name)}-${MakeSlug(item.edition)}`} className="btn btn-info btn-sm btn-rounded view-reciept-btn"> Questions will be available in 3-4 working days </Link> 
                                                                 : 
                                                                     (item.inStock && !item.authoring
                                                                         ? 
                                                                         <Link to={`/textbook-solutions-manuals/isbn-${item.isbn}-${MakeSlug(item.book_name)}-${MakeSlug(item.edition)}`} className="btn btn-info btn-sm btn-rounded view-reciept-btn">View Now</Link> 
                                                                         : 
-                                                                        <button className="btn btn-info btn-sm btn-rounded view-reciept-btn">Will be available in 3-4 working Days</button>
+                                                                        <button className="btn btn-info btn-sm btn-rounded view-reciept-btn">Will be available in 3-4 working days</button>
                                                                     )
                                                                 }
                                                             </td>
