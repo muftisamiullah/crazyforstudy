@@ -10,20 +10,9 @@ import {Helmet} from 'react-helmet-async'
 import {AuthContext} from '../../../context/AuthContext';
 import { imageUrl } from '../../../config/config';
 import { HashLink } from 'react-router-hash-link';
-//import tawkTo from "tawkto-react";
+import TawkTo from '../../common/tawkto';
 
-export default function DashboardNavbar({...props}){
-    const tawkToPropertyId = '5c3332467a7b8d5de7293fcb'
-
-    // Direct Chat Link
-    // https://tawk.to/chat/tawkToPropertyId/tawkToKey
-
-    const tawkToKey = '99ad2d1fc594db8f70e110920ae1e11530800c0c'
-
-    useEffect(() => {
-        //tawkTo(tawkToPropertyId, tawkToKey)
-    })
-    
+export default function DashboardNavbar({...props}){  
     const history = useHistory();
     const params =  useParams();
     const [ showNotification, setShowNotification ] = useState(false);
@@ -145,7 +134,7 @@ export default function DashboardNavbar({...props}){
     const { data, isLoading } = useQuery('menus', getNavbarData,{ staleTime:Infinity})
     const { data: notifications, isLoading:notificationsIsLoading, error:notificationsError } = useQuery([`notifications-${isRead}`], () => getNotifications({user_Id : state._id, type: 'QA'}, isRead),{ staleTime : Infinity, enabled : !!session })
     
-    return( <>
+    return( <><TawkTo/>
             <nav className="navbar navbar-expand-lg navbar-light navbar-dashboad  navbar_dashboard1 p-l-5 p-r-5">
                 <ul className="nav navbar-nav navbar-left nav_left1 mr-auto">
                     <li>
@@ -258,8 +247,8 @@ export default function DashboardNavbar({...props}){
                 </ul>
             </nav>
 
-            <div className="chat-launcher">
-            </div>
+            {/* <div className="chat-launcher">
+            </div> */}
 
             <div className="chat-wrapper">
                 <div className="card">
