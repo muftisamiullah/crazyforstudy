@@ -107,7 +107,7 @@ export default function MyTbs(){
                                                         <tr key={key}>{console.log(item)}
                                                             <td><span className="">{key+1}</span></td>
                                                             <td><span className="textbook-t">{item.isbn}</span></td>
-                                                            <td>{item.inStock && item.authoring ? 'Not Available' : (item.inStock && !item.authoring ? 'Available' : 'Not Available')}</td>
+                                                            <td>{item.inStock && item.authoring ? 'Available' : (item.inStock && !item.authoring ? 'Available' : 'Not Available')}</td>
                                                             <td>{item.inStock && item.authoring 
                                                                 ? 
                                                                 <Link to={`/textbook-solutions-manuals/isbn-${item.isbn}-${MakeSlug(item.book_name)}-${MakeSlug(item.edition)}`} className="btn btn-info btn-sm btn-rounded view-reciept-btn"> Questions will be available in 3-4 working days </Link> 
