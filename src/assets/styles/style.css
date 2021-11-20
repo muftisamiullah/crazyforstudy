@@ -3035,3 +3035,17 @@ a.disabled {
 li.nav-item.dropdown.dropdown_reltv {
     position: relative;
 }
+
+.writing_help_banner ul.list_banner1 li {
+    text-align: left;
+}
+.features_text.writing-help-2.btn-56 .btn1 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.features_text.writing-help-2.btn-56 {
+    padding-bottom: 50px;
+    margin-bottom: 0;
+}

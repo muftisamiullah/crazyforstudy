@@ -153,15 +153,10 @@ export default function  MyProfile() {
             setPreview(undefined)
             return
         }
-
-        console.log('imageUrl : '+imageUrl);
-        
         const objectUrl = URL.createObjectURL(imageUrl)
-        console.log('preview : '+objectUrl);
         setPreview(objectUrl)
         // free memory when ever this component is unmounted
         return () => URL.revokeObjectURL(objectUrl)
-        
     }, [imageUrl])
 
     const changeP = (e) => {

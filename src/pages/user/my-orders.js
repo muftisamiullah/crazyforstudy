@@ -8,6 +8,7 @@ import {useState, useContext} from 'react'
 import {getAllAssignments} from '../../libs/assignment'
 import {AuthContext} from '../../context/AuthContext';
 import {imageUrl} from '../../config/config';
+import {calculateTime1} from '../../components/common/make-slug';
 
 export default function MyOrders(){
    const { state } = useContext(AuthContext);
@@ -18,7 +19,11 @@ export default function MyOrders(){
    const { data: assignments, isLoading: assignmentsIsLoading, error: assignmentsError } = useQuery(['my-orders'], () => getAllAssignments({user_Id:state._id}),{staleTime:Infinity, enabled: !!session})
 
    const openCollapse = (data) => {
-      setDisplay(data);
+      if(display == data){
+         setDisplay('')
+      }else{
+         setDisplay(data);
+      }
    }
 
   const location = useLocation();
@@ -42,27 +47,34 @@ export default function MyOrders(){
                      <table className="table table-hover m-b-0 my-order-new my_subscrption_table space">
                         <thead>
                            <tr className="table_title order">
-                              <th className="w-25">S.No</th>
-                              <th className="w-25">Order ID</th>
-                              <th className="w-25">Date</th>
-                              <th className="w-25">Action</th>
+                              <th className="w-20">S.No</th>
+                              <th className="w-20">Order ID</th>
+                              <th className="w-20">Deadline Date (Time Rem.)</th>
+                              <th className="w-20">Assignment Status</th>
+                              <th className="w-20">Action</th>
                            </tr>
                         </thead>
                         <tbody>
                            {assignments && assignments.assignment.map((item,key)=>{
+                              var utcDate = item.deadline_date;  // ISO-8601 formatted date returned from server
+                              var localDate = new Date(utcDate);
                               return(
                                  <tr key={key}>
-                                 <td colSpan="4" style={{padding:"0px"}}>
+                                 <td colSpan="5" style={{padding:"0px"}}>
                                     <div className="card-header pl-0 pr-0">
                                        <table style={{width: "100%"}}>
                                           <tbody>
                                              <tr>
-                                                <td className="w-25"><span>{key+1}</span></td>
-                                                <td className="w-25"><span className="textbook-t">{item._id}</span></td>
-                                                <td className="w-25">
-                                                   <span>{item?.deadline_date?.substring(0,10)}</span>
+                                                <td className="w-20"><span>{key+1}</span></td>
+                                                <td className="w-20"><span className="textbook-t">{item._id}</span></td>
+                                                <td className="w-20">
+                                                   <span>{localDate.toLocaleString()}</span><hr/>
+                                                   <span id={`${item._id+"-"+key}`}>{calculateTime1(item._id +"-"+ key, localDate.getTime(), '<span class="badge">completed</span>')}</span>
                                                 </td>
-                                                <td className="w-25">
+                                                <td className="w-20">
+                                                   <span>{item?.assignment_status}</span>
+                                                </td>
+                                                <td className="w-20">
                                                    <button className="btn btn-link collapsed view-reciept-btn" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" onClick={()=>{openCollapse(`collapse${key}`)}}>
                                                    View Receipt
                                                    </button>

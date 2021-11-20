@@ -21,6 +21,9 @@ export default function MyOrderDetails(){
 
     const [data, setData] = useState();
     const [discount, setDiscount] = useState();
+    const [localDate, setLocalDate] = useState();
+
+    const { data: user, isLoading: userIsLoading, error: userError } = useQuery(['user-profile'], () => getUser({email:state.email}),{initialData: undefined,staleTime:Infinity, enabled: !!session})
 
     const params = useParams();
     const history = useHistory();
@@ -37,7 +40,10 @@ export default function MyOrderDetails(){
     useEffect(()=>{
         if(data){
             setDiscount((data.amount * 30)/100)
+            var utcDate = data.deadline_date;  // ISO-8601 formatted date returned from server
+            setLocalDate(new Date(utcDate));
         }
+        
     },[data])
 
     useEffect(()=>{
@@ -51,9 +57,14 @@ export default function MyOrderDetails(){
             form.append('file',data.image0)
             form.append('deadline_time',data.deadline_time)
             form.append('pages',data.pages)
+            form.append('amount',(data.pages) *10)
             form.append('deadline_date',data.deadline_date)
             form.append('reference',data.reference)
-            form.append('user_Id',session?.user?._id);
+            form.append('referenceString',data.referenceString)
+            form.append('user_Id',state._id);
+            form.append('email',state.email);
+            form.append('type','ASSIGNMENT');
+            form.append('link','/user/my-orders');
             const res =  await saveAssignmentLocal(form)
             history.push(`/user/my-order-details/${res.assign._id}`, undefined, { shallow: true })
             if(res.assign._id){
@@ -80,8 +91,8 @@ export default function MyOrderDetails(){
                 <link rel="icon" href="/favicon.ico" />
                 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
             </Helmet>
-            <DashboardNavbar/>
-            <SideBar/>
+            <DashboardNavbar data={user}/>
+            <SideBar data={user}/>
             <section className="content user profile-page">
                 <div className="block-header">
                     <div className="row">
@@ -227,7 +238,7 @@ export default function MyOrderDetails(){
                                                     </div>
                                                     <div className="col-md-6 aas_details">
                                                         <div className="contain_data">
-                                                            <p className="detail_item">{data && data?.deadline_date?.substring(0,10) + ', ' + data.deadline_time}</p>
+                                                            <p className="detail_item">{localDate?.toLocaleString()}</p>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 aas_details">
@@ -247,7 +258,7 @@ export default function MyOrderDetails(){
                                                     </div>
                                                     <div className="col-md-6 aas_details">
                                                         <div className="contain_data">
-                                                            <p className="detail_item">{data && data.reference}</p>
+                                                            <p className="detail_item">{data && data.referenceString}</p>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 aas_details">
@@ -487,7 +498,7 @@ export default function MyOrderDetails(){
                                                     <h4 className="m-t-2 Credits_Earned">Proceed by clicking</h4>
                                                     {/* <a href="#" className="btn  ml-auto Complete pay mt-2"><img src="/images/paypal.png" className="img-fluid" alt="paypal"/> </a>
                                                     or */}
-                                                    <Razorpay type="subscription"/>
+                                                    <Razorpay type="assignment" amt={data && (data.amount * 50)/100}/>
                                                     {/*<a href="#" className="btn mt-4 mb-4  ml-auto Add_Money"><img src="/images/razorpay.png" className="img-fluid" alt="razorpay"/>  </a>
                                                     <br/>*/}
                                                     {/* <a href="#" className="btn  ml-auto Complete pay mt-2">Pay From Wallet </a> */}

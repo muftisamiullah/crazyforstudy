@@ -18,7 +18,7 @@ function BookImage({isbn,altText}) {
                     setImage(`https://crazyforstudy.s3.ap-south-1.amazonaws.com/isbn/${isbn}-us-300.jpg`);
                 }
             }catch(e){
-                setImage(`https://backup.crazyforstudy.com/uploads/book-images-with-text/IMG-${isbn}.jpg`);
+                setImage(`http://backup.crazyforstudy.com/uploads/book-images-with-text/IMG-${isbn}.jpg`);
                 // setImage(`/images/book-img.jpg`);
             }
         }

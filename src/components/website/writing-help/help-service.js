@@ -12,9 +12,9 @@ export default function HelpService(){
                     </div>
                 </div>
                 <div className="col-md-6 col-lg-4 text-center">
-                    <div className="features_text  writing-help-2">
+                    <div className="features_text  writing-help-2 btn-56">
                         <span><img src="/images/icon1.png" className="img-fluid" alt=""/></span>
-                        <h3>Homework Help Services </h3>
+                        <h3 className="serv-h3">Homework Help Services </h3>
                         <p>The homework drafted by our team of professionals is unique and personalised. All the resources, 
                         online and offline, are used to derive the required content for your homework.
                         We are trained in different arenas to provide you guidance on specific subjects. </p>
@@ -24,7 +24,7 @@ export default function HelpService(){
                     </div>
                 </div>
                 <div className="col-md-6 col-lg-4 text-center">
-                    <div className="features_text writing-help-2">
+                    <div className="features_text writing-help-2 btn-56">
                         <span><img src="/images/icon1.png" className="img-fluid" alt=""/></span>
                         <h3>Dissertation Homework Help Services</h3>
                         <p>Dissertation writing involves deep-rooted research and hard work. Our team of expert academic writers in all subjects, are highly trained to help you with your dissertation and thesis papers.
@@ -35,7 +35,7 @@ export default function HelpService(){
                     </div>
                 </div>
                 <div className="col-md-6 col-lg-4 text-center">
-                    <div className="features_text writing-help-2">
+                    <div className="features_text writing-help-2 btn-56">
                         <span><img src="/images/icon1.png" className="img-fluid" alt=""/></span>
                         <h3>Essay Writing Homework Help Services </h3>
                         <p>Our proficient academic writers write essays on multiple domains. Students belonging to various academic backgrounds are taken care of by our team of qualified and experienced writers.

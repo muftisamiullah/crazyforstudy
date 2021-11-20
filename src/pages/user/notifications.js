@@ -63,7 +63,6 @@ export default function Notifications(){
                                             {notifications && notifications.data.map((item,key)=>{
                                                 var utcDate = item.created_at;  // ISO-8601 formatted date returned from server
                                                 var localDate = new Date(utcDate);
-                                                var currentTime = new Date();
                                                 let title = item.title
                                                 return  ( 
                                                     <React.Fragment key={key}>

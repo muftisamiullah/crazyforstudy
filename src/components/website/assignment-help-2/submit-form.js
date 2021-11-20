@@ -9,32 +9,69 @@ export default function SubmitForm(){
    const history = useHistory();
    const [loader, setLoader] = useState(false)
 
-   const [startDate, setStartDate] = useState(new Date());
+   const [startDate, setStartDate] = useState(null);
    const [value, setValue] = useState(1);
    const [words, setWords] = useState(250);
    const [formData, setFormData] = useState({});
 
    const [url, setUrl] = useState('#');
    const { state } = useContext(AuthContext);
+   const [error, setError] = useState('')
 
-    useEffect(()=>{
-        if(state._id !== null){
-            setUrl('#')
-        }else{
-            setUrl('/auth/signin?callbackUrl='+`${process.env.REACT_APP_URL}`+'/user/my-order-details/local');
-        }
+   useEffect(() => {
+		let timerError = setTimeout(() => setError(''), 3000);
+		return () => {
+			clearTimeout(timerError);
+		}
+	}, [error])
+
+   useEffect(()=>{
+      if(state._id !== null){
+         setUrl('#')
+      }else{
+         setUrl('/auth/signin?callbackUrl='+`${process.env.REACT_APP_URL}`+'/user/my-order-details/local');
+      }
     },[])
 
    const handleTimeSelect = (e) => {
-      setFormData({...formData, [e.target.name]:e.target.value, user_Id : state?._id ,id:params.my_order_details})
+      setFormData({...formData, [e.target.name]:e.target.value, user_Id : state?._id ,id:params.my_order_details, pages: value, amount:((value) *10)})
    }
 
+   const filterPassedTime = (time) => {
+      const currentDate = new Date();
+      const selectedDate = new Date(time);
+  
+      return currentDate.getTime() < selectedDate.getTime();
+   };
+
    const handleReference = (e) => {
-      setFormData({...formData, [e.target.name]:e.target.value, 'deadline_date': startDate, user_Id : state?._id,id:params.my_order_details})
+      const stringValue = e.target.options[e.target.selectedIndex].dataset.string
+      setFormData({...formData, [e.target.name]:e.target.value, 'deadline_date': startDate, user_Id : state?._id, email: state?.email, id:params.my_order_details, referenceString: stringValue, pages: value, amount:((value) *10), type:'ASSIGNMENT', link:'/user/my-orders'})
+   }
+
+   const increment = () => {
+      if(value<20){
+         setValue(value => value + 1)
+         setWords(words => words + 250)
+         setFormData({...formData, 'pages': value+1,'deadline_date': startDate,user_Id : state?._id , email: state?.email, id:params.my_order_details,amount: ((value+1) * 10),type:'ASSIGNMENT', link:'/user/my-orders'})
+      }
+   }
+
+   const decrement = () => {
+      if(value>1){
+         setValue(value - 1)
+         setWords(words - 250)
+         setFormData({...formData, 'pages': value-1,'deadline_date': startDate,user_Id : state._id , email: state?.email, id:params.my_order_details,amount: ((value+1) * 10),type:'ASSIGNMENT', link:'/user/my-orders' })
+      }
    }
 
    const handleForm2 = async (e) => {
       e.preventDefault();
+      if(formData.reference == undefined){
+         setError(`You haven't selected a reference`);
+      }else if(formData.deadline_date == null){
+         setError(`You haven't selected a Deadline date`);
+      }
       setLoader(true)
       const res =await saveAssignment2(formData)
       if(formData.user_Id == undefined){
@@ -46,22 +83,6 @@ export default function SubmitForm(){
       setLoader(false)
    }
 
-   const increment = () => {
-      if(value<20){
-         setValue(value => value + 1)
-         setWords(words => words + 250)
-         setFormData({...formData, 'pages': value+1,'deadline_date': startDate,user_Id : state?._id ,id:params.my_order_details,amount: ((value+1) * 10)})
-      }
-   }
-
-   const decrement = () => {
-      if(value>1){
-         setValue(value - 1)
-         setWords(words - 250)
-         setFormData({...formData, 'pages': value-1,'deadline_date': startDate,user_Id : state._id ,id:params.my_order_details,amount: ((value+1) * 10) })
-      }
-   }
-
    return(
       <section className="banner_assignment_form bg_yellow">
          <div className="container">
@@ -71,7 +92,7 @@ export default function SubmitForm(){
                      <div className="col-md-12">
                         <h2><span>Submit Your Assignment</span></h2>
                      </div>
-                     <div className="form-group col-md-6">
+                     {/* <div className="form-group col-md-6">
                         <select className="form-control" required name="deadline_time" onChange={handleTimeSelect}>
                            <option value="">Deadline Time*</option>
                            <option value="00:00">00:00</option>
@@ -99,12 +120,33 @@ export default function SubmitForm(){
                            <option value="22:00">22:00</option>
                            <option value="23:00">23:00</option>
                         </select>
-                     </div>
+                     </div> */}
                      <div className="form-group col-md-6"> 
                         {/* <input required="" className="form-control datepicker" name="deadlineDate" type="text"  placeholder="Deadline Date*"   autoComplete="off"/>  */}
                         <div className="customDatePickerWidth">
-                              <DatePicker className="form-control" required selected={startDate} format='yyyy-MM-dd' name="deadline_date" onChange={date => setStartDate(date)} />
+                              {/* <DatePicker className="form-control" required selected={startDate} format='yyyy-MM-dd' name="deadline_date" onChange={date => setStartDate(date)} /> */}
+                              <DatePicker  className="form-control" placeholderText="Clcik to select deadline date" selected={startDate} onChange={(date) => setStartDate(date)} showTimeSelect filterTime={filterPassedTime} dateFormat="MMMM d, yyyy h:mm aa"/>
                         </div>
+                     </div>
+                     <div className="form-group col-md-6">
+                        <select className="form-control"  required name='reference' onChange={handleReference}>
+                           <option>Select reference</option>
+                           <option value="1" data-string="Vancouver">Vancouver</option>
+                           <option value="2" data-string="AGLC">AGLC</option>
+                           <option value="3" data-string="APA">APA</option>
+                           <option value="4" data-string="BMJ">BMJ</option>
+                           <option value="5" data-string="Chicago">Chicago</option>
+                           <option value="6" data-string="Footnotes">Footnotes</option>
+                           <option value="7" data-string="Footnotes and bibliography">Footnotes and bibliography</option>
+                           <option value="8" data-string="Harvard">Harvard</option>
+                           <option value="9" data-string="MHRA">MHRA</option>
+                           <option value="10" data-string="MLA">MLA</option>
+                           <option value="11" data-string="Not Selected">Not Selected</option>
+                           <option value="12" data-string="Open">Open</option>
+                           <option value="13" data-string="OSCOLA">OSCOLA</option>
+                           <option value="14" data-string="Oxford">Oxford</option>
+                           <option value="15" data-string="Turabian">Turabian</option>
+                        </select>
                      </div>
                      <div className="col-md-12">
                         <div id='myform' method='POST' action='#' className="form-group row">
@@ -118,30 +160,30 @@ export default function SubmitForm(){
                            </div>
                         </div>
                      </div>
-                     <div className="form-group col-md-12">
+                     {/* <div className="form-group col-md-12">
                         <select className="form-control"  required name='reference' onChange={handleReference}>
                            <option>Select reference</option>
-                           <option value="1">Vancouver</option>
-                           <option value="2">AGLC</option>
-                           <option value="3">APA</option>
-                           <option value="4">BMJ</option>
-                           <option value="5">Chicago</option>
-                           <option value="6">Footnotes</option>
-                           <option value="7">Footnotes and bibliography</option>
-                           <option value="8">Harvard</option>
-                           <option value="9">MHRA</option>
-                           <option value="10">MLA</option>
-                           <option value="11">Not Selected</option>
-                           <option value="12">Open</option>
-                           <option value="13">OSCOLA</option>
-                           <option value="14">Oxford</option>
-                           <option value="15">Turabian</option>
-                           <option value="11">Not Selected</option>
+                           <option value="1" data-string="Vancouver">Vancouver</option>
+                           <option value="2" data-string="AGLC">AGLC</option>
+                           <option value="3" data-string="APA">APA</option>
+                           <option value="4" data-string="BMJ">BMJ</option>
+                           <option value="5" data-string="Chicago">Chicago</option>
+                           <option value="6" data-string="Footnotes">Footnotes</option>
+                           <option value="7" data-string="Footnotes and bibliography">Footnotes and bibliography</option>
+                           <option value="8" data-string="Harvard">Harvard</option>
+                           <option value="9" data-string="MHRA">MHRA</option>
+                           <option value="10" data-string="MLA">MLA</option>
+                           <option value="11" data-string="Not Selected">Not Selected</option>
+                           <option value="12" data-string="Open">Open</option>
+                           <option value="13" data-string="OSCOLA">OSCOLA</option>
+                           <option value="14" data-string="Oxford">Oxford</option>
+                           <option value="15" data-string="Turabian">Turabian</option>
                         </select>
-                     </div>
-                  
-                     <div className="form-group m-auto sbmit_btn"> 
+                     </div> */}
+                     
+                     <div className="form-group m-auto sbmit_btn">
                         <button type="submit" className="btn form-control mt-4">{loader ? "Submitting" : "submit"}</button> 
+                        <span style={{color:"red"}}>{error}</span>
                      </div>
                   </form>
                </div>

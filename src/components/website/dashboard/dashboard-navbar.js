@@ -120,8 +120,10 @@ export default function DashboardNavbar({...props}){
         if(!res.error){
             if(type == "ASK50"){
                 url = link + "#ASK50" + data_id;
+            }else{
+                url = link
+                history.push(url);
             }
-            history.push(url)
         }
     }
     const [subMenu, setSubMenu] = useState('');
@@ -224,7 +226,7 @@ export default function DashboardNavbar({...props}){
                                         return(
                                             <li key={key} onClick={()=>{markAsRead(item._id,item.type,item.link, item.data_Id)}}>
                                                
-                                                <Link to="#">
+                                                <a href="#">
                                                         <div className="media">
                                                             <img className="media-object" src="/images/pic2.png" alt=""/>
                                                             <div className="media-body">
@@ -233,7 +235,7 @@ export default function DashboardNavbar({...props}){
                                                             <span style={{fontSize : "10px"}}>{date.toLocaleString()}</span>                                    
                                                             </div>
                                                         </div>
-                                                </Link>
+                                                </a>
                                             </li>
                                         )
                                     })}
