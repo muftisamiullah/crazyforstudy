@@ -49,8 +49,8 @@ export default function MySubs(){
                                         <th className="w-20">Status</th>
                                     </tr>
                                     </thead>
-                                    <tbody>{console.log(subscription)}
-                                        {subscription?.transactions>0 ? subscription.transactions.map((item,key)=>{
+                                    <tbody>
+                                        {subscription?.transactions?.length> 0 ? subscription.transactions.map((item,key)=>{
                                             if (item.type == "subscription"){
                                                 return(
                                                     <tr key={key}>

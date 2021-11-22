@@ -69,7 +69,7 @@ export default function MyOrders(){
                                                 <td className="w-20"><span className="textbook-t">{item._id}</span></td>
                                                 <td className="w-20">
                                                    <span>{localDate.toLocaleString()}</span><hr/>
-                                                   <span id={`${item._id+"-"+key}`}>{calculateTime1(item._id +"-"+ key, localDate.getTime(), '<span class="badge">completed</span>')}</span>
+                                                   <span id={`${item._id+"-"+key}`}>{calculateTime1(item._id +"-"+ key, localDate.getTime(), '<span class="badge">time-over</span>')}</span>
                                                 </td>
                                                 <td className="w-20">
                                                    <span>{item?.assignment_status}</span>
