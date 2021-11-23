@@ -8,15 +8,15 @@ const MakeSlug2 = (str) => {
 }
 const stringToSlug = (str)=> { // <-- removed the argument // <-- added this statement
 
-      str = str.replace(/^\s+|\s+$/g, ''); // trim
-      str = str.toLowerCase();
-      str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-               .replace(/\s+/g, '-') // collapse whitespace and replace by -
-               .replace(/-+/g, '-') // collapse dashes
-               .replace(/'+/g, '') // collapse '
-               .replace(/,+/g, '') // collapse ,
-               .replace(/#160;+/g, ''); // collapse ,
-      return str;
+    str = str.replace(/^\s+|\s+$/g, ''); // trim
+    str = str.toLowerCase();
+    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+            .replace(/\s+/g, '-') // collapse whitespace and replace by -
+            .replace(/-+/g, '-') // collapse dashes
+            .replace(/'+/g, '') // collapse '
+            .replace(/,+/g, '') // collapse ,
+            .replace(/#160;+/g, ''); // collapse ,
+    return str;
 };
 const SameSlug = (str) => {
     return str.trim().replace(/[^\w ]+/g,'').replace(/ +/g,'-');   

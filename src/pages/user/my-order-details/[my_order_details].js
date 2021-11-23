@@ -1,5 +1,6 @@
 import DashboardNavbar from '../../../components/website/dashboard/dashboard-navbar'
 import SideBar from '../../../components/website/dashboard/sidebar'
+import BlockHeader from '../../../components/website/dashboard/block-header'
 // import  OwlCarousel  from "../../../components/common/owl-carousel";
 import  OwlCarousel from 'react-owl-carousel';
 import { Link, useLocation } from 'react-router-dom';
@@ -95,21 +96,7 @@ export default function MyOrderDetails(){
             <DashboardNavbar data={user}/>
             <SideBar data={user}/>
             <section className="content user profile-page">
-                <div className="block-header">
-                    <div className="row">
-                        <div className="col-lg-3 col-md-6 col-sm-12 Referral_Points">
-                            <h2>Hi,  Ashton Cox 
-                            <small>Student, ipex College</small></h2>
-                        </div>
-                        <div className="col-lg-9 col-md-6 col-sm-12  ml-auto text-right">
-                            <ul className="breadcrumb breadcrumb2 float-md-right pt-0 pb-0">
-                            <li className="breadcrumb-item breadcrumb_cuspom"><Link to="/dashboard"> Dashboard  </Link></li>
-                            <li className="breadcrumb-item active breadcrumb_cuspom"><Link to="/user/my-orders"> My Order</Link></li>
-                            <li className="breadcrumb-item active breadcrumb_cuspom">  Order Details</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <BlockHeader data={user} currentPage="My Orders Details"/>
                 <div className="container-fluid">
                     <div className="row clearfix mt-4">
                         <div className="col-xl-12">
@@ -300,7 +287,7 @@ export default function MyOrderDetails(){
                                                     </div>
                                                     <div className="col-md-6 aas_details">
                                                         <div className="contain_data">
-                                                            <p className="detail_item"> <a href={ imageUrl1 + data.solutionHalf } style={{color: "#f96332"}}>Solution</a></p>
+                                                            <p className="detail_item"> <a href={ imageUrl1 + data.solutionHalf } style={{color: "#f96332"}}>Download Assignment Half</a></p>
                                                         </div>
                                                     </div> </>: "" }
                                                     {data && data.payment_status == "paid-full" ? <><div className="col-md-6 aas_details">
@@ -310,7 +297,7 @@ export default function MyOrderDetails(){
                                                     </div>
                                                     <div className="col-md-6 aas_details">
                                                         <div className="contain_data">
-                                                            <p className="detail_item"> <a href={ imageUrl1 + data.solutionFull } style={{color: "#f96332"}}>Solution</a></p>
+                                                            <p className="detail_item"> <a href={ imageUrl1 + data.solutionFull } style={{color: "#f96332"}}>Download Assignment Full</a></p>
                                                         </div>
                                                     </div> </>: ""}
                                                     </div>
@@ -447,7 +434,7 @@ export default function MyOrderDetails(){
                                     <div className="col-md-3">
                                         <div className="col-lg-12 col-md-12 col-sm-12 Current_Status">
                                             <div className="text-center Earn_Referral Complete_Profile Pay_From_Wallet">
-                                                <h5 className=" ml-auto Add_Money pay mt-2 mb-0"><span>Pay From Wallet </span></h5>
+                                                {/* <h5 className=" ml-auto Add_Money pay mt-2 mb-0"><span>Pay From Wallet </span></h5> */}
                                                 {/* <a href="#" className="btn  ml-auto  pay Add_Money">
                                                 <img src="/images/paypal.png" className="img-fluid" alt="paypal"/></a><br/> 
                                                 <a href="#" className="btn ml-auto Add_Money">

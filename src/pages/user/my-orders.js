@@ -88,12 +88,12 @@ export default function MyOrders(){
                                           <div className="row">
                                              <div className="col-md-4">
                                                 <div className="d-md-flex align-items-center">
-                                                   {item.image0 && <div className="receipt-img">
+                                                   {/* {item.image0 && <div className="receipt-img">
                                                       <img className="order-book-img" src={imageUrl + item.image0} draggable="false"/>
                                                    </div>}
                                                    {item.image1 && <div className="receipt-img">
                                                       <img className="order-book-img" src={imageUrl + item.image1} draggable="false"/>
-                                                   </div>}
+                                                   </div>} */}
                                                    <div className="receipt-txt">
                                                       <h4 className="order-type-collpse">{item.subscription_id}</h4>{item.question.substring(0,100)}
                                                    </div>

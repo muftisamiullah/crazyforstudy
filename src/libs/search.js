@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { apiUrl } from '../config/config'
-
+export const CancelToken = axios.CancelToken;
+let source = CancelToken.source();
 // function regexEscape(string){
 //     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 // }
@@ -16,11 +17,12 @@ export async function searchData(params) {
         // searchT = regexEscape(searchT)
         //passing just 100 chars to backend
         searchT = searchT.substring(0, 100);
-        
+        source && source.cancel('Operation canceled due to new request.');
+        source = axios.CancelToken.source();
         const res = await axios.all([
-            axios.post(apiUrl + 'books/search-chapter-question',{search:searchT, limit:params.limit}),
-            axios.get(apiUrl + 'books/search-book-name-isbn/'+searchT+'/'+params.limit),
-            axios.post(apiUrl + 'question/search-question',{search:searchT, limit:params.limit})
+            axios.post(apiUrl + 'books/search-chapter-question',{search:searchT, limit:params.limit}, {cancelToken: source.token}),
+            axios.get(apiUrl + 'books/search-book-name-isbn/'+searchT+'/'+params.limit, {cancelToken: source.token}),
+            axios.post(apiUrl + 'question/search-question',{search:searchT, limit:params.limit}, {cancelToken: source.token})
         ])
         return {'data1':res[0].data,'data2':res[1].data,'data3':res[2].data};
         // console.log(res)

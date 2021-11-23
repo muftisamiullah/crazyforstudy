@@ -6,6 +6,7 @@ import {MakeSlug} from '../common/make-slug'
 // import parse from 'html-react-parser';   // we used htmlDecode for the same purpose
 import { stringToSlug, htmlDecode } from '../common/make-slug';
 // import striptags from 'striptags';   // we used htmlDecode for the same purpose
+// import {CancelToken} from '../../../src/libs/search'
 
 export default function SearchComp({...props}){
 
@@ -27,10 +28,14 @@ export default function SearchComp({...props}){
                 setQA(null)
             }
           }, 1000);
-        return () => clearTimeout(delayDebounceFn)
+        return () => { 
+            clearTimeout(delayDebounceFn) 
+            // CancelToken.cancel('optional message');
+        }
     },[search]);
 
     async function openSearch (e){
+        // CancelToken.cancel('optional message');
         const data = await searchData({search:e,limit:3});
         if(data){
             setSearchedBooks(data.data2.books);
