@@ -12,6 +12,7 @@ import Razorpay from '../../../components/common/razorpay'
 import {Helmet} from 'react-helmet-async'
 import useSocket from '../../../components/common/socket'
 import {AuthContext} from '../../../context/AuthContext';
+import { imageUrl as imageUrl1} from '../../../config/config'
 
 export default function MyOrderDetails(){
     const socket = useSocket(`${process.env.HOST}`);
@@ -291,6 +292,27 @@ export default function MyOrderDetails(){
                                                             <p className="detail_item"> { data && data.sub_subject }</p>
                                                         </div>
                                                     </div>
+                                                    {data && data.payment_status == "half-paid" || data && data.payment_status == "paid-full" ? <>
+                                                    <div className="col-md-6 aas_details">
+                                                        <div className="contain_data">
+                                                            <p className="detail_item"> Half Solution  </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6 aas_details">
+                                                        <div className="contain_data">
+                                                            <p className="detail_item"> <a href={ imageUrl1 + data.solutionHalf } style={{color: "#f96332"}}>Solution</a></p>
+                                                        </div>
+                                                    </div> </>: "" }
+                                                    {data && data.payment_status == "paid-full" ? <><div className="col-md-6 aas_details">
+                                                        <div className="contain_data">
+                                                            <p className="detail_item"> Full Solution  </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6 aas_details">
+                                                        <div className="contain_data">
+                                                            <p className="detail_item"> <a href={ imageUrl1 + data.solutionFull } style={{color: "#f96332"}}>Solution</a></p>
+                                                        </div>
+                                                    </div> </>: ""}
                                                     </div>
                                                 </div>
                                             </div>

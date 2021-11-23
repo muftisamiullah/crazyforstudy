@@ -138,6 +138,16 @@ const calculateTime1 = (id, eventTime, afterComplete) => {
     }, 1000);
 } 
 
+const checkExtension = (filename) =>{
+    const ext = filename.split('.').pop()
+    const extensions = ['avi','bmp','csv','doc','docx','gif','jpg','pdf','png','pps','ppt','pptx','rar','rtf','tif','wmv','xls','xlsx','zip','jpeg'];
+    if(extensions.includes(ext)){
+        return true
+    }else{
+        return false
+    }
+}
+
 export {
     MakeSlug,
     SameSlug,
@@ -153,4 +163,5 @@ export {
     htmlDecode,
     calculateTime,
     calculateTime1,
+    checkExtension,
 }

@@ -34,11 +34,11 @@ export default function SearchComp({...props}){
         const data = await searchData({search:e,limit:3});
         if(data){
             setSearchedBooks(data.data2.books);
-            // setSearchedQuestions(data.data1.questions);
-            // setQA(data.data3.questions);
-            // if(data && data.data1.questions.length == 0 && data.data2.books.length == 0 && data.data3.questions.length == 0){
-            //     setDisplay('none');
-            // }
+            setSearchedQuestions(data.data1.questions);
+            setQA(data.data3.questions);
+            if(data && data.data1.questions.length == 0 && data.data2.books.length == 0 && data.data3.questions.length == 0){
+                setDisplay('none');
+            }
             if(data.data2.books.length == 0){
                 setDisplay('none');
             }

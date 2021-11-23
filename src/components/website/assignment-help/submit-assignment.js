@@ -2,7 +2,7 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query'
 import { getSubjects, getSubSubject } from '../../../libs/subsubject'
 import { saveAssignment } from '../../../libs/assignment'
-import { MakeSlug } from '../../../components/common/make-slug'
+import { MakeSlug, checkExtension } from '../../../components/common/make-slug'
 import { useState, useContext, useEffect } from 'react'
 import {AuthContext} from '../../../context/AuthContext';
 
@@ -32,7 +32,12 @@ export default function SubmitAssignment() {
     }
 
     const setHandleImage = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.files[0] })
+        let filename = e.target.files[0].name;
+        if(checkExtension(filename)){
+            setFormData({...formData, [e.target.name]: e.target.files[0] });
+        }else{
+            setError('*unsupported file format choose a different file format')
+        }
     }
 
     const incrementCounter = () => {
@@ -146,7 +151,7 @@ export default function SubmitAssignment() {
                                             <div className="dynamic-wrap">
                                                 <div className="form">{[...Array(counter)].map((e, i) =>
                                                     <div className="entry input-group" key={i}>
-                                                        <input className="form-control isbncls" type="file" name={`image${i}`} onChange={setHandleImage}/>
+                                                        <input className="form-control isbncls" type="file" name={`image${i}`} id={`image${i}`} onChange={setHandleImage}/>
                                                         {/* <div className="custm_fill_file"> 
                                                             <input id="file-upload" type="file" name={`image${i}`} onChange={setHandleImage}/> 
                                                             <label htmlFor="file-upload" className="custom-file-upload">Choose File</label>
