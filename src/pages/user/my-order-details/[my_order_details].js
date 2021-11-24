@@ -279,10 +279,10 @@ export default function MyOrderDetails(){
                                                             <p className="detail_item"> { data && data.sub_subject }</p>
                                                         </div>
                                                     </div>
-                                                    {data && data.payment_status == "half-paid" || data && data.payment_status == "paid-full" ? <>
+                                                    {data && data.assignment_status == "answered" && data.payment_status == "half-paid" || data && data.payment_status == "paid-full" ? <>
                                                     <div className="col-md-6 aas_details">
                                                         <div className="contain_data">
-                                                            <p className="detail_item"> Half Solution  </p>
+                                                            <p className="detail_item"> Half Assignment  </p>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 aas_details">
@@ -290,9 +290,9 @@ export default function MyOrderDetails(){
                                                             <p className="detail_item"> <a href={ imageUrl1 + data.solutionHalf } style={{color: "#f96332"}}>Download Assignment Half</a></p>
                                                         </div>
                                                     </div> </>: "" }
-                                                    {data && data.payment_status == "paid-full" ? <><div className="col-md-6 aas_details">
+                                                    {data && data.assignment_status == "answered" && data.payment_status == "paid-full" ? <><div className="col-md-6 aas_details">
                                                         <div className="contain_data">
-                                                            <p className="detail_item"> Full Solution  </p>
+                                                            <p className="detail_item"> Full Assignment  </p>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 aas_details">

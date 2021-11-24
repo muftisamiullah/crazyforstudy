@@ -5,7 +5,7 @@ import {AuthContext} from '../../../../context/AuthContext';
 import { Link, useParams } from 'react-router-dom';
 import { askForSolutionQANDA } from '../../../../libs/question'
 import { useQueryClient } from 'react-query'
-import { stringToSlug, htmlDecode } from '../../../common/make-slug';
+import { stringToSlug, htmlDecode, isHTML } from '../../../common/make-slug';
 
 export default function Answer({...props}){
     const { state } = useContext(AuthContext);
@@ -127,11 +127,12 @@ export default function Answer({...props}){
                             <div className="read_more_q">
                                 <span className="qustion_mark">Q:</span>  
                                 <div className="read_more_text">
-                                    {props.data && props.data.question && props?.data?.question.includes('<p>')
+                                    {props.data && props.data.question && isHTML(props?.data?.question)
+                                    // {props.data && props.data.question && props?.data?.question.includes('<p>') //PREVIOUSLY WITHOUT ISHTML
                                     ?
                                     <>  
                                         {/* <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question))}`}}></p> */}
-                                        <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(htmlDecode(props?.data?.question))}`}}></p>
+                                        <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(props?.data?.question)}`}}></p>
                                         {/* code commented for read less and read more */}
                                         {/* <p className="mb-0" style={{display: display1 === false ? "block" : "none" }} dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question))}`}}></p>
                                         <p className="mb-0" style={{display: display1 === false ? "none" : "block" }} dangerouslySetInnerHTML={{__html: `${(striptags(props?.data?.question)).substr(0,120)}`}}></p>

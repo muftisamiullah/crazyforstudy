@@ -1,7 +1,7 @@
 import Pagination from '../../../../components/common/pagination'
 // import parse from 'html-react-parser';   // we used htmlDecode for the same purpose
 import { Link } from 'react-router-dom';
-import { stringToSlug, htmlDecode } from '../../../common/make-slug';
+import { stringToSlug, htmlDecode, isHTML } from '../../../common/make-slug';
 // import striptags from 'striptags';   // we used htmlDecode for the same purpose
 
 export default function questions({...props}){
@@ -25,10 +25,11 @@ export default function questions({...props}){
                                     <div className="read_more_q">
                                     <span className="qustion_mark1">Q :</span>  
                                         <div className="ques_pl">
-                                            {item.question.includes('<p>')
+                                            {isHTML(item.question)
+                                            // {item.question.includes('<p>')
                                             // ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${striptags(item.question).substr(0,120)}`}}></p>
                                             // : <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(item.question).substr(0,120)}`}}></p>}
-                                            ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(item.question).substr(0,120)}`}}></p>
+                                            ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${item.question.substr(0,120)}`}}></p>
                                             : <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(item.question).substr(0,120)}`}}></p>}
                                         </div>
                                     </div>
@@ -40,8 +41,9 @@ export default function questions({...props}){
                                         {/* {item.question.includes('<p>')
                                         ? <p className="font-15"><Link to={`${'/q-and-a/'+router.query.subject+'/'+router.query.subsubject+'/'+router.query.chieldsubject+'/'+stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>
                                         : <p className="font-15"><Link to={`${'/q-and-a/'+router.query.subject+'/'+router.query.subsubject+'/'+router.query.chieldsubject+'/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>} */}
-                                        {item.question.includes('<p>')
-                                        ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>
+                                        {isHTML(item.question)
+                                        // {item.question.includes('<p>')
+                                        ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(item.question).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>
                                         : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>}
                                         {/* ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>
                                         : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>} */}

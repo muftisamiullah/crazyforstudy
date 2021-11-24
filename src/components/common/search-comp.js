@@ -2,7 +2,7 @@ import {useState,useEffect,useRef} from 'react';
 import {searchData} from '../../libs/search'
 import BookImage from './book-image'
 import { Link } from 'react-router-dom';
-import {MakeSlug} from '../common/make-slug'
+import {MakeSlug, isHTML} from '../common/make-slug'
 // import parse from 'html-react-parser';   // we used htmlDecode for the same purpose
 import { stringToSlug, htmlDecode } from '../common/make-slug';
 // import striptags from 'striptags';   // we used htmlDecode for the same purpose
@@ -136,13 +136,16 @@ export default function SearchComp({...props}){
                                     }
                                     {QA && QA.map((item,key)=>{
                                         let child = "";
-                                        if(item.question.includes('<p>')){
+                                        if(isHTML(item.question)){
+                                        // if(item.question.includes('<p>')){
                                             // child = stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item.old_qid;
-                                            child = stringToSlug(htmlDecode(item.question).substr(0,90))+'-'+item.old_qid;
+                                            child = stringToSlug(item.question).substr(0,90)+'-'+item._id;
                                         }else{
                                             // child = stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid
-                                            child = stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item.old_qid
+                                            child = stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item._id
                                         }
+                                        // ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(item.question).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>
+                                        // : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>}
                                     return(<span key={key}>
                                         <Link to={`/q-and-a/${child}`}>
                                             <div className="Picking_Cotton">

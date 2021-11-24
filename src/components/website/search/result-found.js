@@ -3,7 +3,7 @@ import  OwlCarousel  from "react-owl-carousel";
 import { Link } from 'react-router-dom';
 import BookImage from '../../common/book-image'
 import Pagination from '../../common/pagination'
-import { MakeSlug,stringToSlug, getEdition } from '../../common/make-slug'
+import { MakeSlug,stringToSlug, getEdition, isHTML } from '../../common/make-slug'
 // import parse from 'html-react-parser';   // we used htmlDecode for the same purpose
 // import striptags from 'striptags';   // we used htmlDecode for the same purpose
 import { htmlDecode } from "../../common/make-slug";
@@ -186,10 +186,11 @@ export default function ResultsFound({...props}){
                                             <div className="read_more_q">
                                                 <span className="qustion_mark1">Q :</span>
                                                 <div className="ques_pl">
-                                                    {item.question.includes('<p>')
+                                                    {isHTML(item.question)
+                                                    // {item.question.includes('<p>')
                                                     // ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${striptags(item.question).substr(0,120)}`}}></p>
                                                     // : <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(item.question).substr(0,120)}`}}></p>}
-                                                    ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(item.question).substr(0,120)}`}}></p>
+                                                    ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(item.question).substr(0,120)}`}}></p>
                                                     : <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(item.question).substr(0,120)}`}}></p>}
                                                 </div>
                                             </div>
@@ -199,9 +200,10 @@ export default function ResultsFound({...props}){
                                                 <span className="answer_mark1">A :</span>
                                                 <div className="ans_pl">
                                                     <p className="font-15">
-                                                    {item.question.includes('<p>')
-                                                    ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item.old_qid}`}>View Answer</Link></p>
-                                                    : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item.old_qid}`}>View Answer</Link></p>}
+                                                    {isHTML(item.question)
+                                                    // {item.question.includes('<p>')
+                                                    ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(item.question).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>
+                                                    : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>}
                                                     {/* ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(parse(striptags(item.question)).substr(0,90)+'-'+item.old_qid}`}>View Answer</Link></p>
                                                     : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>} */}
                                                     </p>

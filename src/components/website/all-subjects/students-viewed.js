@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 // import parse from 'html-react-parser';   // we used htmlDecode for the same purpose
 // import striptags from 'striptags';   // we used htmlDecode for the same purpose
-import { stringToSlug, htmlDecode } from '../../common/make-slug';
+import { stringToSlug, htmlDecode, isHTML } from '../../common/make-slug';
 
 export default function StudentViewed({...props}){
     return(
@@ -28,16 +28,16 @@ export default function StudentViewed({...props}){
                                     <div className="read_more_q">
                                         <span className="qustion_mark1">Q :</span>  
                                         <div className="ques_pl">
-                                                {item.question.includes('<p>')
+                                                {isHTML(item.question)
                                                 ?
                                                 <>  
-                                                    <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(htmlDecode(item.question))}`}}></p>
+                                                    <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(item.question)}`}}></p>
                                                     {/* <p className="mb-0" dangerouslySetInnerHTML={{__html: `${(striptags(item.question))}`}}></p> */}
                                                 </>
                                                 :
                                                 <>
                                                     {/* <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(`${html}`)}`}}></p> */}
-                                                    <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(`${html}`)}`}}></p>
+                                                    <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(item.question)}`}}></p>
                                                 </>
                                                 }
                                         </div>
@@ -53,11 +53,11 @@ export default function StudentViewed({...props}){
                                         </div>
                                         </div>
                                         <div className="ans_pl">
-                                            {/* {console.log(item.question,'****************************************************************************',htmlDecode(item.question))} */}
-                                            {item.question.includes('<p>')
+                                            {console.log(item.question,'****************************************************************************',htmlDecode(item.question))}
+                                            {isHTML(item.question)
                                                 // ? <p className="font-15 view_ans_btn3"><Link to={`${'/q-and-a/'+stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>
                                                 // : <p className="font-15 view_ans_btn3"><Link to={`${'/q-and-a/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>}
-                                                ? <p className="font-15 view_ans_btn3"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>
+                                                ? <p className="font-15 view_ans_btn3"><Link to={`${'/q-and-a/'+stringToSlug(item.question).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>
                                                 : <p className="font-15 view_ans_btn3"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>}
                                         </div>
                                     </div>
