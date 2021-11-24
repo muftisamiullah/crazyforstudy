@@ -226,7 +226,7 @@ export default function MyOrderDetails(){
                                                     </div>
                                                     <div className="col-md-6 aas_details">
                                                         <div className="contain_data">
-                                                            <p className="detail_item">{localDate?.toLocaleString()}</p>
+                                                            <p className="detail_item">{localDate?.toLocaleString(undefined, { timeZone: 'Asia/Kolkata'} )}</p>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 aas_details">

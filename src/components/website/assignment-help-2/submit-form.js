@@ -72,6 +72,11 @@ export default function SubmitForm(){
       }else if(formData.deadline_date == null){
          setError(`You haven't selected a Deadline date`);
       }
+      var utcDate = formData.deadline_date;  // ISO-8601 formatted date returned from server
+      var localDate = new Date(utcDate);
+      // console.log(localDate)
+      // console.log(localDate.toLocaleString(undefined, { timeZone: 'Asia/Kolkata'} ))
+      // return;
       setLoader(true)
       const res =await saveAssignment2(formData)
       if(formData.user_Id == undefined){
