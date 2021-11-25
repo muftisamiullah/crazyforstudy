@@ -62,10 +62,14 @@ export default function  MyProfile() {
 
         
             if(user && user.dob != undefined && user.dob != ""){
-                setStartDate(new Date(user?.dob))
+                let date = new Date(user?.dob);
+                date && date != 'Invalid Date' ? setStartDate(date) : setStartDate('');
+               
             }
         }
     },[user])
+
+    console.log('date',startDate);
 
     async function SignOut () {
         localStorage.removeItem('access_token_student')
