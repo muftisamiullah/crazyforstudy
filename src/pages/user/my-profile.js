@@ -69,8 +69,6 @@ export default function  MyProfile() {
         }
     },[user])
 
-    console.log('date',startDate);
-
     async function SignOut () {
         localStorage.removeItem('access_token_student')
         localStorage.removeItem('refresh_token_student')
