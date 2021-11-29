@@ -3,14 +3,17 @@ import axios from 'axios';
 
 // const apiUrl = `http://127.0.0.1:8080/web/v1/`;
 let apiUrl = '';
+let SubUrl = '';
 let imageUrl = '';
 if(process.env.NODE_ENV === 'production'){
     apiUrl = `${process.env.REACT_APP_LIVE_URL_basePath}/web/v1/`;
+    SubUrl =  `${process.env.REACT_APP_LIVE_URL_basePath}/api/v1/`;
     // imageUrl = `${process.env.REACT_APP_LIVE_URL_basePath}/uploads/`;
     imageUrl = 'https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/';
 }else{
    // apiUrl = `${process.env.REACT_APP_LOCAL_URL_basePath}/web/v1/`;
    apiUrl = `http://127.0.0.1:8000/web/v1/`;
+   SubUrl = `http://127.0.0.1:8000/api/v1/`;
     // imageUrl = `${process.env.REACT_APP_LOCAL_URL_basePath}/uploads/`;
     imageUrl = `https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/`;
 }
@@ -33,4 +36,4 @@ authAxios.interceptors.request.use(async function(config) {
     return config;
 });
 
-export { apiUrl, axios, authAxios, imageUrl };
+export { apiUrl, SubUrl, axios, authAxios, imageUrl };

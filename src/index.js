@@ -15,10 +15,12 @@ import '../node_modules/react-datepicker/dist/react-datepicker.min.css';
 
 ReactDOM.render(
 	<React.StrictMode>
+
 		<Router>
 			<Switch>
 				<App />
 			</Switch>
 		</Router>
+		
 	</React.StrictMode>,document.getElementById('root')
 );
