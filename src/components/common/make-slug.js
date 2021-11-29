@@ -97,7 +97,7 @@ function pad (str, max) {
     return str.length < max ? pad("0" + str, max) : str;
 }
 
-const calculateTime = (id, eventTime, afterComplete) => {
+const calculateTime = (id, eventTime, afterComplete) => { 
     var countDownDate = new Date(eventTime).getTime();        
     var x = setInterval(function() {
         var now = new Date().getTime();
