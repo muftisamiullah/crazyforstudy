@@ -40,7 +40,7 @@ export default function Marquee() {
                         <div className="Content_Bar">
                            <span className="play_btnsd2"><i className="fa fa-pause-circle-o" id ="image3" onClick={()=>{controlMarquee("stop")}} style={{"display":`${startDisplay}`}}></i><i id ="image4" className="fa fa-play" onClick={()=>{controlMarquee("start")}} style={{"display":`${pauseDisplay}`}}></i></span>
                            {/* <marquee behavior="scroll" direction="left" id="marquee" onKeyDown="this.setAttribute('scrollamount', 0, 0);" onMouseOver="this.setAttribute('scrollamount', 0, 0);" onMouseOut="this.setAttribute('scrollamount', 6, 0);"><strong>Hello Student, we are revamping our site & will be live till 20th Nov'21. Till the time, please do not purchase any subscription</strong> */}
-                           <marquee behavior="scroll" direction="left" id="marquee"><strong>Hello Student, we are revamping our site & will be live till 20th Nov'21. Till the time, please do not purchase any subscription</strong>
+                           <marquee behavior="scroll" direction="left" id="marquee"><strong>Hello Student, we are revamping our site & will be live till 7th Nov'21. Till the time, please do not purchase any subscription</strong>
                            </marquee>
                            <div width="22" align="center" valign="middle" className="Light_Blue_BG">
                               <input type="button" value="Pause" id="marqueeControlButton" style={{"display":"none"}}/>

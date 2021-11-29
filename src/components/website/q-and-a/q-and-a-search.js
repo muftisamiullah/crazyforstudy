@@ -7,7 +7,6 @@ export default function QandASearch() {
     const { selectedCon } =
     useContext(AuthContext);
     const content = selectedCon && selectedCon.content ? selectedCon.content : '';
-    console.log("item", content);
     return (
         <>
             <section className="qa_banner pt-5 pb-5" id="solution-manuals"> 
