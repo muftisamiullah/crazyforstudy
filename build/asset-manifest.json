@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "./static/css/main.e3267681.chunk.css",
-    "main.js": "./static/js/main.50e7ba46.chunk.js",
-    "main.js.map": "./static/js/main.50e7ba46.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.147adf1d.js",
-    "runtime-main.js.map": "./static/js/runtime-main.147adf1d.js.map",
-    "static/css/2.416e871e.chunk.css": "./static/css/2.416e871e.chunk.css",
-    "static/js/2.f7f4d20e.chunk.js": "./static/js/2.f7f4d20e.chunk.js",
-    "static/js/2.f7f4d20e.chunk.js.map": "./static/js/2.f7f4d20e.chunk.js.map",
-    "static/js/3.b8b1dd14.chunk.js": "./static/js/3.b8b1dd14.chunk.js",
-    "static/js/3.b8b1dd14.chunk.js.map": "./static/js/3.b8b1dd14.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/2.416e871e.chunk.css.map": "./static/css/2.416e871e.chunk.css.map",
-    "static/css/main.e3267681.chunk.css.map": "./static/css/main.e3267681.chunk.css.map",
-    "static/js/2.f7f4d20e.chunk.js.LICENSE.txt": "./static/js/2.f7f4d20e.chunk.js.LICENSE.txt",
-    "static/media/font.css": "./static/media/Aspira-Regular.91c26897.woff2",
-    "static/media/main.css": "./static/media/wallet_banner.dc817fc9.jpg",
-    "static/media/style.css": "./static/media/qa-banner.6e351164.jpg",
-    "static/media/font-awesome.min.css": "./static/media/fontawesome-webfont.f691f37e.woff"
+    "main.css": "/static/css/main.3d2723ab.chunk.css",
+    "main.js": "/static/js/main.2f3d9851.chunk.js",
+    "main.js.map": "/static/js/main.2f3d9851.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.092e5d49.js",
+    "runtime-main.js.map": "/static/js/runtime-main.092e5d49.js.map",
+    "static/css/2.3e35ace6.chunk.css": "/static/css/2.3e35ace6.chunk.css",
+    "static/js/2.f7f4d20e.chunk.js": "/static/js/2.f7f4d20e.chunk.js",
+    "static/js/2.f7f4d20e.chunk.js.map": "/static/js/2.f7f4d20e.chunk.js.map",
+    "static/js/3.b8b1dd14.chunk.js": "/static/js/3.b8b1dd14.chunk.js",
+    "static/js/3.b8b1dd14.chunk.js.map": "/static/js/3.b8b1dd14.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.3e35ace6.chunk.css.map": "/static/css/2.3e35ace6.chunk.css.map",
+    "static/css/main.3d2723ab.chunk.css.map": "/static/css/main.3d2723ab.chunk.css.map",
+    "static/js/2.f7f4d20e.chunk.js.LICENSE.txt": "/static/js/2.f7f4d20e.chunk.js.LICENSE.txt",
+    "static/media/font.css": "/static/media/Aspira-Regular.91c26897.woff2",
+    "static/media/main.css": "/static/media/wallet_banner.dc817fc9.jpg",
+    "static/media/style.css": "/static/media/qa-banner.6e351164.jpg",
+    "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.f691f37e.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.147adf1d.js",
-    "static/css/2.416e871e.chunk.css",
+    "static/js/runtime-main.092e5d49.js",
+    "static/css/2.3e35ace6.chunk.css",
     "static/js/2.f7f4d20e.chunk.js",
-    "static/css/main.e3267681.chunk.css",
-    "static/js/main.50e7ba46.chunk.js"
+    "static/css/main.3d2723ab.chunk.css",
+    "static/js/main.2f3d9851.chunk.js"
   ]
 }
