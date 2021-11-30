@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 import subContentReducer from "../Reducers/subContentReducer";
 import SelectedContentReducer from "../Reducers/SelectedContent";
+import SelectedSubSubjectContent from "../Reducers/SelectedSubSubjectContent";
+import subSubjectContentReducer from "../Reducers/subContentReducer";
 
 const fullname = localStorage.getItem("fullname");
 const email = localStorage.getItem("email");
@@ -82,6 +84,14 @@ function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [subContent, dispatchSubContent] = useReducer(subContentReducer, {});
   const [selectedCon, dispatchSelCon] = useReducer(SelectedContentReducer, []);
+  const [subSubjectContent, dispatchSubSubjectContent] = useReducer(
+    subSubjectContentReducer,
+    {}
+  );
+  const [SelectedSubSubject, dispatchSelSubCon] = useReducer(
+    SelectedSubSubjectContent,
+    []
+  );
   return (
     <AuthContext.Provider
       value={{
@@ -91,6 +101,10 @@ function AuthProvider({ children }) {
         dispatchSubContent,
         selectedCon,
         dispatchSelCon,
+        subSubjectContent,
+        dispatchSubSubjectContent,
+        SelectedSubSubject,
+        dispatchSelSubCon,
       }}
     >
       {children}

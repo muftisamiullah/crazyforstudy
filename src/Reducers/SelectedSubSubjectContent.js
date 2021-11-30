@@ -1,7 +1,7 @@
-const subSubjectContentReducer = (state = {}, action) => {
+const SelectedContentReducer = (state = [], action) => {
     switch (action.type) {
       case "SET_CONTENT":
-        return {...state,...action.content};
+        return action.content;
       case "ADD_COURSE":
         return [...state, action.course];
       case "RESET_CONTENT":
@@ -11,4 +11,4 @@ const subSubjectContentReducer = (state = {}, action) => {
     }
   };
   
-  export default subSubjectContentReducer;
+  export default SelectedContentReducer;

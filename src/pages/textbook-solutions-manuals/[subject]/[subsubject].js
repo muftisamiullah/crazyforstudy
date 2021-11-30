@@ -11,12 +11,14 @@ import GetSolManual from '../../../components/website/all-subjects/get-sol-manua
 import {getBooks, getRandomQuestions} from "../../../libs/subsubject"
 import { useParams, useLocation, useHistory } from "react-router-dom";
 // import {getNavbarData} from "../../../libs/home"
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useContext} from 'react';
+import {AuthContext} from '../../../context/AuthContext';
 import { useQuery } from 'react-query'
 import {Helmet} from 'react-helmet-async'
 import { capitalize, GetName } from "../../../components/common/make-slug";
 import Seo from '../../../components/common/seo'
 import Marquee from '../../../components/common/marquee';
+import WhatStudentsThink from '../../../components/website/assignment-help/what-students-think'
 
 // export async  function getServerSideProps(context){
 //     const data = await getBooks(context.params.subsubject);
@@ -39,6 +41,9 @@ export default function SubSubject(){
     const keywords = `${capitalize(params.subsubject)} textbook solutions, ${capitalize(params.subsubject)} solutions manual, ${capitalize(params.subsubject)} textbook solution manuals`
     const copyright = `Copyright ${new Date().getFullYear()} Crazyforstudy.com`
     const path = process.env.REACT_APP_URL + location.asPath
+
+    const { SelectedSubSubject } = useContext(AuthContext);    
+    const reviews = SelectedSubSubject && SelectedSubSubject.reviews ? SelectedSubSubject.reviews : {};
 
     const breadcrumbSchema = {
         "@context": "http://schema.org",
@@ -129,6 +134,7 @@ export default function SubSubject(){
             <AddBook bookname={capitalize(GetName(params.subsubject))}/>
             <StudentViewed bookname={capitalize(GetName(params.subsubject))} data={randomQuestions} url={`/q-and-a/${params.subject}/${params.subsubject}`}/>
             <GetSolManual bookname={capitalize(GetName(params.subsubject))}/>
+            <WhatStudentsThink reviews={reviews}/>
             <Follow/>
             <Footer/>
         </>

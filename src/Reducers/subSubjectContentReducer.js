@@ -1,4 +1,4 @@
-const subSubjectContentReducer = (state = {}, action) => {
+const subContentReducer = (state = {}, action) => {
     switch (action.type) {
       case "SET_CONTENT":
         return {...state,...action.content};
@@ -11,4 +11,4 @@ const subSubjectContentReducer = (state = {}, action) => {
     }
   };
   
-  export default subSubjectContentReducer;
+  export default subContentReducer;

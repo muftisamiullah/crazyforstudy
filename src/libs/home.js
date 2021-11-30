@@ -31,3 +31,13 @@ export async function getSubContent(subId) {
     }
 }
 
+export async function getSubSubjectContent(subId) {
+    try {
+        const res = await axios.get(SubUrl + 'sub-subject/view/' + subId)
+        return res.data.data;
+    }
+    catch(e){
+        
+    }
+}
+

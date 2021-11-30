@@ -1,21 +1,84 @@
-
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../../../context/AuthContext";
-import { isMemo } from "react-is";
+
 const S3_IMG_URL = "https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/";
 
-const ImgCircle = ({ item }) => {
-  
+const initialData = [
+  {
+    created_at: "27 March 2021",
+    img_path: "/images/testimonial-img/mary-thunders.png",
+    institute: "UNIVERSITY OF CAMBRIDGE",
+    name: "Mary Thunders",
+    rating: 5,
+    review: `I love the CFS textbook solution manuals. They have helped me
+    a lot in solving the difficult calculus questions. They make
+    the solutions look so easy!`,
+    _id: "61a1eff85e77b83e90262895",
+  },
+  {
+    created_at: "19 December 2020",
+    img_path: "/images/testimonial-img/robert-taylor.png",
+    institute: "Duke University",
+    name: "Robert Taylor",
+    rating: 5,
+    review: `They are really fast! They sent me my Computed Science
+    textbook solutions even before two hours of my order!`,
+    _id: "61a1eff85e77b83e90262895",
+  },
+  {
+    created_at: "17 September 2020",
+    img_path: "/images/testimonial-img/willie-brown.png",
+    institute: "Cornell University",
+    name: "Willie Brown",
+    rating: 5,
+    review: `The CFS Textbook Solution Manuals are really good. I always
+    recommend them over any other website for getting textbook
+    solutions.`,
+    _id: "61a1eff85e77b83e90262895",
+  },
+  {
+    created_at: "30 June 2020",
+    img_path: "/images/testimonial-img/maraya-smith.png",
+    institute: "Saint Peter’s University",
+    name: "Maraya Smith",
+    rating: 5,
+    review: `They give every detail about the answer and explain them so
+    well! I love using CFS textbook Solution Manuals.`,
+    _id: "61a1eff85e77b83e90262895",
+  },
+  {
+    created_at: "15 January, 2021",
+    img_path: "/images/testimonial-img/harrish-williamson.png",
+    institute: "University of Michigan",
+    name: "Harrish Williamson",
+    rating: 5,
+    review: `I requested the solutions for my college textbooks. I was
+    stunned to get the solutions in two hours! And they were so
+    nicely written!`,
+    _id: "61a1eff85e77b83e90262895",
+  },
+  {
+    created_at: "22 August 2021",
+    img_path: "/images/testimonial-img/david-jones.png",
+    institute: "Johns Hopkins University",
+    name: "David Jones",
+    rating: 5,
+    review: `Thank you team CFS for on-time delivery of my college textbook
+    solutions. They helped me a lot in preparing for my exams.`,
+    _id: "61a1eff85e77b83e90262895",
+  }
+];
+
+// Image Circle component
+const ImgCircle = ({ item, url }) => {
   return (
     <div className="item">
       <span className="img_testimonial">
         <img
           src={
             item && item.img_path
-              ? S3_IMG_URL + item.img_path
+              ? url + item.img_path
               : "/images/testimonial-img/mary-thunders.png"
           }
           className=""
@@ -50,7 +113,6 @@ const ImgCircle = ({ item }) => {
               : [...Array(5)].map((item, index) => {
                   return <Stars key={index} />;
                 })}
-            
           </li>
         </ul>
       </div>
@@ -58,16 +120,17 @@ const ImgCircle = ({ item }) => {
   );
 };
 
+// Rating Star Component
 const Stars = () => {
   return <i className="fa fa-star"></i>;
 };
 
-export default function WhatStudentsThink() {
-  const { selectedCon } = useContext(AuthContext);
-  let data = selectedCon;
-  let length =
-    data && data.reviews && data.reviews.length ? data.reviews.length : 5;
-  let id = data && data._id ? data._id : "";
+export default function WhatStudentsThink({ reviews }) {
+  let data = reviews && reviews.length > 0 ? reviews : {};
+  // data.push(null);
+  console.log("data", reviews);
+  let length = data && data.length ? data.length -1 : initialData.length - 1;
+  let id = data && data._id ? data[0]._id : "";
 
   return (
     <section className="section bg_colr2 mt-5 pt-4 pb-4">
@@ -83,7 +146,6 @@ export default function WhatStudentsThink() {
             </div>
           </div>
 
-         
           <OwlCarousel
             key={id}
             items={length}
@@ -95,195 +157,13 @@ export default function WhatStudentsThink() {
             dots={false}
             center={true}
           >
-            {data && data.reviews && data.reviews.length > 0
-              ? data.reviews.map((item, index) => {
-                  return <ImgCircle key={index} item={item} />;
+            {data && data.length > 0
+              ? data.map((item, index) => {
+                  return <ImgCircle key={index} url={S3_IMG_URL} item={item} />;
                 })
-              : [...Array(6)].map((item, index) => {
-                  return <ImgCircle key={index} item={item} />;
+              : initialData.map((item, index) => {
+                  return <ImgCircle key={index} url={''} item={item} />;
                 })}
-            {/* <div className="item">
-              <span className="img_testimonial">
-                <img
-                  src="/images/testimonial-img/mary-thunders.png"
-                  className=""
-                  alt=""
-                />
-              </span>
-              <div className="text-center testimonial_text">
-                <h3>Mary Thunders</h3>
-                <p>
-                  I love the CFS textbook solution manuals. They have helped me
-                  a lot in solving the difficult calculus questions. They make
-                  the solutions look so easy!{" "}
-                </p>
-                <ul>
-                  <li>
-                    <span className="unsty_cam">UNIVERSITY OF CAMBRIDGE</span>{" "}
-                    <span>27 March 2021</span>
-                  </li>
-                  <li className="float-right star_icons">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="item">
-              <span className="img_testimonial">
-                <img
-                  src="/images/testimonial-img/robert-taylor.png"
-                  className=""
-                  alt=""
-                />
-              </span>
-              <div className="text-center testimonial_text">
-                <h3>Robert Taylor</h3>
-                <p>
-                  They are really fast! They sent me my Computed Science
-                  textbook solutions even before two hours of my order!{" "}
-                </p>
-                <ul>
-                  <li>
-                    <span className="unsty_cam">Duke University</span>{" "}
-                    <span>19 December 2020</span>
-                  </li>
-                  <li className="float-right star_icons">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="item">
-              <span className="img_testimonial">
-                <img
-                  src="/images/testimonial-img/willie-brown.png"
-                  className=""
-                  alt=""
-                />
-              </span>
-              <div className="text-center testimonial_text">
-                <h3>Willie Brown</h3>
-                <p>
-                  The CFS Textbook Solution Manuals are really good. I always
-                  recommend them over any other website for getting textbook
-                  solutions.
-                </p>
-                <ul>
-                  <li>
-                    <span className="unsty_cam">Cornell University</span>{" "}
-                    <span>17 September 2020</span>
-                  </li>
-                  <li className="float-right star_icons">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="item">
-              <span className="img_testimonial">
-                <img
-                  src="/images/testimonial-img/maraya-smith.png"
-                  className=""
-                  alt=""
-                />
-              </span>
-              <div className="text-center testimonial_text">
-                <h3>Maraya Smith</h3>
-                <p>
-                  They give every detail about the answer and explain them so
-                  well! I love using CFS textbook Solution Manuals.{" "}
-                </p>
-                <ul>
-                  <li>
-                    <span className="unsty_cam">Saint Peter’s University</span>{" "}
-                    <span>30 June 2020</span>
-                  </li>
-                  <li className="float-right star_icons">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="item">
-              <span className="img_testimonial">
-                <img
-                  src="/images/testimonial-img/harrish-williamson.png"
-                  className=""
-                  alt=""
-                />
-              </span>
-              <div className="text-center testimonial_text">
-                <h3>Harrish Williamson</h3>
-                <p>
-                  I requested the solutions for my college textbooks. I was
-                  stunned to get the solutions in two hours! And they were so
-                  nicely written!
-                </p>
-                <ul>
-                  <li>
-                    <span className="unsty_cam">University of Michigan</span>{" "}
-                    <span>15 January, 2021</span>
-                  </li>
-                  <li className="float-right star_icons">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="item">
-              <span className="img_testimonial">
-                <img
-                  src="/images/testimonial-img/david-jones.png"
-                  className=""
-                  alt=""
-                />
-              </span>
-              <div className="text-center testimonial_text">
-                <h3>David Jones</h3>
-                <p>
-                  Thank you team CFS for on-time delivery of my college textbook
-                  solutions. They helped me a lot in preparing for my exams.
-                </p>
-                <ul>
-                  <li>
-                    <span className="unsty_cam">Johns Hopkins University</span>{" "}
-                    <span>22 August 2021</span>
-                  </li>
-                  <li className="float-right star_icons">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                  </li>
-                </ul>
-              </div>
-            </div> */}
           </OwlCarousel>
           {/* </div> */}
         </div>

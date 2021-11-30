@@ -17,6 +17,8 @@ import { capitalize } from "../../../components/common/make-slug";
 import Seo from '../../../components/common/seo'
 import { useEffect, useState } from 'react';
 import Marquee from '../../../components/common/marquee';
+import { useContext } from 'react';
+import {AuthContext} from '../../../context/AuthContext';
 
 export default function Subject(){
     const params = useParams();
@@ -30,6 +32,7 @@ export default function Subject(){
     // const description = `Get Access ${capitalize(params.subject)} Textbook Solutions from Crazy For Study. For ${capitalize(params.subject)} textbook answers, ${capitalize(params.subject)} Step-by-step solutions, ${capitalize(params.subject)} Solutions manual and Assignment Help, try Crazy For Study today!`
     // const keywords = `${capitalize(params.subject)} textbook solutions, ${capitalize(params.subject)} solutions manual, ${capitalize(params.subject)} textbook solution manuals`
     const path = process.env.REACT_APP_URL + location.pathname
+    const { selectedCon } = useContext(AuthContext);
 
     const breadcrumbSchema = {
         "@context": "http://schema.org",
@@ -114,7 +117,7 @@ export default function Subject(){
             <BrowseBySubjects data={subSubjects}/>
             <About/>
             <InstantAccess/>
-            <WhatStudentsThink/>
+            <WhatStudentsThink reviews={selectedCon.reviews}/>
             <Follow/>
             <Footer/>
         </>

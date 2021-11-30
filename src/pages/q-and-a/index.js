@@ -39,7 +39,7 @@ export default function QandA() {
             <HowItWorks/>
             {/* <StudyHelp/> */}
             <WhyChooseOnline/>
-            <WhatStudentsThink/> 
+            <WhatStudentsThink/>
             <Follow/>
             <Footer/>
         </>

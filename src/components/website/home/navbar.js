@@ -1,7 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { getNavbarData, getSubContent } from "../../../libs/home";
+import {
+  getNavbarData,
+  getSubContent,
+  getSubSubjectContent,
+} from "../../../libs/home";
 import { useQuery } from "react-query";
 import { MakeSlug } from "../../common/make-slug";
 import { AuthContext } from "../../../context/AuthContext";
@@ -16,11 +20,20 @@ export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
   const [list, setList] = useState(0);
   const [width, setWidth] = useState(window.innerWidth);
-  const { state, subContent, dispatchSubContent, selectedCon, dispatchSelCon } =
-    useContext(AuthContext);
+  const {
+    state,
+    subContent,
+    dispatchSubContent,
+    dispatchSelCon,
+    subSubjectContent,
+    dispatchSubSubjectContent,
+    SelectedSubSubject,
+    dispatchSelSubCon,
+  } = useContext(AuthContext);
   const session = state.isLoggedIn;
 
- 
+  console.log("SelectedSubSubject", SelectedSubSubject);
+
   const showMobileMenu = () => {
     if (mobileMenuClass === "show") {
       setMobileMenuClass("");
@@ -29,7 +42,26 @@ export default function Navbar() {
     }
   };
 
-  const handleClick = () => {
+  const handleClick = async (item) => {
+    let existData = subSubjectContent[item._id];
+    if (!existData && existData == undefined) {
+      const data = await getSubSubjectContent(item._id);
+      dispatchSubSubjectContent({
+        type: "SET_CONTENT",
+        content: { [item._id]: data },
+      });
+      localStorage.setItem("subSubjectId", item._id);
+      dispatchSelSubCon({
+        type: "SET_CONTENT",
+        content: data,
+      });
+    } else {
+      localStorage.setItem("subSubjectId", existData._id);
+      dispatchSelSubCon({
+        type: "SET_CONTENT",
+        content: existData,
+      });
+    }
     hideMenu();
   };
 
@@ -40,9 +72,10 @@ export default function Navbar() {
   };
 
   const loadContent = async (item) => {
-    let existData = subContent[item._id];    
+    let existData = subContent[item._id];
     if (!existData && existData == undefined) {
       const data = await getSubContent(item._id);
+      localStorage.setItem("subjectId", item._id);
       dispatchSubContent({
         type: "SET_CONTENT",
         content: { [item._id]: data },
@@ -52,11 +85,12 @@ export default function Navbar() {
         type: "SET_CONTENT",
         content: data,
       });
-    }else{
-        dispatchSelCon({
-            type: "SET_CONTENT",
-            content: existData,
-          });
+    } else {
+      localStorage.setItem("subjectId", existData._id);
+      dispatchSelCon({
+        type: "SET_CONTENT",
+        content: existData,
+      });
     }
   };
 
@@ -71,6 +105,18 @@ export default function Navbar() {
       setClassname("show");
     }
   };
+
+  // useEffect(() => {
+  //   console.log('subContent',)
+  //   if (subContent.length == undefined) {
+  //     let id = localStorage.getItem("subjectId");
+  //     loadContent({_id:id});
+  //   }
+  //   if (subSubjectContent.length == undefined) {
+  //     let id = localStorage.getItem("subSubjectId");     
+  //     handleClick({_id:id});
+  //   }
+  // });
 
   const openMenuAMobile = () => {
     if (showAMenu == true) {
@@ -421,7 +467,9 @@ export default function Navbar() {
                                     }`}
                                     key={key}
                                     className="dropdown-item"
-                                    onClick={handleClick}
+                                    onClick={() => {
+                                      handleClick(it);
+                                    }}
                                   >
                                     <i className="fa fa-circle"></i>{" "}
                                     {it.sub_subject}

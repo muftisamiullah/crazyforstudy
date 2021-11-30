@@ -1,17 +1,24 @@
 import { Link } from "react-router-dom"
-// import parse from 'html-react-parser';   // we used htmlDecode for the same purpose
-// import striptags from 'striptags';   // we used htmlDecode for the same purpose
+import { useContext } from 'react';
+import {AuthContext} from '../../../context/AuthContext';
 import { stringToSlug, htmlDecode, isHTML } from '../../common/make-slug';
 
 export default function StudentViewed({...props}){
+    const { SelectedSubSubject } = useContext(AuthContext);    
+    const content = SelectedSubSubject && SelectedSubSubject.content ? SelectedSubSubject.content : {};
+    
     return(
         <section className="section font_sz pt-5">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 text-center mb-2">
                         <div className="Content_Covered_title pb-2">
-                        <h2 className="pb-2">Students who viewed {props.bookname} textbook solution manuals also checked out</h2>
-                        <p>Recently Answered - Top 3 {props.bookname} Homework Questions</p>
+                        <h2 className="pb-2">
+                            {content && content.questionHeading ? content.questionHeading : 
+                            `Students who viewed ${props.bookname} textbook solution manuals also checked out`}</h2>
+                        <p>
+                        {content && content.questionSubHeading ? content.questionSubHeading : 
+                            `Recently Answered - Top 3 ${props.bookname} Homework Questions`}</p>
                         </div>
                     </div>
                     <div className="col-md-12 pb-4 text_justify">
