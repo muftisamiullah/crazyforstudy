@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { getNavbarData } from '../../libs/home'
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query'
 import { MakeSlug } from '../common/make-slug'
+import { AuthContext } from '../../context/AuthContext';
 
 export default function StudyHelp() {
-
-    const { data, isLoading } = useQuery('menus', getNavbarData);
+    const { menus:data } = useContext(AuthContext);
+   // const { data, isLoading } = useQuery('menus', getNavbarData);
     
     return(
         <section className="section Study_Help_bg mt-5 mb-5 pb-5">

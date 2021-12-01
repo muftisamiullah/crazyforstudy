@@ -142,7 +142,8 @@ export default function DashboardNavbar({...props}){
     }
 
     const isRead = false;
-    const { data, isLoading } = useQuery('menus', getNavbarData,{ staleTime:Infinity})
+    const { menus:data } = useContext(AuthContext);
+    // const { data, isLoading } = useQuery('menus', getNavbarData,{ staleTime:Infinity})
     const { data: notifications, isLoading:notificationsIsLoading, error:notificationsError } = useQuery([`notifications-${isRead}`], () => getNotifications({user_Id : state._id, type: 'QA'}, isRead),{ staleTime : Infinity, enabled : !!session })
     
     return( <>

@@ -15,7 +15,7 @@ export default function Navbar() {
     const [mobileMenuClass, setMobileMenuClass] = useState('');
     const [isMobile, setIsMobile] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
-    const {state} = useContext(AuthContext);
+    const {state, menus:data} = useContext(AuthContext);
     const session = state.isLoggedIn;
 
     const showMobileMenu = ()=>{

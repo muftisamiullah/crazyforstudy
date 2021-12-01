@@ -1,8 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import subContentReducer from "../Reducers/subContentReducer";
 import SelectedContentReducer from "../Reducers/SelectedContent";
 import SelectedSubSubjectContent from "../Reducers/SelectedSubSubjectContent";
 import subSubjectContentReducer from "../Reducers/subContentReducer";
+import { getNavbarData } from "../libs/home";
 
 const fullname = localStorage.getItem("fullname");
 const email = localStorage.getItem("email");
@@ -92,6 +93,16 @@ function AuthProvider({ children }) {
     SelectedSubSubjectContent,
     []
   );
+
+  const [menus, setMenus] = useState([]);
+  useEffect(() => {
+    getNavbarData().then((data) => {
+
+     
+      setMenus(data);
+    });
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -105,6 +116,7 @@ function AuthProvider({ children }) {
         dispatchSubSubjectContent,
         SelectedSubSubject,
         dispatchSelSubCon,
+        menus,
       }}
     >
       {children}

@@ -20,7 +20,7 @@ export default function DashboardNavbar({...props}){
     const [ classname, setClassname ] = useState('');
     const [showMenu,setShowMenu] = useState(false);
     const [showAMenu,setShowAMenu] = useState(false);
-    const {state, dispatch} = useContext(AuthContext);
+    const {state, dispatch, menus:data} = useContext(AuthContext);
     const session = state.isLoggedIn;
     const [list, setList] = useState(0);
 
@@ -133,7 +133,8 @@ export default function DashboardNavbar({...props}){
     }
 
     const isRead = false;
-    const { data, isLoading } = useQuery('menus', getNavbarData,{ staleTime:Infinity})
+    
+    //  const { data, isLoading } = useQuery('menus', getNavbarData,{ staleTime:Infinity})
     const { data: notifications, isLoading:notificationsIsLoading, error:notificationsError } = useQuery([`notifications-${isRead}`], () => getNotifications({user_Id : state._id, type: 'QA'}, isRead),{ staleTime : Infinity, enabled : !!session })
     
     return( <><TawkTo/>

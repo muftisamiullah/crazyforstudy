@@ -29,11 +29,10 @@ export default function Navbar() {
     dispatchSubSubjectContent,
     SelectedSubSubject,
     dispatchSelSubCon,
+    menus:data
   } = useContext(AuthContext);
-  const session = state.isLoggedIn;
-
-  console.log("SelectedSubSubject", SelectedSubSubject);
-
+  const session = state.isLoggedIn; 
+console.log('date------>', data);
   const showMobileMenu = () => {
     if (mobileMenuClass === "show") {
       setMobileMenuClass("");
@@ -42,26 +41,7 @@ export default function Navbar() {
     }
   };
 
-  const handleClick = async (item) => {
-    let existData = subSubjectContent[item._id];
-    if (!existData && existData == undefined) {
-      const data = await getSubSubjectContent(item._id);
-      dispatchSubSubjectContent({
-        type: "SET_CONTENT",
-        content: { [item._id]: data },
-      });
-      localStorage.setItem("subSubjectId", item._id);
-      dispatchSelSubCon({
-        type: "SET_CONTENT",
-        content: data,
-      });
-    } else {
-      localStorage.setItem("subSubjectId", existData._id);
-      dispatchSelSubCon({
-        type: "SET_CONTENT",
-        content: existData,
-      });
-    }
+  const handleClick = async (item) => {   
     hideMenu();
   };
 
@@ -198,12 +178,12 @@ export default function Navbar() {
     };
   }, []);
 
-  const { data, isLoading } = useQuery("menus", getNavbarData, {
-    staleTime: Infinity,
-    cacheTime: 1000 * 60 * 60,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
+  // const { data, isLoading } = useQuery("menus", getNavbarData, {
+  //   staleTime: Infinity,
+  //   cacheTime: 1000 * 60 * 60,
+  //   refetchOnWindowFocus: false,
+  //   refetchOnMount: false,
+  // });
 
   return (
     <nav
@@ -436,7 +416,7 @@ export default function Navbar() {
                                 openSubMenu(key);
                               }}
                               onClick={() => {
-                                loadContent(item);
+                              //  loadContent(item);
                               }}
                             >
                               <h6>

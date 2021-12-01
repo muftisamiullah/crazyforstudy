@@ -1,6 +1,7 @@
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import {isHTML, htmlDecode, stringToSlug} from "../../common/make-slug"
 
 const S3_IMG_URL = "https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/";
 
@@ -72,6 +73,7 @@ const initialData = [
 
 // Image Circle component
 const ImgCircle = ({ item, url }) => {
+  console.log('item',(item.review));
   return (
     <div className="item">
       <span className="img_testimonial">
@@ -89,7 +91,7 @@ const ImgCircle = ({ item, url }) => {
         <h3>{item && item.name ? item.name : "Mary Thunders"}</h3>
         <p>
           {item && item.review
-            ? item.reiew
+            ? item.review
             : `I love the CFS textbook solution manuals. They have helped me a lot in
           solving the difficult calculus questions. They make the solutions look
           so easy!`}
@@ -126,9 +128,7 @@ const Stars = () => {
 };
 
 export default function WhatStudentsThink({ reviews }) {
-  let data = reviews && reviews.length > 0 ? reviews : {};
-  // data.push(null);
-  console.log("data", reviews);
+  let data = reviews && reviews.length > 0 ? reviews : {};  
   let length = data && data.length ? data.length -1 : initialData.length - 1;
   let id = data && data._id ? data[0]._id : "";
 
@@ -147,7 +147,7 @@ export default function WhatStudentsThink({ reviews }) {
           </div>
 
           <OwlCarousel
-            key={id}
+            key={Math.random()}
             items={length}
             className="testimonial owl-theme"
             loop

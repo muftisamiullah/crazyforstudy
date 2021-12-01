@@ -3,8 +3,9 @@ import { useHistory, useLocation } from "react-router-dom";
 import { getNavbarData } from '../../../libs/home'
 import { useQuery } from 'react-query'
 import { MakeSlug } from '../../common/make-slug'
-import { useState, useRef, useEffect} from 'react';
+import { useState, useRef, useEffect, useContext} from 'react';
 import { imageUrl } from '../../../config/config';
+import { AuthContext } from '../../../context/AuthContext';
 
 export default function SideBar({...props}){
     
@@ -64,7 +65,8 @@ export default function SideBar({...props}){
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef);
 
-    const { data, isLoading } = useQuery('menus', getNavbarData,{ staleTime:Infinity})
+    // const { data, isLoading } = useQuery('menus', getNavbarData,{ staleTime:Infinity})
+    const { menus:data } = useContext(AuthContext);
 
     return (
         <aside id="leftsidebar" ref={wrapperRef} className="sidebar sidebar_color sidebar_left">
