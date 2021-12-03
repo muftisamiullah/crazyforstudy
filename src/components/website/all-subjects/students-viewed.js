@@ -60,7 +60,7 @@ export default function StudentViewed({...props}){
                                         </div>
                                         </div>
                                         <div className="ans_pl">
-                                            {console.log(item.question,'****************************************************************************',htmlDecode(item.question))}
+                                            {/* {console.log(item.question,'****************************************************************************',htmlDecode(item.question))} */}
                                             {isHTML(item.question)
                                                 // ? <p className="font-15 view_ans_btn3"><Link to={`${'/q-and-a/'+stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>
                                                 // : <p className="font-15 view_ans_btn3"><Link to={`${'/q-and-a/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>}

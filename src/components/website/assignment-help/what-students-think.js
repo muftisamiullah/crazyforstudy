@@ -72,8 +72,8 @@ const initialData = [
 ];
 
 // Image Circle component
-const ImgCircle = ({ item, url }) => {
-  console.log('item',(item.review));
+const ImgCircle = ({ item, url }) => {  
+  console.log('item',item)
   return (
     <div className="item">
       <span className="img_testimonial">
@@ -129,7 +129,7 @@ const Stars = () => {
 
 export default function WhatStudentsThink({ reviews }) {
   let data = reviews && reviews.length > 0 ? reviews : {};  
-  let length = data && data.length ? data.length -1 : initialData.length - 1;
+  let length = data && data.length ? data.length  : initialData.length ;
   let id = data && data._id ? data[0]._id : "";
 
   return (
@@ -147,11 +147,12 @@ export default function WhatStudentsThink({ reviews }) {
           </div>
 
           <OwlCarousel
-            key={Math.random()}
-            items={length}
+             key={Math.random()}
+            items={length == 1?1:length-1}
             className="testimonial owl-theme"
             loop
             autoplay={false}
+            autoWidth={false}
             nav
             margin={10}
             dots={false}
@@ -164,6 +165,7 @@ export default function WhatStudentsThink({ reviews }) {
               : initialData.map((item, index) => {
                   return <ImgCircle key={index} url={''} item={item} />;
                 })}
+     
           </OwlCarousel>
           {/* </div> */}
         </div>
