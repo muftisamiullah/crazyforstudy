@@ -73,7 +73,7 @@ const initialData = [
 
 // Image Circle component
 const ImgCircle = ({ item, url }) => {  
-  console.log('item',item)
+  
   return (
     <div className="item">
       <span className="img_testimonial">

@@ -26,7 +26,7 @@ export default function MyTbs(){
 
     const addTextBookData = async (e) => {
         e.preventDefault();
-        console.log(fields)
+        
         const res = await addTextBooks(fields);
         if(res.error === false){
             queryClient.invalidateQueries('textbooks');
@@ -104,7 +104,7 @@ export default function MyTbs(){
                                                 <tbody>
                                                 {textbooks && textbooks.data.map((item,key)=>{
                                                     return(
-                                                        <tr key={key}>{console.log(item)}
+                                                        <tr key={key}>
                                                             <td><span className="">{key+1}</span></td>
                                                             <td><span className="textbook-t">{item.isbn}</span></td>
                                                             <td>{item.inStock && item.authoring ? 'Available' : (item.inStock && !item.authoring ? 'Available' : 'Not Available')}</td>

@@ -53,7 +53,7 @@ export async function sendResetEmail(email){
 }
 export async function verifyOtp(otp){
     try{
-        console.log(otp);
+       
         const res = await axios.post(apiUrl + 'student/verifyotp', {otp:otp})
         return res;
     }catch(e){

@@ -10,7 +10,7 @@ export default function InstantAccess() {
     selectedCon && selectedCon.content && selectedCon.content.feature
       ? selectedCon.content.feature
       : "";
-  console.log("item", content);
+  
 
   useEffect(() => {
     if (state.Subscribe != "true") {

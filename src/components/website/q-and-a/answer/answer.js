@@ -76,7 +76,7 @@ export default function Answer({...props}){
     const requestAnswer = async (link) => {
         if(state.Subscribe === "true" && props.data.answer == undefined){
             const res =  await askForSolutionQANDA(props.data._id, state.email, state._id, link)
-            console.log(res);
+            
             if(res){
                 queryClient.invalidateQueries([props.data._id]);
             }

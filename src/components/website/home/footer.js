@@ -23,7 +23,7 @@ export default function Footer() {
 					<div className="col-md-3 pl-5">
 					<h3>Study Help</h3>
 					<ul>
-						<li><HashLink to="/q-and-a#subjects"><i className="fa fa-angle-right"></i> Q and A
+						<li><HashLink to="/q-and-a"><i className="fa fa-angle-right"></i> Q and A
                         </HashLink></li>
 						<li><HashLink to="/textbook-solutions-manuals#solution-manuals"><i className="fa fa-angle-right"></i> Solutions Manual</HashLink></li>
 						<li><Link to="/writing-help/online-assignment-help"><i className="fa fa-angle-right"></i> Assignment Help</Link></li>

@@ -463,7 +463,7 @@ export default function AskQuestion(){
 														},
 													}}
 													onReady={ editor => {
-															console.log('Editor is ready to use!', editor);
+															
 														editor?.editing.view.change(writer => {
 															writer.setStyle(
 															"height",

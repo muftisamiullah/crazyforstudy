@@ -58,7 +58,7 @@ export default function Cancelation(){
             dispatch({type: 'UNSUBSCRIBE'});
         }
         const data = await  cancelSubscription({subscribe_Id: params.sub_id, cancel_at_cycle_end: cancel_at_cycle_end, reason:reason, message:message ,user_Id: localStorage.getItem('_id')});
-        console.log(data);
+        
         if(data.data.status == 200){
             dispatch({type: 'UNSUBSCRIBE'});
             localStorage.setItem('Subscribe','false');

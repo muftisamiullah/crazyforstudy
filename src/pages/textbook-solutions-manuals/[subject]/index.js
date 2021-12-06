@@ -44,15 +44,16 @@ import { getNavbarData, getSubContent } from "../../../libs/home";
 export default function Book() {
   const { state, menus, subContent,
     dispatchSubContent,
-    dispatchSelCon,
-    subSubjectContent,
-    dispatchSubSubjectContent,
-    SelectedSubSubject,
-    dispatchSelSubCon, } = useContext(AuthContext);
+    dispatchSelCon } = useContext(AuthContext);
   const session = state.isLoggedIn;
   //changed the name of the file from [book].js to index.js and moved to textbook-solutions-manual
   //and passed variable ISBN13 to all the react useQuery instead of params.book dated 29 april
   //previous code could be found on github under Rohit Sharmas repo.
+ 
+    
+    // const [ updatedEdition, setUpdatedEdition ] = useState('')
+
+  
 
   const queryClient = useQueryClient();
   const params = useParams();
@@ -244,7 +245,7 @@ export default function Book() {
     setChapter(e.target.value);
     const chapterValue =
       e.target.options[e.target.selectedIndex].dataset.chapter;
-    console.log(chapterValue);
+    
     setChapterName(e.target.options[e.target.selectedIndex].dataset.chapter);
     history.push(
       `/textbook-solutions-manuals/${MakeSlug2(chapterValue)}-${MakeSlug(
@@ -389,7 +390,8 @@ export default function Book() {
     }
   };
 
-  const startAuthoring = async () => {
+  const startAuthoring = async () => {   
+  if(state.isLoggedIn){
     const res = await askForBook(
       ISBN13,
       books[0]?.BookName,
@@ -400,6 +402,9 @@ export default function Book() {
     if (res && res.status == 200) {
       history.push("/user/my-tbs");
     }
+  }else{
+    history.push("/auth/signin");
+  }
   };
 
   useEffect(() => {
@@ -422,7 +427,7 @@ export default function Book() {
       const QUESTION = slug ? slug[1] : null;
       if (QUESTION) {
         setQuestion(QUESTION);
-        // console.log(QUESTION, problems)
+        
         const ques =
           problems && problems.length > 0
             ? problems.filter(
@@ -478,13 +483,11 @@ export default function Book() {
       const slug =
         params.subject != undefined && params.subject.match(chapterRegex); // 01-2020
       const CHAPTER = slug ? slug[1] : null;
-      // console.log(chapters)
-      // console.log(slug)
-      // console.log(CHAPTER)
+     
       if (CHAPTER) {
         setChapter(CHAPTER);
         const chap = chapters.filter((item) => item.chapter_no === CHAPTER);
-        // console.log("chap", chap)
+        
         setChapterName(chap[0].chapter_name); //used for the first time, since if we change the question that has no question_name only has question_no.
       } else {
         setChapter(chapters[0].chapter_no);

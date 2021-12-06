@@ -32,7 +32,7 @@ export default function Navbar() {
     menus:data
   } = useContext(AuthContext);
   const session = state.isLoggedIn; 
-console.log('date------>', data);
+
   const showMobileMenu = () => {
     if (mobileMenuClass === "show") {
       setMobileMenuClass("");
@@ -214,7 +214,7 @@ console.log('date------>', data);
           {isMobile ? (
             <ul className="navbar-nav solu_nav ml-auto">
               <li className="nav-item">
-                <HashLink to="/q-and-a#subjects" className="nav-link">
+                <HashLink to="/q-and-a" className="nav-link">
                   Q and A
                 </HashLink>
               </li>
@@ -373,7 +373,7 @@ console.log('date------>', data);
                   openMenuB();
                 }}
               >
-                <HashLink to="/q-and-a#subjects" className="nav-link">
+                <HashLink to="/q-and-a" className="nav-link">
                   Q and A
                 </HashLink>
               </li>

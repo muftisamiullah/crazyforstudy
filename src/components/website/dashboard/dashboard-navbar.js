@@ -150,7 +150,7 @@ export default function DashboardNavbar({...props}){
    
                 <ul className="nav navbar-nav navbar-light  nav_right1 solu_nav ml-auto">
                     <li className="nav-item dp_n">
-                        <HashLink to="/q-and-a#subjects" className="nav-link">Q and A
+                        <HashLink to="/q-and-a" className="nav-link">Q and A
                         </HashLink>
                     </li>
                     <li className={`nav-item dp_n  ${classname}`} onMouseEnter={()=>{openMenu()}}>

@@ -146,7 +146,7 @@ export default function  MyProfile() {
 
     useEffect(() => {
         setFormData({...formData, ['img']: null})
-        console.log('imageLinkUpdate : '+imageLinkUpdate)
+       
         setPreview(imageLinkUpdate);
     }, [imageLinkUpdate]);
     

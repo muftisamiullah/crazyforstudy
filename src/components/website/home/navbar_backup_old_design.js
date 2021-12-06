@@ -176,7 +176,7 @@ export default function Navbar() {
                 :
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item" onMouseEnter={()=>{openMenuB()}}>
-                        <HashLink to="/q-and-a#subjects" className="nav-link">Q and A
+                        <HashLink to="/q-and-a" className="nav-link">Q and A
                         </HashLink>
                         
                     </li>  

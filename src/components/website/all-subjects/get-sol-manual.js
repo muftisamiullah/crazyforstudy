@@ -6,7 +6,7 @@ export default function GetSolManual({ ...props }) {
     SelectedSubSubject && SelectedSubSubject.content
       ? SelectedSubSubject.content
       : {};
-  console.log("SelectedSubSubject", content);
+
   return (
     <section className="section pt-5">
       <div className="container">

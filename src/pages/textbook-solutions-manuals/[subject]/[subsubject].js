@@ -110,9 +110,8 @@ export default function SubSubject() {
     ],
   };
 
-  const reviews = SelectedSubSubject && SelectedSubSubject.reviews ? SelectedSubSubject.reviews : [];
+  const reviews = SelectedSubSubject && SelectedSubSubject.reviews ? SelectedSubSubject.reviews : []; 
   
-  console.log('data',SelectedSubSubject);
 
   const { data, isLoading, error } = useQuery(
     [params.subsubject, params.subject, pageNo],
@@ -169,7 +168,7 @@ export default function SubSubject() {
       let mSubdata = mdata.sub_subject.find(
         (r) => MakeSlug(r.sub_subject) == subSubject
       );
-      console.log("mSubData", mSubdata);
+      
       if (mSubdata) {
         handleClick(mSubdata);
       }
