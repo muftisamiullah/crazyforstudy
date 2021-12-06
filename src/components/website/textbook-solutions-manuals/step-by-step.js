@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
+import { stringToSlug, htmlDecode } from '../../common/make-slug';
+import parse from 'html-react-parser'; 
 
 export default function StepByStep() {
   const { selectedCon } = useContext(AuthContext);
@@ -25,7 +27,7 @@ export default function StepByStep() {
               </h4>
               <p>
                 {content && content.question && content.question.content
-                  ? content.question.content
+                  ? parse(content.question.content)
                   : "“Graphs are really useful in Physics and the following pages show you the shapes of some of the most important graphs. (c, m and k are constants. Not necessarily the same value for each graph.) Graphical solutions to equations”"}
               </p>
             </div>
@@ -42,7 +44,7 @@ export default function StepByStep() {
                 )}
               </div>
               {content && content.answer && content.answer.content ? (
-                content.answer.content
+                parse(content.answer.content)
               ) : (
                 <>
                   <div className="col-md-5 graf1 pl-0">

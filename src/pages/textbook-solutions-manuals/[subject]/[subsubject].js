@@ -111,6 +111,8 @@ export default function SubSubject() {
   };
 
   const reviews = SelectedSubSubject && SelectedSubSubject.reviews ? SelectedSubSubject.reviews : [];
+  
+  console.log('data',SelectedSubSubject);
 
   const { data, isLoading, error } = useQuery(
     [params.subsubject, params.subject, pageNo],
@@ -133,7 +135,7 @@ export default function SubSubject() {
     })
   );
 
-  console.log("reviews", reviews);
+  const questionData = SelectedSubSubject && SelectedSubSubject.relatedQuestions ? {data:SelectedSubSubject.relatedQuestions} : randomQuestions;
 
   const handleClick = async (item) => {
     let existData = subSubjectContent[item._id];
@@ -233,7 +235,7 @@ export default function SubSubject() {
       <AddBook bookname={capitalize(GetName(params.subsubject))} />
       <StudentViewed
         bookname={capitalize(GetName(params.subsubject))}
-        data={randomQuestions}
+        data=  {questionData}//{randomQuestions}
         url={`/q-and-a/${params.subject}/${params.subsubject}`}
       />
       <GetSolManual bookname={capitalize(GetName(params.subsubject))} />
