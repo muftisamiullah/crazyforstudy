@@ -11,7 +11,7 @@ function importAll(r) {
   }
   
   const images = importAll(require.context('../../assets/images', false, /\.(png|jpe?g|svg)$/));
-  console.log('images',images['./linkdin.jpg'])
+  // console.log('images',images['./linkdin.jpg'])
 const BlogCarousel = () => {
   return (
     <section class="section blog mt-4 mb-4 pb-2">
