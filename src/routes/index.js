@@ -46,14 +46,14 @@ export const publicRoutes = [
         path: '/search/:search',
         component: Search
     },
-    {
-        path: '/blog',
-        component: Blog
-    },
-    {
-        path: '/blog/:id',
-        component: BlogId
-    },
+    // {
+    //     path: '/blog',
+    //     component: Blog
+    // },
+    // {
+    //     path: '/blog/:id',
+    //     component: BlogId
+    // },
     {
         path: '/q-and-a',
         component: QandA,
