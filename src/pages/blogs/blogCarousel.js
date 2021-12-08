@@ -2,16 +2,10 @@ import React from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-// import images from '../../assets/images';
-function importAll(r) {
+import img1 from "../../assets/images/bg_img1.jpg";
+import img2 from "../../assets/images/bg_img2.jpg";
+import img3 from "../../assets/images/bg_img3.jpg";
 
-    //console.log(r)
-   // return r.keys().map(r);
-   return r.keys().map(r).re
-  }
-  
-  const images = importAll(require.context('../../assets/images', false, /\.(png|jpe?g|svg)$/));
-  // console.log('images',images['./linkdin.jpg'])
 const BlogCarousel = () => {
   return (
     <section class="section blog mt-4 mb-4 pb-2">
@@ -22,28 +16,25 @@ const BlogCarousel = () => {
           </div>
           <div class="col-md-12">
             {/* <div class="owl-carousel owl-theme slider_blog1"> */}
-            
-             <OwlCarousel
-             key={Math.random()}
-            // items={}
-            className="owl-carousel owl-theme slider_blog1"
-            loop
-            autoplay={false}
-            autoWidth={false}
-            nav
-            margin={10}
-            dots={false}
-            center={true}
-          >
+
+            <OwlCarousel
+              key={Math.random()}
+              // items={}
+              className="owl-carousel owl-theme slider_blog1"
+              loop
+              autoplay={false}
+              autoWidth={false}
+              nav
+              margin={10}
+              // dots={true}
+              // dotsData={true}
+              center={true}
+            >
               <div class="item slider_w1" data-dot="<button>Jan</button>">
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                       // src={`${images}/bg_img1.jpg`}
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img1} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -70,11 +61,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img2.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img2} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -103,11 +90,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw blog_imgviw2">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img3.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img3} class="img-fluid" alt="" />
                       <div class="blg_text_bnr blg_text_bnr2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                         sed do eiusmod tempor incididunt.
@@ -139,11 +122,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img1.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img1} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -170,11 +149,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img2.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img2} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -203,11 +178,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw blog_imgviw2">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img3.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img3} class="img-fluid" alt="" />
                       <div class="blg_text_bnr blg_text_bnr2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                         sed do eiusmod tempor incididunt.
@@ -239,11 +210,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img1.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img1} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -270,11 +237,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img2.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img2} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -303,11 +266,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw blog_imgviw2">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img3.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img3} class="img-fluid" alt="" />
                       <div class="blg_text_bnr blg_text_bnr2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                         sed do eiusmod tempor incididunt.
@@ -338,11 +297,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img1.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img1} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -369,11 +324,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img2.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img2} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -402,11 +353,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw blog_imgviw2">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img3.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img3} class="img-fluid" alt="" />
                       <div class="blg_text_bnr blg_text_bnr2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                         sed do eiusmod tempor incididunt.
@@ -438,11 +385,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img1.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img1} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -469,11 +412,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img2.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img2} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -502,11 +441,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw blog_imgviw2">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img3.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img3} class="img-fluid" alt="" />
                       <div class="blg_text_bnr blg_text_bnr2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                         sed do eiusmod tempor incididunt.
@@ -538,11 +473,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img1.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img1} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -569,11 +500,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img2.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img2} class="img-fluid" alt="" />
                       <div class="blg_text_bnr">
                         Lorem Ipsum is simply dummy Lorem Ipsum is simply dummy
                       </div>
@@ -602,11 +529,7 @@ const BlogCarousel = () => {
                 <div class="view_blog_ghg">
                   <div class="blog_imgviw blog_imgviw2">
                     <a href="blog-details.php">
-                      <img
-                        src="assets/images/bg_img3.jpg"
-                        class="img-fluid"
-                        alt=""
-                      />
+                      <img src={img3} class="img-fluid" alt="" />
                       <div class="blg_text_bnr blg_text_bnr2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                         sed do eiusmod tempor incididunt.
@@ -633,12 +556,12 @@ const BlogCarousel = () => {
                   </div>
                 </div>
               </div>
-             </OwlCarousel>
+            </OwlCarousel>
             {/* </div> */}
           </div>
 
           <div class="col-md-2 text-center slider_year_bg1">
-            <div class="owl-carousel owl-theme slider_year">
+            <OwlCarousel class="owl-carousel owl-theme slider_year">
               <div class="item">2017</div>
               <div class="item">2018</div>
               <div class="item">2019</div>
@@ -649,7 +572,7 @@ const BlogCarousel = () => {
               <div class="item">2024</div>
               <div class="item">2025</div>
               <div class="item">2026</div>
-            </div>
+            </OwlCarousel>
           </div>
         </div>
       </div>
