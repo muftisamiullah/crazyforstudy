@@ -1,7 +1,15 @@
 import React, { Fragment } from "react";
 import "../../assets/styles/blog/style.css";
 import BlogCarousel from "./blogCarousel";
-
+import img4 from "../../assets/images/bg_img4.jpg";
+import img5 from "../../assets/images/bg_img5.jpg";
+import img6 from "../../assets/images/bg_img6.jpg";
+import ass from "../../assets/images/ass.jpg";
+import gen from "../../assets/images/gen.jpg";
+import man from "../../assets/images/man.jpg";
+import mar from "../../assets/images/mar.jpg";
+import mar1 from "../../assets/images/mar1.jpg";
+import eng from "../../assets/images/eng.jpg";
 
 const Blog = () => {
   return (
@@ -92,8 +100,193 @@ const Blog = () => {
         </div>
       </section>
 
+      {/* Carousel Section */}
       <BlogCarousel />
-   
+
+      {/* Recent Blog Section */}
+      <section class="section blog mt-4 mb-4 pb-2">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 mb-3 hding_title1 blog_title">
+                  <h2>Recent Blog</h2>
+               </div>
+               <div class="col-md-6 col-lg-4">
+                  <div class="view_blog_ghg m-0">
+                     <div class="hding_blog_recnt">
+                        <span>Academic</span>
+                        <h4> <a href="blog-details.php"> Lorem Ipsum is simply dummy text of the printing
+                           text of the printing </a>
+                        </h4>
+                     </div>
+                     <div class="blog_imgviw">
+                      <a href="blog-details.php">
+                        <img src={img4} class="img-fluid" alt="" />
+                        <div class="blg_text_bnr text-center">
+                           Lorem Ipsum is simply dummy text of the printing
+                        </div>
+                        </a>
+                     </div>
+                     <div class="bg_ghgd5j7">
+                        <div class="text_blg1">
+                           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text...</p>
+                        </div>
+                        <div class="text-right"><a href="blog-details.php">Read more</a></div>
+                        <ul>
+                           <li>SYD HOWELL SEPTEMBER 23, 2021</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6 col-lg-4">
+                  <div class="view_blog_ghg m-0">
+                     <div class="hding_blog_recnt">
+                        <span>Assignment Help</span>
+                        <h4>  <a href="blog-details.php">Lorem Ipsum is simply dummy text of the printing
+                           text of the printing</a> 
+                        </h4>
+                     </div>
+                     <div class="blog_imgviw">
+                      <a href="blog-details.php">
+                        <img src={img5} class="img-fluid" alt="" />
+                        <div class="blg_text_bnr text-center">
+                           Lorem Ipsum is simply dummy text of the printing
+                        </div>
+                        </a>
+                     </div>
+                     <div class="bg_ghgd5j7">
+                        <div class="text_blg1">
+                           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text...</p>
+                        </div>
+                        <div class="text-right"><a href="blog-details.php">Read more</a></div>
+                        <ul>
+                           <li>SYD HOWELL SEPTEMBER 23, 2021</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6 col-lg-4">
+                  <div class="view_blog_ghg m-0">
+                     <div class="hding_blog_recnt">
+                        <span>Dissertation Writing</span>
+                        <h4> <a href="blog-details.php"> Lorem Ipsum is simply dummy text of the printing
+                           text of the printing </a>
+                        </h4>
+                     </div>
+                     <div class="blog_imgviw">
+                      <a href="blog-details.php">
+                        <img src={img6} class="img-fluid" alt="" />
+                        <div class="blg_text_bnr text-center">
+                           Lorem Ipsum is simply dummy text of the printing
+                        </div>
+                        </a>
+                     </div>
+                     <div class="bg_ghgd5j7">
+                        <div class="text_blg1">
+                           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text...</p>
+                        </div>
+                        <div class="text-right"><a href="blog-details.php">Read more</a></div>
+                        <ul>
+                           <li>SYD HOWELL SEPTEMBER 23, 2021</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="section blog mt-5 mb-4 pb-2">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6 mb-3 hding_title1 Posts_hding Posts_hding1 blog_title border-0">
+                  <h2>Popular Posts</h2>
+                  <div class="post_main">
+                     <div class="post_img">
+                      <a href="blog-details.php">
+                        <img src={ass} class="img-fluid" alt="" />
+                        </a>
+                     </div>
+                     <div class="bg_ghgd5j7">
+                        <div class="text_blg1">
+                           <p> <a href="blog-details.php">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</a></p>
+                        </div>
+                        <ul>
+                           <li>Tresh / OCTOBER 11, 2021</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="post_main">
+                     <div class="post_img">
+                        <a href="blog-details.php"> <img src={gen} class="img-fluid" alt="" /></a>
+                     </div>
+                     <div class="bg_ghgd5j7">
+                        <div class="text_blg1">
+                           <p> <a href="blog-details.php">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</a></p>
+                        </div>
+                        <ul>
+                           <li>Tresh / OCTOBER 11, 2021</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="post_main">
+                     <div class="post_img">
+                        <a href="blog-details.php"> <img src={man} class="img-fluid" alt="" /></a>
+                     </div>
+                     <div class="bg_ghgd5j7">
+                        <div class="text_blg1">
+                           <p> <a href="blog-details.php">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</a></p>
+                        </div>
+                        <ul>
+                           <li>Tresh / OCTOBER 11, 2021</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6 mb-3 hding_title1 Posts_hding Posts_hding2 blog_title">
+                  <h2>Latest Posts</h2>
+                  <div class="post_main">
+                     <div class="post_img">
+                         <a href="blog-details.php"><img src={mar} class="img-fluid" alt="" /></a>
+                     </div>
+                     <div class="bg_ghgd5j7">
+                        <div class="text_blg1">
+                           <p> <a href="blog-details.php">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</a></p>
+                        </div>
+                        <ul>
+                           <li>Tresh / OCTOBER 11, 2021</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="post_main">
+                     <div class="post_img">
+                         <a href="blog-details.php"><img src={eng} class="img-fluid" alt="" /></a>
+                     </div>
+                     <div class="bg_ghgd5j7">
+                        <div class="text_blg1">
+                           <p> <a href="blog-details.php">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</a></p>
+                        </div>
+                        <ul>
+                           <li>Tresh / OCTOBER 11, 2021</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="post_main">
+                     <div class="post_img">
+                         <a href="blog-details.php"><img src={mar1} class="img-fluid" alt="" /></a>
+                     </div>
+                     <div class="bg_ghgd5j7">
+                        <div class="text_blg1">
+                           <p> <a href="blog-details.php">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</a></p>
+                        </div>
+                        <ul>
+                           <li>Tresh / OCTOBER 11, 2021</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
     </Fragment>
   );
 };

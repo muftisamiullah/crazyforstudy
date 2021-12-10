@@ -32,6 +32,56 @@ export async function searchData(params) {
     }
 }
 
+export async function searchBook(params){
+    try {
+        let searchT = params.search ? params.search : params.searchText;        
+        
+        //passing just 100 chars to backend
+        searchT = searchT.substring(0, 100);
+        source && source.cancel('Operation canceled due to new request.');
+        source = axios.CancelToken.source();
+        const res = axios.get(apiUrl + 'books/search-book-name-isbn/'+searchT+'/'+params.limit, {cancelToken: source.token});
+      
+       return res
+    }
+    catch(e){
+    }
+}
+
+export async function searchChapterQuestions(params){
+    try {
+        let searchT = params.search ? params.search : params.searchText;
+        
+        
+        //passing just 100 chars to backend
+        searchT = searchT.substring(0, 100);
+        source && source.cancel('Operation canceled due to new request.');
+        source = axios.CancelToken.source();
+        const res = axios.post(apiUrl + 'books/search-chapter-question',{search:searchT, limit:params.limit}, {cancelToken: source.token});
+        return res
+    }
+    catch(e){
+    }
+    
+}
+
+export async function searchQuestions(params){
+    try {
+        let searchT = params.search ? params.search : params.searchText;
+        
+        //passing just 100 chars to backend
+        searchT = searchT.substring(0, 100);
+        source && source.cancel('Operation canceled due to new request.');
+        source = axios.CancelToken.source();
+        const res =  axios.post(apiUrl + 'question/search-question',{search:searchT, limit:params.limit}, {cancelToken: source.token});
+       
+        return res
+    }
+    catch(e){
+    }
+}
+
+
 export async function searchDataIndividual(params) {
     try {
         const searchT = params.search ? params.search : params.searchText;

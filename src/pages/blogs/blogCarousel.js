@@ -26,7 +26,7 @@ const BlogCarousel = () => {
               autoWidth={false}
               nav
               margin={10}
-              // dots={true}
+              dots={false}
               // dotsData={true}
               center={true}
             >
@@ -561,7 +561,17 @@ const BlogCarousel = () => {
           </div>
 
           <div class="col-md-2 text-center slider_year_bg1">
-            <OwlCarousel class="owl-carousel owl-theme slider_year">
+            <OwlCarousel
+              class="owl-carousel owl-theme slider_year mt-4"
+              loop
+              autoplay={false}
+              autoWidth={false}
+              nav
+              margin={10}
+              dots={false}
+              // dotsData={true}
+              center={true}
+            >
               <div class="item">2017</div>
               <div class="item">2018</div>
               <div class="item">2019</div>

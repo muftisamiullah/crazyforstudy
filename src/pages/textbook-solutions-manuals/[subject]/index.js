@@ -295,11 +295,13 @@ export default function Book() {
   };
 
   const clickedQues = async (data, item, key) => {
+    
     if (
       state.Subscribe === "true" &&
       item.answerRequestIds.some((e) => e.user_id === state._id)
     ) {
       setAnswerRequested(true);
+      setAnswerFetched(false);
 
       //timer
       let creation_time;
@@ -422,6 +424,7 @@ export default function Book() {
       (problems && problems.length > 0) ||
       (problemsDirect && problemsDirect.length > 0)
     ) {
+      
       const slug =
         params.subject != undefined && params.subject.match(problemRegex); // 01-2020
       const QUESTION = slug ? slug[1] : null;
@@ -670,6 +673,7 @@ export default function Book() {
 
   async function openSearch(bookIsbn, e) {
     const data = await searchQuestions(bookIsbn, e);
+    console.log('data',data)
     setSearchedItems(data.problems);
   }
 

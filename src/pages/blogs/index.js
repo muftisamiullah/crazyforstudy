@@ -13,7 +13,7 @@ export default function Blogs() {
 			</Helmet>
 			<Header/>
 			<Navbar/>
-			{/* <Blog /> */}
+			<Blog />
 			{/* <h1>Blog</h1> */}
 			<Footer/>
 		</>

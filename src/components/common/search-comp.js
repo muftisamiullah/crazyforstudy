@@ -1,5 +1,5 @@
 import {useState,useEffect,useRef} from 'react';
-import {searchData} from '../../libs/search'
+import {searchData, searchBook, searchChapterQuestions, searchQuestions} from '../../libs/search'
 import BookImage from './book-image'
 import { Link } from 'react-router-dom';
 import {MakeSlug, isHTML} from '../common/make-slug'
@@ -36,18 +36,34 @@ export default function SearchComp({...props}){
 
     async function openSearch (e){
         // CancelToken.cancel('optional message');
-        const data = await searchData({search:e,limit:3});
-        if(data){
-            setSearchedBooks(data.data2.books);
-            setSearchedQuestions(data.data1.questions);
-            setQA(data.data3.questions);
-            if(data && data.data1.questions.length == 0 && data.data2.books.length == 0 && data.data3.questions.length == 0){
-                setDisplay('none');
-            }
-            if(data.data2.books.length == 0){
-                setDisplay('none');
-            }
+        // const data = await searchData({search:e,limit:3});
+        
+        const data1 = await searchBook({search:e,limit:3});
+        if(data1){
+            setSearchedBooks(data1.data.books);
         }
+        console.log('data1',data1);
+        const data2 = await searchChapterQuestions({search:e,limit:3});
+        if(data2){
+            setSearchedQuestions(data2.data.questions);
+        }
+        console.log('data2',data2);
+        const data3 = await searchQuestions({search:e,limit:3});  
+        if(data3){
+            setQA(data3.data.questions);
+        }     
+        console.log('data3',data3);
+        // if(data){
+        //     setSearchedBooks(data.data2.books);
+        //     setSearchedQuestions(data.data1.questions);
+        //     setQA(data.data3.questions);
+        //     if(data && data.data1.questions.length == 0 && data.data2.books.length == 0 && data.data3.questions.length == 0){
+        //         setDisplay('none');
+        //     }
+        //     if(data.data2.books.length == 0){
+        //         setDisplay('none');
+        //     }
+        // }
     }
 
     function useOutsideAlerter(ref) {
