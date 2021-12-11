@@ -71,7 +71,7 @@ export default function Modal({...props}){
 
     return(
         <div className={`modal fade modal-center Feedback_review ${props.modalClass}`} id="myModal_review" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{display: `${props.display}`, overflowY: "scroll"}}>
-            <div className="modal-dialog" role="document">
+            <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                     <div className="modal-header border-bottom-0 p-0"> 
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={closeDialog}>

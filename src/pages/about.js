@@ -23,7 +23,7 @@ export default function About() {
             <div className="container">
                 <div className="row float_n_disply">
                     <div className="col-md-12 col-lg-5 text-right float-right">
-                        <img src="/images/aboutus-img/about-us-CFS.png" alt="about-us"/>
+                        <img src="/images/aboutus-img/about-us-CFS.png" alt="about-us" className='img-fluid'/>
                     </div>
                     <div className="col-md-12 col-lg-7 float-left">
                         <div className="xs-heading">
@@ -53,7 +53,7 @@ export default function About() {
             <div className="container">
                 <div className="row float_n_disply">
                     <div className="col-md-12 col-lg-5 float-right eff_Morgan">
-                        <img src="/images/aboutus-img/jeff.png" alt="eff Morgan"/>
+                        <img src="/images/aboutus-img/jeff.png" alt="eff Morgan" className='img-fluid'/>
                     </div>
                     <div className="col-md-12 col-lg-7 float-left">
                     <div className="Text_title pb-3 pt-5">
@@ -95,7 +95,7 @@ export default function About() {
             <div className="container">
                 <div className="row float_n_disply">
                     <div className="col-md-12 col-lg-5 float-right eff_Morgan">
-                        <img src="/images/aboutus-img/joanna.png" alt="eff Morgan"/>
+                        <img src="/images/aboutus-img/joanna.png" className='img-fluid' alt="eff Morgan"/>
                     </div>
                     <div className="col-md-12 col-lg-7 float-left">
                         

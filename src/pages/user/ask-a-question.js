@@ -486,15 +486,17 @@ export default function AskQuestion(){
 															<div className="row upld_img_dbd"> 
 																<div className="col-md-12"> 
 																	<div className="images_pikar1">
-																			<span className="btn btn-success fileinput-button fileinputfdf">
-																				<span>  <i className="fa fa-upload"></i></span>
+																			{/* <span className="btn btn-success fileinput-button fileinputfdf">
+																				<span>  <i className="fa fa-upload"></i></span> */}
 																				{/* <input type="file" name="files[]" id="files" multiple accept="image/jpeg, image/png, image/gif,"/>  */}
-																				<input type='file' name="image1" className="imgInp" data-id='img1' onChange={setHandleImage}/>
-																			</span>
-																			{formData.image1 && <span className="btn btn-success fileinput-button fileinputfdf">
+																				{/* <input type='file' name="image1" className="imgInp" data-id='img1' onChange={setHandleImage}/>
+																			</span> */}
+																			{/* {formData.image1 &&  */}
+                                                         <span className="btn btn-success fileinput-button fileinputfdf">
 																				<span>  <i className="fa fa-upload"></i> {count}/2 images</span>
 																				<input type='file' name="image2" className="imgInp"  data-id='img2' onChange={setHandleImage}/>
-																			</span>}
+																			</span>
+                                                         {/* } */}
 																			<output id="Filelist">
 																				<ul className="thumb-Images" id="imgList">
 																					{formData.image1 && <li>

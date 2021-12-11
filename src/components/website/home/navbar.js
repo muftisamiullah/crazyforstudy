@@ -290,6 +290,7 @@ export default function Navbar() {
                                 )}`}
                                 className="dropdown-item"
                               >
+                                <i className="fa fa-circle"></i>{" "}
                                 {item.subject}
                               </HashLink>
                               {item.sub_subject.map((it, key) => {

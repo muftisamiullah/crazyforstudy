@@ -189,6 +189,7 @@ export default function Reviews({ ...props }) {
       </section>
       <Modal
         modalClass={modalClass}
+        className=""
         display={display}
         setDisplay={setDisplay}
         setModalClass={setModalClass}

@@ -190,7 +190,7 @@ export default function  SignUp() {
                 <div className="form-group col-md-12 trems_privacy text-center"> 
                 <div className="form-check">
                 <label className="form-check-label">
-                <input type="checkbox" className="form-check-input" value="" onChange={agreePolicy}/> By clicking on "Sign In" you're agreeing to ou <span>Terms of Use & Privacy.</span>
+                <input type="checkbox" className="form-check-input" value="" onChange={agreePolicy}/> By clicking on "Sign In" you're agreeing to our <span>Terms of Use & Privacy.</span>
                 </label>
                 </div>
                 </div>
