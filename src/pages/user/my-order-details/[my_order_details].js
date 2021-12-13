@@ -522,7 +522,8 @@ export default function MyOrderDetails(){
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-sm-12 col-md-12 col-lg-6">
+                            {/* hat feature is commented as of now with Shri sir order */}
+                            {/* <div className="col-sm-12 col-md-12 col-lg-6">
                                 <div className="card chat-app">
                                     <div className="chat">
                                         <div className="chat-header clearfix">
@@ -578,7 +579,7 @@ export default function MyOrderDetails(){
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             </div>
                         </div>
                     </div>

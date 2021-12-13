@@ -30,6 +30,8 @@ export default function MyQuestion(){
       }
    }
 
+
+const S3_URL = `https://crazyforstudy.s3.ap-south-1.amazonaws.com/uploads/`;
    const setQuestionFlag = (e) => {
       setFlag(e.target.value)
    }
@@ -249,12 +251,12 @@ export default function MyQuestion(){
                                                    <div class="asw3e3">
                                                       <ul>
                                                          <li>
-                                                            <div class="ans_ic">
-                                                              
+                                                            <div class="ans_ic" >                                                             
                                                                {item.flag == "answered" ? <><img src="/images/a-icon1.png" class="img-fluid" alt="ans"/> Complete Answer:</> : (item.flag == "pending" ? "" : "Comments:")}
                                                             </div>
                                                          </li>
-                                                         <li>
+                                                         
+                                                         <li style={{paddingLeft: `${item.flag == "rejected" ? '105px' : '195px' }`}}>
                                                          {item.flag == "answered" ? 
                                                             <>
                                                                {item.shortanswer ? <span dangerouslySetInnerHTML={{__html: item.shortanswer}}></span>: ""}
@@ -273,6 +275,58 @@ export default function MyQuestion(){
                                                          </li>
                                                       </ul>
                                                    </div>
+                                                   <output id="Filelist">
+                                        <ul
+                                          className="thumb-Images"
+                                          id="imgList"
+                                        >
+                                          {item && item.image0 && (
+                                            <li className='question-images'>
+                                              <div className="img-wrap">
+                                                {" "}
+                                               
+                                                <img
+                                                  id="img1"
+                                                  className="thumb thumb2fd4"
+                                                  width = "80"
+                                                  height = '80'
+                                                  src={
+                                                    item && item.image0
+                                                      ? S3_URL + item.image0
+                                                      : "/images/upload-icon1.png"
+                                                  }
+                                                  title={item && item.image0}
+                                                  alt="your image"
+                                                //   ref={image1}
+                                                />
+                                              </div>
+                                              <div className="FileNameCaptionStyle"></div>
+                                            </li>
+                                          )}
+                                          {item && item.image1 && (
+                                            <li className='question-images'>
+                                              <div className="img-wrap">
+                                                {" "}                                                
+                                                <img
+                                                  id="img1"
+                                                  className="thumb thumb2fd4"
+                                                  src={
+                                                    item && item.image1
+                                                      ? S3_URL + item.image1
+                                                      : "/images/upload-icon1.png"
+                                                  }
+                                                  width = "80"
+                                                  height = '80'
+                                                  title={item && item.image1}
+                                                  alt="your image"
+                                                //   ref={image2}
+                                                />
+                                              </div>
+                                              {/* <div className="FileNameCaptionStyle"></div> */}
+                                            </li>
+                                          )}
+                                        </ul>
+                                      </output>
                                                 </div>
                                        
                                              </div>

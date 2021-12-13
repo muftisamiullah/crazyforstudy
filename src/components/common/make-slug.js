@@ -7,7 +7,9 @@ const MakeSlug2 = (str) => {
     return str.trim().toLowerCase().replace(/ +/g,'-');     
 }
 const stringToSlug = (str)=> { // <-- removed the argument // <-- added this statement
-
+if(!str){
+return ''
+}
     str = str.replace(/^\s+|\s+$/g, ''); // trim
     str = str.toLowerCase();
     str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
@@ -87,6 +89,7 @@ const isHTML = (str) => {
 }
 
 function  htmlDecode(content) {
+    
     let e = document.createElement('div');
     e.innerHTML = content;
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;

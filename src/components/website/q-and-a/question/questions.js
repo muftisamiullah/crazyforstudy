@@ -25,12 +25,13 @@ export default function questions({...props}){
                                     <div className="read_more_q">
                                     <span className="qustion_mark1">Q :</span>  
                                         <div className="ques_pl">
-                                            {isHTML(item.question)
+                                           
+                                            {item && item.question && isHTML(item.question)
                                             // {item.question.includes('<p>')
                                             // ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${striptags(item.question).substr(0,120)}`}}></p>
                                             // : <p className="mb-0" dangerouslySetInnerHTML={{__html: `${parse(item.question).substr(0,120)}`}}></p>}
-                                            ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${item.question.substr(0,120)}`}}></p>
-                                            : <p className="mb-0" dangerouslySetInnerHTML={{__html: `${htmlDecode(item.question).substr(0,120)}`}}></p>}
+                                            ? <p className="mb-0" dangerouslySetInnerHTML={{__html: `${item.question?.substr(0,120)}`}}></p>
+                                            : <p className="mb-0" dangerouslySetInnerHTML={{__html:  `${htmlDecode(item.question)?.substr(0,120)}`}}></p>}
                                         </div>
                                     </div>
                                 </div>
@@ -43,8 +44,8 @@ export default function questions({...props}){
                                         : <p className="font-15"><Link to={`${'/q-and-a/'+router.query.subject+'/'+router.query.subsubject+'/'+router.query.chieldsubject+'/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item.old_qid}`}>View Answer</Link></p>} */}
                                         {isHTML(item.question)
                                         // {item.question.includes('<p>')
-                                        ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(item.question).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>
-                                        : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question)).substr(0,90)+'-'+item._id}`}>View Answer</Link></p>}
+                                        ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(item.question)?.substr(0,90)+'-'+item._id}`}>View Answer</Link></p>
+                                        : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(htmlDecode(item.question))?.substr(0,90)+'-'+item._id}`}>View Answer</Link></p>}
                                         {/* ? <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(parse(striptags(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>
                                         : <p className="font-15"><Link to={`${'/q-and-a/'+stringToSlug(striptags(parse(item.question)).substr(0,90))+'-'+item._id}`}>View Answer</Link></p>} */}
                                     </div>
