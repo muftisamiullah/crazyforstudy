@@ -490,7 +490,7 @@ export default function MyOrderDetails(){
                         </div>
                         <div className="col-lg-12 col-md-12">
                             <div className="row clearfix">
-                            <div className="col-md-12 col-lg-6">
+                            <div className="col-md-12 col-lg-12">
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="cus_modal profile_modal payment_section payment_section2">

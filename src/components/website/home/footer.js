@@ -56,9 +56,9 @@ export default function Footer() {
 						<p>@ Copyright crazyforstudy 2021</p>
 						</div>
 						<div className="col-md-4 text-center">
-						<ul>
+						{/* <ul>
 							<li><a href="https://apps.apple.com/app/id1528935697" target="_blank"><img src="/images/ios-app-button.png" className="img-fluid" alt=""/></a></li>
-						</ul>
+						</ul> */}
 						</div>
 						<div className="col-md-4 text-right">
 						<ul>
